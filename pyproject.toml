@@ -2,7 +2,7 @@
 name = "pd_copilot_agent"
 version = "0.1.0"
 description = "PD Copilot Agent using FastAPI and OpenAI Agentic SDK"
-requires-python = ">=3.9,<=3.13"
+requires-python = ">=3.9,<3.14"
 
 dependencies = [
     "fastapi",
@@ -13,6 +13,7 @@ dependencies = [
     "python-dotenv",
     "gradio>=4.0.0",
     "requests>=2.28.0",
+    "colorlog>=6.8.0",
 ]
 
 [build-system]

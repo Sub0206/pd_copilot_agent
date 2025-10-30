@@ -1,0 +1,7 @@
+pyproject.toml
+app/main.py
+pd_copilot_agent.egg-info/PKG-INFO
+pd_copilot_agent.egg-info/SOURCES.txt
+pd_copilot_agent.egg-info/dependency_links.txt
+pd_copilot_agent.egg-info/requires.txt
+pd_copilot_agent.egg-info/top_level.txt

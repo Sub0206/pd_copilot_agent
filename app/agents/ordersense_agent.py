@@ -8,7 +8,7 @@ import os
 DEFAULT_API_URL = os.getenv("DATABASE_API_URL", "http://localhost:8013/PD/mvc/getViewsHierarchyByITagVTag")
 
 
-@function_tool
+
 def fetch_database_info(api_url: str) -> Dict:
     """Fetch view items data from API"""
     try:
@@ -19,7 +19,7 @@ def fetch_database_info(api_url: str) -> Dict:
         return {"status": "error", "error_message": str(e), "timestamp": datetime.now().isoformat()}
 
 
-@function_tool
+
 def parse_database_info(raw_data: str) -> Dict:
     """Parse raw database data into structured view items"""
     try:
@@ -57,7 +57,7 @@ def parse_database_info(raw_data: str) -> Dict:
         return {"status": "error", "error_message": str(e)}
 
 
-@function_tool
+
 def analyze_view_items(parsed_data: str) -> Dict:
     """Identify tab order violations where dependencies appear after current items"""
     try:
@@ -105,7 +105,7 @@ def analyze_view_items(parsed_data: str) -> Dict:
         return {"status": "error", "error_message": str(e)}
 
 
-@function_tool
+
 def generate_report(analysis_data: str) -> Dict:
     """Generate validation report with violations and recommendations"""
     try:
@@ -167,19 +167,19 @@ def run_ordersense_validation(
         
         api_url = f"{base_url}?{'&'.join(params)}"
         
-        raw_data = fetch_database_info.invoke(api_url)
+        raw_data = fetch_database_info(api_url)
         if raw_data.get("status") == "error":
             return raw_data
         
-        parsed_data = parse_database_info.invoke(json.dumps(raw_data))
+        parsed_data = parse_database_info(json.dumps(raw_data))
         if parsed_data.get("status") == "error":
             return parsed_data
         
-        analysis_data = analyze_view_items.invoke(json.dumps(parsed_data))
+        analysis_data = analyze_view_items(json.dumps(parsed_data))
         if analysis_data.get("status") == "error":
             return analysis_data
         
-        report = generate_report.invoke(json.dumps(analysis_data))
+        report = generate_report(json.dumps(analysis_data))
         if report.get("status") == "error":
             return report
         

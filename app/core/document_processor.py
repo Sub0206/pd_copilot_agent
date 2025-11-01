@@ -3,6 +3,7 @@ from typing import Dict
 from bs4 import BeautifulSoup
 import shutil
 import os
+from docx import Document  # Add this import
 
 DOCS_PATH = os.getenv("PD_DOCS_PATH", "./resource/pd_docs")
 
@@ -14,13 +15,28 @@ class DocumentProcessor:
         self.docs_path.mkdir(parents=True, exist_ok=True)
     
     def _read_file(self, file_path: Path) -> str:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
+        """Read and extract text from various file formats"""
         
+        # Handle .docx files
+        if file_path.suffix == '.docx':
+            try:
+                doc = Document(file_path)
+                # Extract text from all paragraphs
+                text = '\n'.join([paragraph.text for paragraph in doc.paragraphs if paragraph.text.strip()])
+                return text
+            except Exception as e:
+                raise Exception(f"Error reading .docx file: {e}")
+        
+        # Handle HTML files
         if file_path.suffix in ['.html', '.htm']:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
             soup = BeautifulSoup(content, 'html.parser')
             return soup.get_text(separator='\n', strip=True)
-        return content
+        
+        # Handle text-based files
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return f.read()
     
     def _detect_doc_type(self, filename: str, content: str) -> str:
         filename_lower = filename.lower()
@@ -47,17 +63,20 @@ class DocumentProcessor:
         shutil.move(str(file_path), str(dest))
     
     def has_new_documents(self) -> bool:
+        """Check if there are new documents to process - NOW INCLUDES .docx"""
         return any(
-            f.is_file() and f.suffix in ['.html', '.htm', '.md', '.txt']
+            f.is_file() and f.suffix in ['.html', '.htm', '.md', '.txt', '.docx']  # Added .docx
             for f in self.docs_path.glob("*")
         )
     
     def process_new_documents(self) -> Dict:
+        """Process new documents - NOW INCLUDES .docx"""
         processed = []
         errors = []
         
         for file_path in self.docs_path.glob("*"):
-            if file_path.is_file() and file_path.suffix in ['.html', '.htm', '.md', '.txt']:
+            # Added .docx to the supported extensions
+            if file_path.is_file() and file_path.suffix in ['.html', '.htm', '.md', '.txt', '.docx']:
                 try:
                     content = self._read_file(file_path)
                     if not content.strip():

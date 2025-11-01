@@ -1,100 +1,106 @@
-from agents import Agent, function_tool
-from typing import Dict, Optional
-import os
+from agents import Agent, function_tool, Runner
+from typing import Optional
 
-CONFIG_DOCS_PATH = os.getenv("CONFIG_DOCS_PATH", "./resource/config_docs")
+def _get_vector_store():
+    from ..core.vector_store import vector_store
+    return vector_store
 
-# Don't initialize at import time
-config_store = None
-guide_agent = None
+def _get_doc_processor():
+    from ..core.document_processor import doc_processor
+    return doc_processor
 
-def get_config_store():
-    """Lazy initialization of config store"""
-    global config_store
-    if config_store is None:
-        try:
-            from .vector_store import VectorStore
-            config_store = VectorStore(table_name="pd_configs")
-        except Exception as e:
-            print(f"⚠️ Config store disabled: {e}")
-            config_store = False  # Mark as failed
-    return config_store if config_store is not False else None
-
-def get_guide_agent():
-    """Lazy initialization of guide agent"""
-    global guide_agent
-    if guide_agent is None:
-        guide_agent = Agent(
-            name="ConfigGuide",
-            instructions="""Provide configuration guidance for Product Designer.
-            Include step-by-step instructions and best practices.""",
-            model="gpt-4o-mini"
-        )
-    return guide_agent
-
-@function_tool
-def guide_configuration(task_name: str) -> dict:
-    """Guide users through configuration tasks"""
+def _ensure_indexed():
     try:
-        config_store = get_config_store()
+        doc_processor = _get_doc_processor()
+        vector_store = _get_vector_store()
         
-        if config_store:
-            docs = config_store.search(f"configure {task_name}", limit=3)
-            
-            if docs:
-                context = "\n\n".join([doc["content"][:1000] for doc in docs])
-                guide_agent = get_guide_agent()
-                result = guide_agent.run(f"Task: {task_name}\n\nContext:\n{context}")
-                guide = result.final_output if hasattr(result, 'final_output') else str(result)
-                
-                return {
-                    "status": "success",
-                    "task": task_name,
-                    "guide": guide,
-                    "sources": [doc["metadata"]["filename"] for doc in docs]
-                }
-        
-        # Fallback when VectorStore is not available
-        return {
-            "status": "success",
-            "task": task_name,
-            "guide": f"Basic configuration guide for {task_name}:\n1. Identify requirements\n2. Configure settings\n3. Test configuration\n\n(Full documentation search temporarily unavailable)",
-            "sources": ["built-in"]
-        }
-        
+        if doc_processor.has_new_documents():
+            result = doc_processor.process_new_documents()
+            for doc in result["processed"]:
+                vector_store.add(
+                    doc_id=doc["doc_id"],
+                    content=doc["content"],
+                    metadata=doc["metadata"],
+                    doc_type=doc["doc_type"]
+                )
     except Exception as e:
-        return {"status": "error", "error_message": f"Configuration guide failed: {str(e)}"}
+        print(f"⚠️  Indexing error: {e}")
 
 @function_tool
-def validate_configuration(config_data: str) -> dict:
+def query_config_knowledge(query: str, limit: int = 4) -> str:
+    """Query vector database for Product Designer configuration knowledge"""
+    try:
+        _ensure_indexed()
+        vector_store = _get_vector_store()
+        
+        docs = vector_store.search(query, limit=limit, doc_type="config")
+        
+        if not docs:
+            docs = vector_store.search(query, limit=limit)
+            if not docs:
+                return "No configuration documentation found in database."
+        
+        context = "\n\n".join([
+            f"[{doc['metadata']['filename']}]\n{doc['content'][:1500]}"
+            for doc in docs
+        ])
+        
+        return f"Configuration documentation found:\n\n{context}"
+    except Exception as e:
+        return f"Unable to search configuration documentation: {str(e)}"
+
+class ConfigGuideAgent:
+    def __init__(self):
+        self._agent = None
+    
+    @property
+    def agent(self) -> Agent:
+        if self._agent is None:
+            self._agent = Agent(
+                name="ConfigGuide",
+                instructions="""You are a Product Designer configuration expert.
+
+When users need configuration help:
+1. Use query_config_knowledge() to retrieve relevant guides
+2. Provide clear step-by-step instructions
+3. Format responses as:
+
+**Configuration: [Task Name]**
+**Prerequisites:** What's needed
+**Steps:**
+1. First step with details
+2. Second step with details
+**Validation:** How to verify
+**Sources:** Documentation sources
+
+Always search your knowledge base before answering.""",
+                model="gpt-4o-mini",
+                tools=[query_config_knowledge]
+            )
+        return self._agent
+
+config_guide_agent = ConfigGuideAgent()
+
+@function_tool
+def guide_configuration(task_name: str, context: Optional[str] = None) -> str:
+    """Get step-by-step configuration guidance"""
+    try:
+        prompt = f"Provide step-by-step configuration guide for: {task_name}"
+        if context:
+            prompt += f"\nContext: {context}"
+        
+        result = Runner.run_sync(config_guide_agent.agent, prompt)
+        return result.final_output if hasattr(result, 'final_output') else str(result)
+    except Exception as e:
+        return f"Configuration guidance for '{task_name}': Currently unavailable ({str(e)}). Please ensure documentation is loaded."
+
+@function_tool
+def validate_configuration(config_description: str) -> str:
     """Validate configuration against best practices"""
     try:
-        import json
-        data = json.loads(config_data) if isinstance(config_data, str) else config_data
+        prompt = f"Review and validate this configuration:\n\n{config_description}"
         
-        config_store = get_config_store()
-        
-        if config_store:
-            query = f"validate configuration {list(data.keys()) if isinstance(data, dict) else 'settings'}"
-            docs = config_store.search(query, limit=2)
-            
-            if docs:
-                context = "\n\n".join([doc["content"][:800] for doc in docs])
-                guide_agent = get_guide_agent()
-                result = guide_agent.run(f"Validate this config:\n{data}\n\nRules:\n{context}")
-                validation = result.final_output if hasattr(result, 'final_output') else str(result)
-                
-                return {"status": "success", "validation": validation}
-        
-        # Fallback validation
-        validation_result = "Configuration appears valid (basic check - full validation temporarily unavailable)"
-        if isinstance(data, dict) and data:
-            validation_result += f"\nFound {len(data)} configuration keys: {list(data.keys())[:5]}"
-        
-        return {
-            "status": "success", 
-            "validation": validation_result
-        }
-        
+        result = Runner.run_sync(config_guide_agent.agent, prompt)
+        return result.final_output if hasattr(result, 'final_output') else str(result)
     except Exception as e:
-        return {"status": "error", "error_message": f"Configuration validation failed: {str(e)}"}
+        return f"Configuration validation: Currently unavailable ({str(e)}). Please ensure documentation is loaded."

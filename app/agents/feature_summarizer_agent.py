@@ -1,126 +1,107 @@
-from agents import Agent, function_tool
-from typing import Dict, Optional
-from pathlib import Path
-from bs4 import BeautifulSoup
-import os
-from .vector_store import VectorStore
+from agents import Agent, function_tool, Runner
+from typing import Optional
 
-DOCS_PATH = os.getenv("PD_DOCS_PATH", "./resource/pd_docs")
+def _get_vector_store():
+    """Lazy import to avoid circular dependencies"""
+    from ..core.vector_store import vector_store
+    return vector_store
 
-feature_store = VectorStore(table_name="pd_features")
+def _get_doc_processor():
+    """Lazy import to avoid circular dependencies"""
+    from ..core.document_processor import doc_processor
+    return doc_processor
 
-summarizer_agent = Agent(
-    name="FeatureSummarizer",
-    instructions="""Create clear summaries of Product Designer features.
-
-Format:
-**Feature: [Name]**
-**Description:** [2-3 sentences]
-**Key Points:**
-- Point 1
-- Point 2
-**Example:** [Simple example]
-
-Keep concise and practical.""",
-    model="gpt-4o-mini"
-)
-
-def read_file(file_path: Path) -> str:
-    with open(file_path, "r", encoding="utf-8") as f:
-        content = f.read()
-    
-    if file_path.suffix in [".html", ".htm"]:
-        soup = BeautifulSoup(content, "html.parser")
-        return soup.get_text(separator="\n", strip=True)
-    return content
-
-def index_documents(docs_path: str = DOCS_PATH) -> Dict:
-    path = Path(docs_path)
-    if not path.exists():
-        return {"status": "error", "message": f"Path not found: {docs_path}"}
-    
-    count = 0
-    for file_path in path.rglob("*"):
-        if file_path.suffix in [".html", ".htm", ".md", ".txt"]:
-            try:
-                content = read_file(file_path)
-                doc_id = str(file_path.relative_to(path))
-                
-                feature_store.add(
-                    doc_id=doc_id,
-                    content=content,
-                    metadata={"filename": file_path.name, "path": str(file_path)}
+def _ensure_indexed():
+    """Index new documents if available"""
+    try:
+        doc_processor = _get_doc_processor()
+        vector_store = _get_vector_store()
+        
+        if doc_processor.has_new_documents():
+            result = doc_processor.process_new_documents()
+            for doc in result["processed"]:
+                vector_store.add(
+                    doc_id=doc["doc_id"],
+                    content=doc["content"],
+                    metadata=doc["metadata"],
+                    doc_type=doc["doc_type"]
                 )
-                count += 1
-            except Exception as e:
-                print(f"Error: {e}")
-    
-    return {"status": "success", "indexed": count, "total": feature_store.count()}
-
-
-def search_documentation(query: str) -> Dict:
-    """Search PD documentation and return summary"""
-    
-    if feature_store.count() == 0:
-        index_documents()
-    
-    docs = feature_store.search(query, limit=3)
-    
-    if not docs:
-        return {"status": "no_results", "message": "No documentation found"}
-    
-    context = "\n\n".join([
-        f"Source: {doc['metadata']['filename']}\n{doc['content'][:1000]}"
-        for doc in docs
-    ])
-    
-    result = summarizer_agent.run(f"Query: {query}\n\nContext:\n{context}")
-    summary = result.final_output if hasattr(result, 'final_output') else str(result)
-    
-    return {
-        "status": "success",
-        "summary": summary,
-        "sources": [doc["metadata"]["filename"] for doc in docs]
-    }
+    except Exception as e:
+        print(f"⚠️  Indexing error: {e}")
 
 @function_tool
-def explain_feature(feature_name: str, detail_level: str = "standard") -> Dict:
-    """Explain Product Designer features"""
+def query_feature_knowledge(query: str, limit: int = 3) -> str:
+    """Query vector database for Product Designer feature knowledge"""
+    try:
+        _ensure_indexed()
+        vector_store = _get_vector_store()
+        
+        docs = vector_store.search(query, limit=limit, doc_type="feature")
+        
+        if not docs:
+            return "No feature documentation found in database."
+        
+        context = "\n\n".join([
+            f"[{doc['metadata']['filename']}]\n{doc['content'][:1500]}"
+            for doc in docs
+        ])
+        
+        return f"Documentation found:\n\n{context}"
+    except Exception as e:
+        return f"Unable to search documentation: {str(e)}"
+
+class FeatureSummarizerAgent:
+    def __init__(self):
+        self._agent = None
     
-    query = f"Product Designer {feature_name}"
-    if detail_level == "detailed":
-        query += " detailed with examples"
-    elif detail_level == "brief":
-        query += " brief overview"
-    
-    result = search_documentation(query)
-    
-    if result["status"] == "success":
-        return {
-            "status": "success",
-            "feature": feature_name,
-            "explanation": result["summary"],
-            "sources": result["sources"]
-        }
-    
-    return {"status": "not_found", "feature": feature_name}
+    @property
+    def agent(self) -> Agent:
+        if self._agent is None:
+            self._agent = Agent(
+                name="FeatureSummarizer",
+                instructions="""You are a Product Designer feature expert with access to documentation.
+
+When users ask about features:
+1. Use query_feature_knowledge() to retrieve relevant documentation
+2. Synthesize information into clear explanations
+3. Format responses as:
+
+**Feature: [Name]**
+**Description:** Clear 2-3 sentence explanation
+**Key Capabilities:**
+- Main capability 1
+- Main capability 2
+**Example Use Case:** Practical example
+**Sources:** Documentation sources
+
+Always search your knowledge base before answering.""",
+                model="gpt-4o-mini",
+                tools=[query_feature_knowledge]
+            )
+        return self._agent
+
+feature_summarizer_agent = FeatureSummarizerAgent()
 
 @function_tool
-def add_approved_response(query: str, response: str) -> Dict:
-    """Store approved responses for learning"""
-    
-    doc_id = f"approved_{hash(query)}"
-    content = f"Query: {query}\nResponse: {response}"
-    
-    feature_store.add(
-        doc_id=doc_id,
-        content=content,
-        metadata={"type": "approved", "query": query}
-    )
-    
-    return {"status": "success", "message": "Stored for learning"}
+def explain_feature(feature_name: str, detail_level: str = "standard") -> str:
+    """Explain Product Designer features using the agent's knowledge base"""
+    try:
+        prompt = f"Explain the '{feature_name}' feature in Product Designer"
+        if detail_level == "detailed":
+            prompt += " with detailed examples"
+        elif detail_level == "brief":
+            prompt += " briefly"
+        
+        result = Runner.run_sync(feature_summarizer_agent.agent, prompt)
+        return result.final_output if hasattr(result, 'final_output') else str(result)
+    except Exception as e:
+        return f"Feature explanation unavailable: {str(e)}"
 
 @function_tool
-def reindex_documentation(docs_path: Optional[str] = None) -> Dict:
-    """Reindex all documentation"""
-    return index_documents(docs_path or DOCS_PATH)
+def search_documentation(query: str) -> str:
+    """Search Product Designer documentation"""
+    try:
+        result = Runner.run_sync(feature_summarizer_agent.agent, f"Search documentation for: {query}")
+        return result.final_output if hasattr(result, 'final_output') else str(result)
+    except Exception as e:
+        return f"Documentation search unavailable: {str(e)}"

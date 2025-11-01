@@ -45,7 +45,6 @@ pd_copilot_agent = Agent(
     tools=[
         run_ordersense_validation,
         explain_feature,
-        search_documentation,
         guide_configuration,
         validate_configuration
     ]

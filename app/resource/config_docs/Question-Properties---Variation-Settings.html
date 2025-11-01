@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Question Properties - Variation Settings</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Product-Designer-Help_28282788.html">Product Designer Help</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Question Properties - Variation Settings
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Susan Wilson</span>, last modified on 10 Dec, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><tbody><tr><th style="text-align: center;" class="confluenceTh">Property</th><th style="text-align: center;" class="confluenceTh">Value</th><th style="text-align: center;" class="confluenceTh">Definition / Behavior</th><th style="text-align: center;" class="confluenceTh">Applicability</th></tr><tr><td class="confluenceTd">May Question Properties Vary?</td><td class="confluenceTd">Yes</td><td class="confluenceTd">Question properties are allowed to vary within the current Product Group. This indicator must be set to &quot;Yes&quot; to access the &quot;Variations&quot; link under View Items in Policy Configuration.</td><td class="confluenceTd">Always applicable and required</td></tr><tr><td class="confluenceTd"><br/></td><td class="confluenceTd">No (Default)</td><td class="confluenceTd">Question properties may not vary within the current Product Group.</td><td class="confluenceTd"><br/></td></tr><tr><td class="confluenceTd">Question Properties are Defined for Each</td><td class="confluenceTd"><p>List of Reference Entities</p>Format:  Entity Name - B-tag i.e. Product Group - 20000</td><td class="confluenceTd">Product Configuration Entity by which this Question's properties vary. For example, Product Coverage would be selected if the question properties vary by coverage. Select Product Group if question properties vary based on dependencies rather than Product Entity occurrences. <br/>This question also must be answered to specify for which policy entity answer options may vary. For example, if answer options for this question vary by Program Offering, this property would be sent to &quot;Program Offering&quot; and the Product Designer User would be prompted to specify the Program Offering when working with answer options for view items based on this question.</td><td class="confluenceTd">Applicable and required when May Question Properties Vary? = Yes</td></tr><tr><td class="confluenceTd">Question that Satisfies the Variation</td><td class="confluenceTd"><p>List of Questions on Policy entity that link to the selected Reference Entity</p><p>Format:  Question Name - Q-tag i.e. Product Group - 30000_1</p></td><td class="confluenceTd">Question from Policy Configuration entity that contains the value that identifies the individual variations. For example, if this question's properties vary by Product Coverage, this property would specify which question in the policy structure contains the Coverage Code.</td><td class="confluenceTd">Applicable and required when May Question Properties Vary? = Yes</td></tr><tr><td class="confluenceTd">Validation Routine</td><td class="confluenceTd">This is not used and will be removed.</td><td class="confluenceTd">NA</td><td class="confluenceTd">NA</td></tr><tr><td class="confluenceTd">Customization Routine</td><td class="confluenceTd">Text Field: Maximum Length = 30 Characters</td><td class="confluenceTd">Help icon displays information for each Customization Routine supported</td><td class="confluenceTd">Always Applicable and optional</td></tr><tr><td class="confluenceTd">Customization Routine Help</td><td class="confluenceTd"><br/></td><td class="confluenceTd"><h4 id="QuestionProperties-VariationSettings-CustomizationRoutineHelpText">Customization Routine Help Text</h4><p><strong>milliseconds</strong></p><p>Current milliseconds from the application server.  Can be used as a unique ID.</p><p><strong>TS</strong></p><p>Current Date/Time from the application server in yyyy-MM-dd HH:mm:ss.SSS format (uses Override System Date).</p><p> <strong>TS-MM/DD/YYYY HH:MM</strong></p><p>Current Date/Time from the application server in MM/dd/yyyy HH:mm format (uses Override System Date).</p><p> <strong>DATE</strong></p><p>Current Date from the application server in MM/dd/yyyy format (uses Override System Date).</p><p><strong>USER</strong></p><p>Current User ID.</p><p> <strong>SEQNO</strong></p><p>Max value + 1 for the given Question in this MC, CT, Version in context.</p><p><strong>LOCATION</strong></p><p>Max value + 1 for the given question on this policy (MC) - Ignores Time dimension just does a max value (includes deleted Answers).</p><p><strong>SEQRECYCLE</strong></p><p>Max value + 1 for the given question in this MC, CT, Version if there is not a &quot;gap&quot;.  Gaps are filled first.  For example, if answers 1, 3, 4 exist, then 2 will be assigned. If 1, 2, 3, 4 exist, then 5 will be assigned.</p><p><strong> </strong></p><strong>If none of the reserved words itemized above are used, then the value typed will be used to look for a Database sequence table that will give the next unique number (across all policies).</strong></td><td class="confluenceTd">Always Applicable and optional</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 30 Oct, 2020 12:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

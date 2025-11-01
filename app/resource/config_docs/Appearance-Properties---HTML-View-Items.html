@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Appearance Properties - HTML View Items</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Product-Designer-Help_28282788.html">Product Designer Help</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Appearance Properties - HTML View Items
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Susan Wilson</span> on 25 Oct, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><tbody><tr><th style="text-align: center;" class="confluenceTh">Element Name</th><th style="text-align: center;" class="confluenceTh">Values</th><th style="text-align: center;" class="confluenceTh">Description / Behavior</th><th style="text-align: center;" class="confluenceTh">Applicability</th></tr><tr><td class="confluenceTd">Type</td><td class="confluenceTd">HTML</td><td class="confluenceTd">Allows the creation of a new View Item Type.</td><td class="confluenceTd">Always Applicable</td></tr><tr><td class="confluenceTd">Presentation Literal</td><td class="confluenceTd">User Entered</td><td class="confluenceTd">Presentation Literal will represent the name of the View Item and will continue to be displayed in Product Designer lists, etc. It will not be used by Account Manager for HTML View Item types, or be displayed in the View Item Placement tool for HTML View Items.</td><td class="confluenceTd">Always Applicable</td></tr><tr><td class="confluenceTd">HTML Text</td><td class="confluenceTd">Free-form, un-processed HTML source text</td><td class="confluenceTd">Supports the capture and edit of un-processed HTML in a text area that will permit up to 4000 characters of HTML to be entered. Tags will show in the HTML source format of <em>&lt;tagname&gt;</em>. <br/>Upon Submit of the page, the content is validated against the list of error conditions included below. If any errors are found, the User remains on the page and an error message is presented in a pop-up window.</td><td class="confluenceTd">Applicable and Required only when the View Item Type is HTML</td></tr><tr><td class="confluenceTd">Preview <br/>(button)</td><td class="confluenceTd"><br/></td><td class="confluenceTd">This button supports the display of the HTML in the <em>HTML Text</em> property in a processed form in a pop-up window. <br/>The pop-up window is modal and must be closed before any further activities can be performed in Product Designer. <br/>The content displayed in the pop-up window is derived from the current contents of the field which may reflect changes from what is persisted in the database for the View Item. <br/>The same error validation that is performed at Submit will be performed before a Preview. If any errors are found, the pop up message will be displayed and the Preview aborted.</td><td class="confluenceTd">Applicable only when the View Item Type is HTML</td></tr></tbody></table></div><p><br/></p><h4 id="AppearanceProperties-HTMLViewItems-VIPlacement">VI Placement</h4><p><br/>The View Item Placement tool will render any HTML View Items in a processed fashion so that they may be viewed in the context of the rest of the page layout. <br/><br/></p><h4 id="AppearanceProperties-HTMLViewItems-Errors/Warnings">Errors/Warnings</h4><p><br/>On Submit of the page, the HTML content will be validated for the following conditions. If any of these conditions are found, the associated error message will be displayed in a pop-up window and the User will be prevented from leaving the page. Validation will end at the first error found, and only one error message will be presented. </p><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd">Non-well-formed HTML</td><td class="confluenceTd">All HTML tags must be properly closed to insulate the rest of the page from being skewed by the contents of the HTML. <br/>Error Message: The HTML is not well-formed. Please check that all tags are properly closed.</td></tr><tr><td class="confluenceTd">HTML tag present</td><td class="confluenceTd">Because the HTML will be integrated into the appropriate Account Manager web page, an HTML tag should not be present in the subordinate HTML. <br/>Error Message: An HTML View Item may not contain the &lt;HTML&gt; or &lt;html&gt; tag. Please remove that tag from the View Item Contents.</td></tr><tr><td class="confluenceTd">BODY tag present</td><td class="confluenceTd">The Account Manager web page will already have a BODY tag present, and HTML will generate an error if more than one is present. <br/>Error Message: An HTML View Item may not contain the &lt;BODY&gt; or &lt;body&gt; tag. Please remove that tag from the View Item Contents.</td></tr><tr><td class="confluenceTd">HEAD tag present</td><td class="confluenceTd">The Account Manager web page will already have a HEAD tag defined; the subordinate HTML in this View Item should not be defining another. <br/>Error Message: An HTML View Item may not contain the &lt;HEAD&gt; or &lt;head&gt; tag. Please remove that tag from the View Item Contents.</td></tr><tr><td class="confluenceTd">DIV tag present</td><td class="confluenceTd">HTML View Items will not be permitted to define divs on the page. <br/><strong>Error Message:</strong> An HTML View Item may not contain the &lt;DIV&gt; or &lt;div&gt; tag. Please remove that tag from the View Item Contents.</td></tr><tr><td class="confluenceTd">FRAME tag present</td><td class="confluenceTd">HTML View Items will not be permitted to define frames on the page. <br/><strong>Error Message:</strong> An HTML View Item may not contain the &lt;FRAME&gt; or &lt;frame&gt; tag. Please remove that tag from the View Item Contents.</td></tr><tr><td class="confluenceTd">IFRAME tag present</td><td class="confluenceTd">HTML View Items will not be permitted to define frames of any kind on the page. <br/><strong>Error Message:</strong> An HTML View Item may not contain the &lt;IFRAME&gt; or &lt;iframe&gt; tag. Please remove that tag from the View Item Contents.</td></tr><tr><td class="confluenceTd">SCRIPT tag present</td><td class="confluenceTd">HTML View Items are not permitted to define script entries on the page. <br/><strong>Error Message:</strong> An HTML View Item may not contain the &lt;SCRIPT&gt; or &lt;script&gt; tag. Please remove that tag from the View Item Contents.</td></tr><tr><td class="confluenceTd">XML tag present</td><td class="confluenceTd">HTML View Items are not permitted to use XML entries on the page. <br/><strong>Error Message:</strong> An HTML View Item may not contain the &lt;XML&gt; or &lt;xml&gt; tag. Please remove that tag from the View Item Contents.</td></tr><tr><td class="confluenceTd">XSL tag present</td><td class="confluenceTd">HTML View Items are not permitted to use XSL entries on the page. <br/><strong>Error Message:</strong> An HTML View Item may not contain the &lt;XSL&gt; or &lt;xsl&gt; tag. Please remove that tag from the View Item Contents.</td></tr><tr><td class="confluenceTd">FORM tag present</td><td class="confluenceTd">HTML View Items are not permitted to capture data items on the page. <br/><strong>Error Message:</strong> An HTML View Item may not contain the &lt;FORM&gt; or &lt;form&gt; tag. Please remove that tag from the View Item Contents.</td></tr></tbody></table></div><p><br/>Additional HTML errors may be reported by the browser that is interpreting the HTML. Product Designer will only provide validation for the conditions listed above.</p><h4 id="AppearanceProperties-HTMLViewItems-StyleSettings">Style Settings</h4><p>Style Settings will be applied to the HTML content similar to the way they are applied for Literals. However formatting can be changed from within the HTML, so specific instructions embedded in the HTML may override Style settings and/or style sheet formatting </p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 30 Oct, 2020 12:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

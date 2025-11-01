@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Question Properties - Link Details</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Product-Designer-Help_28282788.html">Product Designer Help</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Question Properties - Link Details
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Susan Wilson</span>, last modified on 10 Dec, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><br/></p><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>This tab is applicable and enabled ONLY when Answer Source = Linked</p></div></div><p><br/></p><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><tbody><tr><th class="confluenceTh">Property</th><th class="confluenceTh">Values                </th><th class="confluenceTh">Definition / Behavior</th><th class="confluenceTh">Applicability</th></tr><tr><td class="confluenceTd">Linked To</td><td class="confluenceTd"><p>List of Entities from Reference,  Product and Customer (if Customer enabled).</p>Format:  Entity Name - B-tag i.e. Country - 10000</td><td class="confluenceTd">Establishes a link to a Reference, Product or Customer Occurrence<br/><br/>Note that if the user changes the linked to Customer Occurrence, all other questions that use this link will NOT be automatically adjusted. The Configurator must manually adjust each of these questions.<br/><br/>Stored in Question Relation B-TAG or TARGET-B-TAG where Type = L.</td><td class="confluenceTd">Always applicable and required</td></tr><tr><td class="confluenceTd">Defaults From Previous Answered Question</td><td class="confluenceTd"><p>Questions that are linked to the same B-tag chosen in the &quot;Linked To&quot; answer value.  Only questions of Entities that are in the ancestry of the current B-tag (inclusive) should be shown.</p>Format:  Question Name - Q-tag i.e. Country - 30000_4</td><td class="confluenceTd">Specifies a question will provide the default answer for this question.</td><td class="confluenceTd"><p>Shown if answer options are found.</p><p>Optional</p></td></tr><tr><td colspan="1" class="confluenceTd">Restrict Reference List?</td><td colspan="1" class="confluenceTd">Yes<br/>No (Default)</td><td colspan="1" class="confluenceTd">Indicates if the Answer options of this question should subset the full reference list of occurrences</td><td colspan="1" class="confluenceTd">Applicable and required when B-tag of Linked To is a Reference Entity.</td></tr><tr><td colspan="1" class="confluenceTd">Refine Link Choices By</td><td colspan="1" class="confluenceTd">List of Questions that can be used to restrict the values of the Linked Entity.  Only Questions that link to Ancestors of the Entity of the Linked To question.  For example, if Linked To linked to State, then policy questions that point to Country (State's parent) should be shown.<br/>Format:  Question Name - Q-tag i.e. Country - 30000_4</td><td colspan="1" class="confluenceTd">Specifies another linked question which should be used to filter the answers available for this question. The question specified here should refer to an ancestor of the linked to entity e.g. List of states could be refined by Country.</td><td colspan="1" class="confluenceTd"><p>Applicable if B-tag of Linked To has an Entity Ancestry.</p><p>Optional</p></td></tr><tr><td colspan="1" class="confluenceTd">Data Source for Exception Factor </td><td colspan="1" class="confluenceTd"><p>Drop Down</p></td><td colspan="1" class="confluenceTd"><p>List of Questions that point to the Exception Factor B-tag.  Note that the literal shows the B Name of the Exception Factors.  For example, Country, State, Product Offering.  For each factor, there will be one question.</p><p>For example, Product Coverage typically has Exception Factors of Product Offering, Country and State.  In this example, then three Questions will be shown:</p><p>Data Source for Exception Factor Product Offering:</p><p>Data Source for Exception Factor Country:</p><p>Data Source for Exception Factor State:</p><p>The dropdown values will include any Policy Question in the Ancestry that link to the Target B-tag OR link to a product occurrence that also links to the Target B-tag.</p>Format:  Question Name - Q-tag i.e. Country - 30000_4</td><td colspan="1" class="confluenceTd">Applicable if B-tag of Linked To has Exception Factors.  One question for each Factor will be shown.</td></tr><tr><td class="confluenceTd">Allowed Customer Types</td><td class="confluenceTd">Individual - I<br/>Legal Entity - E<br/>Both - BOTH (Default)</td><td class="confluenceTd">Identifies the types of Customers that can be linked to.<br/>Stored in CQU column ALLOWED-CUSTOMER-TYPES<br/>Default Value = Both</td><td class="confluenceTd"><p>Applicable If Linked to chooses Customer (40000).</p><p>Required</p></td></tr><tr><td class="confluenceTd">Delete Occurrence if Customer Occurrence is Deleted?</td><td class="confluenceTd">Yes<br/>No (Default)</td><td class="confluenceTd"><p>Indicates if the Policy Occurrence should be deleted when the Customer Occurrence is deleted.<br/>Stored in CQU column DEL-RELATED-OCCURRENCE-IND</p><p>Note that if the question is defined on the policy (30000) occurrence, then the value will be set to No and protected.</p></td><td class="confluenceTd">Applicable If Linked To chooses a Customer Occurrence (40000 - 49999 occurrences).</td></tr><tr><td class="confluenceTd">Can Customer Occurrence be Added?</td><td class="confluenceTd">Yes<br/>No (Default)</td><td class="confluenceTd"><ul><li>Indicates if the associated Link can be used in Add Mode without the Customer or Address Rolodex to capture data for a new corresponding occurrence as part of Detail View processing.</li><li>No is the default answer for the page.</li><li>If no answer is supplied for this property, <em>No (N)</em> is assumed for backward compatibility.</li><li>This property is supported only in Detail View and Updateable List processing as well as standard Upload.  It is not supported in Trusted Source Upload.</li><li>If B-tag = 40002, 40003, then this value should be set to Yes and Protected.</li></ul></td><td class="confluenceTd">Applicable if <em>Linked To</em> is <em>Customer (40000)</em>,<em> Address (40001)</em> or any other Customer entity 40000 or higher.</td></tr><tr><td rowspan="1" class="confluenceTd">Customer Category</td><td rowspan="1" class="confluenceTd"><span class="ms-rteThemeFontFace-1" style="color: rgb(0,0,0);">Defined by project in Base Definition in Product Designer as Answer Options on the Question. Insurance (I) Additional Interest (AI)</span></td><td rowspan="1" class="confluenceTd"><span class="ms-rteThemeFontFace-1" style="color: rgb(0,0,0);">Provides a configurable category that can be applied to filter Customers and control certain aspects of the UI.</span></td><td rowspan="1" class="confluenceTd">Applicable If Linked To chooses a Customer Occurrence (40000 - 49999 occurrences). Optional</td></tr><tr><td class="confluenceTd">Address Link Type</td><td class="confluenceTd">Customer  <br/>Policy (Default)</td><td class="confluenceTd">Indicates if the address link is a Customer address or a Policy Address <br/>Policy will be the default selection for the user</td><td class="confluenceTd"><p>Applicable If Linked To = Customer Address (40001) </p><p>Required</p></td></tr><tr><td class="confluenceTd"><p>Address Type (if 40001)</p><p>Phone Type (if 40002)</p>Email Type (if 40003)</td><td class="confluenceTd"><p>Address Types:</p><p><br/></p><ul><li>Residence - HOME </li><li>Billing - BILLING </li><li>Employer - EMPLOYER </li><li>Garaging -GARAGE </li><li>Home Office - HOMEOFFICE </li><li>Mailing - MAIL </li><li>Previous - PREVIOUS</li><li>Vacation Home - VACATION </li><li>Other - OTHER</li><li>Branch Office -BRANCH </li><li>Corporate or Business Headquarters -CORPHQ </li><li>Manufacturing Facility - MANUF </li><li>Warehouse - WAREHOUSE</li></ul><p><br/></p><p>Phone Types:<br/><br/></p><ul><li>Home - HOME</li><li>Mobile - MOBILE</li><li>Work - WORK</li><li>Main - MAIN</li><li>Home Fax - HOMEFAX</li><li>Work Fax - WORKFAX</li><li>Pager - PAGER</li><li>Other - OTHER</li></ul><p><br/></p><p>Email Types:</p><ul><li>Home - HOME</li><li>Work - WORK</li><li>Other - OTHER</li></ul></td><td class="confluenceTd">Indicates the Address, Phone, or Email type of the Customer.</td><td class="confluenceTd"><p>If Linked To = Address (40001) OR PHONE (40002) OR EMAIL (40003)</p><p>Required</p></td></tr><tr><td class="confluenceTd">Search Results Role Literal</td><td class="confluenceTd">Text: Maximum 50 Characters</td><td class="confluenceTd">Indicates the role that the customer has on the policy.</td><td class="confluenceTd"><p>If Linked To = 40000 (Customer).</p><p>Required</p></td></tr><tr><td class="confluenceTd">Refine Link Choices By</td><td class="confluenceTd">Questions that match the parent Target.<br/>Format:  Question Name - Q-tag i.e. Customer Link - 30000_97</td><td class="confluenceTd"><br/></td><td class="confluenceTd">If the <em>Linked To</em> Entity is defined with a parent in Base Definition AND <em>Address Link Type &lt;&gt; P. </em></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 30 Oct, 2020 12:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Interface Views</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Product-Designer-Help_28282788.html">Product Designer Help</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Interface Views
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Susan Wilson</span> on 25 Oct, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="table-wrap"><table class="confluenceTable"><colgroup><col/></colgroup><tbody><tr><td class="confluenceTd"><p><strong>Interfaces are composed of multiple views. Each view will detail the data that should considered during the processing of that interface. </strong></p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th style="text-align: center;" class="confluenceTh">Property</th><th style="text-align: center;" class="confluenceTh">Values</th><th style="text-align: center;" class="confluenceTh">Behavior/ Description</th><th style="text-align: center;" class="confluenceTh">Applicability</th></tr><tr><td class="confluenceTd">View Tag</td><td class="confluenceTd">Drop Down - lists all available Views</td><td class="confluenceTd"><p>Uniquely identifies a view within an Interface defined within a specific Product Group </p><p>Help icon provides list of Views to choose from with additional details not included in the drop down itself<br/><br/>Product Designer will provide the user with a Standard Error Message for duplicate code under Product Group<br/><br/><br/><br/></p></td><td class="confluenceTd"><p>Always Applicable</p><p>Required</p><p>Show Protected upon change</p></td></tr><tr><td colspan="1" class="confluenceTd">B-Tag</td><td colspan="1" class="confluenceTd">B-Tag associated with View Tag Selected</td><td colspan="1" class="confluenceTd"><p>Once the View Tag is selected, the B-Tag is automatically populated.<br/><br/></p></td><td colspan="1" class="confluenceTd">Always Applicable</td></tr><tr><td colspan="1" class="confluenceTd">Seq #</td><td colspan="1" class="confluenceTd">Numeric: Maximum 5 Digits</td><td colspan="1" class="confluenceTd">Sequences the Views within the List (sorted ascending)<br/><br/>Determines order in which views are processed on Account Manager<br/><br/>For Data Completeness Interfaces, Seq # drives the order in which the links to specific pages are presented to the user on the Missing / Invalid Info page <br/><br/>Please note that when a Question appears in multiple Views within an Interface the lowest Seq# View definition for that element will determine the validation rules to be applied <br/><br/>For the Rule-Reapplication Interfaces, the order of the Views determines how the Policy is re-processed. For example, the Vehicle Detail View should be Sequenced lower than the Coverage Grid Detail View because Vehicle Types drive the validate rules for Coverages<br/><br/>In general, use the order of the Web Pages to determine the order of the Views</td><td colspan="1" class="confluenceTd"><p>Always Applicable</p><p>Required</p></td></tr><tr><td class="confluenceTd">Name</td><td class="confluenceTd">Text: Maximum 50 Characters</td><td class="confluenceTd">Business Name for the occurrence</td><td class="confluenceTd"><p>Always Applicable</p><p>Required</p></td></tr><tr><td class="confluenceTd">Applicable</td><td class="confluenceTd"><p>Yes (Default)</p><p>No</p></td><td class="confluenceTd">Determines if the occurrence should be considered for use. <br/><br/></td><td class="confluenceTd"><p>Always Applicable</p><p>Required</p></td></tr><tr><td colspan="1" class="confluenceTd">Dependency?</td><td colspan="1" class="confluenceTd"><p>Yes</p><p>No<br/><br/></p></td><td colspan="1" class="confluenceTd"><p>Determines if an occurrence dependency exists which should be evaluated to see if the view is applicable or not.</p><p>Note: if the question is not applicable, then a value of N is assumed.</p></td><td colspan="1" class="confluenceTd">Applicable when Interface Type = Rule Reapplication, Database Upload, OR XML Generation</td></tr><tr><td class="confluenceTd">Web Page Code</td><td class="confluenceTd">User defined valid Web Page Code</td><td class="confluenceTd">Selection of the code representing the Web Page to be used in the Interface</td><td class="confluenceTd">Applicable when Interface Type = Completeness Check</td></tr><tr><td colspan="1" class="confluenceTd">Determinant Question (i.e. Q_30003_1)</td><td colspan="1" class="confluenceTd"><p>Text: Maximum 20 Characters </p><p>No special formatting to check validity of the text but the format should be Q_B-tag_seqno. For example, Q_30003_1</p></td><td colspan="1" class="confluenceTd">Used by Completeness Check when alternate Views are specified to be processed. This attribute is used to determine what Question is the Linked Question to the Product Occurrences. The contract answer should contain the &quot;code&quot; value that represents the occurrence in the Product List</td><td colspan="1" class="confluenceTd">Applicable when Interface Type = Completeness Check</td></tr><tr><td colspan="1" class="confluenceTd">Determinant Code</td><td colspan="1" class="confluenceTd">Text: Maximum 20 Characters</td><td colspan="1" class="confluenceTd">Used by Completeness Check when alternate Views are specified to be processed. This attribute is used to determine if the View should be used for the particular contract occurrence. Should contain the &quot;code&quot; value that represents the occurrence in the Product List (i.e. LIAB would represent the Liability coverage. The current View should be used in lieu of the normal View for the LIAB coverage only).</td><td colspan="1" class="confluenceTd">Applicable when Interface Type = Completeness Check</td></tr><tr><td colspan="1" class="confluenceTd">Use When</td><td colspan="1" class="confluenceTd"><p>Application (default)</p><p>Quote</p></td><td colspan="1" class="confluenceTd">Determines if the View should be used when in context of Quote or Application</td><td colspan="1" class="confluenceTd">Applicable when Interface Type = Completeness Check, Rule Reapplication</td></tr><tr><td colspan="1" class="confluenceTd">Sideways RR View</td><td colspan="1" class="confluenceTd">Text: Maximum 20 Characters</td><td colspan="1" class="confluenceTd">Error message if View does not exist within Contract View Usage <br/><br/></td><td colspan="1" class="confluenceTd"><p>Applicable when Interface Type = Rule Reapplication</p><p>Required</p></td></tr><tr><td colspan="1" class="confluenceTd">Property File Name when Linked Entity</td><td colspan="1" class="confluenceTd">Text: Maximum 100 Characters</td><td colspan="1" class="confluenceTd"><p>Contains a property file reference that is used to determine the list of occurrences that are applicable and if there are alternate views that should be used to process the occurrences. Typically used for Coverage occurrences to validate that the coverage is allowed to be added (or should be deleted because the coverage is no longer applicable).</p><p>Linked Entity Property Filename is needed for Views linked to Product such as Coverage Views</p></td><td colspan="1" class="confluenceTd">If Interface Type = Rule Reapplication or Database Upload</td></tr><tr><td class="confluenceTd">Description</td><td class="confluenceTd">Text: Maximum 300 Characters</td><td class="confluenceTd">Textual description </td><td class="confluenceTd"><p>Always Applicable</p><p>Optional</p></td></tr></tbody></table></div></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 30 Oct, 2020 12:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

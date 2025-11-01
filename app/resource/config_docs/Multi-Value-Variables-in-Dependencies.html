@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Multi-Value Variables in Dependencies</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Product-Designer-Help_28282788.html">Product Designer Help</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Multi-Value Variables in Dependencies
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Susan Wilson</span> on 25 Oct, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 style="text-align: center;" id="Multi-ValueVariablesinDependencies-INCLUDEDINDEPENDENCIESPAGE"><span style="color: rgb(255,0,0);">INCLUDED IN DEPENDENCIES PAGE</span></h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><tbody><tr><th style="text-align: center;" class="confluenceTh">Property</th><th style="text-align: center;" class="confluenceTh">Value</th><th style="text-align: center;" class="confluenceTh">Definition / Behavior</th><th style="text-align: center;" class="confluenceTh">Applicability</th></tr><tr><td class="confluenceTd">Multi-Value Content</td><td class="confluenceTd">Count</td><td class="confluenceTd">Number of answers that are currently applicable</td><td class="confluenceTd">Applicable when the Entity question is a Multi-value question type.</td></tr><tr><td class="confluenceTd"><br/></td><td class="confluenceTd">Distinct Count</td><td class="confluenceTd">Number of distinct answers that are currently applicable. For example, if the Multi Value returned answers of PP, PP, and PU. The Distinct Count would be 2. Note: If an answer was not applicable on an occurrence (due to dependency), then it will not be counted in this function. But if the question were applicable, but not answered, then this would be counted.</td><td class="confluenceTd"><br/></td></tr><tr><td class="confluenceTd"><br/></td><td class="confluenceTd">Legacy Count</td><td class="confluenceTd">Total number of answers that have not been filtered out via Multi Value dependency and existed within context of the current transaction (including occurrences that were deleted on this transaction). For example, if there existed 3 occurrences when the transaction was started and the User deleted an occurrence, then added another (and all occurrences had an answer for the question that is pointed to), the Legacy Count would be 4 (where as Count would be 3). This count will NOT include occurrences that were added and then deleted within the same transaction.</td><td class="confluenceTd"><br/></td></tr><tr><td class="confluenceTd"><br/></td><td class="confluenceTd">Sum</td><td class="confluenceTd">The sum of the values returned in the Multi Value question (Non Numeric values will have an assumed value of 0).</td><td class="confluenceTd"><br/></td></tr><tr><td class="confluenceTd"><br/></td><td class="confluenceTd">Minimum</td><td class="confluenceTd">Will give the minimum value for applicable answers. Note that if the values are text, then no value will be returned. If the type is date or date timestamp, then the latest date/timestamp will be returned.</td><td class="confluenceTd"><br/></td></tr><tr><td class="confluenceTd"><br/></td><td class="confluenceTd">Maximum</td><td class="confluenceTd">Will give the maximum value for applicable answers. Note that if the values are text, then no value will be returned. If the type is date or date timestamp, then the latest date/timestamp will be returned.</td><td class="confluenceTd"><br/></td></tr></tbody></table></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 30 Oct, 2020 12:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Action Configuration</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Product-Designer-Help_28282788.html">Product Designer Help</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Action Configuration
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Susan Wilson</span>, last modified on 06 Dec, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><tbody><tr><th style="text-align: center;" class="confluenceTh">Property</th><th style="text-align: center;" class="confluenceTh">Values</th><th style="text-align: center;" class="confluenceTh">Definition/Behavior</th><th style="text-align: center;" class="confluenceTh">Applicability</th></tr><tr><td class="confluenceTd">Code</td><td class="confluenceTd">Text</td><td class="confluenceTd">Code Identifier of the Action. This will be used throughout <strong><em>Sapiens </em></strong>to reference this Action</td><td class="confluenceTd"><p>Always Applicable</p><p>Required</p></td></tr><tr><td colspan="1" class="confluenceTd">Sequence Number</td><td colspan="1" class="confluenceTd">Numeric</td><td colspan="1" class="confluenceTd">Numeric identifier for the Action to indicate the order in which the Action will appear to the User in the Actions List</td><td colspan="1" class="confluenceTd"><p>Always Applicable</p><p>Required</p></td></tr><tr><td class="confluenceTd">Name</td><td class="confluenceTd">Text</td><td class="confluenceTd">Provides the textual reference to this Action for identification throughout Product Designer</td><td class="confluenceTd"><p>Always Applicable</p><p>Required</p></td></tr><tr><td class="confluenceTd">Applicable?</td><td class="confluenceTd"><p>Yes</p><p>No</p></td><td class="confluenceTd">Determines whether or not the Action is available for use in this Configuration Version</td><td class="confluenceTd"><p>Always Applicable</p><p>Required</p></td></tr><tr><td class="confluenceTd">Dependency</td><td class="confluenceTd"><p>Yes </p><p>No</p></td><td class="confluenceTd">Determines whether or not the Action will be conditionally applicable as determined by a Dependency</td><td class="confluenceTd"><p>Always Applicable</p><p>Required</p></td></tr><tr><td class="confluenceTd">Action Type</td><td class="confluenceTd">Standard Action</td><td class="confluenceTd">Indicates this action is a Standard Action that can be called via the Policy Action drop down, Web Service or by a View Submit.</td><td class="confluenceTd"><p>Always Applicable</p><p>Required</p></td></tr><tr><td class="confluenceTd"><br/></td><td class="confluenceTd">View Action</td><td class="confluenceTd">Indicates this Action is used to retrieve Answer Options or set Answer Values within a specific View (Note, currently only Detail Views support View Actions)</td><td class="confluenceTd"><br/></td></tr><tr><td class="confluenceTd"><br/></td><td class="confluenceTd">Action Macro</td><td class="confluenceTd">Indicates this Action will be called from another Action</td><td class="confluenceTd"><br/></td></tr><tr><td class="confluenceTd"><br/></td><td class="confluenceTd">Drop down Separator</td><td class="confluenceTd">When the Policy Action drop down is in view, this property is used to insert a blank entry in the List for improved usability or grouping of related Actions.</td><td class="confluenceTd"><br/></td></tr><tr><td colspan="1" class="confluenceTd">Synchronize Changes Beyond the Current Context?</td><td colspan="1" class="confluenceTd"><p>Yes</p><p>No</p></td><td colspan="1" class="confluenceTd">Indicates if changes made within this Action should be Synchronized to sibling Transaction Versions and/or other policies</td><td colspan="1" class="confluenceTd">Applicable when Action Type = Standard Action OR Action Macro</td></tr><tr><td colspan="1" class="confluenceTd">Selection Literal</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd"><p>Allows the Product Designer User to configure a Literal that will show within the Policy Action Drop down</p><p>If the field is not populated, then a blank line will show in the drop down</p></td><td colspan="1" class="confluenceTd"><p>Applicable when Action Type = Drop down Separator</p><p>Optional</p></td></tr><tr><td colspan="1" class="confluenceTd">Upload Excel File?</td><td colspan="1" class="confluenceTd"><p>Yes</p><p>No (Default)</p></td><td colspan="1" class="confluenceTd"><p>Allow a Standard Action to capture an Excel Document which will be used to upload Policy information into the Policy model</p><p>Note this functionality is NOT supported via the SOAP Gateway, Triggered Action Other View, Call Standard Policy Action from a Submit Button within a Detail, etc. </p><p>This functionality is ONLY supported from the Policy Action area on the UI. </p><p>For backwards compatibility, if this Question does not have a Value, a default value of &quot;N&quot; will be assumed</p></td><td colspan="1" class="confluenceTd">Applicable when Action Type = Standard Action AND Include In Actions Drop down = Y</td></tr><tr><td colspan="1" class="confluenceTd">Include in Actions Drop down?</td><td colspan="1" class="confluenceTd"><p>Yes</p><p>No</p></td><td colspan="1" class="confluenceTd">Determines whether or not this Action will be included in the Policy Action Drop down</td><td colspan="1" class="confluenceTd"><p>Applicable when Action Type = Standard Action</p><p>Required</p></td></tr><tr><td class="confluenceTd">Completion Menu Code</td><td class="confluenceTd">Valid Web Page Codes for the Product Group. (Not validated against the configured Web page list).</td><td class="confluenceTd">Determines what page should be navigated to at the end of the Action unless specifically overridden by a configured Action Step <br/><br/>Please Note: This property is not valid for Actions used to supply information for a Detail View</td><td class="confluenceTd"><p>Applicable when Action Type =</p><p>Standard Action</p></td></tr><tr><td class="confluenceTd">Error Message for Completeness Check</td><td class="confluenceTd">Text Area</td><td class="confluenceTd">This field contains the Error Message that will be displayed to the Account Manager User if the Completeness Check determines that the Action has been left in an incomplete status.</td><td class="confluenceTd"><p>Applicable when Action Type =</p><p>View Action</p></td></tr><tr><td class="confluenceTd">Description</td><td class="confluenceTd">Text Area</td><td class="confluenceTd">The textual Description that will be used throughout Product Designer to provide additional information about the processing that occurs when this Action is invoked.</td><td class="confluenceTd"><p>Always Applicable</p><p>Optional</p></td></tr><tr><td colspan="1" class="confluenceTd">Locking Settings</td><td colspan="1" class="confluenceTd"><p>Automatic (Default)</p><p>Disable Customer Locking</p></td><td colspan="1" class="confluenceTd"><ul><li>This property will instruct the Action on what Locking scenario should be applied for the duration of the Action execution.</li><li>AUTO represents the current pre-8.0.0.1 behavior where the current transaction is locked, MC locking is also acquired if necessary, and all Customers tied to the policy are also locked.</li><li>AUTO is the default value and the value assumed if no value is specified</li><li>DISABLECUST instructs the Action to lock only the policy transaction and MC where required.  No Customer locks will be acquired.</li></ul></td><td colspan="1" class="confluenceTd">Applicable when Action Type = Standard Action OR View Action</td></tr></tbody></table></div><p><br/></p><h4 id="ActionConfiguration-ActionStepConfiguration">Action Step Configuration</h4><p><br/>An Action Step is a single unit of work within an Action. Within an Action Step, the Product Designer User is able to configure one of the following functions:</p><ul><li>Create XML, Use Created XML from prior step, Accept XML as input, or do not create/use any XML</li><li>Optionally apply an XSLT to transform the XML</li><li>Call a service (Web Service - URL, Web Service - EJB, or Adaptik Internal Method)</li><li>Optionally apply an XSLT to transform the XML returned (available only for Steps that support Detail View)<br/><br/></li></ul>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 30 Oct, 2020 12:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

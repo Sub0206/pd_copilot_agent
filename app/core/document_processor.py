@@ -3,7 +3,8 @@ from typing import Dict
 from bs4 import BeautifulSoup
 import shutil
 import os
-from docx import Document  # Add this import
+from docx import Document
+import pdfplumber
 
 DOCS_PATH = os.getenv("PD_DOCS_PATH", "./resource/pd_docs")
 
@@ -16,6 +17,19 @@ class DocumentProcessor:
     
     def _read_file(self, file_path: Path) -> str:
         """Read and extract text from various file formats"""
+        
+        # Handle PDF files
+        if file_path.suffix == '.pdf':
+            try:
+                text = []
+                with pdfplumber.open(file_path) as pdf:
+                    for page in pdf.pages:
+                        page_text = page.extract_text()
+                        if page_text:
+                            text.append(page_text)
+                return '\n\n'.join(text)
+            except Exception as e:
+                raise Exception(f"Error reading .pdf file: {e}")
         
         # Handle .docx files
         if file_path.suffix == '.docx':
@@ -63,20 +77,19 @@ class DocumentProcessor:
         shutil.move(str(file_path), str(dest))
     
     def has_new_documents(self) -> bool:
-        """Check if there are new documents to process - NOW INCLUDES .docx"""
+        """Check if there are new documents to process"""
         return any(
-            f.is_file() and f.suffix in ['.html', '.htm', '.md', '.txt', '.docx']  # Added .docx
+            f.is_file() and f.suffix in ['.html', '.htm', '.md', '.txt', '.docx', '.pdf']
             for f in self.docs_path.glob("*")
         )
     
     def process_new_documents(self) -> Dict:
-        """Process new documents - NOW INCLUDES .docx"""
+        """Process new documents"""
         processed = []
         errors = []
         
         for file_path in self.docs_path.glob("*"):
-            # Added .docx to the supported extensions
-            if file_path.is_file() and file_path.suffix in ['.html', '.htm', '.md', '.txt', '.docx']:
+            if file_path.is_file() and file_path.suffix in ['.html', '.htm', '.md', '.txt', '.docx', '.pdf']:
                 try:
                     content = self._read_file(file_path)
                     if not content.strip():

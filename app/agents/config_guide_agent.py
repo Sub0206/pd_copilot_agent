@@ -82,25 +82,27 @@ Always search your knowledge base before answering.""",
 config_guide_agent = ConfigGuideAgent()
 
 @function_tool
-def guide_configuration(task_name: str, context: Optional[str] = None) -> str:
+async def guide_configuration(task_name: str, context: Optional[str] = None) -> str:
     """Get step-by-step configuration guidance"""
     try:
         prompt = f"Provide step-by-step configuration guide for: {task_name}"
         if context:
             prompt += f"\nContext: {context}"
         
-        result = Runner.run_sync(config_guide_agent.agent, prompt)
+        # Use async run instead of run_sync
+        result = await Runner.run(config_guide_agent.agent, prompt)
         return result.final_output if hasattr(result, 'final_output') else str(result)
     except Exception as e:
         return f"Configuration guidance for '{task_name}': Currently unavailable ({str(e)}). Please ensure documentation is loaded."
 
 @function_tool
-def validate_configuration(config_description: str) -> str:
+async def validate_configuration(config_description: str) -> str:
     """Validate configuration against best practices"""
     try:
         prompt = f"Review and validate this configuration:\n\n{config_description}"
         
-        result = Runner.run_sync(config_guide_agent.agent, prompt)
+        # Use async run instead of run_sync
+        result = await Runner.run(config_guide_agent.agent, prompt)
         return result.final_output if hasattr(result, 'final_output') else str(result)
     except Exception as e:
         return f"Configuration validation: Currently unavailable ({str(e)}). Please ensure documentation is loaded."

@@ -5,7 +5,7 @@ import os
 from openai import OpenAI
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:12345@localhost:5432/pd_copilot")
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/pd_copilot")
 
 class VectorStore:
     _instance = None

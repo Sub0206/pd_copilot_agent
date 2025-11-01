@@ -53,6 +53,47 @@ async def startup():
     print("\n" + "=" * 60)
     print("🚀 PD COPILOT AGENT API (Agentic SDK + RAG)")
     print("=" * 60)
+    
+    # Initialize vector store and process documents
+    try:
+        from .core.vector_store import vector_store
+        from .core.document_processor import doc_processor
+        
+        print("📂 Checking for new documents...")
+        if doc_processor.has_new_documents():
+            print("📄 Processing new documents...")
+            result = doc_processor.process_new_documents()
+            
+            if result["processed"]:
+                print(f"✓ Processing {len(result['processed'])} documents...")
+                for doc in result["processed"]:
+                    vector_store.add(
+                        doc_id=doc["doc_id"],
+                        content=doc["content"],
+                        metadata=doc["metadata"],
+                        doc_type=doc["doc_type"]
+                    )
+                print(f"✓ Successfully indexed {len(result['processed'])} documents")
+            
+            if result["errors"]:
+                print(f"⚠️  Errors processing {len(result['errors'])} documents:")
+                for error in result["errors"]:
+                    print(f"   - {error}")
+        else:
+            print("✓ No new documents to process")
+            
+        # Show current document count
+        total_docs = vector_store.count()
+        feature_docs = vector_store.count(doc_type="feature")
+        config_docs = vector_store.count(doc_type="config")
+        print(f"📊 Vector store contains {total_docs} documents")
+        print(f"   - Feature docs: {feature_docs}")
+        print(f"   - Config docs: {config_docs}")
+        
+    except Exception as e:
+        print(f"⚠️  Error during startup indexing: {e}")
+        print("   Vector store features will be limited")
+    
     print("✓ OrderSense validation ready")
     print("✓ Feature & Config agents initialized")
     print("✓ Documentation at /docs")

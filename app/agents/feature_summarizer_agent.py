@@ -1,5 +1,6 @@
 from agents import Agent, function_tool, Runner
 from typing import Optional
+import asyncio
 
 def _get_vector_store():
     """Lazy import to avoid circular dependencies"""
@@ -83,7 +84,7 @@ Always search your knowledge base before answering.""",
 feature_summarizer_agent = FeatureSummarizerAgent()
 
 @function_tool
-def explain_feature(feature_name: str, detail_level: str = "standard") -> str:
+async def explain_feature(feature_name: str, detail_level: str = "standard") -> str:
     """Explain Product Designer features using the agent's knowledge base"""
     try:
         prompt = f"Explain the '{feature_name}' feature in Product Designer"
@@ -92,16 +93,20 @@ def explain_feature(feature_name: str, detail_level: str = "standard") -> str:
         elif detail_level == "brief":
             prompt += " briefly"
         
-        result = Runner.run_sync(feature_summarizer_agent.agent, prompt)
+        # Use async run instead of run_sync
+        result = await Runner.run(feature_summarizer_agent.agent, prompt)
         return result.final_output if hasattr(result, 'final_output') else str(result)
     except Exception as e:
         return f"Feature explanation unavailable: {str(e)}"
 
 @function_tool
-def search_documentation(query: str) -> str:
+async def search_documentation(query: str) -> str:
     """Search Product Designer documentation"""
     try:
-        result = Runner.run_sync(feature_summarizer_agent.agent, f"Search documentation for: {query}")
+        result = await Runner.run(
+            feature_summarizer_agent.agent, 
+            f"Search documentation for: {query}"
+        )
         return result.final_output if hasattr(result, 'final_output') else str(result)
     except Exception as e:
         return f"Documentation search unavailable: {str(e)}"

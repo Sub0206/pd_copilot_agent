@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : callActionMacro</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : callActionMacro
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="callActionMacro-CallActionMacro"><span>Call Action Macro</span></h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method allows the current Action to invoke an Action Macro as part of its execution.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard &amp; Detail View</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">The Action Macro code Attribute must refer to an Action which is defined to be a Macro.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p> </p><h4 id="callActionMacro-XMLUsage">XML Usage</h4><p>None</p><h4 id="callActionMacro-Attributes">Attributes</h4><p>This method requires the code of the Action Macro to be called configured as an Attribute.</p><h4 id="callActionMacro-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">All</td><td class="confluenceTd">All return codes are determined by the Macro called. It will return whatever return codes are configured in the Macro Outcomes</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="callActionMacro-ImplementationExample">Implementation Example</h4><h5 id="callActionMacro-Action">Action</h5><p>Issue</p><h5 id="callActionMacro-ActionType">Action Type</h5><p>Standard Action</p><h5 id="callActionMacro-Dependency">Dependency</h5><p>None</p><h5 id="callActionMacro-ActionStep">Action Step</h5><p>Call SYNC_ISSUE macro</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356430/3797553485.png?height=250" data-image-src="attachments/3797356430/3797553485.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553485" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="call sync.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356430" data-linked-resource-container-version="4" data-media-id="11edb47f-4afd-4a98-ba2c-dc94bdab9b60" data-media-type="file"></span></p><h5 id="callActionMacro-Outcomes">Outcomes</h5><p>None, the subsequent step uses an Evaluate Outcomes only and checks the return information from the Macro.</p><h5 id="callActionMacro-Attributes.1">Attributes</h5><p>One Attribute is required that contains the code of the Action Macro to call, in this example SYNCUP_ISSUE.</p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356430/3797553490.png?height=250" data-image-src="attachments/3797356430/3797553490.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553490" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="call sync attr.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356430" data-linked-resource-container-version="4" data-media-id="1d4b68cd-3f5b-4925-ba58-5f9013f932a3" data-media-type="file"></span> </p><p><br/></p><p>                            </p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356430/3797553402.png">Picture6.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356430/3797553409.png">Picture7.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356430/3797553485.png">call sync.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356430/3797553490.png">call sync attr.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

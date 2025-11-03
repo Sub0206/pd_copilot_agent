@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : addRecents</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : addRecents
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="addRecents-AddToRecents">Add To Recents</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This Method will use the specified attributes to add to the User_Frequent_Occ a new &quot;recent&quot; row.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Contract Transaction context. </td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd"><p>This method will create a new row if the Type, Category, MPID, MC, CT, Version and C-ID combination does not exist.  If the combination already exists, then the existing row will have its Seq_No column reset using a new Oracle Sequence number giving the next highest number for the table. </p><p>This method will automatically set the following columns in the table:</p><p>Set Type = R</p><p>Set MCID to the current MCID in context.</p><p>Set CTID to the current CTID in context.</p><p>Set Version to the current Version in context.</p><p>Set CID to a single Occurrence ID made available to the Action.  Note that if multiple IDs are passed to the Action an error return code will be returned.  If No ID is passed, then set the value to 1. </p><p>Seq_No will be set via an Oracle Sequence giving the next highest number for the table.</p>Category is set via the Attribute below.</td></tr></tbody></table></div><p> </p><h4 id="addRecents-XMLUsage">XML Usage</h4><p>None</p><p><span>Attributes</span></p><p><span> </span></p><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th colspan="1" class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th colspan="1" class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th colspan="1" class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th></tr></thead><tbody><tr><td class="confluenceTd"><p>10</p></td><td colspan="1" class="confluenceTd"><p>CATEGORY</p></td><td colspan="1" class="confluenceTd"><p><em>Required Attribute. Must be value "BTAG" to save the B-Tag value (e.g. 30000) to the database. Any other value will cause the
+method to find the Alternate Reference Code (e.g. XML Tag of the Entity) and save that to the database.</em></p></td><td colspan="1" class="confluenceTd"><p>Text</p></td></tr></tbody></table></div><p> </p><p><span>Return Codes</span></p><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd"><p>1</p></td><td class="confluenceTd"><p>Successful creation of a new Recent Row.</p></td></tr><tr><td class="confluenceTd"><p>2</p></td><td class="confluenceTd"><p>Successful update of an existing Recent Row.</p></td></tr><tr><td class="confluenceTd"><p>3</p></td><td class="confluenceTd"><p>Failure - No MC, CT, Version in context</p></td></tr><tr><td class="confluenceTd"><p>4</p></td><td class="confluenceTd"><p>Failure - multiple occurrence ID's were passed to the method.  Recent Row was not created / updated.</p></td></tr><tr><td class="confluenceTd"><p>-1</p></td><td class="confluenceTd"><p>Unspecified Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

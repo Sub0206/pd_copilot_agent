@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : backfillTrxStaging</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : backfillTrxStaging
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span>, last modified on Oct 23, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="backfillTrxStaging-BackfillTransactionStagingTable"><strong>Backfill Transaction Staging Table</strong></h2><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>Uses the current Account in context to identify any associated Policy Transactions on the Account and verifies that each one is reflected in the BM_TRANSACTION_STAGING table and associated with the Account. </p><p>Transactions that have the <em>Billing Transaction Indicator</em> in BILLING_TRX_IND, 30006-112, set to Y will be excluded.  Records with N or null values will be included.</p><p>Transactions will be processed in order by TRANSACTION_SEQ_NUMBER from the V_BM_POLICY_TRAN view.</p><p>The process will validate the presence of an Account in context and get the Policy Transactions on the Billing Account, across all Policies on the Account, from the V_BM_POLICY_TRAN view.  The process will verify whether each transaction exists in the staging table.  If it exists, the process will do nothing with that transaction.  If it does not exist, the transaction will be added to the table.  The data captured in the staging table will be based upon the mapping below with the relevant source values coming from the record on the V_BM_POLICY_TRAN view.</p><p>All transactions backfilled by the method will be marked as POSTED and will be considered final.</p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Standard</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>The method has no constraints other than that it requires an existing Account be in context.  It uses no input XML or other input beyond the Account in context.</p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>Should only be used after the contents of an entire Account has been uploaded. </p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>Can be used to sync up the policy transaction records with the current state of the account.</p><p>Intended for use from a Billing Account Conversion Upload Action.</p><p>Should not be called on a routine basis as overheard is involved for the validation of the transactions against the table.</p></td></tr></tbody></table></div><p><br/></p><h3 id="backfillTrxStaging-BM_TRANSACTION_STAGINGTableMapping">BM_TRANSACTION_STAGING Table Mapping</h3><p>When a new record is added to the BM_TRANSACTION_STAGING table, the data included will be taken from the V_BM_POLICY_TRAN view that assembles information about the transaction and allows the identifiers to connect it to the parent Policy.  Some Policy data will be sourced from the V_BM_POLICY view as well where it corresponds to the selected transaction.</p><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/><col/></colgroup><thead><tr><td class="confluenceTd"><p>Name</p></td><td class="confluenceTd"><p>Data Type</p></td><td class="confluenceTd"><p>Value</p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>STAGE_TRX_ID</p></td><td class="confluenceTd"><p>NUMBER(10)</p></td><td class="confluenceTd"><p>Automatically generated according to the standard rules for the table when posting new transactions via POLICY_TRX_SUBMISSION.</p></td></tr><tr><td class="confluenceTd"><p>ACCT_ID</p></td><td class="confluenceTd"><p>NUMBER(10)</p></td><td class="confluenceTd"><p>MC-ID of the Account in context</p></td></tr><tr><td class="confluenceTd"><p>RECORD_TYPE</p></td><td class="confluenceTd"><p>VARCHAR2(300)</p></td><td class="confluenceTd"><p>Use the value <em>O</em> to indicate an Original record.</p></td></tr><tr><td class="confluenceTd"><p>SOURCE_SYSTEM</p></td><td class="confluenceTd"><p>VARCHAR2(300)</p></td><td class="confluenceTd"><p>Use the value <em>BACKFILL</em> to indicate that the record was added by the Internal Method.</p></td></tr><tr><td class="confluenceTd"><p>SOURCE_SYSTEM_TRX_ID</p></td><td class="confluenceTd"><p>NUMBER(10)</p></td><td class="confluenceTd"><p>SOURCE_SYSTEM_TRX_ID from the V_BM_POLICY_TRAN record</p></td></tr><tr><td class="confluenceTd"><p>POLICY_NUMBER</p></td><td class="confluenceTd"><p>VARCHAR2(300)</p></td><td class="confluenceTd"><p>POLICY_NUMBER from the V_BM_POLICY record related to the selected transaction</p></td></tr><tr><td class="confluenceTd"><p>TRX_SEQ_NUMBER</p></td><td class="confluenceTd"><p>NUMBER(10)</p></td><td class="confluenceTd"><p>TRANSACTION_SEQ_NUMBER from the V_BM_POLICY_TRAN record</p></td></tr><tr><td class="confluenceTd"><p>TRX_PART_NUMBER</p></td><td class="confluenceTd"><p>NUMBER(10)</p></td><td class="confluenceTd"><p>TRANSACTION_PART_NUMBER from the V_BM_POLICY_TRAN record<a class="external-link" href="file:///D:/Release%20Data/10.1/Specifications/PW%20User%20Spec%201405%20-%20Internal%20Method%20to%20Backfill%20Staging%20Table%20for%20Converted%20Accounts.docx#_msocom_1" rel="nofollow">[MLM1]</a> </p></td></tr><tr><td class="confluenceTd"><p>BATCH_NUMBER</p></td><td class="confluenceTd"><p>NUMBER(10)</p></td><td class="confluenceTd"><p>Use the value <em>1 </em></p></td></tr><tr><td class="confluenceTd"><p>TRX_XML</p></td><td class="confluenceTd"><p>CLOB</p></td><td class="confluenceTd"><p>This column will be empty (null) for backfilled records.</p></td></tr><tr><td class="confluenceTd"><p>POLICY_ID</p></td><td class="confluenceTd"><p>NUMBER(10)</p></td><td class="confluenceTd"><p>POLICY_ID from the V_BM_POLICY_TRAN record for the selected transaction</p></td></tr><tr><td class="confluenceTd"><p>STAGING_STATUS</p></td><td class="confluenceTd"><p>VARCHAR2(300)</p></td><td class="confluenceTd"><p>Use the value <em>POSTED</em> to indicate that the transaction is posted.</p></td></tr><tr><td class="confluenceTd"><p>STATUS_TIMESTAMP</p></td><td class="confluenceTd"><p>TIMESTAMP(6)</p></td><td class="confluenceTd"><p>Set to the current date and time.</p></td></tr><tr><td class="confluenceTd"><p>STAGING_ISSUE_DESC</p></td><td class="confluenceTd"><p>VARCHAR2(4000)</p></td><td class="confluenceTd"><p>This column will be empty (null) for backfilled records.</p></td></tr><tr><td class="confluenceTd"><p>CREATE_TIMESTAMP</p></td><td class="confluenceTd"><p>TIMESTAMP(6)</p></td><td class="confluenceTd"><p>Set to the current date and time.</p></td></tr><tr><td class="confluenceTd"><p>CREATE_BY</p></td><td class="confluenceTd"><p>VARCHAR2(300)</p></td><td class="confluenceTd"><p>This column will be empty (null) for backfilled records.</p></td></tr><tr><td class="confluenceTd"><p>REMOVED_IND</p></td><td class="confluenceTd"><p>VARCHAR2(300)</p></td><td class="confluenceTd"><p>Use the value <em>N </em></p></td></tr><tr><td class="confluenceTd"><p>REMOVED_TIMESTAMP</p></td><td class="confluenceTd"><p>TIMESTAMP(6)</p></td><td class="confluenceTd"><p>This column will be empty for backfilled records.</p></td></tr><tr><td class="confluenceTd"><p>REMOVED_USER</p></td><td class="confluenceTd"><p>VARCHAR2(300)</p></td><td class="confluenceTd"><p>This column will be empty for backfilled records.</p></td></tr><tr><td class="confluenceTd"><p>CHANGED_RECORD</p></td><td class="confluenceTd"><p>VARCHAR2(4000)</p></td><td class="confluenceTd"><p>This column will be empty (null) for backfilled records.</p></td></tr><tr><td class="confluenceTd"><p>POLICY_STATUS</p></td><td class="confluenceTd"><p>VARCHAR2(100)</p></td><td class="confluenceTd"><p>STATUS from the V_BM_POLICY record related to the selected transaction</p></td></tr></tbody></table></div><p><br/></p><h3 id="backfillTrxStaging-XMLUsage">XML Usage</h3><p>None</p><h3 id="backfillTrxStaging-Attributes">Attributes</h3><p>None</p><h3 id="backfillTrxStaging-ReturnCodes">Return Codes</h3><div class="table-wrap"><table class="wrapped confluenceTable"><thead><tr><td class="confluenceTd"><p align="center"><strong>Return Code</strong></p></td><td class="confluenceTd"><p><strong>Description</strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p align="center">1</p></td><td class="confluenceTd"><p>Success – records updated</p></td></tr><tr><td class="confluenceTd"><p align="center">2</p></td><td class="confluenceTd"><p>Success –no records found</p></td></tr><tr><td class="confluenceTd"><p align="center">3</p></td><td class="confluenceTd"><p>No Account in context</p></td></tr><tr><td class="confluenceTd"><p align="center">-1</p></td><td class="confluenceTd"><p>Unspecified Failure</p></td></tr></tbody></table></div><p><br/></p><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

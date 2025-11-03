@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : respondServiceFromStagingTable</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : respondServiceFromStagingTable
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span>, last modified on Mar 26, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><strong>Respond to Calling Service from Staging Table</strong></p><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="d41347f0-e03e-4690-888c-e7b34585344d" class="confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>Uses the current transaction in context and uses the CATEGORY attribute to pull the payload stored in the XML/JSON Staging table.  If there are multiple rows on this table, for the same MC, CT, Version, and Category, then the LAST_UPDATE_TIMESTAMP will be used to find the last record stored.   This payload will then be used to return to a service call similar to the existing “Respond to Calling Service”. </p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Standard</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>There must be an MC, CT, and Version number set into context for the method.</p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None</p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>This internal method can be paired with a second step that responds to the calling service IF the staging table does not contain an xml/json payload. </p></td></tr></tbody></table></div><p /><h4 id="respondServiceFromStagingTable-XMLUsage"><strong>XML Usage</strong></h4><p>None</p><p /><h4 id="respondServiceFromStagingTable-Attributes"><strong>Attributes</strong></h4><p>CATEGORY – the Category that should be used to retrieve the staged record.</p><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="e739e38d-3317-48c4-86b6-a257b24f4a11" class="confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Seq #</strong></p></td><td class="confluenceTd"><p><strong>Code</strong></p></td><td class="confluenceTd"><p><strong>Value</strong></p></td><td class="confluenceTd"><p><strong>Type</strong></p></td><td class="confluenceTd"><p><strong>Description</strong></p></td></tr><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>CATEGORY</p></td><td class="confluenceTd"><p>category code value</p></td><td class="confluenceTd"><p>string</p></td><td class="confluenceTd"><p>REQUIRED:  Indicates the text that will be used to retrieve the staged record in the staging table.</p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>XSLT</p></td><td class="confluenceTd"><p>xslt file name</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>OPTIONAL attribute that allows for the transformation of the payload returned from the staging table.</p></td></tr></tbody></table></div><p /><h4 id="respondServiceFromStagingTable-ReturnCodes"><strong>Return Codes</strong></h4><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="36e9f994-99f5-4157-bb32-aaa6122603bb" class="confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Return Code</strong></p></td><td class="confluenceTd"><p><strong>Description</strong></p></td></tr><tr><td class="confluenceTd"><p>1</p></td><td class="confluenceTd"><p>Success – a record was found in the staging table and the payload was returned.</p></td></tr><tr><td class="confluenceTd"><p>2</p></td><td class="confluenceTd"><p>Failure – a record was not found in the staging table for the specified category.</p><p>A payload was not returned.</p></td></tr><tr><td class="confluenceTd"><p>3</p></td><td class="confluenceTd"><p>Failure - No MC, CT, Version in context</p></td></tr><tr><td class="confluenceTd"><p>-1</p></td><td class="confluenceTd"><p>Unknown failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

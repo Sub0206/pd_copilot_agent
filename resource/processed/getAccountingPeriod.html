@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : getAccountingPeriod</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : getAccountingPeriod
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span> on Nov 09, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><strong>Get Accounting Period</strong></p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p> This method will extract the Accounting Period information from the Accounting Period Date to Use table and based on the provided attributes, the Billing Account will have Questions updated with the information.</p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Standard</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>Must be executed from within the Sapiens CoreSuite Applications</p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None</p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>None</p></td></tr></tbody></table></div><h3 id="getAccountingPeriod-XMLUsage"><span>XML Usage</span></h3><p>None</p><h3 id="getAccountingPeriod-Attributes"><span>Attributes</span></h3><p>Below are the Step Attributes for the Internal Method. </p><div class="table-wrap"><table class="confluenceTable"><thead><tr><td class="confluenceTd"><p><strong>Seq # </strong></p></td><td class="confluenceTd"><p><strong>Code </strong></p></td><td class="confluenceTd"><p><strong>Value </strong></p></td><td class="confluenceTd"><p><strong>Required?</strong></p></td><td class="confluenceTd"><p><strong>Type </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>ACCT_PERIOD</p></td><td class="confluenceTd"><p>BATCH or NEXT</p></td><td class="confluenceTd"><p>Yes</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>This Attribute determines if the code will return the Batch Accounting Period info or the Next Reporting Date Accounting Period info</p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>PERIOD_QTAG</p></td><td class="confluenceTd"><p>Valid Q-tag</p><p>Ex. Q_30000_1029</p></td><td class="confluenceTd"><p>Yes</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>This Attribute determines the Question that will receive the Accounting Period value.  The most typical implementation will have the method return the Accounting Period info to the Account entity (30000)</p></td></tr><tr><td class="confluenceTd"><p>30</p></td><td class="confluenceTd"><p>PERIOD_DATE_QTAG</p></td><td class="confluenceTd"><p>Valid Q-tag</p><p>Ex. Q_30000_1028</p></td><td class="confluenceTd"><p>Yes</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>This Attribute determines the Question that will receive the Accounting Period Date value.  The most typical implementation will have the method return the Accounting Period info to the Account entity (30000)</p></td></tr></tbody></table></div><p><span> </span></p><h3 style="" id="getAccountingPeriod-ReturnCodes">Return Codes</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Return Codes</strong></p></td><td class="confluenceTd"><p><strong>Description</strong></p></td></tr><tr><td class="confluenceTd"><p><strong><span>1</span></strong></p></td><td class="confluenceTd"><p><span>Success</span></p></td></tr><tr><td class="confluenceTd"><p><strong><span>4</span></strong></p></td><td class="confluenceTd"><p><span>Failure – No Records in Table</span></p></td></tr><tr><td class="confluenceTd"><p><strong><span>5</span></strong></p></td><td class="confluenceTd"><p><span>Failure - Record incomplete</span></p></td></tr><tr><td class="confluenceTd"><p><strong><span>-1</span></strong></p></td><td class="confluenceTd"><p><span>Unknown failure</span></p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

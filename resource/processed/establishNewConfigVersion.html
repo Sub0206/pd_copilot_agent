@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : establishNewConfigVersion</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : establishNewConfigVersion
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="establishNewConfigVersion-EstablishNewConfigurationVersion">Establish New Configuration Version</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will use the standard Configuration Version selection logic to determine if the Configuration Version on the policy transaction should be changed from what is currently selected and if so, will associate the transaction with the new Configuration Version and run Rule Reapplication to apply the product rules in the new Configuration Version to the transaction in context.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be run from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p> </p><h4 id="establishNewConfigVersion-XMLUsage">XML Usage</h4><h6 id="establishNewConfigVersion-ThismethodrequiresgeneratedXMLthatprovidesthefieldsnecessaryasinputtotheselectionoftheConfigurationVersion.Anexampleofthequestionsthatshouldbeincludedis:">This method requires generated XML that provides the fields necessary as input to the selection of the Configuration Version. An example of the questions that should be included is:</h6><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd">Product Group</td><td class="confluenceTd">30000_1</td></tr><tr><td class="confluenceTd">Reference Date</td><td class="confluenceTd">30000_36</td></tr><tr><td class="confluenceTd">Override Reference Date</td><td class="confluenceTd">30000_136</td></tr><tr><td class="confluenceTd">Product Group Reference</td><td class="confluenceTd">30000_137</td></tr><tr><td class="confluenceTd">Original Reference Date</td><td class="confluenceTd">30000_139</td></tr><tr><td class="confluenceTd">Selective Testing Group</td><td class="confluenceTd">30000_175</td></tr></tbody></table></div><h4 id="establishNewConfigVersion-Attributes">Attributes</h4><p>Because this method invokes Rule Reapplication if the Configuration Version changes, it requires the same Attributes as the Rule Reapplication method:</p><ul><li>Interface Tag - defines the scope of the information to have rules reapplied.</li><li><p>Suppress Errors Indicator - Determines behavior when errors are discovered.</p><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">INTERFACE</td><td class="confluenceTd">Defined Interface Tag</td><td class="confluenceTd">String</td><td class="confluenceTd">Defines the scope of the information to have rules reapplied by the Views contained in the Interface.</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">SUPRESSERRORS</td><td class="confluenceTd">Y/N</td><td class="confluenceTd">String</td><td class="confluenceTd">When set to Y, navigates the user to the errors page when errors are found.</td></tr></tbody></table></div></li></ul><h4 id="establishNewConfigVersion-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">New Configuration Version found; If configured, Rule Reapplication ran successfully and completed with no updates to the policy</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">New Configuration Version found; Rule Reapplication configured and ran successfully and completed with messages for the Administrator only</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">New Configuration Version found; Rule Reapplication configured and ran successfully and completed with policy updates and messages for most users</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">New Configuration Version found; Rule Reapplication configured and ran successfully and completed with informational messages only</td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">6</td><td class="confluenceTd">No change in Configuration Version</td></tr><tr><td class="confluenceTd">7</td><td class="confluenceTd">Failure - Unable to determine Configuration Version.</td></tr><tr><td class="confluenceTd">8</td><td class="confluenceTd">New Configuration Version found; Rule Reapplication failed due to a failure in the Action called on Submit of a View.</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="establishNewConfigVersion-ImplementationExample">Implementation Example</h4><h5 id="establishNewConfigVersion-Action">Action</h5><p>RATEAPP (Rate)</p><h5 id="establishNewConfigVersion-Actiontype">Action type</h5><p>Standard Action</p><h5 id="establishNewConfigVersion-Dependency">Dependency</h5><p>(stage&lt;340 ) AND (status=O ) AND (type&lt;&gt;RENEW ) AND (subtype&lt;&gt;IDCARD, VIN, RULECHG, ADJUST ) AND (Policy Facts : INCOMPLETE_ISSUE_TIMESTAMP is absent )</p><h5 id="establishNewConfigVersion-ActionStep">Action Step</h5><h6 id="establishNewConfigVersion-SELECTCV(CheckfornewCVandrunRuleReapp.)(don&#39;tmindtheapplicabilitysetting-itwasturnedofffortesting)">SELECTCV (Check for new CV and run Rule Reapp.) (don't mind the applicability setting - it was turned off for testing)</h6><h5 id="establishNewConfigVersion-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356480/3797553772.png?height=250" data-image-src="attachments/3797356480/3797553772.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553772" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture46.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356480" data-linked-resource-container-version="2" data-media-id="1817637c-f771-4f9f-9f15-e72ad8b4cbd6" data-media-type="file"></span></h5><h5 id="establishNewConfigVersion-Outcomes">Outcomes</h5><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Name</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Dependency</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Applicable?</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">FAILURE</td><td class="confluenceTd">Failure</td><td class="confluenceTd">(Step Code - SELECTCV : Return_Code=7, 5, 8 )</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">USERREVIEW</td><td class="confluenceTd">Changes Require User Review</td><td class="confluenceTd">(Step Code - SELECTCV : Return_Code=3 )</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">CONTINUE</td><td class="confluenceTd">Commit Changes and Continue to next Step</td><td class="confluenceTd">NOT((Step Code - SELECTCV : Return_Code&lt;&gt;3, 7, 5 ) )</td><td class="confluenceTd">Y</td></tr></tbody></table></div><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" width="500" loading="lazy" src="attachments/3797356480/3797553777.png?width=500" data-image-src="attachments/3797356480/3797553777.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553777" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture47.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356480" data-linked-resource-container-version="2" data-media-id="07ae8af0-18c1-44db-be04-0c4734081361" data-media-type="file"></span></p><h5 id="establishNewConfigVersion-Attributes.1">Attributes</h5><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Name</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Applicable?</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">INTERFACE</td><td class="confluenceTd">Interface to Use</td><td class="confluenceTd">RULE_REAPP_AUTO</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">SUPRESSERRORS</td><td class="confluenceTd">Suppress Errors Indicator</td><td class="confluenceTd">Y</td><td class="confluenceTd">Y</td></tr></tbody></table></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356480/3797553772.png">Picture46.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356480/3797553777.png">Picture47.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

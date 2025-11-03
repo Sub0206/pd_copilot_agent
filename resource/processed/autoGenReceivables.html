@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : autoGenReceivables</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : autoGenReceivables
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="autoGenReceivables-AutoGenerateReceivables">Auto Generate Receivables</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will process an algorithm that will generate receivables from Policy Transactions governed by <em>Pay Plan</em> attributes on the Policy.  The algorithm will perform the generation based on the set of Policy Transaction IDs passed to it but if there are no Policy Transaction IDs passed then the IDs are searched for the Account in context and all that match the necessary criteria are  processed.. The logic to process the Policy Transactions is described below.   </td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within the Adaptik Billing System</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p> </p><h4 id="autoGenReceivables-XMLUsage">XML Usage</h4><p>Accept XML for Update</p><p> </p><h4 id="autoGenReceivables-Attributes"><span>Attributes</span></h4><p>There are three Attributes used in this method:</p><div class="table-wrap"><table class="confluenceTable"><thead><tr><td class="highlight-grey confluenceTd" data-highlight-colour="grey"><p><strong>Seq # </strong></p></td><td class="highlight-grey confluenceTd" data-highlight-colour="grey"><p><strong>Code </strong></p></td><td class="highlight-grey confluenceTd" data-highlight-colour="grey"><p><strong>Value </strong></p></td><td class="highlight-grey confluenceTd" data-highlight-colour="grey"><p><strong>Type </strong></p></td><td class="highlight-grey confluenceTd" data-highlight-colour="grey"><p><strong>Description </strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>MIN_MAIL_DAYS</p></td><td class="confluenceTd"><p>Numeric Value &gt;= 0</p></td><td class="confluenceTd"><p>Numeric</p></td><td class="confluenceTd"><p>Identifies the minimum number of mailing days for a generated receivable. </p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>PRECISION</p></td><td class="confluenceTd"><p>Numeric Value &gt;= 0</p></td><td class="confluenceTd"><p>Numeric</p></td><td class="confluenceTd"><p>Identifies the allowed precision for a generated receivable. For example, if this this attribute is set to 2, the Receivable that is being generated is rounded 2 places, to the hundredth,</p><p><em>Ex. 100.2345 = 100.23</em></p></td></tr><tr><td class="confluenceTd"><p>30</p></td><td class="confluenceTd"><p>REC_CREATE_ITAG</p></td><td class="confluenceTd"><p>Interface for Account</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the Upload Interface that has the Views of the Account Product Group Entities that need to be updated (Receivables)</p></td></tr></tbody></table></div><p> </p><h4 id="autoGenReceivables-ReturnCodes"><span>Return Codes</span></h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd"><p>1</p></td><td class="confluenceTd"><p>All transactions processed and receivables generated successfully</p></td></tr><tr><td class="confluenceTd"><p>2</p></td><td class="confluenceTd"><p>Some transactions processed and receivables generated successfully, some DID NOT generate</p></td></tr><tr><td class="confluenceTd"><p>3</p></td><td class="confluenceTd"><p>All transactions did NOT generate receivables</p></td></tr><tr><td class="confluenceTd"><p>-1</p></td><td class="confluenceTd"><p>Unknown Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

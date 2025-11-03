@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : setStage</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : setStage
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="setStage-SetStageandLasttoSpecificValue"><span>Set Stage and Last to Specific Value</span></h4><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">Sets the value of Stage and Last Stage to the value specified.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">Last Stage is used only by the menu to make pages such as &quot;Errors&quot; available even if the stage has been further changed due to the user making changes to correct the listed errors.<br/> <br/>Last Stage is normally set by an Action Outcome or completion at the same time that Stage is set. Stage is the value reflected on the policy transaction. Last Stage exists only under-the-covers and is not available to the user.</td></tr></tbody></table></div><p><br/></p><h4 id="setStage-XMLUsage">XML Usage</h4><p>None</p><h4 id="setStage-Attributes">Attributes</h4><h6 id="setStage-Stage-TheintegervaluetobeinitializedintothePolicyStageandLastStage.">Stage - The integer value to be initialized into the Policy Stage and Last Stage.</h6><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><tbody><tr><th class="confluenceTh">Seq #</th><th class="confluenceTh">Code</th><th class="confluenceTh">Value</th><th class="confluenceTh">Type</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">Stage</td><td class="confluenceTd">Stage Value desired</td><td class="confluenceTd">Integer</td><td class="confluenceTd">The Stage value to be used for the current policy transaction context.</td></tr></tbody></table></div><h4 id="setStage-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Return Code</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p><h4 id="setStage-ImplementationExample">Implementation Example</h4><h5 id="setStage-Action">Action</h5><p>WM_WORK_COMPLETE (Work Complete)</p><h5 id="setStage-Actiontype">Action type</h5><p>Standard Action</p><h5 id="setStage-Dependency">Dependency</h5><h5 id="setStage-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="240" loading="lazy" src="attachments/3797356526/3797554113.png?height=240" data-image-src="attachments/3797356526/3797554113.png" data-unresolved-comment-count="0" data-linked-resource-id="3797554113" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture91.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356526" data-linked-resource-container-version="2" data-media-id="5348b1d2-3512-45fc-a9c2-8523381a6c99" data-media-type="file"></span></h5><p><br/></p><h5 id="setStage-ActionStep">Action Step</h5><h5 id="setStage-.1"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="209" loading="lazy" src="attachments/3797356526/3797554118.png?height=209" data-image-src="attachments/3797356526/3797554118.png" data-unresolved-comment-count="0" data-linked-resource-id="3797554118" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture92.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356526" data-linked-resource-container-version="2" data-media-id="4ac7a736-d38a-4272-a297-00562dd27e90" data-media-type="file"></span></h5><p><br/></p><h5 id="setStage-Outcomes">Outcomes</h5><p>None</p><h5 id="setStage-Attributes.1">Attributes</h5><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356526/3797554123.png?height=250" data-image-src="attachments/3797356526/3797554123.png" data-unresolved-comment-count="0" data-linked-resource-id="3797554123" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture93.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356526" data-linked-resource-container-version="2" data-media-id="d5d6c0eb-7574-4c98-9886-1d473de501ba" data-media-type="file"></span></p><p><br/></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356526/3797554113.png">Picture91.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356526/3797554118.png">Picture92.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356526/3797554123.png">Picture93.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

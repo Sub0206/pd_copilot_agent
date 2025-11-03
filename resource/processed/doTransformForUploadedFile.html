@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : doTransformForUploadedFile</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : doTransformForUploadedFile
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="doTransformForUploadedFile-RunXSLTonAttachedFile">Run XSLT on Attached File</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method uses the contents of a previously stored file, and then applies a customized XSLT that converts the information into the required XML format. The resulting XML is passed into the Target Program specified on the Step Detail page.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">Requires a File to have been previously uploaded and stored as an answer to a File type question.</td></tr></tbody></table></div><p><br/></p><h4 id="doTransformForUploadedFile-XMLUsage">XML Usage</h4><p>None</p><h4 id="doTransformForUploadedFile-Attributes">Attributes</h4><h6 id="doTransformForUploadedFile-QTAGFORFILE-TheQTAGoftheFiletypequestioncontainingtheuploadedfile.">QTAGFORFILE - The QTAG of the File type question containing the uploaded file.</h6><h6 id="doTransformForUploadedFile-XSLT-ThefilenameoftheXSLTfiletoberun.">XSLT - The file name of the XSLT file to be run.</h6><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Seq #</th><th class="confluenceTh">Code</th><th class="confluenceTh">Value</th><th class="confluenceTh">Type</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">QTAGFORFILE</td><td class="confluenceTd">QTAG value for a question of type File</td><td class="confluenceTd">string</td><td class="confluenceTd">QTAG for the attached file (i.e. Q_30000_1234)</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">XSLT</td><td class="confluenceTd">XSLT File Name</td><td class="confluenceTd">string</td><td class="confluenceTd">Identifies the XSLT file to be run.</td></tr></tbody></table></div><h4 id="doTransformForUploadedFile-ReturnCodes">Return Codes</h4><h6 id="doTransformForUploadedFile-ThismethodassumessuccessandreturnsnothingUNLESStheXMLresultingfromtheexecutionoftheXSLTcontainsthePWResponseelements.Inthatcase,theReturnCodesfromthePWResponsewillbeusedandreturnedasreturncodes.">This method assumes success and returns nothing UNLESS the XML resulting from the execution of the XSLT contains the PWResponse elements. In that case, the Return Codes from the PWResponse will be used and returned as return codes.</h6><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Return Code</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p><h4 id="doTransformForUploadedFile-ImplementationExample">Implementation Example</h4><h5 id="doTransformForUploadedFile-Action">Action</h5><p>UPLOADSCHLOCS (Upload Scheduled Loactions from Excel)</p><h5 id="doTransformForUploadedFile-Actiontype">Action type</h5><p>Standard Action</p><h5 id="doTransformForUploadedFile-Dependency">Dependency</h5><p>None</p><h5 id="doTransformForUploadedFile-ActionStep">Action Step</h5><h6 id="doTransformForUploadedFile-PROCESSFILE(ProcessUploadedFile)">PROCESSFILE (Process Uploaded File)</h6><h5 id="doTransformForUploadedFile-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356478/3797553755.png?height=250" data-image-src="attachments/3797356478/3797553755.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553755" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="ActionStep.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356478" data-linked-resource-container-version="2" data-media-id="0d81a0d9-2d1c-4986-8c74-3ef06b811c68" data-media-type="file"></span></h5><h5 id="doTransformForUploadedFile-Outcomes">Outcomes</h5><p>None</p><h5 id="doTransformForUploadedFile-Attributes.1">Attributes</h5><h6 id="doTransformForUploadedFile-QTAGFORFILE">QTAGFORFILE</h6><h6 id="doTransformForUploadedFile-.1"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356478/3797553760.png?height=250" data-image-src="attachments/3797356478/3797553760.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553760" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="QTAGFORFILE.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356478" data-linked-resource-container-version="2" data-media-id="a7b8e100-3838-4611-8751-bed56d59caaa" data-media-type="file"></span></h6><h6 id="doTransformForUploadedFile-XSLT">XSLT</h6><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" width="600" loading="lazy" src="attachments/3797356478/3797553765.png?width=600" data-image-src="attachments/3797356478/3797553765.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553765" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="xsltfile.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356478" data-linked-resource-container-version="2" data-media-id="6c333920-4074-4ff4-88d3-01abb4240c7f" data-media-type="file"></span></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356478/3797553755.png">ActionStep.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356478/3797553760.png">QTAGFORFILE.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356478/3797553765.png">xsltfile.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

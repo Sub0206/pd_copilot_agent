@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Database Update - Add Entity - No Longer Supported</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Deprecated_3797356330.html">Deprecated</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Database Update - Add Entity - No Longer Supported
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="wiki-content"><style>[data-colorid=rubiurfeiy]{color:#00573d} html[data-color-mode=dark] [data-colorid=rubiurfeiy]{color:#a8ffe5}[data-colorid=xvchqbhsjl]{color:#00573d} html[data-color-mode=dark] [data-colorid=xvchqbhsjl]{color:#a8ffe5}[data-colorid=rd2ub7rfwb]{color:#333333} html[data-color-mode=dark] [data-colorid=rd2ub7rfwb]{color:#cccccc}</style><h4 id="DatabaseUpdate-AddEntity-NoLongerSupported-Description">Description</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This function is used to add a particular product occurrence (e.g., a coverage or endorsement) to a policy using a configured View. It also provides for setting the values of the questions on the View to specific values.</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">There is hard-coded logic that restricts this method's use to a select set of entities.</td></tr></tbody></table></div><p>&nbsp;</p><h4 id="DatabaseUpdate-AddEntity-NoLongerSupported-XMLUsage">XML Usage</h4><p>None</p><h4 id="DatabaseUpdate-AddEntity-NoLongerSupported-Attributes">Attributes</h4><h6 id="DatabaseUpdate-AddEntity-NoLongerSupported-Attributesmustbeconfiguredintherelativeorderlistedbelow.">Attributes must be configured in the relative order listed below.</h6><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">BTAG</td><td class="confluenceTd">Valid Entity Type Identifier</td><td class="confluenceTd">String</td><td class="confluenceTd">Identifier for the Entity type to be updated.</td></tr><tr><td class="confluenceTd">VTAG</td><td class="confluenceTd">Valid View Identifier</td><td class="confluenceTd">String</td><td class="confluenceTd">Identifier for the View to be used to receive the update.</td></tr><tr><td class="confluenceTd">QSEQ</td><td class="confluenceTd">Valid Question Sequence Number</td><td class="confluenceTd">String</td><td class="confluenceTd">Question Sequence Number for the question to be used to identify the occurrence to update. Only the Question Sequence Number should be supplied, so for example if the question was Coverage Attachment Level on Policy (30000-8) the value for this attribute would be simply 8. &nbsp; Must correspond to the question identified as an occurrence identifier.</td></tr><tr><td class="confluenceTd">CODE</td><td class="confluenceTd">Value for QSEQ Question</td><td class="confluenceTd">String</td><td class="confluenceTd">Value to be used in the occurrence identifier specified above.</td></tr><tr><td class="confluenceTd"><span data-colorid="rd2ub7rfwb"><span class="legacy-color-text-blue1"><span data-colorid="xvchqbhsjl">[</span><a class="external-link" href="http://wiki.adaptik.net/pages/createpage.action?spaceKey=docs&amp;title=Question+Number+with+BTAG+as+prefix&amp;linkCreation=true&amp;fromPageId=9995667" rel="nofollow">Question Number with BTAG as prefix</a><span data-colorid="rubiurfeiy">]</span> </span></span></td><td class="confluenceTd">Value to be set</td><td class="confluenceTd">String</td><td class="confluenceTd">This parameter repeats for each question to be created on the entity being added. The Q-tag of the question appears in the Code field, and the Value specifies the value the question should be set to. &nbsp; If DEFAULT is specified in the value field the defined default value for the question will be used. If the value specified is not valid per the rules defined in the view, then the mismatch remedy for the question is used to provide a valid value.</td></tr></tbody></table></div><h4 id="DatabaseUpdate-AddEntity-NoLongerSupported-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Successful Add</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Add failed.</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

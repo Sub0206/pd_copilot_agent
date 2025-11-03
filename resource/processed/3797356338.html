@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Travelers - Check Vehicle/Member Counts</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Travelers-Specific_3797356334.html">Travelers Specific</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Travelers - Check Vehicle/Member Counts
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="Travelers-CheckVehicle/MemberCounts-Description">Description</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">In Travelers CARS system, certain entities are only allowed to have a set number of occurrences. This method will be used upon issuance of an OOS transaction. The method looks ahead at future transactions, both issued and in-process. It will count the number of additions for the identified entities in the current transaction. The system will then go to each of the future transactions and do a similar count including any deletions happening in those transactions. The objective of this is to ensure that if the system were to carry forward to any subsequent transactions we will not exceed the set limitations of CARS.<br/> <br/>Based on the outcome of the counts, return codes will be sent back to the transaction for configuration purposes. If the limitation is going to be exceeded an error message will be configured to the user explaining that the limit will be exceeded if this transaction is carried forward so the issuance of the transaction will be prohibited by configuration.<br/>The information for the Entities with limitations is below:<br/> <br/>30006 - Vehicle Max of 4 Vehicles <br/>30011 - Member Limitation varies based on question 30011_3 - Member Type<br/> <br/>            Licensed Operator (L) - max of 6<br/>            Excluded Operator(E) - max of 2<br/>            Unlicensed (U) - max of 11 <br/> <br/>This new method will perform the future-looking counts and determine if any of the included constraints are violated. The method provides return codes to indicate the findings of the different counts, and reason codes to indicate the status of the transactions that the counts was violated on. If one of the counts exceeds the limit, the method will stop after the first constraint is violated, and not check further constraints.<br/> <br/><strong>Counting Algorithm</strong><ol><li>The method will first count the number of entity occurrences in the current transaction that are within the scope of interest for the validation. It will keep track of C_IDs and Occurrence Identifiers for each occurrence if any are configured. Pre-existing, added, and deleted occurrences will be included in the count.<br/> </li><li>The method will then loop through all subsequent transactions and validate the corresponding occurrences within that transaction. For each occurrence of interest, it will<br/> <br/><strong>a.</strong> Compare the C_ID of the occurrence in the subsequent transaction to the list of C_IDs that correspond to the entity type. If there is a match on the C_ID, then no change to the count is recorded since the occurrence already exists.<br/> <br/><strong>b.</strong> If there is no matching C_ID, the method then checks the configured occurrence identifiers against the occurrence identifiers associated with the items already recorded in the count.<br/> <br/>      i. If a matching occurrence identifier already exists in the list make no change to the count.<br/>      ii. If no matching occurrence identifier already exists in the list then add 1 to the relevant counter and record the C_ID and occurrence <br/>          identifier, if configured, in the count.<br/> <br/><strong>c.</strong> The method validates the accumulated counts against the constraint values provided. If any of the counts exceed the constraint value the method will set the Return Code based upon the constraint violated, and the Reason Code based upon the status of the transaction where the count was found to exceed the constraint. If the status is Closed, Reason Code is set to 1, if the transaction is Open, Reason Code is set to 2. </li></ol></td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">None </td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">Travelers PL Override</td></tr></tbody></table></div><p> </p><h4 id="Travelers-CheckVehicle/MemberCounts-XMLUsage">XML Usage</h4><p>None</p><h4 id="Travelers-CheckVehicle/MemberCounts-Attributes">Attributes</h4><p>None</p><h4 id="Travelers-CheckVehicle/MemberCounts-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th style="text-align: center;" class="confluenceTh">Return Code</th><th style="text-align: center;" class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1 </td><td class="confluenceTd">Success (did not exceed limitations) </td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - No MC, CT, and Version in context</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Unspecified Failure</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">Vehicle Count Exceeded </td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">Licensed Operator Exceeded</td></tr><tr><td class="confluenceTd">6</td><td class="confluenceTd">Excluded Operator Exceeded</td></tr><tr><td class="confluenceTd">7</td><td class="confluenceTd">Unlicensed Operator Exceeded</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="Travelers-CheckVehicle/MemberCounts-ReasonCodes">Reason Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th style="text-align: center;" class="confluenceTh">Reason Code</th><th style="text-align: center;" class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Count Violated on an Issued transaction</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Count Violated on an in-process transaction</td></tr></tbody></table></div><h4 id="Travelers-CheckVehicle/MemberCounts-ImplementationExample">Implementation Example</h4><h5 id="Travelers-CheckVehicle/MemberCounts-Action">Action</h5><p>ISSUE (Issue Transaction)</p><h5 id="Travelers-CheckVehicle/MemberCounts-Actiontype">Action type</h5><p>Standard</p><h5 id="Travelers-CheckVehicle/MemberCounts-Dependency">Dependency</h5><p>(status=O) AND (Policy Facts:INCOMPLETE_ISSUE_TIMESTAMP is absent)</p><h5 id="Travelers-CheckVehicle/MemberCounts-ActionStep">Action Step</h5><h6 id="Travelers-CheckVehicle/MemberCounts-Dependency:(PolicyFacts:OOS_INDICATOR=Y)">Dependency: (Policy Facts : OOS_INDICATOR=Y )</h6><p><a href="attachments/3797356338/3797553016.png" data-linked-resource-id="3797553016" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="picture2.png" data-nice-type="PNG Image" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356338" data-linked-resource-container-version="1"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-external-resource" height="250" src="https://wiki.adaptik.net/download/attachments/3146004/picture2.png?version=1&amp;modificationDate=1445621008000&amp;api=v2" data-image-src="https://wiki.adaptik.net/download/attachments/3146004/picture2.png?version=1&amp;modificationDate=1445621008000&amp;api=v2" loading="lazy"></span></a></p><h5 id="Travelers-CheckVehicle/MemberCounts-Outcomes">Outcomes</h5><h6 id="Travelers-CheckVehicle/MemberCounts-EachOutcomewillprovideabusiness-relatedmessagerelevanttoeachoftheconditionsthatwillpreventtheuserfromcontinuingtoissuethetransaction.">Each Outcome will provide a business-related message relevant to each of the conditions that will prevent the user from continuing to issue the transaction.</h6><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th style="text-align: center;" class="confluenceTh">Seq #</th><th style="text-align: center;" class="confluenceTh">Code</th><th style="text-align: center;" class="confluenceTh">Name</th><th style="text-align: center;" class="confluenceTh">Dependency</th></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">FAILURE</td><td class="confluenceTd">Failure - rc 2, 3</td><td class="confluenceTd">(Step Code - EVALOCCCOUNTS : Return_Code=2, 3 )</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">VEHCNTEXCEED</td><td class="confluenceTd">Vehicle Count Exceeded</td><td class="confluenceTd">(Step Code - EVALOCCCOUNTS : Return_Code=4 )</td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">LICOPCNTEXCEED</td><td class="confluenceTd">Licensed Operator Count Exceeded</td><td class="confluenceTd">(Step Code - EVALOCCCOUNTS : Return_Code=5 )</td></tr><tr><td class="confluenceTd">40</td><td class="confluenceTd">EXOPCNTEXCEED</td><td class="confluenceTd">Excluded Operator Count Exceeded</td><td class="confluenceTd">(Step Code - EVALOCCCOUNTS : Return_Code=6 )</td></tr><tr><td class="confluenceTd">50</td><td class="confluenceTd">UNLICOPCNTEXCEED</td><td class="confluenceTd">Unlicensed Operator Count Exceeded</td><td class="confluenceTd">(Step Code - EVALOCCCOUNTS : Return_Code=7 )</td></tr></tbody></table></div><h5 id="Travelers-CheckVehicle/MemberCounts-Attributes.1">Attributes</h5><p>None</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356338/3797553016.png">picture2.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

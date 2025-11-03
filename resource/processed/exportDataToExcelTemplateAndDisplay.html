@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : exportDataToExcelTemplateAndDisplay</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : exportDataToExcelTemplateAndDisplay
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 03, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="exportDataToExcelTemplateAndDisplay-ExporttoExcelSpreadsheetandDisplay">Export to Excel Spreadsheet and Display</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">Uses a provided Excel template to map questions and occurrences into a spreadsheet format and invokes a file download window to display the results.<br/>The method will use the template file (.xlsm) and create a spreadsheet that contains the desired information. That spreadsheet will then be opened on the client machine via the Display Document internal method call. After that, the user can decide if they want to save it and use it for other purposes such as the basis for updates.<br/>Occurrences will be included in the spreadsheet based upon whether or not the occurrence hierarchy filtering is applied. The current List's parent occurrence will be tracked by the page template that invokes the Action configured to call this method. That occurrence will be used to filter the list results if the Attribute is set to Yes.<br/><strong>This method is only supported in an online context and not via the SOAP Gateway.</strong></td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context. The Display Documents internal method must be configured in a subsequent step to actually display the document to the user.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">The current page in Account Manager will remain displayed unless the Action's configuration specifies a navigation target.<br/>The resulting spreadsheet will have the Insert Column function disabled in the exported spreadsheet to avoid the possibility of a user invalidating the relationship between the export spreadsheet and the originating template.</td></tr></tbody></table></div><p> </p><h4 id="exportDataToExcelTemplateAndDisplay-XMLUsage">XML Usage</h4><p>None</p><h4 id="exportDataToExcelTemplateAndDisplay-Attributes">Attributes</h4><p>Three Attributes are applicable for this method. The first identifies the template file to be used to provide the export instructions to the method. The second indicates the Interface that will be used to sort the occurrences before exporting them into the Excel spreadsheet. Note that the interface should contain a list view for each B-tag used in the template. The only data used from the list view will be the sorting information (sort order and ascending/descending). All other information configured in the list view will be ignored. ONLY the questions that should be used for the sort should be included in the List View and there must be one question in each List View for each entity.</p><p><br/>The third attribute designates whether or not ancestry filtering should be applied to the information being exported. A value of N (No) will cause the export to contain all occurrences of the target entities across the transaction, regardless of the current List or Page's hierarchy. A value of Y (Yes) will include only those occurrences in the current List's ancestry as well as all child occurrences of the List's parent occurrence. Any List Filters being used on the current page would not be applied, so the list could contain more occurrences than those visible on the page.</p><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">TEMPLATE</td><td class="confluenceTd">[File Name].xslm</td><td class="confluenceTd">Text</td><td class="confluenceTd">The file name of the Excel Template to be used for the export</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">INTERFACE</td><td class="confluenceTd">Valid I-tag containing List Views</td><td class="confluenceTd">Text</td><td class="confluenceTd">Indicates which interface should be used for definition of the sorting of the rows that are exported to excel. If no value is provided, no sorting will be applied.</td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">FILTER</td><td class="confluenceTd">Y (Yes) N (No)</td><td class="confluenceTd">Text</td><td class="confluenceTd">Indicates if the information being exported should be filtered for the current list's parent occurrence (Yes) or not (No).</td></tr></tbody></table></div><h4 id="exportDataToExcelTemplateAndDisplay-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Export successful; document queued for display</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Template file not found or invalid</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Export failed, reason unspecified</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

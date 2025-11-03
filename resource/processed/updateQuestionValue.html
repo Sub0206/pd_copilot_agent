@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : updateQuestionValue</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : updateQuestionValue
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="updateQuestionValue-UpdateQuestionValue(DetailViewOnly)">Update Question Value (Detail View Only)</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">Updates one or more question values within a detail view in context with the answers specified. Both the questions and answers are specified in the attributes. <br/> <br/> This method updates question answers within a detail view with the values specified as attributes. Each attribute will give the Q-tag as the code (format Q_#####_#) with the answer value to be applied in the Value attribute.<br/> <br/> This method will not create answers. The question must be applicable in the View or the method does nothing.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">View Action</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context. <br/> Can only be used in a View Action.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p><br/></p><h4 id="updateQuestionValue-XMLUsage">XML Usage</h4><p>None</p><h4 id="updateQuestionValue-Attributes">Attributes</h4><h6 id="updateQuestionValue-EachAttributespecifiesthequestiontobesetbyQ-Tagandthevaluetobeapplied.">Each Attribute specifies the question to be set by Q-Tag and the value to be applied.</h6><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><tbody><tr><th class="confluenceTh">Seq #</th><th class="confluenceTh">Code</th><th class="confluenceTh">Value</th><th class="confluenceTh">Type</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">QTag Value <br/> (format Q_#####_#)</td><td class="confluenceTd">Specific answer value or <br/>&quot;CurrentDate()&quot;<br/><br/>Policy level questions may also be used (Q_30000_##).</td><td class="confluenceTd">Text</td><td class="confluenceTd">Identifies the policy question to be updated and specifies the value to set it to. <br/>(repeat attribute for each question value to be set).<br/> <br/>In the Code, the question identifier in the format Q_30005_1 must be specified. <br/><br/>If the Value is &quot;CurrentDate()&quot;, the current date is used to create the answer value. <br/><br/>Otherwise, the value specified is used as the value to set in the answer. if the Question has Answer Options, the value specified should be the Code value for the correct Answer Option.</td></tr></tbody></table></div><h4 id="updateQuestionValue-ReturnCodes">Return Codes</h4><h5 id="updateQuestionValue-ReturnCodesNotCurrentlySupported">Return Codes Not Currently Supported</h5><p><br/></p><h4 id="updateQuestionValue-ImplementationExample">Implementation Example</h4><h5 id="updateQuestionValue-Action">Action</h5><p>RESET_CP_TRX (Reset Get Report Types CP on TRX History Page)</p><h5 id="updateQuestionValue-Actiontype">Action type</h5><p>View Action</p><h5 id="updateQuestionValue-Dependency">Dependency</h5><p>((Policy.Transaction Type=PC ) AND (Policy.Transaction SubType=GN )) OR ((Policy.Transaction Type=REWRITE ) AND (Policy.Transaction SubType=FILL ))</p><h5 id="updateQuestionValue-ActionStep">Action Step</h5><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="206" loading="lazy" src="attachments/3797356540/3797554299.png?height=206" data-image-src="attachments/3797356540/3797554299.png" data-unresolved-comment-count="0" data-linked-resource-id="3797554299" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture105.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356540" data-linked-resource-container-version="2" data-media-id="2cb351eb-cf70-4146-8cc1-afbd1f6c9244" data-media-type="file"></span></p><h5 id="updateQuestionValue-Outcomes">Outcomes</h5><p>None</p><h5 id="updateQuestionValue-Attributes.1">Attributes</h5><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Seq #</th><th class="confluenceTh">Code</th><th class="confluenceTh">Name</th><th class="confluenceTh">Value</th></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">Q_30000_1376</td><td class="confluenceTd">Get Report Types Continue Process</td><td class="confluenceTd">N</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">Q_30000_1377</td><td class="confluenceTd">Get Report Types Return Code</td><td class="confluenceTd"><br/></td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">Q_30000_1378</td><td class="confluenceTd">Error Message Get Report Types</td><td class="confluenceTd"><br/></td></tr></tbody></table></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356540/3797554299.png">Picture105.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

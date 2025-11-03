@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : reverseReapplyRemitAlloc</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : reverseReapplyRemitAlloc
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span>, last modified on Jun 28, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="reverseReapplyRemitAlloc-ReverseandReapplyRemittanceAllocations">Reverse and Reapply Remittance Allocations</h2><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>This method will process an algorithm that will identify if “offsetting” between a remittance over allocation (credit receivable) and a debit receivable should be done and then if yes, reverse the credit receivable and reapply to the debit receivables.</p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Standard</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>Must be executed from within the Sapiens BillingPro</p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None</p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>None</p></td></tr></tbody></table></div><p><br/></p><h3 id="reverseReapplyRemitAlloc-XMLUsage">XML Usage</h3><p>None</p><h3 id="reverseReapplyRemitAlloc-Attributes">Attributes</h3><p>Below are the attributes used in this method.</p><div class="table-wrap"><table class="wrapped confluenceTable"><thead><tr><td class="confluenceTd"><p><strong>Seq # </strong></p></td><td class="confluenceTd"><p><strong>Code </strong></p></td><td class="confluenceTd"><p><strong>Value </strong></p><p><strong>(if applicable)</strong></p></td><td class="confluenceTd"><p><strong>Value Type </strong></p><p><strong>(if applicable)</strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td><td class="confluenceTd"><p><br/></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>5</p></td><td class="confluenceTd"><p>REMIT_ALL_VW_NAME</p></td><td class="confluenceTd"><p>Optional</p><p>Valid View Code</p><p>Ex:</p><p>remitUpdLT</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>View for Remittance Allocation for Offset processing</p></td><td class="confluenceTd"><p><br/></p></td></tr><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>REMIT_ALL_ACT_CODE</p></td><td class="confluenceTd"><p>Valid Action Code</p><p>Ex:</p><p>allocRemitDB</p><p><br/></p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Action for Remittance Allocation for Offset Processing</p></td><td class="confluenceTd"><p><br/></p></td></tr><tr><td class="confluenceTd"><p>15</p></td><td class="confluenceTd"><p>REMIT_UN_ACT_CODE</p></td><td class="confluenceTd"><p>Optional</p><p>Valid Action Code</p><p>Ex:</p><p>unAllocateRemittance</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Action to Unallocate Remittances for Offset Processing</p></td><td class="confluenceTd"><p><br/></p></td></tr></tbody></table></div><p><strong> </strong></p><h3 id="reverseReapplyRemitAlloc-ReturnCodes">Return Codes</h3><div class="table-wrap"><table class="wrapped confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Return Code </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr><tr><td class="confluenceTd"><p>1</p></td><td class="confluenceTd"><p>Success</p></td></tr><tr><td class="confluenceTd"><p>2</p></td><td class="confluenceTd"><p>Success with remedy</p></td></tr><tr><td class="confluenceTd"><p>3</p></td><td class="confluenceTd"><p>No Offsetting is Identified</p></td></tr><tr><td class="confluenceTd"><p>-1</p></td><td class="confluenceTd"><p>Unknown Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

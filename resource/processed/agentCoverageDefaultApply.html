@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : agentCoverageDefaultApply</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : agentCoverageDefaultApply
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="agentCoverageDefaultApply-AgentCoverageDefault-Apply">Agent Coverage Default - Apply</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method applies a stored Agent coverage template to the MC, CT, Version in context.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">There must be an MC, CT, and Version set in context for this method to work. <br/>Each product group must have a customized XSLT that must be created to both store and apply the personalized templates which uses the specific B-tags for the coverages.<br/>The XSLT typically is written to remove all coverages and then apply the coverages stored using the <strong>Agent Coverage Default - Store</strong> internal method.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">There must exist at least one coverage attachment level policy occurrence on the policy.</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">Questions 30000_41 (Agent Code), 30000_1 (Product Group), 30000_4 (Country), and 30000_5 (State) will be used from the policy transaction in context to retrieve the Coverage information. <br/>This method pulls the information from the stored coverage XML (stored by <strong>Agent Coverage Default - Store</strong> internal method) and uses it in combination with the current policy XML from the MC, CT and Version in context to create an upload XML which should be uploaded in an Action Step following this Action Step.</td></tr></tbody></table></div><h4 id="agentCoverageDefaultApply-XMLUsage">XML Usage</h4><p>Generate from DB. An XSLT (see attributes) is used to take the policy XML from the current MC, CT, and Version in context and the previously stored XML (saved by the <strong>Agent Coverage Default - Store</strong> internal method) and creates an update XML.</p><h4 id="agentCoverageDefaultApply-Attributes">Attributes</h4><p>The only attribute specified is an XSLT which takes the policy xml generated and the XML pulled from storage and creates an Upload XML for a subsequent Upload Action Step.</p><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Name</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th></tr></thead><tbody><tr><td class="confluenceTd">XSLT</td><td class="confluenceTd">Free Form</td><td class="confluenceTd">Filename.xsl</td><td class="confluenceTd">String</td></tr></tbody></table></div><h4 id="agentCoverageDefaultApply-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Return Code</strong></td><td class="confluenceTd"><strong>Description</strong></td></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd"><p>Unspecified failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

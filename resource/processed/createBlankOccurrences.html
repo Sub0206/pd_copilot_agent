@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : createBlankOccurrences</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : createBlankOccurrences
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="createBlankOccurrences-CreateBlankOccurrences">Create Blank Occurrences</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method is used to create a specified number of new, largely blank, occurrences of a provided view type by creating each occurrence and adding the view identified in the Attributes to it.<br/>The occurrences will be created regardless of the number of occurrences that already exist on the policy for that V-Tag. <br/>This method will NOT check for a maximum number of occurrences allowed to be created. It is the responsibility of the Product Designer Configurator to make sure that the maximum number of occurrences is not exceeded if a maximum exists.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">This method can only be used to create immediate children of the Policy (30000) entity.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p> </p><h4 id="createBlankOccurrences-XMLUsage">XML Usage</h4><p>None</p><h4 id="createBlankOccurrences-Attributes">Attributes</h4><h6 id="createBlankOccurrences-Attributesmustbeconfiguredintherelativeorderlistedbelow.">Attributes must be configured in the relative order listed below.</h6><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">NUMBER</td><td class="confluenceTd">Number (count)</td><td class="confluenceTd">String</td><td class="confluenceTd">Contains the number of occurrences that should be created.</td></tr><tr><td class="confluenceTd">VTAG</td><td class="confluenceTd">Valid V-Tag</td><td class="confluenceTd">String</td><td class="confluenceTd">Specifies the V_Tag of the Detail View that should be used to create the new occurrences. The View will provide any necessary default or derived values and will define which questions should have answers created on the occurrence.<br/>Note that the Value should be a valid V-Tag for the Entity type that is being created.</td></tr></tbody></table></div><h4 id="createBlankOccurrences-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="createBlankOccurrences-ImplementationExample">Implementation Example</h4><h5 id="createBlankOccurrences-Action">Action</h5><p>Create Non-Owned Vehicle</p><h5 id="createBlankOccurrences-Actiontype">Action type</h5><p>Standard Action</p><h5 id="createBlankOccurrences-Dependency">Dependency</h5><p>None</p><h5 id="createBlankOccurrences-ActionStep">Action Step</h5><h6 id="createBlankOccurrences-Dependency:(Non-OwnedPolicyIndicator=Y)">Dependency: (Non-Owned Policy Indicator = Y)</h6><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="230" loading="lazy" src="attachments/3797356444/3797553511.png?height=230" data-image-src="attachments/3797356444/3797553511.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553511" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture16.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356444" data-linked-resource-container-version="2" data-media-id="0fbcaa5c-4898-4896-827b-52b99879fcfa" data-media-type="file"></span></p><h5 id="createBlankOccurrences-Outcomes">Outcomes</h5><p>None</p><h5 id="createBlankOccurrences-Attributes.1">Attributes</h5><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="66" loading="lazy" src="attachments/3797356444/3797553516.png?height=66" data-image-src="attachments/3797356444/3797553516.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553516" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture17.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356444" data-linked-resource-container-version="2" data-media-id="33633508-7f87-415f-a93d-4be6309f0dbd" data-media-type="file"></span></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356444/3797553511.png">Picture16.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356444/3797553516.png">Picture17.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : createReversalTransaction</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : createReversalTransaction
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd"><p>This method creates one or more reversal transactions based upon the transactional context when the method is called. </p><p>The reversal transaction will negate all changes in the issued transaction being reversed with the exception of any Q-Group 0 Question answers. </p><p>In essence any answers or occurrences added will be marked as deleted.  Any answers or occurrences deleted in the original transaction will be marked as added in the reversal transaction.  Any updated Questions will have the current and previous values switched. <br/>Once the data manipulations are complete, the Action specified by the Step Attribute will be run on each reversal transaction created.</p></td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd"><span>Must be executed from within a policy context. </span></td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd"><p>Typically used to support Out of Sequence processing where the transactions being replaced must be reversed in a downstream system before being reapplied.  Also used to support back out of a transaction as well.</p><p>Any premium fields that need to have their values reversed will need to be treated via XSL and upload to do the -1 (or whatever factor) multiplication and upload back to the transaction.</p><p>If the method returns a non-success return code, all changes should be rolled back.</p>The method will not perform any validation of the transaction being reversed.  The configuration should only provide for the use of the method in the appropriate contexts.</td></tr></tbody></table></div><p> </p><h4 id="createReversalTransaction-XMLUsage">XML Usage</h4><p>None</p><h4 id="createReversalTransaction-Attributes"><span>Attributes</span></h4><p><span> </span></p><p>The single attribute accepted by the method identifies the Action to be run on the reversal transaction after it is created.</p><p><span> </span></p><div class="table-wrap"><table class="confluenceTable"><thead><tr><td class="highlight-grey confluenceTd" colspan="1" data-highlight-colour="grey"><strong>Seq #</strong></td><td class="highlight-grey confluenceTd" colspan="1" data-highlight-colour="grey"><strong>Code</strong></td><td class="highlight-grey confluenceTd" colspan="1" data-highlight-colour="grey"><strong>Value</strong></td><td class="highlight-grey confluenceTd" colspan="1" data-highlight-colour="grey"><strong>Type</strong></td><td class="highlight-grey confluenceTd" colspan="1" data-highlight-colour="grey"><strong>Description</strong></td></tr></thead><tbody><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>ACTION</p></td><td class="confluenceTd"><p>Configured Action Macro value</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Identifies the policy Action Macro to be executed on the reversal(s) created by the method.</p></td></tr></tbody></table></div><h3 id="createReversalTransaction-IdentifyingthePolicyTransactiontoReverse">Identifying the Policy Transaction to Reverse</h3><p>The rules for identifying the transaction to be reversed are dependent on the current transaction in context and the overall state of the policy at the time the method is invoked.  In most cases, any existing reversal transactions will be ignored.  The only exception to this is when the current transaction is a Reinstate as described below.</p><p>If the current transaction is an OOS replacement transaction, identified by a Removal Code of A or M, or having a corresponding transaction with a removal code of P, then create a single reversal of the corresponding original transaction with the same GT ID and Version and a Removal Code of P.  In this scenario, the new method is being called from within the Macros being run by the OOS method creating the replacements.</p><p>If the current transaction is an OOS Cancel, identify any active subsequent issued regular category transactions, excluding RENEW, transactions effective on the date of a RENEW, and CA/RE pairs, with a removal code of L with a reversing transaction ID and version equal to the current transaction’s transaction ID and version. If no transactions are found, look for any with a Transaction Effective Date later than the current Cancel transaction using the same exclusions as above. Process the identified transactions in Effective Date, issue date order descending.</p><p>If the current transaction is a Reinstate and the corresponding Cancel Transaction is associated with removed transactions (Removal Code is L and Reversing identifiers match the Cancel), verify that there are no other not-removed standard transactions created and issued since the Cancellation was created.  If no post-cancellation transactions are found then create reversals for any issued regular category transaction marked with a Removal Code of L associated with the Reinstate’s partner Cancel transaction that has a reversal established.  In this case the method will be cloning the original transaction itself rather than creating an actual reversal.  Process these in ascending Effective Date, issue date order.  Cancel/Reinstate pairs would not be included since they are not marked with the Cancel identifiers when they are removed.  Run the Macro on the Reversal as with any other reversal creation.</p><p>If none of the above conditions are met by the transaction in context, then create the reversal for the current transaction in context.  This is the processing required by a Back Out or other single transaction removal.</p><h3 id="createReversalTransaction-ConfigurationRequirements">Configuration Requirements</h3><p>The use of this method in an OOS change context must always be preceded by the use of the appropriate OOS method so that the impacted transactions are already replaced or marked for removal.  This method requires those marking in order to identify the transactions to be reversed.</p><p>Any Q Group 0 questions that need to have their values reversed will need to be treated via XSL in an upload to do the -1 (or whatever factor) multiplication and upload back to the transaction.  This should happen in the Action Macro run by the new reversal method on the reversal transaction.</p><p>If the method returns a non-success return code, all changes should be rolled back by the Outcome.</p><p>The method will not perform any validation of the transaction being reversed.  This is significant in the case of the current transaction reversal.  The configuration should only provide for the use of the method in the appropriate contexts.  In-process transactions, Flag/Event, and other disqualifying criteria should be handled by the configured use of the method via Dependencies.</p><p>Any installation that is using reversals must include the new method in the Action that will issue a Reinstate since it is not possible to detect an OOS Cancel’s Reinstate to conditionally execute the method in a Step.  The method must precede the issue Step in the Action.</p><p> </p><h4 id="createReversalTransaction-ReturnCodes"><span>Return Codes</span></h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd"><p align="center">1</p></td><td class="confluenceTd"><p>Success – Transaction(s) reversals created and the Action succeeded on each</p></td></tr><tr><td class="confluenceTd"><p align="center">2</p></td><td class="confluenceTd"><p>Success - No Transactions to reverse</p></td></tr><tr><td class="confluenceTd"><p align="center">3</p></td><td class="confluenceTd"><p>Action failure detected on a reversal</p></td></tr><tr><td class="confluenceTd"><p align="center">-1</p></td><td class="confluenceTd"><p>Unspecified Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

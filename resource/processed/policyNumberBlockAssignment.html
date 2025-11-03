@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : policyNumberBlockAssignment</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : policyNumberBlockAssignment
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="policyNumberBlockAssignment-PolicyNumberBlockAssignment">Policy Number Block Assignment</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">Using the input attribute which designates a policy block to use, the algorithm will find the appropriate block and the last number used and assign the next number (increment by 1) to Question 30000_160.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">Q_30000_160 is Absent AND<br/>removal_code Is Absent</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">Note that when this method is called and if a number is taken from a block, the change is committed and will not be impacted or rolled back within the transaction if rolled back (by an outcome).</td></tr></tbody></table></div><p><br/></p><h4 id="policyNumberBlockAssignment-XMLUsage">XML Usage</h4><p>None</p><h4 id="policyNumberBlockAssignment-Attributes">Attributes</h4><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><tbody><tr><th class="confluenceTh">Seq #</th><th class="confluenceTh">Code</th><th class="confluenceTh">Value</th><th class="confluenceTh">Type</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">CODE</td><td class="confluenceTd">Q-tag i.e. Q_30000_##</td><td class="confluenceTd">String</td><td class="confluenceTd">Indicates which Q-tag will contain the logical policy number block code should be used when retrieving the next number.</td></tr></tbody></table></div><h4 id="policyNumberBlockAssignment-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><th class="confluenceTh">Return Code</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Warning - the specified block is running out of policy numbers</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">Error - there are no more policy number available within the block</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

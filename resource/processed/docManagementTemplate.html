@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : docManagementTemplate</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Web-Page-Templates_28282816.html">Web Page Templates</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : docManagementTemplate
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span>, last modified by <span class='editor'> Susan Wilson</span> on 19 Nov, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>The Document Management Template can be used to display and allow the user to manage a List or multiple Lists (maximum of 5) of documents.  These will be configured along with an optional Detail available for each List to enable modifications of metadata and potentially moving Documents to a different location.</p><h4 id="docManagementTemplate-ListProperties">List Properties</h4><p>This list is non-standard and does not support a full set of the properties that a standard configured list can support. There is also an additional property to specify the Action Code that retrieves the list data and another to specify the reference code of the link column and the text used to display the link. The supported properties are listed below:</p><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><thead><tr><td class="confluenceTd"><p><strong>Property Name</strong></p></td><td class="confluenceTd"><p><strong>Usage</strong></p></td><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p><strong>Example</strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>presentationType</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>A specific presentationType for this list, it should always be set to documentManagementList</p></td><td class="confluenceTd"><p>presentationType=document<br/> ManagementList</p></td></tr><tr><td class="confluenceTd"><p>ViewName</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Specifies the name of V-Tag for the List View that will be used to supply the presentation information for the presentation type</p></td><td class="confluenceTd"><p>ViewName=docLT1</p></td></tr><tr><td class="confluenceTd"><p>retrievalActionCode</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Specifies the Action Code that will be executed to provide the Intermediate List style View XML that will be used to populate the list.</p></td><td class="confluenceTd"><p>retrievalActionCode=<br/> getDocuments</p></td></tr><tr><td class="confluenceTd"><p><strong>emptyListMessage</strong></p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Provides the empty list message that is displayed to the user</p></td><td class="confluenceTd"><p>emptyListMessage=There are no documents of this type to display.</p></td></tr><tr><td class="confluenceTd"><p><strong>e</strong><strong>nableFiltering</strong></p></td><td class="confluenceTd"><p>Optional</p></td><td class="confluenceTd"><p>Indicates if the filter row should be enabled or disabled. When property is present and set to N, the filter row will be hidden from the user</p></td><td class="confluenceTd"><p>enableFiltering=N</p><p>Defaults to Y if not provided</p></td></tr><tr><td class="confluenceTd"><p><strong>w</strong><strong>rapHeaderText</strong></p></td><td class="confluenceTd"><p>Optional</p></td><td class="confluenceTd"><p>When set to Y, the text within the Header row of a list should be wrapped.  When set to N, the “…” notation will be used to denote that there is more text than can fit in the header cell and the mouse over will be provided to show the full text.</p></td><td class="confluenceTd"><p>wrapHeaderText=Y</p><p>Defaults to N if not provided</p></td></tr><tr><td class="confluenceTd"><p><strong>linkColumnRefCode</strong></p></td><td class="confluenceTd"><p>Optional</p></td><td class="confluenceTd"><p>If populated, will assume the contents of the column is the link to the Document in the Document Storage System and will render it as a hyperlink. If that column has no value, no link will be rendered.</p></td><td class="confluenceTd"><p>linkColumnRefCode=<br/> linkToDoc</p></td></tr><tr><td class="confluenceTd"><p><strong>l</strong><strong>inkColumnText</strong></p></td><td class="confluenceTd"><p>Required if linkColumnRefCode is set</p></td><td class="confluenceTd"><p>This is the text to be used within the Hyperlink. It must be specified if a linkColumnRefCode is set</p></td><td class="confluenceTd"><p>linkColumnText=View Document</p></td></tr><tr><td class="confluenceTd"><p><strong>i</strong><strong>dC</strong><strong>olumn</strong><strong>ReferenceCode</strong></p></td><td class="confluenceTd"><p>Required if a Detail property file is provided or a Delete button is configured</p></td><td class="confluenceTd"><p>This is the column containing the ID for the document in the Document Storage System. This allows it to be referenced for editing and for deletion.</p></td><td class="confluenceTd"><p>idColumnReferenceCode=id</p></td></tr><tr><td class="confluenceTd"><p>isCrossProductView</p></td><td class="confluenceTd"><p>Optional</p></td><td class="confluenceTd"><p>If the list configuration is to be shared across multiple Product Groups, then it can be configured in the Cross Product Group. This property should be set to Y to indicate this.</p><p>By default, this property is set to N and the Lists View configuration will be local to the Web Page Template.</p></td><td class="confluenceTd"><p>isCrossProductView=Y</p><p>Defaults to N if not provided</p></td></tr><tr><td class="confluenceTd"><p>beginPagingThreshold</p></td><td class="confluenceTd"><p>Optional</p></td><td class="confluenceTd"><p>Indicates the point at which paging will become enabled. Until this threshold is exceeded the paging controls will not be shown.</p><p>NOTE: Unlike other lists there is no enableScrolling aspect to this property as scrolling is not enabled.</p></td><td class="confluenceTd"><p>beginPagingThreshold=10</p><p>Defaults to 15 if not provided</p></td></tr><tr><td class="confluenceTd"><p>maxRowNumber</p></td><td class="confluenceTd"><p>Optional</p></td><td class="confluenceTd"><p>If the number of rows exceeds this amount, then the data will be cut off and only the maximum number will be displayed.</p></td><td class="confluenceTd"><p>maxRowNumber=100</p><p>Defaults to 200 if not provided</p></td></tr></tbody></table></div><h4 id="docManagementTemplate-DetailProperties"><br/>Detail Properties</h4><p>This detail is non-standard and does not support a full set of the properties that a standard configured detail can support. The table below shows the supported properties:</p><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><thead><tr><td class="confluenceTd"><p><strong>Property Name</strong></p></td><td class="confluenceTd"><p><strong>Usage</strong></p></td><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p><strong>Example</strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>presentationType</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>A specific presentationType for this detail, it should always be set to documentManagementDetail</p></td><td class="confluenceTd"><p>presentationType=document<br/> ManagementDetail</p></td></tr><tr><td class="confluenceTd"><p>ViewName</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Specifies the name of V-Tag for the Detail View that will be used to supply the presentation information for the presentation type</p></td><td class="confluenceTd"><p>ViewName=docDT1</p></td></tr><tr><td class="confluenceTd"><p>isCrossProductView</p></td><td class="confluenceTd"><p>Optional</p></td><td class="confluenceTd"><p>If the detail configuration is to be shared across multiple Product Groups then it can be configured in the Cross Product Group. This property should be set to Y to indicate this.</p><p>By default, this property is set to N and the Details View configuration will be local to the Web Page Template.</p></td><td class="confluenceTd"><p>isCrossProductView=Y</p><p>Defaults to N if not provided</p></td></tr></tbody></table></div><h3 class="auto-cursor-target" id="docManagementTemplate-"> </h3>
+                    </div>
+
+                    
+                 
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 05 Dec, 2019 16:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

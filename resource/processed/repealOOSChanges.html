@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : repealOOSChanges</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : repealOOSChanges
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="repealOOSChanges-RepealOOSChanges">Repeal OOS Changes</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method allows the user to abandon an attempt to issue a set of replacement transactions created as a result of OOS processing. <br/>The method will physically delete any of the pending replacement transactions identified by a Removal Code of A or M and will update any pending replaced transactions identified by a Removal Code of P by setting their Removal Code back to null. The method will also reset to null any OOS Completion Codes on any remaining transactions.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd"><ul><li>Must be executed from within an OOS policy transaction context after the replacement processing has been performed.</li><li>Not available for use by an OOS Cancel transaction.</li></ul></td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">Not available if Incomplete OOS Policy Fact is false</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">This method is called by configuration when the user clicks the Cancel button from within the new <em>OOS Transaction Summary</em> page.</td></tr></tbody></table></div><p><br/></p><h4 id="repealOOSChanges-XMLUsage">XML Usage</h4><p>None</p><h4 id="repealOOSChanges-Attributes">Attributes</h4><p>None</p><h4 id="repealOOSChanges-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Return Code</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Transaction in context is not OOS</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Transaction in context is a Cancel transaction</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">No replacement transactions found on the policy</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p><h4 id="repealOOSChanges-ImplementationExample">Implementation Example</h4><h5 id="repealOOSChanges-Action">Action</h5><p>cancelIssueOfOOS</p><h5 id="repealOOSChanges-Actiontype">Action type</h5><p>Standard Action</p><h5 id="repealOOSChanges-Dependency">Dependency</h5><p>None</p><h5 id="repealOOSChanges-ActionStep">Action Step</h5><h5 id="repealOOSChanges-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356518/3797554050.png?height=250" data-image-src="attachments/3797356518/3797554050.png" data-unresolved-comment-count="0" data-linked-resource-id="3797554050" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="repealoos.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356518" data-linked-resource-container-version="2" data-media-id="92da2b02-3da3-4e39-8748-1c3c64030120" data-media-type="file"></span></h5><h5 id="repealOOSChanges-Outcomes">Outcomes</h5><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" width="600" loading="lazy" src="attachments/3797356518/3797554055.png?width=600" data-image-src="attachments/3797356518/3797554055.png" data-unresolved-comment-count="0" data-linked-resource-id="3797554055" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="repealsuccess.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356518" data-linked-resource-container-version="2" data-media-id="e74d1721-b0f4-4199-9487-1387df013a6a" data-media-type="file"></span></p><p><br/></p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" width="600" loading="lazy" src="attachments/3797356518/3797554060.png?width=600" data-image-src="attachments/3797356518/3797554060.png" data-unresolved-comment-count="0" data-linked-resource-id="3797554060" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="repealfail.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356518" data-linked-resource-container-version="2" data-media-id="57e0256b-7107-4ac9-b100-3e23628734b0" data-media-type="file"></span></p><h5 id="repealOOSChanges-Attributes.1">Attributes</h5><p>None</p><p><br/></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356518/3797554050.png">repealoos.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356518/3797554055.png">repealsuccess.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356518/3797554060.png">repealfail.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : getCurrencyConversionRate</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : getCurrencyConversionRate
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="getCurrencyConversionRate-GetCurrencyConversionRates">Get Currency Conversion Rates</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method is a View Action method that will accept an Accounting Currency, Original Currency, Exchange Rate Date, and a Writing Company and return conversion rates (Accounting and Original Rates). These rates can be used to convert limits, deductibles, and premiums to capture additional information to support multiple currencies. This service uses the WritingCompanyExchangeRates table to return the exchange rates. <br/>Example input XML: &lt; policyCoverage&gt; &lt;accountingCurrency LITERAL=&quot;United States Dollars&quot;&gt;USD&lt;/accountingCurrency&gt; &lt;originalCurrency LITERAL=&quot;United States Dollars&quot;&gt;USD&lt;/originalCurrency&gt; &lt;currencyExchangeRateDate&gt;07/29/2010&lt;/currencyExchangeRateDate&gt; &lt;COMPANY LITERAL=&quot;Stellar Canada&quot;&gt;CAN&lt;/COMPANY&gt; &lt;baseCurrency&gt;CAD&lt;/baseCurrency&gt; &lt; /policyCoverage&gt; <br/>Example output XML: &lt; viewXML&gt; &lt;returnCode&gt;2&lt;/returnCode&gt; &lt;returnReasonCode&gt;0&lt;/returnReasonCode&gt; &lt;answerSets&gt; &lt;question XMLTAG=&quot;currencyConversionRateRtnCd&quot;&gt; &lt;selectedAnswerValue&gt;1&lt;/selectedAnswerValue&gt; &lt;/question&gt; &lt;question XMLTAG=&quot;accountingCurrencyExchangeRate&quot;&gt; &lt;selectedAnswerValue&gt;0.8250&lt;/selectedAnswerValue&gt; &lt;/question&gt; &lt;question XMLTAG=&quot;originalCurrencyExchangeRate&quot;&gt; &lt;selectedAnswerValue&gt;0.8250&lt;/selectedAnswerValue&gt; &lt;/question&gt; &lt;/answerSets&gt; &lt; /viewXML&gt;</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Detail View</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Note that the service requires input XML tags for accountingCurrency, originalCurrency, currencyExchangeRateDate, COMPANY, and baseCurrency (as seen above).The example above shows a policyCoverage parent node.This node may vary (i.e. locationCoverage, vehicleCoverage, etc.).</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">All of the input variables should be present.</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">Rates should be entered in the WritingCompanyExchangeRates table <br/>Example rows</td></tr><tr><td class="confluenceTd">writing_co</td><td class="confluenceTd">base_currency</td><td class="confluenceTd">conv_currency</td><td class="confluenceTd">exchange_rate</td><td class="confluenceTd">effective_date</td><td class="confluenceTd">expiration_date</td></tr><tr><td class="confluenceTd">CAN</td><td class="confluenceTd">CAD</td><td class="confluenceTd">CAD</td><td class="confluenceTd">1.0</td><td class="confluenceTd">01/01/1900</td><td class="confluenceTd">12/31/2999</td></tr><tr><td class="confluenceTd">CAN</td><td class="confluenceTd">CAD</td><td class="confluenceTd">USD</td><td class="confluenceTd">0.8250</td><td class="confluenceTd">01/01/2010</td><td class="confluenceTd">08/01/2010</td></tr><tr><td class="confluenceTd">CAN</td><td class="confluenceTd">CAD</td><td class="confluenceTd">USD</td><td class="confluenceTd">0.9719</td><td class="confluenceTd">08/02/2010</td><td class="confluenceTd">12/31/2999</td></tr><tr><td class="confluenceTd">STELLAR</td><td class="confluenceTd">USD</td><td class="confluenceTd">USD</td><td class="confluenceTd">1.0</td><td class="confluenceTd">01/01/1900</td><td class="confluenceTd">12/31/2999</td></tr><tr><td class="confluenceTd">STELLAR</td><td class="confluenceTd">USD</td><td class="confluenceTd">EUR</td><td class="confluenceTd">0.8125</td><td class="confluenceTd">01/01/2010</td><td class="confluenceTd">08/01/2010</td></tr><tr><td class="confluenceTd">STELLAR</td><td class="confluenceTd">USD</td><td class="confluenceTd">EUR</td><td class="confluenceTd">0.7660</td><td class="confluenceTd">08/02/2010</td><td class="confluenceTd">12/31/2999</td></tr><tr><td class="confluenceTd">STELLMEX</td><td class="confluenceTd">MXN</td><td class="confluenceTd">MXN</td><td class="confluenceTd">1.0</td><td class="confluenceTd">01/01/1900</td><td class="confluenceTd">12/31/2999</td></tr><tr><td class="confluenceTd">STELLMEX</td><td class="confluenceTd">MXN</td><td class="confluenceTd">USD</td><td class="confluenceTd">0.0934</td><td class="confluenceTd">01/01/2010</td><td class="confluenceTd">08/01/2010</td></tr><tr><td class="confluenceTd">STELLMEX</td><td class="confluenceTd">MXN</td><td class="confluenceTd">USD</td><td class="confluenceTd">0.0789</td><td class="confluenceTd">08/02/2010</td><td class="confluenceTd">12/31/2999</td></tr><tr><td class="confluenceTd">UK</td><td class="confluenceTd">GBP</td><td class="confluenceTd">GBP</td><td class="confluenceTd">1.0</td><td class="confluenceTd">01/01/1900</td><td class="confluenceTd">12/31/2999</td></tr><tr><td class="confluenceTd">UK</td><td class="confluenceTd">GBP</td><td class="confluenceTd">GBP</td><td class="confluenceTd">1.4234</td><td class="confluenceTd">01/01/2010</td><td class="confluenceTd">08/01/2010</td></tr><tr><td class="confluenceTd">UK</td><td class="confluenceTd">GBP</td><td class="confluenceTd">GBP</td><td class="confluenceTd">1.2025</td><td class="confluenceTd">08/02/2010</td><td class="confluenceTd">12/31/2999</td></tr></tbody></table></div><p> </p><h4 id="getCurrencyConversionRate-XMLUsage">XML Usage</h4><p>Generate from View</p><h4 id="getCurrencyConversionRate-Attributes">Attributes</h4><p>N/A</p><h4 id="getCurrencyConversionRate-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Accounting Currency Rate did not exist for writing company for the date supplied</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Original Currency Rate did not exist for writing company for the date supplied</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="getCurrencyConversionRate-ImplementationExample">Implementation Example</h4><h5 id="getCurrencyConversionRate-Action">Action</h5><h5 id="getCurrencyConversionRate-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356492/3797553849.png?height=250" data-image-src="attachments/3797356492/3797553849.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553849" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="pic1.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356492" data-linked-resource-container-version="2" data-media-id="7b8aae67-f910-4bfa-bc62-2fa143fbe604" data-media-type="file"></span></h5><h5 id="getCurrencyConversionRate-ActionType">Action Type</h5><p>Detail View Action</p><p> </p><h5 id="getCurrencyConversionRate-Dependency">Dependency</h5><p>The dependency checks to see if the input parameters have answers.</p><h5 id="getCurrencyConversionRate-.1"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="120" loading="lazy" src="attachments/3797356492/3797553854.png?height=120" data-image-src="attachments/3797356492/3797553854.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553854" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="pic2.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356492" data-linked-resource-container-version="2" data-media-id="a6df8758-6f66-4454-8f5a-808255d85822" data-media-type="file"></span></h5><h5 id="getCurrencyConversionRate-ActionStep">Action Step</h5><p>The Input interface should contain the accountingCurrency, originalCurrency, currencyExchangeRateDate, COMPANY, and baseCurrency questions.</p><h5 id="getCurrencyConversionRate-.2"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356492/3797553859.png?height=250" data-image-src="attachments/3797356492/3797553859.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553859" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="pic3.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356492" data-linked-resource-container-version="2" data-media-id="696ae41b-5bff-4044-a5b5-e79c39ea29fa" data-media-type="file"></span></h5><h5 id="getCurrencyConversionRate-Outcomes">Outcomes</h5><h5 id="getCurrencyConversionRate-.3"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="160" loading="lazy" src="attachments/3797356492/3797553864.png?height=160" data-image-src="attachments/3797356492/3797553864.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553864" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="pic4.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356492" data-linked-resource-container-version="2" data-media-id="c59dec8f-d437-499b-806e-f73f61de5084" data-media-type="file"></span></h5><h5 id="getCurrencyConversionRate-Attributes.1">Attributes</h5><p>N/A</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356492/3797553849.png">pic1.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356492/3797553854.png">pic2.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356492/3797553859.png">pic3.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356492/3797553864.png">pic4.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

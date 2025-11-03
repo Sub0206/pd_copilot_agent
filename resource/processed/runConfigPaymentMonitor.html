@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : runConfigPaymentMonitor</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : runConfigPaymentMonitor
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified by <span class='editor'> Jagadish Rotti</span> on Jun 10, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><strong><span class="TextRun BCX0 SCXW64196528 legacy-color-text-default"><span class="SpellingError BCX0 SCXW64196528"><span class="TextRun BCX0 SCXW44373938 legacy-color-text-default"><span class="NormalTextRun BCX0 SCXW44373938">Run</span></span><span class="TextRun BCX0 SCXW44373938 legacy-color-text-default"><span class="NormalTextRun BCX0 SCXW44373938"> Configured</span></span><span class="TextRun BCX0 SCXW44373938 legacy-color-text-default"><span class="NormalTextRun BCX0 SCXW44373938"> </span></span><span class="TextRun BCX0 SCXW44373938 legacy-color-text-default"><span class="NormalTextRun BCX0 SCXW44373938">Payment Monitor</span></span></span></span></strong></p><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd"><p>This method will use the provided attributes to create tracking events for a given policy based on the current standing of the policy (overdue) and its previously (or lack of) tracking events.</p></td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd"><p>Must be executed from within Adaptik Billing</p></td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p> </p><h4 id="runConfigPaymentMonitor-XMLUsage">XML Usage</h4><p>Generate from Database</p><p><strong>Attributes</strong></p><div class="table-wrap"><table class="confluenceTable"><thead><tr><td class="confluenceTd"><p><strong>Seq # </strong></p></td><td class="confluenceTd"><p><strong>Code </strong></p></td><td class="confluenceTd"><p><strong>Value </strong></p></td><td class="confluenceTd"><p><strong>Type </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>nearExpDays</p></td><td class="confluenceTd"><p>Q_30004_254</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Near Expiration Days</p></td></tr><tr><td class="confluenceTd"><p>30</p></td><td class="confluenceTd"><p>overdueBalTolAmtCAD</p></td><td class="confluenceTd"><p>Q_30004_259</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Overdue Balance Tolerance Amount in CAD</p></td></tr><tr><td class="confluenceTd"><p>40</p></td><td class="confluenceTd"><p>overdueBalTolAmtUSD</p></td><td class="confluenceTd"><p>Q_30004_259</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Overdue Balance Tolerance Amount in USD</p></td></tr><tr><td class="confluenceTd"><p>140</p></td><td class="confluenceTd"><p>eventDateQTAG</p></td><td class="confluenceTd"><p>Q_30036_7</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Event Date QTAG</p></td></tr><tr><td class="confluenceTd"><p>160</p></td><td class="confluenceTd"><p>eventSourceQTAG</p></td><td class="confluenceTd"><p>Q_30036_9</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Event Source QTAG</p></td></tr><tr><td class="confluenceTd"><p>170</p></td><td class="confluenceTd"><p>eventTypeQTAG</p></td><td class="confluenceTd"><p>Q_30036_1</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Event Type QTAG</p></td></tr><tr><td class="confluenceTd"><p>180</p></td><td class="confluenceTd"><p>eventCurrBalQTAG</p></td><td class="confluenceTd"><p>Q_30036_5</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Event Current Balance</p></td></tr><tr><td class="confluenceTd"><p>190</p></td><td class="confluenceTd"><p>eventTotalBalQTAG</p></td><td class="confluenceTd"><p>Q_30036_6</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Event Total Balance</p></td></tr><tr><td class="confluenceTd"><p>200</p></td><td class="confluenceTd"><p>holdOffUntilDateQTAG</p></td><td class="confluenceTd"><p>Q_30004_168</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Hold off Until Date QTAG</p></td></tr><tr><td class="confluenceTd"><p>210</p></td><td class="confluenceTd"><p>plannedCancelQTAG</p></td><td class="confluenceTd"><p>Q_30004_164</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Planned Cancel Date QTAG</p></td></tr><tr><td class="confluenceTd"><p>215</p></td><td class="confluenceTd"><p>paymentStatusQTAG</p></td><td class="confluenceTd"><p>Q_30004_162</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Payment Status QTAG</p></td></tr><tr><td class="confluenceTd"><p>216</p></td><td class="confluenceTd"><p>paymtStatusDateQTAG</p></td><td class="confluenceTd"><p>Q_30004_163</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Payment Status Date QTAG</p></td></tr><tr><td class="confluenceTd"><p>217</p></td><td class="confluenceTd"><p>priorPaymtStatusQTAG</p></td><td class="confluenceTd"><p>Q_30036_3</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Prior Pament State QTAG</p></td></tr><tr><td class="confluenceTd"><p>220</p></td><td class="confluenceTd"><p>newPaymentStatusQTAG</p></td><td class="confluenceTd"><p>Q_30036_4</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>New Payment Status QTAG</p></td></tr><tr><td class="confluenceTd"><p>230</p></td><td class="confluenceTd"><p>cancelAllowedIndQTAG</p></td><td class="confluenceTd"><p>Q_30004_222</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Cancel Allowed Ind QTAG</p></td></tr><tr><td class="confluenceTd"><p>240</p></td><td class="confluenceTd"><p>cancelMethodQTAG</p></td><td class="confluenceTd"><p>Q_30004_226</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Cancel Method QTAG</p></td></tr><tr><td class="confluenceTd"><p>250</p></td><td class="confluenceTd"><p>equityDateQTAG</p></td><td class="confluenceTd"><p>Q_30004_389</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Equity Date QTAG</p></td></tr><tr><td class="confluenceTd"><p>260</p></td><td class="confluenceTd"><p>polAnnualPremQTAG</p></td><td class="confluenceTd"><p>Q_30004_270</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Policy Annualized Premium</p></td></tr><tr><td class="confluenceTd"><p>265</p></td><td class="confluenceTd"><p>minCancelDaysQTAG</p></td><td class="confluenceTd"><p>Q_30004_228</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Minimum Cancel Days QTAG, used to determine Planned Cancel Date in Payment Monitor</p></td></tr><tr><td class="confluenceTd"><p>266</p></td><td class="confluenceTd"><p>maxCancelDaysQTAG</p></td><td class="confluenceTd"><p>Q_30004_456</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Maximum Cancel Days QTAG, used to determine Planned Cancel Date in Payment Monitor</p></td></tr><tr><td class="confluenceTd"><p>270</p></td><td class="confluenceTd"><p>paymonEventBTAG</p></td><td class="confluenceTd"><p>26400</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Payment Monitor Event BTAG</p></td></tr><tr><td class="confluenceTd"><p> </p></td><td class="confluenceTd"><p><strong> </strong></p></td><td class="confluenceTd"><p> </p></td><td class="confluenceTd"><p> </p></td><td class="confluenceTd"><p> </p></td></tr><tr><td class="confluenceTd"><p>290</p></td><td class="confluenceTd"><p>pastDueDate</p></td><td class="confluenceTd"><p>Q_30007_92</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Past Due Date QTAG</p></td></tr><tr><td class="confluenceTd"><p>300</p></td><td class="confluenceTd"><p>pastDueAmt</p></td><td class="confluenceTd"><p>Q_30007_3</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Past Due Amount QTAG</p></td></tr><tr><td class="confluenceTd"><p>305</p></td><td class="confluenceTd"><p>exceptionLinkQTAG</p></td><td class="confluenceTd"><p>Q_30004_493</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Product Exception Link QTAG</p></td></tr><tr><td class="confluenceTd"><p>308</p></td><td class="confluenceTd"><p>UPLOAD_ACTION</p></td><td class="confluenceTd"><p>Valid Configured Action Code</p><p>Ex:</p><p>sendDownstream</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Optional Attribute, it will contain a configured action code that will be invoked after each Policy has a tracking event created</p></td></tr><tr><td class="confluenceTd"><p>310</p></td><td class="confluenceTd"><p>INTERFACE</p></td><td class="confluenceTd"><p>updTrackingEvent</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Interface for Policy and Tracking Event Views</p></td></tr></tbody></table></div><p><strong><br/></strong></p><p><strong>Return Codes</strong></p><p><span> </span></p><p><em>Return Codes are configurable except for 999 and -1</em></p><p><em>999 – Success but no event created</em></p><p>-1 = Unspecified Failure</p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

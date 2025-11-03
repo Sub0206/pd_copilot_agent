@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : runPolicyTransfer</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : runPolicyTransfer
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span>, last modified on May 15, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>This method will process an algorithm that will transfer a Policy mid-term</p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Standard</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>Must be executed from within the Sapiens BillingPro</p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None</p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>None</p></td></tr></tbody></table></div><p><br/></p><h3 id="runPolicyTransfer-XMLUsage">XML Usage</h3><p>None</p><h3 id="runPolicyTransfer-Attributes">Attributes</h3><p>Upon selection of this Internal Method, the following step attribute occurrences will be automatically created.</p><p>Below are the attributes used in this method.</p><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><thead><tr><td class="confluenceTd"><p><strong>Seq # </strong></p></td><td class="confluenceTd"><p><strong>Code </strong></p></td><td class="confluenceTd"><p><strong>Value </strong></p><p><strong>(if applicable)</strong></p></td><td class="confluenceTd"><p><strong>Value Type </strong></p><p><strong>(if applicable)</strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>POL_TRANSF_FROM_MC</p></td><td class="confluenceTd"><p>Required</p><p>Q_3####_##</p><p>Ex: Q_30004_439</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Policy Transfer from MC (Source Account)</p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>POL_TRANSF_FROM_POL</p></td><td class="confluenceTd"><p>Required</p><p>Q_3####_##</p><p>Ex: Q_30004_440</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Policy Transfer from Policy ID(Source Account)</p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>30</p></td><td class="confluenceTd"><p>POL_TRANSF_TO_MC</p></td><td class="confluenceTd"><p>Required</p><p>Q_3####_##</p><p>Ex: Q_30004_485</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Policy Transfer to MC</p></td></tr><tr><td class="confluenceTd"><p>40</p></td><td class="confluenceTd"><p>POL_TRANSF_TO_POLICY</p></td><td class="confluenceTd"><p>Required</p><p>Q_3####_##</p><p>Ex: Q_30004_486</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Policy Transfer to Policy ID</p></td></tr><tr><td class="confluenceTd"><p>50</p></td><td class="confluenceTd"><p>CRT_ADJ_ACTION_CODE</p></td><td class="confluenceTd"><p>Required</p><p>Valid Action Code</p><p>Ex: createPTAdjustment</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Create Adjustment for Policy Transfer Action Code</p></td></tr><tr><td class="confluenceTd"><p>60</p></td><td class="confluenceTd"><p>POST_ADJ_ACTION_CODE</p></td><td class="confluenceTd"><p>Required</p><p>Valid Action Code</p><p>Ex: allocatePTAdjustment</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Post Adjustment Action Code for Policy Transfer</p></td></tr><tr><td class="confluenceTd"><p>70</p></td><td class="confluenceTd"><p>POST_ADJ_ALLOC_VIEW</p></td><td class="confluenceTd"><p>Required</p><p>Valid View Code</p><p>Ex: adjustmentAllocUPD</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Post Adjustment View for Policy Transfer</p></td></tr><tr><td class="confluenceTd"><p>80</p></td><td class="confluenceTd"><p>GEN_TRF_XML_ITAG</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Interface for XML generation for policy transfer to target account</p></td></tr><tr><td class="confluenceTd"><p>90</p></td><td class="confluenceTd"><p>GEN_TRF_XSLT</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>XSLT to translate the XML to transfer the policy to the target</p></td></tr><tr><td class="confluenceTd"><p>100</p></td><td class="confluenceTd"><p>TAR_POL_PAY_PLAN</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Pay Plan for the target account</p></td></tr><tr><td class="confluenceTd"><p>110</p></td><td class="confluenceTd"><p>REMIT_ALL_VW_NAME</p></td><td class="confluenceTd"><p>Required</p><p>Valid View Code</p><p>Ex:</p><p>remitUpdLT</p></td><td class="confluenceTd"><p>Text</p><p><br/></p></td><td class="confluenceTd"><p>View for Remittance Allocation for un-apply processing</p></td></tr><tr><td class="confluenceTd"><p>120</p></td><td class="confluenceTd"><p>REMIT_UN_ACT_CODE</p></td><td class="confluenceTd"><p>Required</p><p>Valid Action Code</p><p>Ex:</p><p>unAllocateRemittance</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Action to Unallocate Remittances for un-apply Processing</p></td></tr><tr><td class="confluenceTd"><p>130</p></td><td class="confluenceTd"><p>REMIT_ALL_ACT_CODE</p></td><td class="confluenceTd"><p>Required</p><p>Valid Action Code</p><p>Ex:</p><p>allocRemitDB</p><p><br/></p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Action for Remittance Allocation for re-apply Processing</p></td></tr><tr><td class="confluenceTd"><p>140</p></td><td class="confluenceTd"><p>UPLOAD_ACTION_CODE</p></td><td class="confluenceTd"><p>Required</p><p>Valid Action Code</p><p>Ex:</p><p>uploadPolTransfer</p><p><br/></p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Action for uploading the Policy occurrence and related occurrences on the target account</p></td></tr><tr><td class="confluenceTd"><p>150</p></td><td class="confluenceTd"><p>TRX_OFF_UN_ACT_CODE</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Un allocation action code for Transactional offset</p></td></tr><tr><td class="confluenceTd"><p>160</p></td><td class="confluenceTd"><p>TRX_OFF_ALL_VW_NAME</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Valid View tag for transactional offset</p></td></tr><tr><td class="confluenceTd"><p>170</p></td><td class="confluenceTd"><p>ADJ_UN_ACTION_CODE</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Un allocating adjustment action code</p></td></tr></tbody></table></div><p><strong> </strong></p><h3 id="runPolicyTransfer-ReturnCodes">Return Codes</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Return Code </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr><tr><td class="confluenceTd"><p>1</p></td><td class="confluenceTd"><p>Success</p></td></tr><tr><td class="confluenceTd"><p>3</p></td><td class="confluenceTd"><p>Missing Parameters</p></td></tr><tr><td class="confluenceTd"><p>-1</p></td><td class="confluenceTd"><p>Unknown Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

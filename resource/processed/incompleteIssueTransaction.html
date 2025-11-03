@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : incompleteIssueTransaction</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : incompleteIssueTransaction
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="incompleteIssueTransaction-MarkTransactionasIncompleteIssue">Mark Transaction as Incomplete Issue</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">Sets and resets the status value for a transaction in context to P (Pending Issue) to indicate that the transaction is in the process of being issued in the downstream system.<br/>If a policy has any transaction with a Status of P the entire policy is locked due to a possible out of sync condition with the downstream system(s).</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p> </p><h4 id="incompleteIssueTransaction-XMLUsage">XML Usage</h4><p>None</p><h4 id="incompleteIssueTransaction-Attributes">Attributes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Name</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Values</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Behavior</div></th></tr></thead><tbody><tr><td class="confluenceTd">ACTION</td><td class="confluenceTd">SET RESET</td><td class="confluenceTd"><strong>When ACTION=SET</strong><ul><li>Sets the Status value of the policy transaction in question 30000-40, on the contract_transaction table to Incomplete Issue (P).</li><li>Sets the value of the Status in the search information associated with the policy to Incomplete Issue (P) to support retrieval of policies identified as being in an Incomplete Issue status.<br/><strong>When ACTION=RESET</strong></li><li>Sets the Status value of the policy transaction to Open</li><li>Updates the Status value in the search information to Closed for issued policies, and Open for quotes/Applications.</li></ul></td></tr></tbody></table></div><h4 id="incompleteIssueTransaction-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">MC, CT, Version not in context</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Unspecified Failure</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="incompleteIssueTransaction-ImplementationExample">Implementation Example</h4><h5 id="incompleteIssueTransaction-Action">Action</h5><p>Issue</p><h5 id="incompleteIssueTransaction-Actiontype">Action type</h5><p>Standard Action</p><h5 id="incompleteIssueTransaction-Dependency">Dependency</h5><p>(status=O ) AND (Macro[Not Removed]) AND (subtype&lt;&gt;QT ) AND (stage&gt;=340 )</p><h5 id="incompleteIssueTransaction-ActionStep">Action Step</h5><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Name</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Dependency</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Applicable?</div></th></tr></thead><tbody><tr><td class="confluenceTd">3</td><td class="confluenceTd">ADDRATEERROR</td><td class="confluenceTd">Add Error if Quote was rate more than 30 days ago</td><td class="confluenceTd">(Policy.State Type=EA, P ) AND (Policy.Rating Date Time Stamp&lt;current_date -30)</td><td class="confluenceTd">N</td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">UPDPROCDATE</td><td class="confluenceTd">Update Process Date</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">7</td><td class="confluenceTd">RESETREF</td><td class="confluenceTd">Reset Reference Date</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">SELECTCV</td><td class="confluenceTd">Check for new CV and run Rule Reapp.</td><td class="confluenceTd">(Policy.Transaction Type=RENEW ) OR ((Policy.Transaction Type=NB, REWRITE ) AND (Policy.State Type=E ))</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">COMPLETENESS</td><td class="confluenceTd">Field Level Completeness Check</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">25</td><td class="confluenceTd">EVALOCCCOUNTS</td><td class="confluenceTd">Evaluate Occurrence Counts</td><td class="confluenceTd">(Policy Facts : OOS_INDICATOR=Y )</td><td class="confluenceTd">N</td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">POLICYNUMBER</td><td class="confluenceTd">Policy Number Determination</td><td class="confluenceTd">(Policy.Transaction Type=NB, CONV, REWRITE )</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">50</td><td class="confluenceTd">SETINCISSUE</td><td class="confluenceTd">Set Incomplete Issue</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr></tbody></table></div><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Name</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Dependency</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Applicable?</div></th></tr></thead><tbody><tr><td class="confluenceTd">51</td><td class="confluenceTd">NOTIFY</td><td class="confluenceTd">Notify/Issue in CARS</td><td class="confluenceTd">N</td><td class="confluenceTd">N</td></tr><tr><td class="confluenceTd">52</td><td class="confluenceTd">RESETINCISSUE</td><td class="confluenceTd">Reset Incomplete Issue</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">53</td><td class="confluenceTd">COMPLETETRAN</td><td class="confluenceTd">Complete Transaction</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">54</td><td class="confluenceTd">PROCOOSCHG</td><td class="confluenceTd">Process OOS Changes</td><td class="confluenceTd">(Step Code - COMPLETETRAN : Return_Code=2, 5, 6 )</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">110</td><td class="confluenceTd">UPDATEREPORT</td><td class="confluenceTd">Update Reporting Table</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">115</td><td class="confluenceTd">UPD180</td><td class="confluenceTd">Update Honor Quote Rules</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr></tbody></table></div><h5 id="incompleteIssueTransaction-Outcomes">Outcomes</h5><h6 id="incompleteIssueTransaction-Dependency:(StepCode-SETINCISSUE:Return_Code=1)">Dependency: (Step Code - SETINCISSUE : Return_Code=1 )</h6><h6 id="incompleteIssueTransaction-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356494/3797553876.png?height=250" data-image-src="attachments/3797356494/3797553876.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553876" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture65.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356494" data-linked-resource-container-version="2" data-media-id="4f5c5003-9972-4c6f-bafe-8aae33485bab" data-media-type="file"></span></h6><h6 id="incompleteIssueTransaction-Dependency:(StepCode-SETINCISSUE:Return_Code=2)">Dependency: (Step Code - SETINCISSUE : Return_Code=2 )</h6><h6 id="incompleteIssueTransaction-.1"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356494/3797553871.png?height=250" data-image-src="attachments/3797356494/3797553871.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553871" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture66.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356494" data-linked-resource-container-version="2" data-media-id="b4da13ca-0c8b-411c-91f5-23be98de82af" data-media-type="file"></span></h6><h6 id="incompleteIssueTransaction-Dependency:(StepCode-SETINCISSUE:Return_Code=3)">Dependency: (Step Code - SETINCISSUE : Return_Code=3 )</h6><h5 id="incompleteIssueTransaction-.2"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356494/3797553881.png?height=250" data-image-src="attachments/3797356494/3797553881.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553881" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture67.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356494" data-linked-resource-container-version="2" data-media-id="0f2faa1d-9f1e-4593-bbe0-989b6223f7a0" data-media-type="file"></span></h5><h5 id="incompleteIssueTransaction-Attributes.1">Attributes</h5><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="154" loading="lazy" src="attachments/3797356494/3797553886.png?height=154" data-image-src="attachments/3797356494/3797553886.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553886" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture68.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356494" data-linked-resource-container-version="2" data-media-id="69a6a137-2e9e-43b4-8344-c5e6e2d5e1b0" data-media-type="file"></span></p><p><br/></p><p>                            </p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356494/3797553871.png">Picture66.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356494/3797553876.png">Picture65.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356494/3797553881.png">Picture67.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356494/3797553886.png">Picture68.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

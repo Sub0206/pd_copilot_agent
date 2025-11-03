@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : UpdateQuestionValueStandardAction</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : UpdateQuestionValueStandardAction
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="UpdateQuestionValueStandardAction-UpdateQuestionValue(StandardActionOnly)">Update Question Value (Standard Action Only)</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will update existing contract answers. If a Contract Answer does not exist already, then no update will occur. A new contract answer with the value will NOT be created. If the entity referred to is not policy, then every occurrence of the entity type that exists will be updated. <br/> <br/>A repeating group of attributes will be accepted for this method. Each attribute will specify a question and the value that should be updated. <br/> <br/>Enforce Stage on the answer is copied from the existing answer and used with the updated value.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context. <br/> <br/>Note that the following Questions should not be used:<br/> <br/>- Guest Questions are not supported with this method. Only the host question should be updated via this method. <br/>- Customer Link Questions.<br/>- Secondary Parent Questions.<br/>- Multi-Value Questions<br/>- Policy Facts<br/>- Derived Question (Answer Source = Derived)</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">If this method is used to update a Linked Question or a Question that uses Answer Options, it is suggested it be followed by a Rule Reapplication or Upload Step that processes those same Questions within the context of a View. This is suggested because the method sets the Contract Answer value and attempts to set the appropriate literal (note that if the literal is changed via exception or versioning, the detail view is not processed which means it is possible the incorrect literal is set). Rule Reapplication or Upload will execute the view and set the correct literal for the question.<br/> <br/>If the Step Attribute Value is &quot;CurrentDate()&quot;, or &quot;CurrentDateTime()&quot; the current date or timestamp is used to create the answer value.<br/> <br/>Also, policy level questions can be used as a source of the answer to be set. If a value of Q_30000_## is specified, then the value of the specified question (and its related information such as literal) will be copied.</td></tr></tbody></table></div><p><br/></p><h4 id="UpdateQuestionValueStandardAction-XMLUsage">XML Usage</h4><p>None</p><h4 id="UpdateQuestionValueStandardAction-Attributes">Attributes</h4><h6 id="UpdateQuestionValueStandardAction-EachAttributespecifiesthequestiontobesetbyQ-Tagandthevaluetobeapplied.">Each Attribute specifies the question to be set by Q-Tag and the value to be applied.</h6><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Seq #</th><th class="confluenceTh">Code</th><th class="confluenceTh">Value</th><th class="confluenceTh">Type</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">QTag Value <br/>(format Q_#####_#)</td><td class="confluenceTd">Example Value: <br/> Q_30000_123<br/> <br/>Policy level questions may also be used (Q_30000_##)</td><td class="confluenceTd">String</td><td class="confluenceTd">Identifies the policy question to be updated and specifies the value to set it to. <br/>(repeat attribute for each question value to be set) <br/><br/>If the Value is &quot;CurrentDate()&quot;, or &quot;CurrentDateTime()&quot; the current date or timestamp is used to create the answer value. <br/><br/>Otherwise, the value specified is used as the value to set in the answer. if the Question has Answer Options, the value specified should be the Code value for the correct Answer Option.</td></tr></tbody></table></div><h4 id="UpdateQuestionValueStandardAction-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Return Code</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Update successful</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Unspecified failure (cannot update DB, etc.)</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p><h4 id="UpdateQuestionValueStandardAction-ImplementationExample">Implementation Example</h4><h5 id="UpdateQuestionValueStandardAction-Action">Action</h5><p>RATEAPP (Rate)</p><h5 id="UpdateQuestionValueStandardAction-Actiontype">Action type</h5><p>Standard Action</p><h5 id="UpdateQuestionValueStandardAction-Dependency">Dependency</h5><p>(stage&lt;340 ) AND<br/>(status=O ) AND<br/>(type&lt;&gt;RENEW ) AND<br/>(subtype&lt;&gt;IDCARD, VIN, RULECHG, ADJUST ) AND<br/>(Policy Facts : INCOMPLETE_ISSUE_TIMESTAMP is absent )</p><h5 id="UpdateQuestionValueStandardAction-ActionStep">Action Step</h5><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="205" loading="lazy" src="attachments/3797356542/3797554306.png?height=205" data-image-src="attachments/3797356542/3797554306.png" data-unresolved-comment-count="0" data-linked-resource-id="3797554306" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture106.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356542" data-linked-resource-container-version="2" data-media-id="4cdfab55-6468-49d9-af6e-33fe9d0f96fc" data-media-type="file"></span></p><h5 id="UpdateQuestionValueStandardAction-Outcomes">Outcomes</h5><p>None</p><h5 id="UpdateQuestionValueStandardAction-Attributes.1">Attributes</h5><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Seq #</th><th class="confluenceTh">Code</th><th class="confluenceTh">Name</th><th class="confluenceTh">Value</th></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">Q_30000_45</td><td class="confluenceTd">Rating Date</td><td class="confluenceTd">CurrentDateTime()</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">Q_30000_180</td><td class="confluenceTd">Honor Quote</td><td class="confluenceTd">N</td></tr></tbody></table></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356542/3797554306.png">Picture106.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

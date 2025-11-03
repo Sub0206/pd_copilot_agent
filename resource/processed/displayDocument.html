@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : displayDocument</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : displayDocument
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified by <span class='editor'> Jagadish Rotti</span> on Oct 04, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="displayDocument-DisplayDocument">Display Document</h3><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">Extracts a binary document and queues it for display on the client when the Policy Action completes. The document will be presented in a separate browser window upon completion of the Policy Action (not within the main body of the window that started the policy action). Note that if the last Policy Action Outcome processed indicates that the Action is a &quot;Failure&quot; (Product Step Outcome. Does this Outcome Indicate Failure = Y), then display of any document will be aborted.<br/>Note that if this method were embedded in an Action Macro, then the document will be returned to the caller as long as the last processed Policy Action Outcome does not indicate &quot;Failure&quot; (as noted above).<br/>Note that Account Manager will take the content of the document and stream this content based upon the MIME type entered in the attribute. If the document does not match the MIME type specified, the document may not load. No additional virus scanning of the document will be performed by Account Manager.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd"><br/></td></tr></tbody></table></div><p><br/></p><h4 id="displayDocument-XMLUsage">XML Usage</h4><p><span>Step should be configured with XML-Use set to Accept XML for Update.</span></p><h4 id="displayDocument-Attributes">Attributes</h4><p><span>Three attributes are applicable for this method.  The first indicates the type of Document that has been returned from the Web Service.  The Value question should be answered with the MIME Type.  In the table below, the MIME types that have been tested with Account Manager are listed.  Other MIME types may be used, but have not been validated.  </span></p><p><span>The second Attribute indicates the TARGET.  With the 7.6 release, the only valid target will be newWindow.  Future releases will include the ability to specify an overlay, main body, or a specific area within the framework.</span></p><p>The third attribute allows an override to the system generated file name, this can either be a hardcoded string a QTag.</p><p><br/></p><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">TYPE</td><td class="confluenceTd"><ul><li>application/msword</li><li>application/<a class="external-link" href="http://vnd.ms/" rel="nofollow">vnd.ms</a>-excel.sheet.macroEnabled.12</li><li>application/pdf</li><li>text/html</li></ul></td><td class="confluenceTd">Text</td><td class="confluenceTd">Identifies the Document Type</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">TARGET</td><td class="confluenceTd">newWindow</td><td class="confluenceTd">Text</td><td class="confluenceTd">Identifies the target in which the document should be displayed. Only newWindow is supported within the 7.6 release.</td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">document_name</td><td class="confluenceTd">Either a QTag or a hardcoded string value.</td><td class="confluenceTd">Text</td><td class="confluenceTd">Specifies the name of the document. If not provided it is expected a default will be sent from the code generating the document. e.g AdaptikDataDownload.xlsm for Excel Download.</td></tr></tbody></table></div><h4 id="displayDocument-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="wrapped confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Document Successfully Extracted</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">No Document Found</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><h4 id="displayDocument-ImplementationExample">Implementation Example</h4><h5 id="displayDocument-Action">Action</h5><p>DATA_DOWNLOAD (Download Data to Excel)</p><h5 id="displayDocument-Actiontype">Action type</h5><p>Standard Action</p><h5 id="displayDocument-Dependency">Dependency</h5><p>None</p><h5 id="displayDocument-ActionStep">Action Step</h5><h6 id="displayDocument-DISPLAY_DOC(DisplayExcelDocument)">DISPLAY_DOC (Display Excel Document)</h6><h5 id="displayDocument-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356466/3797553658.png?height=250" data-image-src="attachments/3797356466/3797553658.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553658" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="step2.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356466" data-linked-resource-container-version="4" data-media-id="70a7bd03-a07d-4922-9929-236219c85c6c" data-media-type="file"></span></h5><h5 id="displayDocument-Outcomes">Outcomes</h5><p>None</p><h5 id="displayDocument-Attributes.1">Attributes</h5><div class="table-wrap"><table class="wrapped confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Name</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">TYPE</td><td class="confluenceTd">Document Type</td><td class="confluenceTd">application/<a class="external-link" href="http://vnd.ms/" rel="nofollow">vnd.ms</a>-excel.sheet.macroEnabled.12</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">TARGET</td><td class="confluenceTd">New Window</td><td class="confluenceTd">newWindow</td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">document_name</td><td class="confluenceTd"><br/></td><td class="confluenceTd"><span class="legacy-color-text-blue3">AdaptikDataDownload.xlsm</span></td></tr></tbody></table></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356466/3797553658.png">step2.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

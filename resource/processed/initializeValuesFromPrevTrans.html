@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : initializeValuesFromPrevTrans</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : initializeValuesFromPrevTrans
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="initializeValuesFromPrevTrans-InitializeValuesfromPrev.Transaction">Initialize Values from Prev. Transaction</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will reset contract answers for a configured list of questions on the current transaction to the values they had on the previous transaction. If a contract answer does not exist already on the current transaction, one will be created. If the question does not have an answer on the previous transaction, no new answer will be created for the question on the current transaction.<br/>If the question being updated is a dual field (meaning it exists as a column on contract_transaction too), then both the contract answer and the table value will be updated by the method.<br/>The values set by this method will be used in the transaction as the starting values for the questions. If the question already had changes applied those changes will be lost. The answers obtained by this method will appear as the &quot;before&quot; value for the question with the exception of Q-group 0 questions which will continue to be shown as new values on the transaction.<br/>A repeating group of attributes will be accepted for this method. Each attribute will specify a question whose value should be sourced from the previous transaction.<br/>Enforce Stage and any literal or other component on the answer is also copied from the previous transaction's answer and used for the current transaction.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">If the transaction is a New Business-like transaction (NB, CONV, and REWRITE) where there is no previous transaction, the method will do nothing and return an error indication.<br/>If the question's entity is not Policy, then the answers from the previous transaction will be taken from the corresponding occurrence (using occurrence ID) and all occurrences' answers will be initialized or reset. Any occurrences that did not exist in the previous transaction will not have their question values reset.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">Since there is no View processing involved with this method, all occurrences will be impacted if it is used for a repeating child entity. All occurrences that exist on the previous transaction will have their answers retrieved from that previous transaction. There will be no consideration for applicability in the current transaction although it may already have been established in the previous transaction. Applicability could be enforced using Rule Reapplication after this method executes.</td></tr></tbody></table></div><p> </p><h4 id="initializeValuesFromPrevTrans-XMLUsage">XML Usage</h4><p>None</p><h4 id="initializeValuesFromPrevTrans-Attributes">Attributes</h4><h6 id="initializeValuesFromPrevTrans-ThisAttributespecifiesthequestionswhoseanswersshouldbesetbyprovidingtheQ-Tag(s)intheValuefield.Ifmultiplequestionvaluesneedtobeset,commadelimitedentriesarelistedintheValuefield.">This Attribute specifies the questions whose answers should be set by providing the Q-Tag(s) in the Value field. If multiple question values need to be set,  comma delimited entries are listed in the Value field.</h6><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">CODE</td><td class="confluenceTd"><span>QTag Value </span> <span>(format Q_#####_#)</span></td><td class="confluenceTd">String</td><td class="confluenceTd">Identifies the policy question(s) to be initialized. (comma delimited q-tags are listed, if multiple values need to be set)</td></tr></tbody></table></div><p> </p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" width="600" loading="lazy" src="attachments/3797356498/3797553920.png?width=600" data-image-src="attachments/3797356498/3797553920.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553920" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="initializeValuesFromPrevTrans.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356498" data-linked-resource-container-version="2" data-media-id="b44eab06-785d-42f9-8c93-e7ead4417148" data-media-type="file"></span> </p><h4 id="initializeValuesFromPrevTrans-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Update successful</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Failure - No action taken on a New Business-like transaction.</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356498/3797553920.png">initializeValuesFromPrevTrans.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

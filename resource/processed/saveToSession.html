@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : saveToSession</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : saveToSession
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span>, last modified on Feb 18, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p class="auto-cursor-target"><strong>Save to Session</strong></p><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>This method will accept a list of Attributes that provide a list of session Questions within the current Detail View whose values in the View should be used to update the corresponding session variables from their Question Properties.</p><p>This allows user input data captured in an active Detail View to be persisted in the session without requiring that the View be submitted.</p><p>The method will loop through the provided attributes and for any Question listed that is configured in the current View, it will update the corresponding session variable with the value in the View Item.  Inapplicable, null or missing answers will be used to update their session variables to null.</p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>View</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>This method will only update session Questions.  If any of the Q-tags specified are not session Questions, they will be silently ignored.</p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None</p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>Can be used to transfer values from the current active Detail view to a user’s session.</p><p>Useful in a cross-product context to recall values previously entered by a user when the active Detail View in use is being replaced.</p><p>Excessive use of session variables can cause inflated memory requirements in the application server.  Values should be thoughtfully defined.</p></td></tr></tbody></table></div><h4 id="saveToSession-XMLUsage"><br/> XML Usage</h4><p>None</p><h4 id="saveToSession-Attributes">Attributes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Seq #</strong></p></td><td class="confluenceTd"><p><strong>Code</strong></p></td><td class="confluenceTd"><p><strong>Value</strong></p></td><td class="confluenceTd"><p><strong>Type </strong></p></td><td class="confluenceTd"><p><strong>Description</strong></p></td></tr><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>QTag Value</p><p>(format Q_#####_#)</p></td><td class="confluenceTd"><p>Not used – suggested usage is to contain the Question Name for documentation purposes.</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Identifies the policy question whose value is to be saved to session.</p><p><em>(repeat attribute for each question to be saved)</em></p></td></tr></tbody></table></div><p> </p><h4 id="saveToSession-ReturnCodes">Return Codes</h4><p>None</p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

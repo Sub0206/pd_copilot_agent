@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : UpdateRelatedAllocation</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : UpdateRelatedAllocation
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="UpdateRelatedAllocation-Create/UploadRelatedAllocation">Create/Upload Related Allocation</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will update the related Entity (identified using the targetMCID, targetCTID, targetVersion, and targetParentCID attributes) using the sourcePaidAmtQtag value.  A validation will be done by the method to confirm that the source amount (sourcePaidAmtQTag) value is less than or equal to the target amount value (targetBalanceAmtQTag).  Upon successful valdation, the targetPaidAmtQtag is updated using the sourcePaidAmtQtag and a child Allocation record will be created using targetChildMCID, targetChildCTID, targetChildVersion, and targetChildPaidAmtQtag using the sourcePaidAmtQtag.   </td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">View Action </td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed within an Allocation Template.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">If Allocation type is not equal to type Receivable.</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p> </p><h4 id="UpdateRelatedAllocation-XMLUsage">XML Usage</h4><p>Generate from Detail View</p><h4 id="UpdateRelatedAllocation-Attributes"><span>Attributes</span></h4><p><span> There will be seven Attributes required for this method.  This first four Attributes will always be MC-ID, CT-ID, Version, and Parent C-ID.  The next two Attributes will be Views that hold both the Target and Source information, the Code will be INTERFACE and the Value will be the I-Tag name.</span></p><p>Example:</p><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Literal</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">targetMCID</td><td class="confluenceTd">Free form text </td><td class="confluenceTd">Q_3####_## (i.e. Q_30004_12)</td><td class="confluenceTd">MCID of the target contract (which maybe yourself).  The Q-tag comes from the entity of the Updateable List that you are in context of.</td></tr><tr><td class="confluenceTd">targetCTID</td><td class="confluenceTd"><span>Free form text </span></td><td class="confluenceTd">Q_3####_## (i.e. Q_30004_13)</td><td class="confluenceTd">CTID of the target contract (which maybe yourself) The Q-tag comes from the entity of the Updateable List that you are in context of.</td></tr><tr><td class="confluenceTd">targetVersion</td><td class="confluenceTd"><span>Free form text </span></td><td class="confluenceTd">Q_3####_## (i.e. Q_30004_14)</td><td class="confluenceTd">Version of the target contract (which maybe yourself) The Q-tag comes from the entity of the Updateable List that you are in context of.</td></tr><tr><td class="confluenceTd">targetParentCID</td><td class="confluenceTd"><span>Free form text </span></td><td class="confluenceTd">Q_3####_## (i.e. Q_30004_15)</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd">targetBalanceAmtQTag</td><td class="confluenceTd"><span>Free form text </span></td><td class="confluenceTd">Q_3####_## (i.e. Q_30004_16)</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd">targetPaidAmtQTag</td><td class="confluenceTd"><span>Free form text </span></td><td class="confluenceTd">Q_3####_## (i.e. Q_30004_17)</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd">sourcePaidAmtQTAG</td><td class="confluenceTd"><span>Free form text </span></td><td class="confluenceTd">Q_3####_## (i.e. Q_30004_17)</td><td class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd">targetChildMCID</td><td colspan="1" class="confluenceTd"><span>Free form text </span></td><td colspan="1" class="confluenceTd">Q_3####_## (i.e. Q_30005_12)</td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd">targetChildCTID</td><td colspan="1" class="confluenceTd"><span>Free form text</span></td><td colspan="1" class="confluenceTd">Q_3####_## (i.e. Q_30005_13)</td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd">targetVersion</td><td colspan="1" class="confluenceTd"><span>Free form text</span></td><td colspan="1" class="confluenceTd">Q_3####_## (i.e. Q_30005_14)</td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd">targetChildPaidAmtQtag</td><td colspan="1" class="confluenceTd"><span>Free form text</span></td><td colspan="1" class="confluenceTd">Q_3####_## (i.e. Q_30005_12)</td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd">targetChildBtag</td><td colspan="1" class="confluenceTd"><span>Free form text</span></td><td colspan="1" class="confluenceTd">3#### (i.e. 30009)</td><td colspan="1" class="confluenceTd">This comes from the parent of the source allocation (i.e Disbursement)</td></tr><tr><td colspan="1" class="confluenceTd">INTERFACE</td><td colspan="1" class="confluenceTd"><span>Free form text</span></td><td colspan="1" class="confluenceTd">UPDallocation</td><td colspan="1" class="confluenceTd"> </td></tr></tbody></table></div><p> </p><p> </p><h4 id="UpdateRelatedAllocation-ReturnCodes"><span>Return Codes</span></h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - Target Amount Value is less than the source Amount Value</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

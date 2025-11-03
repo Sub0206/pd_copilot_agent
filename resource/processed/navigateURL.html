@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : navigateURL</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : navigateURL
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified by <span class='editor'> Jagadish Rotti</span> on Oct 19, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="navigateURL-NavigatetoexternalURL"><span>Navigate to external URL</span></h4><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">Navigate the Account Manager user to an external URL either through a popup window or through the current window (if method is POST). If included, Attributes or an XSL can be used to add parameters to the URL.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">The complete URL cannot exceed 2083 characters.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">If using a QTag, make sure the QTag is present.</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd"><p>The URL parameter that can be specified can either reference a QTag such as Q_30000_1234, a JNDI entry such as url/externalSystemX or a hardcoded value such as <a class="external-link" href="https://www.google.com/" rel="nofollow">https://www.google.com</a>.</p><p>If using a QTag, it must be held at the 30000 level.</p><p>If the Step attribute &quot;Create Parameters via XML&quot; (20008-62) is set to Yes on the Step that calls this method, then all Attributes on that Step will be ignored and the result of the XML generation and XSL will be used to provide the parameters for the navigation. </p><p>Depending on the service, the XSL can provide the output string in the ?[name]=[value]&amp;[name]=[value]&amp;[name]=[value] format or possibly as a URL continuation such as /vehicles/1234. The output of the XSLT will not be validated, it will simply be appended to the resolved URL.</p></td></tr></tbody></table></div><p><br/></p><h4 id="navigateURL-XMLUsage">XML Usage</h4><p>XML can optionally be used to feed an XSL that produces the navigation parameters for the URL based upon the Step property.  The XSL output can be in the format ?[name]=[value]&amp;[name]=[value]&amp;[name]=[value] or as a URL continuation such as /vehicles/1234. The result of the XSLT will be appended to the resolved URL.</p><h4 id="navigateURL-Attributes">Attributes</h4><p>Attributes are optional, and if included will be appended to the URL using the Name as the parameter name and the Value as the parameter value using this format: &amp;[name]=[value]; One exception to the norm is if the Attribute Name is &quot;XML&quot; then the Value text (assumed to be XML) is added using a parameter name of POLICYXML.</p><p>Attributes will be added in the order specified by the Attribute Sequence configuration.</p><p><br/></p><h4 id="navigateURL-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Successfully creates the URL and attempted the navigation</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd"><p>Failure to create URL.</p><p>Reason code 1 - 2083 character limitation exceeded.</p><p>Reason code 2 – The URL is null.</p></td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p>Implementation Example</p><h5 id="navigateURL-Action">Action</h5><p>PRINT_SELECT (Print Select Popup Window)</p><h5 id="navigateURL-Actiontype">Action type</h5><p>Standard Action</p><h5 id="navigateURL-Dependency">Dependency</h5><p>(Policy Facts:INCOMPLETE_ISSUE_TIMESTAMP is absent)</p><h5 id="navigateURL-ActionStep">Action Step</h5><h6 id="navigateURL-PRINT_SELECT(PopupWindowforPrinting)">PRINT_SELECT (Popup Window for Printing)</h6><h5 id="navigateURL-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" width="600" loading="lazy" src="attachments/3797356506/3797553983.png?width=600" data-image-src="attachments/3797356506/3797553983.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553983" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture69.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356506" data-linked-resource-container-version="4" data-media-id="d554142a-c687-4472-891b-20b59fd37c37" data-media-type="file"></span></h5><h5 id="navigateURL-Outcomes">Outcomes</h5><p>None</p><h5 id="navigateURL-Attributes.1">Attributes</h5><p>None</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356506/3797553983.png">Picture69.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

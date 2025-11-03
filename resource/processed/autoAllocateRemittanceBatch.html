@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : autoAllocateRemittanceBatch</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : autoAllocateRemittanceBatch
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified by <span class='editor'> Jagadish Rotti</span> on May 15, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="autoAllocateRemittanceBatch-AutoAllocateRemittanceBatch">Auto Allocate Remittance Batch</h4><div class="table-wrap"><table class="wrapped confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will process algorithms that will Allocate Receivables to Remittances.  The algorithm will perform the allocations based on the set of Remittance IDs passed to it but if there are no Remittance IDs passed then the IDs are searched for in the Remittance Batch in context and all that match the necessary criteria are  processed.  Determining if an Instruction can be processed is done by two checks.  First the Used indicator needs to set to <em>No</em> and that is known by the field BM_REMITTANCE_INSTRUCTION.USED_IND being set to <em>N</em>. The second check is to see if a policy is found under an Account in the Billing System, this is known by the field BM_REMITTANCE_INSTRUCTION.POLICY_FOUND_IND being set to <em>Y</em>.   The logic to process the Remittance Instructions is described below.  </td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within the Adaptik Billing System</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p><br/></p><h4 id="autoAllocateRemittanceBatch-XMLUsage">XML Usage</h4><p>Accept XML for Update</p><h4 id="autoAllocateRemittanceBatch-Attributes"><span>Attributes</span></h4><p><br/></p><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><thead><tr><td class="highlight-grey confluenceTd" data-highlight-colour="grey"><p><strong>Seq # </strong></p></td><td class="highlight-grey confluenceTd" data-highlight-colour="grey"><p><strong>Code </strong></p></td><td class="highlight-grey confluenceTd" data-highlight-colour="grey"><p><strong>Value </strong></p></td><td class="highlight-grey confluenceTd" data-highlight-colour="grey"><p><strong>Type </strong></p></td><td class="highlight-grey confluenceTd" data-highlight-colour="grey"><p><strong>Description </strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>ALLOC_ALGORITHM</p></td><td class="confluenceTd"><p>Valid value 1 or 2</p></td><td class="confluenceTd"><p>Numeric</p></td><td class="confluenceTd"><p>Identifies the algorithm used in the internal method. There are (2) algorithms in the first release.  The first algorithm will allocate the exact remaining balance of the receivable and the</p><p>second algorithm will allow the receivable to be under or over allocated based on the instruction amount.   </p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>ALLOC_TOLERANCE</p></td><td class="confluenceTd"><p>Numeric Value &gt;= 0</p></td><td class="confluenceTd"><p>Numeric</p></td><td class="confluenceTd"><p>Identifies the allowed tolerance for an automatic allocation to process. </p><p>For example, if the value is set to 2 and the Receivable being allocated it $100, then an allocation can be made for $98.</p></td></tr><tr><td class="confluenceTd"><p>30</p></td><td class="confluenceTd"><p>DAYS_NUM_FUTURE</p></td><td class="confluenceTd"><p>Numeric Value &gt;= 0</p></td><td class="confluenceTd"><p>Numeric</p></td><td class="confluenceTd"><p>Identifies the number of days to process receivables into the future.</p><p>For example, if the Attribute is set to 30 and today is 10/1/2015, the allocation algorithm will consider receivables with a due date up to 10/30/2015.</p></td></tr><tr><td colspan="1" class="confluenceTd">35</td><td colspan="1" class="confluenceTd">ALLOC_COLLECTIONS_IND</td><td colspan="1" class="confluenceTd">Static value:<br/>Y or N (default: N)<br/>OR<br/>Q-Tag:<br/>30000_XX No</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">Only applicable when ALLOC_LEVEL=’A’ (Account).<br/>When not present the value is ‘N’.<br/>Allows either an installation to statically define it for all Remittances or allows BM users to indicate via Q-Tag for each Remittance</td></tr><tr><td class="confluenceTd"><p>40</p></td><td class="confluenceTd"><p>REC_UPD_ITAG</p></td><td class="confluenceTd"><p>Interface for Account</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the Upload Interface that has the Views of the Account Product Group Entities that need to be updated (Receivables)</p></td></tr><tr><td class="confluenceTd"><p>50</p></td><td class="confluenceTd"><p>REM_UPD_ITAG</p></td><td class="confluenceTd"><p>Interface for Remittance Batch</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the Upload Interface that has the Views of the Remittance Batch Product Group Entities that need to be updated (Remittance and Remittance Instruction)</p></td></tr></tbody></table></div><p><br/></p><h4 id="autoAllocateRemittanceBatch-ReturnCodes"><span>Return Codes</span></h4><div class="table-wrap"><table class="wrapped confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd"><p>1</p></td><td class="confluenceTd"><p>All instructions processed and allocated successfully</p></td></tr><tr><td class="confluenceTd"><p>2</p></td><td class="confluenceTd"><p>Some instructions processed and allocated successfully, some were NOT allocated</p></td></tr><tr><td class="confluenceTd"><p>3</p></td><td class="confluenceTd"><p>All instructions did NOT allocate</p></td></tr><tr><td class="confluenceTd"><p>-1</p></td><td class="confluenceTd"><p>Unknown Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

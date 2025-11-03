@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : concurrentPackageProcessor</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : concurrentPackageProcessor
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="concurrentPackageProcessor-CreateConcurrentPackages">Create Concurrent Packages</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will remove, by setting the Removal Code value of Deleted (D), all existing versions, including any Custom Version as well as any existing Versions marked as Inactive Coverage Package Version (Z), of the policy transaction in context. The version in context will also be removed if the DELETEIND Attribute indicates it should be. Next, the method will use the version in context as the basis to create new versions, one for each applicable Coverage Package occurrence defined by entity 20105. On each version, the Coverage Package Code (30000-133) Question will be set to the corresponding Coverage Package Code.<br/>Once the Versions have been created, if the REMOVEVERS Attribute is set to Y, each Coverage Package Version, except the current version, will be marked as removed using the Removal Code Inactive Coverage Package Version (Z). Any corresponding rows in the Search Cache (Alternate Query Table) will also be removed to prevent the Versions from being returned in a Search activity.<br/>The target B-tag, Product List View, Sequence Number, and column reference will be taken from the configuration of the 30000-133 question in the Product. Note that this question is temporarily set during the package creation method and is then removed once the coverages have been applied.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">The Coverage Package Question (30000-133) must be configured as a linked question to the Coverage Package Product Entity and should be an exception factor on the Coverage Linked questions.<br/>This method is only supported in a base transaction context (CT ID = 1; NB, CONV, REWRITE). If it is executed in a subsequent transaction context it will throw an exception..</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">This method is to be used as a single Step in a more complex Policy Action.</td></tr></tbody></table></div><h4 id="concurrentPackageProcessor-Attributes">Attributes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd">Seq #</td><td class="confluenceTd">Code</td><td class="confluenceTd">Value</td><td class="confluenceTd">Type</td><td class="confluenceTd">Description</td></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">COVPKGLITERAL</td><td class="confluenceTd">Defined Q-Tag</td><td class="confluenceTd">String</td><td class="confluenceTd">Defines the Q-tag that holds the Coverage Package Literal to be set by the method. The Attribute must be present, but if no Q-tag is specified, the literal will not be stored on the transaction separately.</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">DELETEIND</td><td class="confluenceTd">Y/N</td><td class="confluenceTd">String</td><td class="confluenceTd">Indicates if the current version should be deleted by the method during initial processing prior to creating the new Coverage Package Versions.</td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">COVPKGLINKQTAG</td><td class="confluenceTd">Defined Q-Tag<br/>Example Value: Q_30000_133.</td><td class="confluenceTd">String</td><td class="confluenceTd">Defines the Q-tag that holds the Coverage Package Code to be set by the method. The Attribute must be present, and if no Q-tag is specified, an exception will be presented.</td></tr><tr><td class="confluenceTd">40</td><td class="confluenceTd">COVPKGLISTVIEWCODE</td><td class="confluenceTd">Defined Product List View<br/>Example: 20105_LT</td><td class="confluenceTd">String</td><td class="confluenceTd">Identifies the Product List View to be used to process the Coverage Packages for applicability.</td></tr><tr><td class="confluenceTd">50</td><td class="confluenceTd">COVPKGVIEWCODECOLUMN</td><td class="confluenceTd">Example: code</td><td class="confluenceTd">String</td><td class="confluenceTd">The ref code for the column in the Product List that identifies the code question for the entity.</td></tr><tr><td class="confluenceTd">60</td><td class="confluenceTd">COVPKGVIEWLITCOLUMN</td><td class="confluenceTd">Example: Name</td><td class="confluenceTd">String</td><td class="confluenceTd">The ref code for the column in the Product List that identifies the package name question for the entity.</td></tr><tr><td class="confluenceTd">70</td><td class="confluenceTd">REMOVEVERS</td><td class="confluenceTd">Y/N</td><td class="confluenceTd">String</td><td class="confluenceTd">Indicates if the new Package versions, other than the version in context, should be rendered as removed with the special package removal code when packages are created. This makes those versions invisible to other processes if set.</td></tr></tbody></table></div><h6 id="concurrentPackageProcessor-PleaseNote:TheAttributechangesabovearenotbackwardcompatible.AllinstancesofActionStepsthatusethemethodalreadywillneedtohavetheadditionalAttributesaddedtoavoidanexceptionatruntime.Aspartofthisreleasethepropertyfilepreviouslyusedby">Please Note: The Attribute changes above are not backward compatible. All instances of Action Steps that use the method already will need to have the additional Attributes added to avoid an exception at runtime.<br/>As part of this release the property file previously used by this method will be completely removed and will no longer be used.</h6><h4 id="concurrentPackageProcessor-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Return Code</strong></td><td class="confluenceTd"><strong>Description</strong></td></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Missing Attribute Values</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Failure</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

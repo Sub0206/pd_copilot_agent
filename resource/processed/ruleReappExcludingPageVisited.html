@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : ruleReappExcludingPageVisited</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : ruleReappExcludingPageVisited
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="ruleReappExcludingPageVisited-PerformConfiguredViews">Perform Configured Views</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method forces the execution of a set of defined Product and Policy Configuration rules against the policy transaction identified by the current context. The method uses a set of Views defined in an Interface to apply the configured rules from the Views to the policy transaction. <br/>The method will apply all Views to the transaction when there is a corresponding entity occurrence on the policy transaction for the View. No consideration will be given for whether or not the View was previously processed against the transaction. All Views in the Interface which have a corresponding occurrence will be processed. If there is more than one corresponding occurrence, all occurrences will have the View processed against them.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">This method is not typically used by itself as an action, but as a step in a more complex Policy Action.</td></tr></tbody></table></div><p> </p><h4 id="ruleReappExcludingPageVisited-XMLUsage">XML Usage</h4><p>None</p><h4 id="ruleReappExcludingPageVisited-Attributes">Attributes</h4><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">INTERFACE</td><td class="confluenceTd">Defined Interface Tag</td><td class="confluenceTd">String</td><td class="confluenceTd">Defines the list of Views to be (re)processed.</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">SUPRESSERRORS</td><td class="confluenceTd">Y/N</td><td class="confluenceTd">String</td><td class="confluenceTd">When set to Y, the method will always return the return code for Successful Completion with no updates regardless of whether updates were made to the transaction or not. The effect of this is that the user would follow any configured navigation for success.<br/>When set to N, the method will return the correct return code that indicates whether or not changes were made to the transaction from the list of return codes below. This supports the configuration of an Outcome navigation to the errors page when errors are to be examined by the user.</td></tr></tbody></table></div><h4 id="ruleReappExcludingPageVisited-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Successful Completion with no updates.</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Successful completion with messages for Administrator only</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Successful completion with messages for most users</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">Successful completion with information messages only.</td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="ruleReappExcludingPageVisited-ImplementationExample">Implementation Example</h4><h5 id="ruleReappExcludingPageVisited-Action">Action</h5><p>testRRaction</p><h5 id="ruleReappExcludingPageVisited-Actiontype">Action type</h5><p>Standard Action</p><h5 id="ruleReappExcludingPageVisited-Dependency">Dependency</h5><p>None</p><h5 id="ruleReappExcludingPageVisited-ActionStep">Action Step</h5><h5 id="ruleReappExcludingPageVisited-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="205" loading="lazy" src="attachments/3797356522/3797554079.png?height=205" data-image-src="attachments/3797356522/3797554079.png" data-unresolved-comment-count="0" data-linked-resource-id="3797554079" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture70.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356522" data-linked-resource-container-version="2" data-media-id="92a09774-15d4-45f4-9635-5f13bc0c73a4" data-media-type="file"></span></h5><h5 id="ruleReappExcludingPageVisited-Outcomes">Outcomes</h5><h6 id="ruleReappExcludingPageVisited-Dependency:StepCode-RULEREAPPPAGEVISITED:Return_Code=1,2,3,4">Dependency: Step Code - RULEREAPPPAGEVISITED: Return_Code = 1, 2, 3, 4</h6><h6 id="ruleReappExcludingPageVisited-.1"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356522/3797554084.png?height=250" data-image-src="attachments/3797356522/3797554084.png" data-unresolved-comment-count="0" data-linked-resource-id="3797554084" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture71.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356522" data-linked-resource-container-version="2" data-media-id="656a793c-c21e-4b78-88db-30bb4ac1d257" data-media-type="file"></span></h6><h6 id="ruleReappExcludingPageVisited-Dependency:StepCode-RULEREAPPPAGEVISITED:Return_Code=5">Dependency: Step Code - RULEREAPPPAGEVISITED: Return_Code = 5</h6><h6 id="ruleReappExcludingPageVisited-.2"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356522/3797554089.png?height=250" data-image-src="attachments/3797356522/3797554089.png" data-unresolved-comment-count="0" data-linked-resource-id="3797554089" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture72.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356522" data-linked-resource-container-version="2" data-media-id="d962518d-4782-49a0-86bf-ac7f30465e0a" data-media-type="file"></span></h6><h6 id="ruleReappExcludingPageVisited-Dependency:StepCode-RULEREAPPPAGEVISITED:Return_Code=-1">Dependency: Step Code - RULEREAPPPAGEVISITED: Return_Code = -1</h6><h5 id="ruleReappExcludingPageVisited-.3"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356522/3797554094.png?height=250" data-image-src="attachments/3797356522/3797554094.png" data-unresolved-comment-count="0" data-linked-resource-id="3797554094" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture73.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356522" data-linked-resource-container-version="2" data-media-id="cff60f77-e7bd-4b7f-ab7f-be50ef767df5" data-media-type="file"></span></h5><h5 id="ruleReappExcludingPageVisited-Attributes.1">Attributes</h5><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Name</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">INTERFACE</td><td class="confluenceTd">Interface to Use</td><td class="confluenceTd">RULE_REAPP_TEST704</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">SUPRESSERRORS</td><td class="confluenceTd">Supress Errors Indicator</td><td class="confluenceTd">N</td></tr></tbody></table></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356522/3797554079.png">Picture70.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356522/3797554084.png">Picture71.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356522/3797554089.png">Picture72.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356522/3797554094.png">Picture73.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

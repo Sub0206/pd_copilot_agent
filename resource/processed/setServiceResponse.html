@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : setServiceResponse</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : setServiceResponse
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="setServiceResponse-RespondtoCallingService">Respond to Calling Service</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd"><p class="Paragraph SCXW124102629"><span class="TextRun SCXW124102629">T</span><span class="TextRun SCXW124102629">his method t</span><span class="TextRun SCXW124102629">akes a generated XML </span><span class="TextRun SCXW124102629">that has been processed by an optional forward XSL </span><span class="TextRun SCXW124102629">and make</span><span class="TextRun SCXW124102629">s</span><span class="TextRun SCXW124102629"> it available to be used in a response back to the invoking environment. </span><span class="EOP SCXW124102629"> </span></p><p class="Paragraph SCXW124102629"><span class="TextRun SCXW124102629">If the Step has one or more optional </span><span class="TextRun SCXW124102629">ATTXPath</span><span class="TextRun SCXW124102629"> Attributes, will use those to add any embedded file attachments to the XML provided by the Step.</span><span class="EOP SCXW124102629"> </span></p></td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard &amp; Detail View</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">Processing Mode &lt;&gt; Online</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd"><p class="Paragraph SCXW102594785"><span class="TextRun SCXW102594785">Generally</span><span class="TextRun SCXW102594785"> </span><span class="TextRun SCXW102594785">u</span><span class="TextRun SCXW102594785">sed in </span><span class="TextRun SCXW102594785">a </span><span class="TextRun SCXW102594785">web service </span><span class="TextRun SCXW102594785">context</span><span class="TextRun SCXW102594785"> to create responses.</span><span class="EOP SCXW102594785"> </span></p><p class="Paragraph SCXW102594785"><span class="TextRun SCXW102594785">Requires </span><span class="TextRun SCXW102594785">an </span><span class="TextRun SCXW102594785">XML Interface tag to use to generate response payload.</span></p></td></tr></tbody></table></div><p><br/></p><h4 id="setServiceResponse-XMLUsage">XML Usage</h4><p>Generated XML will be used to respond to the calling environment.</p><h4 id="setServiceResponse-Attributes">Attributes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh"><p class="Paragraph SCXW173204553"><span class="TextRun SCXW173204553">Code </span><span class="EOP SCXW173204553"> </span></p></th><th class="confluenceTh"><p class="Paragraph SCXW173204553"><span class="TextRun SCXW173204553">Value </span><span class="EOP SCXW173204553"> </span></p></th><th colspan="1" class="confluenceTh"><p class="Paragraph SCXW173204553"><span class="TextRun SCXW173204553">Type </span><span class="EOP SCXW173204553"> </span></p></th><th colspan="1" class="confluenceTh"><p class="Paragraph SCXW173204553"><span class="TextRun SCXW173204553">Description </span><span class="EOP SCXW173204553"> </span></p></th></tr><tr><td class="confluenceTd"><p class="Paragraph SCXW172395700"><span class="TextRun SCXW172395700">ATTXPath</span><span class="EOP SCXW172395700"> </span></p></td><td class="confluenceTd"><p class="Paragraph SCXW172395700"><span class="TextRun SCXW172395700">XPath</span><span class="TextRun SCXW172395700"> value that identifies the XML Tag whose value will be replaced by the referenced attachment value</span><span class="EOP SCXW172395700"> </span></p></td><td colspan="1" class="confluenceTd"><p class="Paragraph SCXW172395700"><span class="TextRun SCXW172395700">String</span><span class="TextRun SCXW172395700"> </span><span class="EOP SCXW172395700"> </span></p></td><td colspan="1" class="confluenceTd"><p class="Paragraph SCXW172395700"><span class="TextRun SCXW172395700">The optional Attribute may repeat for every XML tag that needs to contain an attachment in the XML</span><span class="EOP SCXW172395700"> </span></p><p class="Paragraph SCXW172395700"><span class="TextRun SCXW172395700">The </span><span class="TextRun SCXW172395700">XPath</span><span class="TextRun SCXW172395700"> should contain only the XML hierarchy from the root node that identifies the attachment tag.  No specifics regarding occurrences or identifiers should be included.  <br/></span><span class="TextRun SCXW172395700">The processing will search for every instance of the specified XML tag using the path specified and wherever the XML tags exists, the value, if it exists, will be replaced by the <br/>referenced attachment</span><span class="TextRun SCXW172395700"> in base64 encoded form</span><span class="TextRun SCXW172395700">.</span>Attachment processing will be applied after any forward XSL has been processed and should reflect the XPath structure for the final XML. </p></td></tr></tbody></table></div><h4 id="setServiceResponse-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Return Code</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

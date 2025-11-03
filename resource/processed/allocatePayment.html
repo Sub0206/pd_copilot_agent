@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : allocatePayment</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : allocatePayment
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span>, last modified on May 15, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="allocatePayment-RunPaymentAllocation">Run Payment Allocation</h3><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>This method will process an algorithm that will use the targets of a payment that has a balance and create payment allocations for receivables which will reduce the amount owed.</p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Standard</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>Must be executed from within the Sapiens Billing System</p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None</p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>None</p></td></tr></tbody></table></div><p><br/></p><h3 id="allocatePayment-XMLUsage"><span>XML Usage</span></h3><p>Accept and Update</p><h3 id="allocatePayment-Attributes"><span>Attributes</span></h3><p>Below are the Step Attributes for the Internal Method. </p><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/><col/><col/><col/><col/></colgroup><thead><tr><td class="confluenceTd"><p><strong>Seq # </strong></p></td><td class="confluenceTd"><p><strong>Code </strong></p></td><td class="confluenceTd"><p><strong>Value </strong></p></td><td class="confluenceTd"><p><strong>Required?</strong></p></td><td class="confluenceTd"><p><strong>Type </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>ALLOC_LEVEL</p></td><td class="confluenceTd"><p>30012_XX</p></td><td class="confluenceTd"><p>Yes</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>This Attribute has the code value of the Q-tag that is the Allocation level on the Payment occurrence used for the algorithm which receivables to allocate to.  The valid values are;</p><p>‘A’ (Account), ‘P’ (Policy Term), ‘N’ (Policy Agreement), ‘I’ (Invoice), ‘S’ (Split Invoice), ‘C’ (Certificate)</p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>ALLOC_TARGET</p></td><td class="confluenceTd"><p>30012_XX</p></td><td class="confluenceTd"><p>Yes</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>This Attribute has the code value of the Q-tag that holds the Allocation Target of the Payment.  The Allocation Target is used along with the allocation Level for the code to identify and group/sort the receivables/charges for allocation.</p></td></tr><tr><td colspan="1" class="confluenceTd">25</td><td colspan="1" class="confluenceTd">ALLOC_COLLECTIONS_IND</td><td colspan="1" class="confluenceTd">Static value:<br/>Y or N (default: N)<br/>OR<br/>Q-Tag:<br/>30000_XX</td><td colspan="1" class="confluenceTd">Yes</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">Only applicable when ALLOC_LEVEL=’A’ (Account).<br/>When not present the value is ‘N’.<br/>Allows either an installation to statically define it for all Remittances or allows BM users to indicate via Q-Tag for each Remittance.</td></tr><tr><td class="confluenceTd"><p>30</p></td><td class="confluenceTd"><p>ALLOC_AMOUNT</p></td><td class="confluenceTd"><p>30012_XX</p></td><td class="confluenceTd"><p>Yes</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>This Attribute has the code value of the Q-tag that holds the Payment Amount for allocation.</p></td></tr><tr><td class="confluenceTd"><p>40</p></td><td class="confluenceTd"><p>PAYMENT_BALANCE</p></td><td class="confluenceTd"><p>30012_XX</p></td><td class="confluenceTd"><p>Yes</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p><br/></p></td></tr><tr><td class="confluenceTd"><p>50</p></td><td class="confluenceTd"><p>ALLOC_PRIORITY_BTAG</p></td><td class="confluenceTd"><p>24000</p></td><td class="confluenceTd"><p>Yes</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>This is the B-Tag of the Product entity that stores the charge types and their priorities for allocation</p></td></tr><tr><td class="confluenceTd"><p>60</p></td><td class="confluenceTd"><p>ALLOC_CHRG_TYPE</p></td><td class="confluenceTd"><p>24000_1</p></td><td class="confluenceTd"><p>Yes</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>This is the Q-tag of the Question that stores the Charge Type in the allocation priority entity in Product</p></td></tr><tr><td class="confluenceTd"><p>70</p></td><td class="confluenceTd"><p>ALLOC_PRIORITY</p></td><td class="confluenceTd"><p>24000_8</p></td><td class="confluenceTd"><p>Yes</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>This is the Q-tag of the Question that stores the Allocation Priority in the allocation priority entity in Product</p></td></tr><tr><td class="confluenceTd"><p>80</p></td><td class="confluenceTd"><p>ALLOC_INPUT_ITAG</p></td><td class="confluenceTd"><p>Valid Interface for XML generation</p><p>paymentXML</p></td><td class="confluenceTd"><p>Yes</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Account Interface used to generate XML for input XML used to create the upload XML for the Receivable Charges.</p></td></tr><tr><td class="confluenceTd"><p>90</p></td><td class="confluenceTd"><p>ALLOC_INPUT_XSLT</p></td><td class="confluenceTd"><p>Valid XSL filename</p><p>fwdAllocPayment.xsl</p></td><td class="confluenceTd"><p>Yes</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>XSL filename that will translate the generated XML from the ALLOC_INPUT_ITAG</p></td></tr></tbody></table></div><p><strong><em>Return Codes </em></strong></p><div class="table-wrap"><table class="wrapped confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Return Code </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr><tr><td class="confluenceTd"><p>1 </p></td><td class="confluenceTd"><p>Success </p></td></tr><tr><td class="confluenceTd"><p>4</p></td><td class="confluenceTd"><p>Success – No allocations made</p></td></tr><tr><td class="confluenceTd"><p>-1 </p></td><td class="confluenceTd"><p>Unspecified Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

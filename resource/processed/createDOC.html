@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : createDOC</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : createDOC
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="createDOC-CreateDOC">Create DOC</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method accepts XML, either generated, input or received from previous steps. A specified XSLT runs that produces the information into the required DOC representation. The resulting DOC is then available to subsequent steps for display. The expectation is that any file format supported by Microsoft Word will work.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">Requires that an XML Generation I-Tag (Interface) be specified on the Step Detail page.<br/>May require Adaptik intervention to ensure DOC output format meets business need. Generated data is conatined in PWDocument for the subsequent Steps.</td></tr></tbody></table></div><p> </p><h4 id="createDOC-XMLUsage">XML Usage</h4><p>Requires generated or reused XML be provided to the method.</p><h4 id="createDOC-Attributes">Attributes</h4><h6 id="createDOC-XSLT-SpecifiestheXSLTfiletobeusedforthetransformation.">XSLT - Specifies the XSLT file to be used for the transformation.</h6><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">XSLT</td><td class="confluenceTd">XSLT File Name</td><td class="confluenceTd">string</td><td class="confluenceTd">Identifies the XSLT file to be used to transform the XML input.</td></tr></tbody></table></div><h4 id="createDOC-ReturnCodes">Return Codes</h4><h6 id="createDOC-Nospecificsuccessreturncodeissupplied,howeveronefailurecodemaybereturned.">No specific success return code is supplied, however one failure code may be returned.</h6><h6 id="createDOC-AdditionalreturncodescanbesupportedbasedupontheXSLappliedandwhetherornotitchoosestousetheTransResultreturnvaluestructure.">Additional return codes can be supported based upon the XSL applied and whether or not it chooses to use the TransResult return value structure.</h6><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

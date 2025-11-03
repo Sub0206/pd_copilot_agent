@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : StoreXMLInReportingTable</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : StoreXMLInReportingTable
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span>, last modified on Jun 02, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 class="auto-cursor-target" id="StoreXMLInReportingTable-StoreXMLinReportingTable"><strong>Store XML in Reporting Table</strong></h3><div class="table-wrap"><table class="wrapped confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Description</strong> </p></td><td class="confluenceTd"><p><span>This new method will take the XML provided to the Step and after any Forward XSL processes it, stores it in the table/column that are specified as Step Attributes to the method.</span></p><p><span> </span></p><p><span>All calls to this method will add or update a record to the table, there is no option to delete the XML CLOB except for deletion of the Contract Answer.  The code will add a record when the occurrence does not already exist, otherwise if the occurrence exists the XML CLOB will be updated.  </span><br/><span> </span><br/><span>This method is supported in both an online context and via the webservice gateway. When used in an online context the Step should generate the XML to be stored. When used via the webservice gateway the configuration could be set to Accept Input XML and then transform and store it.</span><span> </span></p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong> </p></td><td class="confluenceTd"><p>Standard </p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong> </p></td><td class="confluenceTd"><p>Must be executed from within a PolicyPro or BillingPro occurrence context. </p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong> </p></td><td class="confluenceTd"><p>None </p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong> </p></td><td class="confluenceTd">None</td></tr></tbody></table></div><p><br/></p><h4 id="StoreXMLInReportingTable-XMLUsage"><strong>XML <em>Usage </em></strong></h4><p>Generate from DB, Accept XML for Update, or Reuse XML from Prior Step are all supported options for the XML required for this method. </p><p><strong><em> </em></strong></p><h4 id="StoreXMLInReportingTable-Attributes"><strong>Attributes </strong></h4><div class="table-wrap"><table class="wrapped confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Seq # </strong></p></td><td class="confluenceTd"><p><strong>Code </strong></p></td><td class="confluenceTd"><p><strong>Value </strong></p></td><td class="confluenceTd"><p><strong>Type </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr><tr><td class="confluenceTd"><p>10 </p></td><td class="confluenceTd"><p>STAGED_XML_TABLE </p></td><td class="confluenceTd"><p>Q-Tag of PAYMENT_TS</p></td><td class="confluenceTd"><p>string </p></td><td class="confluenceTd"><p>Indicates the database column to store the current timestamp.</p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>STAGED_XML_COLUMN</p></td><td class="confluenceTd"><p>Q_Tag of PAYMENT_XML</p></td><td class="confluenceTd"><p>string</p></td><td class="confluenceTd"><p>Indicates the database column to store the CLOB XML in.</p></td></tr></tbody></table></div><p><strong><em> </em></strong></p><h4 id="StoreXMLInReportingTable-ReturnCodes"><strong>Return Codes </strong></h4><div class="table-wrap"><table class="wrapped confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Return Code </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr><tr><td class="confluenceTd"><p>1 </p></td><td class="confluenceTd"><p>XML successfully stored </p></td></tr><tr><td class="confluenceTd"><p>2</p></td><td class="confluenceTd"><p>Failure.  STAGED_TS_COLUMN or STAGED_XML_COLUMN Attribute is missing or not valid</p></td></tr><tr><td class="confluenceTd"><p>-1 </p></td><td class="confluenceTd"><p>Unspecified Failure</p></td></tr></tbody></table></div><p><br/>  </p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

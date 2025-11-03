@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : processOOSChanges</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : processOOSChanges
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified by <span class='editor'> Jagadish Rotti</span> on Mar 17, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="processOOSChanges-ProcessOOSChanges">Process OOS Changes</h3><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd"><p>This method manages the process by which Out Of Sequence (OOS) changes are pushed forward to subsequent transactions after an OOS transaction is issued.</p><p><em>The application property of oosFlatCancelCommit will control whether or not the code commits after the flat cancel is created on the future term.</em></p></td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd"><p>This method is called during the issue of an out of sequence transaction and uses a Dependency which checks the return code from the Mark Transaction as Closed method or the OOS Indicator Policy Fact.</p><p><em>If the oosFlatCancelCommit application property does not exist or is set to N, there will not be an auto-commit performed.  In order to mimic pre 10.5 functionality, the application property should be set to Y.</em></p></td></tr></tbody></table></div><p><br/></p><h4 id="processOOSChanges-XMLUsage">XML Usage</h4><p>None</p><h4 id="processOOSChanges-Attributes">Attributes</h4><h6 id="processOOSChanges-TheProcessOOSChangesmethodrequiresasingleattributetobespecifiedwhichindicatesthecodefortheOOSActionMacrothatistoberunonanyissuedtransactionsthatarereplacedduringthechangeprocessingoranyautomaticflatcancelscreatedduringcancelprocessing.">The Process OOS Changes method requires a single attribute to be specified which indicates the code for the OOS Action Macro that is to be run on any issued transactions that are replaced during the change processing or any automatic flat cancels created during cancel processing.</h6><h4 id="processOOSChanges-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356510/3797553992.png?height=250" data-image-src="attachments/3797356510/3797553992.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553992" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture80.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356510" data-linked-resource-container-version="4" data-media-id="58be39c3-4f12-432d-8fc5-7e6d6fdad6dd" data-media-type="file"></span></h4><h4 id="processOOSChanges-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><th class="confluenceTh">Return Code</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Transaction in context is not OOS.</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Unspecified Failure</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">Rule Reapplication failed on a carry forward transaction.</td></tr><tr><td class="confluenceTd">6</td><td class="confluenceTd">Rule Reapplication failed on a replacement transaction.</td></tr><tr><td class="confluenceTd">7</td><td class="confluenceTd">OOS Action Macro failed for Carry Forward with no subsequent transactions</td></tr><tr><td class="confluenceTd">8</td><td class="confluenceTd">OOS Action Macro failed for Carry Forward with subsequent transactions</td></tr><tr><td class="confluenceTd">9</td><td class="confluenceTd">OOS Action Macro failed for replacement transaction</td></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">Failure - OOS Code not set</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p><h4 id="processOOSChanges-ImplementationExample">Implementation Example</h4><h5 id="processOOSChanges-Action">Action</h5><p>SYNCUP_ISSUE (Process OOS Changes)</p><h5 id="processOOSChanges-Actiontype">Action type</h5><p>Standard Action</p><h5 id="processOOSChanges-Dependency">Dependency</h5><p>None</p><h5 id="processOOSChanges-ActionStep">Action Step</h5><h6 id="processOOSChanges-Dependency:(StepCode-COMPLETETRAN:Return_Code=2,5,6)">Dependency: (Step Code - COMPLETETRAN : Return_Code=2, 5, 6 )</h6><h5 id="processOOSChanges-.1"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="220" loading="lazy" src="attachments/3797356510/3797553997.png?height=220" data-image-src="attachments/3797356510/3797553997.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553997" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture81.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356510" data-linked-resource-container-version="4" data-media-id="6578c8ad-b21e-4f32-9c68-83110c3a04dd" data-media-type="file"></span></h5><h5 id="processOOSChanges-Outcomes">Outcomes</h5><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><tbody><tr><th class="confluenceTh">Seq #</th><th class="confluenceTh">Code</th><th class="confluenceTh">Name</th><th class="confluenceTh">Dependency</th></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">SUCCESS</td><td class="confluenceTd">Success RC 1 or 2</td><td class="confluenceTd">(Step Code - PROCOOSCHG : Return_Code=1, 2 )</td></tr><tr><td class="confluenceTd">15</td><td class="confluenceTd">FAILURE</td><td class="confluenceTd">Failure RC 3, 4, or 10</td><td class="confluenceTd">(Step Code - PROCOOSCHG : Return_Code=4, 10, 3 )</td></tr><tr><td class="confluenceTd">50</td><td class="confluenceTd">FRWDTRXFAIL</td><td class="confluenceTd">Rule Reapp failed on a carry forward trans RC 5</td><td class="confluenceTd">(Step Code - PROCOOSCHG : Return_Code=5 )</td></tr><tr><td class="confluenceTd">60</td><td class="confluenceTd">RPLCTRXFAIL</td><td class="confluenceTd">Rule Reapp failed on a replacement trx RC 6</td><td class="confluenceTd">(Step Code - PROCOOSCHG : Return_Code=6 )</td></tr><tr><td class="confluenceTd">70</td><td class="confluenceTd">ACTMACNOTRX</td><td class="confluenceTd">OOS Act Macro failed on CF w/no subsq iss trx RC 7</td><td class="confluenceTd">(Step Code - PROCOOSCHG : Return_Code=7 )</td></tr><tr><td class="confluenceTd">80</td><td class="confluenceTd">ACTMACWITHTRX</td><td class="confluenceTd">OOS Act Macro failed on CF w/subsq iss trx RC 8</td><td class="confluenceTd">(Step Code - PROCOOSCHG : Return_Code=8 )</td></tr><tr><td class="confluenceTd">90</td><td class="confluenceTd">ACTMACRPLCTRX</td><td class="confluenceTd">OOS Act Macro failed for replacement trx RC 9</td><td class="confluenceTd">(Step Code - PROCOOSCHG : Return_Code=9 )</td></tr><tr><td class="confluenceTd">100</td><td class="confluenceTd">UNKFAIL</td><td class="confluenceTd">Failure - no RC or RC other than above</td><td class="confluenceTd">N</td></tr></tbody></table></div><h5 id="processOOSChanges-Attributes.1">Attributes</h5><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356510/3797554002.png?height=250" data-image-src="attachments/3797356510/3797554002.png" data-unresolved-comment-count="0" data-linked-resource-id="3797554002" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture82.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356510" data-linked-resource-container-version="4" data-media-id="2507cb44-fd4a-4627-9135-fcc4979add37" data-media-type="file"></span></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356510/3797553992.png">Picture80.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356510/3797553997.png">Picture81.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356510/3797554002.png">Picture82.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

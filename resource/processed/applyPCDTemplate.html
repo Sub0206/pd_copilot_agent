@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : applyPCDTemplate</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : applyPCDTemplate
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="applyPCDTemplate-PersonalizedCoverageTemplate-Apply">Personalized Coverage Template - Apply</h3><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method applies a stored personalized coverage template to a quote using an upload process on the current New Business like quote/application.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Each product group must have a customized XSLT that must be created to both store and apply the personalized templates which uses the specific B-tags for the coverages.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">This method is to be used as a single Step in a more complex Policy Action.</td></tr></tbody></table></div><h4 id="applyPCDTemplate-Attributes">Attributes</h4><p>None</p><h4 id="applyPCDTemplate-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="wrapped confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Return Code</strong></td><td class="confluenceTd"><strong>Description</strong></td></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">No PCD template exists for the key</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified failure</td></tr></tbody></table></div><h4 id="applyPCDTemplate-ImplementationExample">Implementation Example</h4><h5 id="applyPCDTemplate-Action">Action</h5><p>APPLY_COV_TEMPLATE</p><h5 id="applyPCDTemplate-Actiontype">Action type</h5><p>Standard Action</p><h5 id="applyPCDTemplate-Dependency">Dependency</h5><p>(Count(MV - Vehicle Types:30000_1586) &gt; 0) AND (Status = O) AND (Macro[- Not Removed -])</p><h5 id="applyPCDTemplate-DependencyMacro">Dependency Macro</h5><p>removal_code &lt;&gt; R, P, L, N, D, V, X, J, E <br/><br/><br/><br/></p><h5 id="applyPCDTemplate-ActionStep">Action Step</h5><p><strong>MERGE_TEMPLATE</strong><br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356436/3797553454.png?height=250" data-image-src="attachments/3797356436/3797553454.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553454" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="merge_template.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356436" data-linked-resource-container-version="2" data-media-id="ba0093c4-abb1-4fa1-bfd8-b0fb09da6588" data-media-type="file"></span></p><h5 id="applyPCDTemplate-Outcomes">Outcomes</h5><p><strong>Dependency: (Step Code - MERGE_TEMPLATE:Return_Code=1)</strong><br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356436/3797553439.png?height=250" data-image-src="attachments/3797356436/3797553439.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553439" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="merge_dep.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356436" data-linked-resource-container-version="2" data-media-id="35229580-7555-462f-b960-9326d424b71f" data-media-type="file"></span></p><p><strong>Dependency: (Transaction SubType:30000_11=QT)</strong><br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356436/3797553444.png?height=250" data-image-src="attachments/3797356436/3797553444.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553444" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="merge_dep2.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356436" data-linked-resource-container-version="2" data-media-id="dc059c0d-d229-41f7-80fe-bbb8bfeff3c9" data-media-type="file"></span></p><p><strong>Dependency: NONE</strong><br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356436/3797553449.png?height=250" data-image-src="attachments/3797356436/3797553449.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553449" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="merge_dep3.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356436" data-linked-resource-container-version="2" data-media-id="0d28b97a-3580-4dd5-9c15-f80a59a2d014" data-media-type="file"></span></p><h5 id="applyPCDTemplate-Attributes.1">Attributes</h5><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356436/3797553429.png?height=250" data-image-src="attachments/3797356436/3797553429.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553429" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="merge_att.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356436" data-linked-resource-container-version="2" data-media-id="cb878a26-fe38-49c6-bf4d-29058b99a4e5" data-media-type="file"></span></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356436/3797553434.png">merge_att.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356436/3797553429.png">merge_att.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356436/3797553439.png">merge_dep.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356436/3797553444.png">merge_dep2.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356436/3797553449.png">merge_dep3.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356436/3797553454.png">merge_template.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

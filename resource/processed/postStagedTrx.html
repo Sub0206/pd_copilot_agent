@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : postStagedTrx</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : postStagedTrx
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span> on Oct 23, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><strong><span>Post Staged Transactions</span></strong></p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>Uses the current Account in context to identify any associated staged, but not posted, Policy Transactions on BM_TRANSACTION_STAGING table and associated with the Account.  Those will be identified by a STAGING_STATUS of <em>INITIAL</em> and sorted in CREATE_TIMESTAMP and Transaction Sequence order.  If a Policy already has any ERROR transaction records <a class="external-link" href="file:///D:/Release%20Data/10.1/Specifications/PW%20User%20Spec%201399%20-%20Internal%20Method%20to%20Post%20All%20Staged%20Transactions%20for%20the%20Current%20Account%20in%20Billing.docx#_msocom_1" rel="nofollow">[MLM1]</a> in the table, the Policy’s transactions will not be included in the processing.</p><p>The method will validate the presence of an Account in context and get the staged Transactions on the Billing Account, across all Policies on the Account, from the BM_TRANSACTION_STAGING table.  For each transaction identified the method will take the TRX_XML and pass it to the configured Action identified by the ACTION Attribute on the Step.</p><p>The Action will process the data in the XML and provide a return code indicating if the processing was successful or not.  If the Action returns success (1), the record in the staging table will be updated with a STAGING STATUS of <em>POSTED</em>.  The Return Code from the Action controls the update of the Staging record status as it currently does for transactions posted immediately. </p><p>If any transaction is marked as ERROR for a Policy, the processing of any other transactions stops for that Policy <a class="external-link" href="file:///D:/Release%20Data/10.1/Specifications/PW%20User%20Spec%201399%20-%20Internal%20Method%20to%20Post%20All%20Staged%20Transactions%20for%20the%20Current%20Account%20in%20Billing.docx#_msocom_2" rel="nofollow">[MLM2]</a> and a Return Code indicates an error occurred.   </p><p>This method triggers MC-level locking on the Account, but each transaction will be committed when the invoked Action completes for the transaction.</p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Standard</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>The method has no constraints other than that it requires an existing Account be in context.  It uses no input XML or other input beyond the Account in context.</p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None </p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>Should be used thoughtfully as an overall approach to managing large accounts. </p><p>Policy configuration of the Billing interface will need to add the custom XML tags to the staging xml to figure out when to mark pay plan changes and due day changes. </p></td></tr></tbody></table></div><p> </p><h3 id="postStagedTrx-XMLUsage">XML Usage</h3><p>None</p><h3 id="postStagedTrx-Attributes">Attributes</h3><p>There are two Attributes required by this method.  The code values must be used exactly as shown.</p><div class="table-wrap"><table class="confluenceTable"><thead><tr><td class="confluenceTd"><p><strong>Seq # </strong></p></td><td class="confluenceTd"><p><strong>Code </strong></p></td><td class="confluenceTd"><p><strong>Value </strong></p></td><td class="confluenceTd"><p><strong>Type </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>ACTION</p></td><td class="confluenceTd"><p>Ex. postAccount</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the Action to be used to process the TRX_XML from the staged transaction</p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>IGNORE_ITD_VALIDATION</p></td><td class="confluenceTd"><p>Y/N</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Specifies if the ITD validation should be run as part of the posting of the transaction.</p></td></tr></tbody></table></div><h3 id="postStagedTrx-ReturnCodes">Return Codes</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><thead><tr><td class="confluenceTd"><p align="center"><strong>Return Code</strong></p></td><td class="confluenceTd"><p><strong>Description</strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p align="center">1</p></td><td class="confluenceTd"><p>Success – records updated</p></td></tr><tr><td class="confluenceTd"><p align="center">2</p></td><td class="confluenceTd"><p>Success – no records found</p></td></tr><tr><td class="confluenceTd"><p align="center">3</p></td><td class="confluenceTd"><p>No Account in context</p></td></tr><tr><td class="confluenceTd"><p align="center">4</p></td><td class="confluenceTd"><p>Partial Success with Error records created</p></td></tr><tr><td class="confluenceTd"><p align="center">-1</p></td><td class="confluenceTd"><p>Unspecified Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

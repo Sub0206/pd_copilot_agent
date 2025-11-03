@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : runCreditTransfer</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : runCreditTransfer
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span> on Sep 01, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Run Credit Transfer</p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>This method will process an algorithm that will use a selected Receivable(s) and transfer it from one account and/or policy to another.</p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Standard</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>Must be executed from within the Sapiens Billing System</p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None</p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>None</p></td></tr></tbody></table></div><p><br/></p><h3 id="runCreditTransfer-XMLUsage">XML Usage</h3><p>None</p><h3 id="runCreditTransfer-Attributes">Attributes</h3><p>Below are the Step Attributes for the Internal Method. </p><div class="table-wrap"><table class="confluenceTable"><thead><tr><td class="confluenceTd"><p><strong>Seq # </strong></p></td><td class="confluenceTd"><p><strong>Code </strong></p></td><td class="confluenceTd"><p><strong>Value </strong></p></td><td class="confluenceTd"><p><strong>Required?</strong></p></td><td class="confluenceTd"><p><strong>Type </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>TARGET_MCID</p></td><td class="confluenceTd"><p>Q_3####_##</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the QTAG that contains the answer for Target MCID of the Billing Account where the Credit is being transferred to</p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>TARGET_CID</p></td><td class="confluenceTd"><p>Q_3####_##</p><p><br/></p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the QTAG that contains the answer for Target CID of the Policy Occurrence where the Credit is being transferred to</p></td></tr><tr><td class="confluenceTd"><p>30</p></td><td class="confluenceTd"><p>REMIT_ALL_VW_NAME</p></td><td class="confluenceTd"><p>Optional</p><p>Valid View Code</p><p>Ex:</p><p>remitUpdLT</p></td><td class="confluenceTd"><p><br/></p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>View for Remittance Allocation for processing</p></td></tr><tr><td class="confluenceTd"><p>40</p></td><td class="confluenceTd"><p>REMIT_UN_ACT_CODE</p></td><td class="confluenceTd"><p>Valid Action Code</p><p>Ex:</p><p>unAllocateRemittance</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>View Action to Unallocate Remittances for Offset Processing</p></td></tr><tr><td class="confluenceTd"><p>50</p></td><td class="confluenceTd"><p>REMIT_ALL_ACT_CODE</p></td><td class="confluenceTd"><p>Valid Action Code</p><p>Ex:</p><p>allocateRemittance</p><p><br/></p></td><td class="confluenceTd"><p><br/></p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>View Action for Remittance Allocation for Processing</p></td></tr></tbody></table></div><p><span> </span></p><h3 id="runCreditTransfer-ReturnCodes">Return Codes</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Return Code </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr><tr><td class="confluenceTd"><p>1</p></td><td class="confluenceTd"><p>Success</p></td></tr><tr><td class="confluenceTd"><p>-1</p></td><td class="confluenceTd"><p>Unknown Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : customerClearance</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : customerClearance
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified by <span class='editor'> Jagadish Rotti</span> on Mar 21, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="customerClearance-CustomerClearance">Customer Clearance</h3><div class="table-wrap"><table class="wrapped confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd"><strong>a.</strong> This method will first call a service (for which we will create a stub) to retrieve all the valid Agent Codes using the input Agent Code and input date. Any agent code attached to a policy that is not in this set will be called &quot;other agents&quot; below. <br/><strong>b.</strong> Using the input Product Group (Q_30000_1), find the Business Segment for which the Product Group belongs to (using the input date (DATE Step Attribute) and querying the 10201 Reference table). Using that Business Segment (10201_7), retrieve the list of Product Groups that belong to that Business Segment. Retrieve the 10983-6 and 10983-7 attributes from the Business segment to be used below (using Product Transaction Effective Date as the reference date). <br/><strong>c.</strong> Using the input Customer_id, find all quotes and policies. Remove any quote or policy that does NOT belong to the Business Segment identified in step b. If the policy (Q_30000_1) is NOT tied to a Product Group returned in step b, then it will be removed from further processing.<br/><strong>d.</strong> If any issued policies are found, determine if any of them are still in force by joining to policy log to get the cancel effective date or expiration date (information to be used below when setting a return code).<br/><strong>e.</strong> For unissued new business transactions, use the process date (Q_30000_35 from alternate query). <br/><strong>f.</strong> Determine the return code below by using the information from the steps above. If more than one output code applies, only the highest numbered code will be returned.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">There must be a Customer ID, Product Group, and Agent code.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p><br/></p><h4 id="customerClearance-XMLUsage">XML Usage</h4><p>None</p><h4 id="customerClearance-Attributes">Attributes</h4><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Domain</div></th></tr></thead><tbody><tr><td class="confluenceTd">CUSTOMER_ID</td><td class="confluenceTd">Valid Q-tag in format Q_3####_## (typically Q_30000_97)</td><td class="confluenceTd">String</td></tr><tr><td class="confluenceTd">AGENT_CD</td><td class="confluenceTd">Valid Q-tag in format Q_3####_## (typically Q_30000_41)</td><td class="confluenceTd">String</td></tr><tr><td class="confluenceTd">DATE</td><td class="confluenceTd">Valid Q-tag in format Q_3####_## (typically Q_30000_34) OR currentDate()</td><td class="confluenceTd">String</td></tr></tbody></table></div><h4 id="customerClearance-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="wrapped confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">No Matches Found</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">One or more matches found but only with one of the input agent code set</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">One or more new business quotes with other agents past clearance days (there exists a quote/application where the input date is greater than the process date + 10983-6 for the business segment ).</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">One or more canceled/non-renewed policies with other agents past clearance days (there exists a policy where the input date is greater than the cancel effective date + 10983-7 for the business segment).</td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">One or more new business quotes with other agents not past clearance days (there exists a quote/application where the input date is less than or equal to the process date + 10983-6 for the business segment).</td></tr><tr><td class="confluenceTd">6</td><td class="confluenceTd">One or more canceled/non-renewed policies with other agents not past clearance days (there exists a policy where the input date is less than or equal to the cancel effective date + 10983-7 for the business segment).</td></tr><tr><td class="confluenceTd">7</td><td class="confluenceTd">One or more in-force policies with other agents (there exists a policy where the input date is less than or equal to the policy expiration date + 10983-7 for the business segment).</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

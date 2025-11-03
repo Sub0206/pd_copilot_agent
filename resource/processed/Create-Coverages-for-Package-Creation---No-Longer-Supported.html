@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Create Coverages for Package Creation - No Longer Supported</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Deprecated_3797356330.html">Deprecated</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Create Coverages for Package Creation - No Longer Supported
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="wiki-content"><h4 id="CreateCoveragesforPackageCreation-NoLongerSupported-Description">Description</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method uses a Rule ReApplication against the entire policy transaction identified by the current context to add Coverages from a predefined Coverage Package to the current policy transaction. The method uses a set of Views defined in an Interface to apply the configured rules from the Views to the policy transaction.  After the Rule ReApplication has completed, the Coverage Package Code Question (30000-133) is reset to null.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard </td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context. </td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">This method is not used by itself as an action, but as a step in a more complex Policy Action that is one aspect of the Coverage Package Creation feature of PolicyWriter.</td></tr></tbody></table></div><h4 id="CreateCoveragesforPackageCreation-NoLongerSupported-XMLUsage">XML Usage</h4><p>None</p><h4 id="CreateCoveragesforPackageCreation-NoLongerSupported-Attributes">Attributes</h4><p>Interface Tag - defines the scope of the information to have rules reapplied. Suppress Errors Indicator - Determines behavior when errors are discovered.</p><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Type </div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">INTERFACE</td><td class="confluenceTd">Defined Interface Tag</td><td class="confluenceTd">String</td><td class="confluenceTd">Defines the scope of the information to have rules reapplied by the Views contained in the Interface.</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">SUPRESSERRORS</td><td class="confluenceTd">Y/N</td><td class="confluenceTd">String</td><td class="confluenceTd">When set to Y, the method will always return the return code for Successful Completion with no updates regardless of whether updates were made to the transaction or not. The effect of this is that the user would follow any configured navigation for success.   When set to N, the method will return the correct return code that indicates whether or not changes were made to the transaction from the list of return codes below. This supports the configuration of an Outcome navigation to the errors page when errors are to be examined by the user.</td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">RUNFROMRENEWAL</td><td class="confluenceTd">Y/N</td><td class="confluenceTd">String</td><td class="confluenceTd">When Y will cause the Rule Reapplication to run any Renewal Instructions that are configured in the Views in the Interface.</td></tr></tbody></table></div><h4 id="CreateCoveragesforPackageCreation-NoLongerSupported-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1 </td><td class="confluenceTd">Successful Completion with no updates. </td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Successful completion with messages for Administrator only</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Successful completion with messages for most users</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">Successful completion with information messages only.</td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

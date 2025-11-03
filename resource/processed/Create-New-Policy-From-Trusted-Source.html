@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Create New Policy From Trusted Source</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Deprecated_3797356330.html">Deprecated</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Create New Policy From Trusted Source
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="CreateNewPolicyFromTrustedSource-Description">Description</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd">Description </td><td class="confluenceTd">This method accepts update XML and handles the processing of it in the following way: <ul><li>The Update XML will be processed using Standard XML Upload processing. A detail view should be configured for the Policy Entity (30000); the name of this view will be specified as an attribute to this method. The processing of this view will create the basic policy occurrence. The policy occurrence can potentially be further processed during the second pass using the Trusted Source Upload mechanism. </li><li>The Update XML will then be processed via Trusted Source Upload. Enhancement 526 provides details of this functionality and will not be re-described here.</li></ul></td></tr><tr><td class="confluenceTd">Constraints </td><td class="confluenceTd">See the next section for restrictions and limitations imposed by this method. </td></tr><tr><td class="confluenceTd">Suggested Dependencies </td><td class="confluenceTd">None </td></tr><tr><td class="confluenceTd">Notes </td><td class="confluenceTd">This method can be used by itself as the only Step in an Action, or as a single Step in a more complex Policy Action. </td></tr></tbody></table></div><h3 id="CreateNewPolicyFromTrustedSource-RestrictionsandLimitations">Restrictions and Limitations</h3><p>Below are constraints that are specific to this internal method, further constraints are imposed by Trusted Source and these also need to be taken into account, for details pf these limitations please read Enhancement 526 - Trusted Source Upload.</p><h4 id="CreateNewPolicyFromTrustedSource-FirstPass-PolicyCreation">First Pass - Policy Creation</h4><ul><li>The POLICY_VIEW attribute only allows a single view to be specified, this limits the initial policy creation process to that single view. If further information needs to be added beyond this view and that which Trusted Source processing allows then an additional post-processing step may be necessary.</li></ul><ul><li>View Items of type Action are not processed.</li></ul><h4 id="CreateNewPolicyFromTrustedSource-SecondPass-PolicyUpdatefromTrustedSource">Second Pass - Policy Update from Trusted Source</h4><ul><li>Occurrences are created in the entity order in which they appear in the interface. This has consequences for secondary parents and should be taken into consideration when creating the interface, the following ordering conditions should be observed.</li></ul><ol><li>Entities that might be parents but which do not reference a secondary parent themselves</li><li>Entities that might be parents and which reference a secondary parent</li><li>Entities that will not be parents but which reference a secondary parent</li></ol><p><strong>NOTE:</strong> In the case of cyclic secondary parent references, in which two entities are secondary parents of one another, it may be necessary to create a second xml view to establish the reciprocative links. This is because Trusted Source does not reprocess the views automatically for performance reasons.</p><h3 id="CreateNewPolicyFromTrustedSource-Attributes">Attributes</h3><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Seq # </div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Code </div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Value </div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Type </div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description </div></th></tr></thead><tbody><tr><td class="confluenceTd">10 </td><td class="confluenceTd">PAGEVISITEDVIEWS </td><td class="confluenceTd">Defined Interface Tag </td><td class="confluenceTd">String </td><td class="confluenceTd">Defines the list of Views to be marked as visited for rule reapplication processing. </td></tr><tr><td class="confluenceTd">20 </td><td class="confluenceTd">POLICY_VIEW </td><td class="confluenceTd">Policy View Code </td><td class="confluenceTd">String </td><td class="confluenceTd">Specifies the view to use for Policy Creation. </td></tr></tbody></table></div><h3 id="CreateNewPolicyFromTrustedSource-ReturnCodes">Return Codes</h3><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Return Code </div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description </div></th></tr></thead><tbody><tr><td class="confluenceTd">1 </td><td class="confluenceTd">Policy Creation and Trusted Source Update successful. </td></tr><tr><td class="confluenceTd">3 </td><td class="confluenceTd">Policy Creation or Trusted Source Update failed. </td></tr><tr><td class="confluenceTd">5 </td><td class="confluenceTd">ExtAction value invalid </td></tr><tr><td class="confluenceTd">6 </td><td class="confluenceTd">ExtAction value missing on a node </td></tr><tr><td class="confluenceTd">9 </td><td class="confluenceTd">MC_ID missing </td></tr><tr><td class="confluenceTd">12 </td><td class="confluenceTd">Transaction Type missing on a new policy transaction </td></tr><tr><td class="confluenceTd">13 </td><td class="confluenceTd">Transaction Subtype missing on a new policy transaction </td></tr><tr><td class="confluenceTd">14 </td><td class="confluenceTd">Effective Date missing on a new policy transaction </td></tr><tr><td class="confluenceTd">16 </td><td class="confluenceTd">Transaction Type is not allowed to be created on a new policy transaction </td></tr><tr><td class="confluenceTd">17 </td><td class="confluenceTd">Transaction Type is not allowed because it is not valid for the Product Group </td></tr><tr><td class="confluenceTd">18 </td><td class="confluenceTd">Transaction Subtype is not allowed to be created on a new policy transaction </td></tr><tr><td class="confluenceTd">19 </td><td class="confluenceTd">Transaction Subtype is not allowed because it is not valid for the Product Group </td></tr><tr><td class="confluenceTd">24 </td><td class="confluenceTd">Success - Renew Not created </td></tr><tr><td class="confluenceTd">25 </td><td class="confluenceTd">Success - Renew Not created - Remedy Applied </td></tr><tr><td class="confluenceTd">31 </td><td class="confluenceTd">Transaction Rejected because the Transaction Effective Date is prior to the Policy Effective Date. </td></tr><tr><td class="confluenceTd">-1 </td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

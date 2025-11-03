@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : createNewPolicy</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : createNewPolicy
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Jul 24, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="createNewPolicy-CreateNewPolicy">Create New Policy</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method is used to create a new policy or insurance application which will be established using the information provided in the Update XML. The Views specified in the Interface in the Action configuration will be used to receive and process the information.<br/> This method requires a single attribute. The attribute allows the upload user to use differing sets of Views to process the data being uploaded versus the views used to process online requests. <br/>All of the policy or insurance application information is expected to be contained in the Update XML provided. The policy transaction information (Transaction Type, Subtype, and Description, etc.) must also be included.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Only New Business, Rewrite, and Conversion transaction types may be specified when creating a new policy.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><h4 id="createNewPolicy-XMLUsage">XML Usage</h4><p>This method requires Update XML to provide information to the new policy. XML- Use should be Accept XML for Update.</p><h4 id="createNewPolicy-Attributes">Attributes</h4><p>The Create New Policy internal method also requires the use of one Attribute. The single Attribute must exist even if it contains no Value. The Attribute specifies any additional Views which should be marked as having been visited (similar to marking the pages as having been visited) as a result of the Upload. If no additional Views need to be marked the Attribute must still be included with an empty value.</p><h4 id="createNewPolicy-RequiredInformation">Required Information</h4><p>In order to create a new policy, a specific subset of the elements listed in the Table below must be present in the Update XML using the tags configured for the element. These appear under the policy entity node.</p><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Data Element</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Q-Tag</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">New Business</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Rewrite</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Conversion</div></th></tr></thead><tbody><tr><td class="confluenceTd">Transaction Type</td><td class="confluenceTd">30000-10</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td></tr><tr><td class="confluenceTd">Transaction Subtype</td><td class="confluenceTd">30000-11</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td></tr><tr><td class="confluenceTd">Transaction Effective Date</td><td class="confluenceTd">30000-143</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td></tr><tr><td class="confluenceTd">Policy Term Length*</td><td class="confluenceTd">30000-141</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td></tr><tr><td class="confluenceTd">Policy Expiration Date</td><td class="confluenceTd">30000-142</td><td class="confluenceTd">Derived</td><td class="confluenceTd">Derived</td><td class="confluenceTd">Derived</td></tr><tr><td class="confluenceTd">Description</td><td class="confluenceTd">30000-33</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td></tr><tr><td class="confluenceTd">Stage</td><td class="confluenceTd">30000-39</td><td class="confluenceTd">Optional</td><td class="confluenceTd">Optional</td><td class="confluenceTd">Optional</td></tr><tr><td class="confluenceTd">Product Group</td><td class="confluenceTd">30000-1</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td></tr><tr><td class="confluenceTd">Country (can be implied by State)</td><td class="confluenceTd">30000-4</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td></tr><tr><td class="confluenceTd">State</td><td class="confluenceTd">30000-5</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td><td class="confluenceTd">Required</td></tr></tbody></table></div><p>* Term Length can be provided in the Update XML or as a default value in the configuration, but a value must be available to the Upload process.<br/>Please note that if any required items are missing, the Upload is rejected in its entirety. A return code will indicate the error.</p><h4 id="createNewPolicy-UploadProcessing">Upload Processing</h4><p>Upload processes the Adaptik Update XML in the same way in this method, as is described in the <em>Update Policy Transaction (Upload)</em> method. Please <a rel="nofollow">click here</a> to view the detailed information.</p><h4 id="createNewPolicy-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Update successful with no remedies applied.</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Update successful with remedies applied (remedies found in return XML).</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Update failed, reason unspecified.</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">View Item Error eEncountered</td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">ExtAction value invalid on a node</td></tr><tr><td class="confluenceTd">6</td><td class="confluenceTd">ExtAction value missing on a node</td></tr><tr><td class="confluenceTd">7</td><td class="confluenceTd">ID missing on an update or delete node</td></tr><tr><td class="confluenceTd">8</td><td class="confluenceTd">ID specified on an update or delete node was not found in database</td></tr><tr><td class="confluenceTd">9</td><td class="confluenceTd">MC_ID missing</td></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">CT_ID missing</td></tr><tr><td class="confluenceTd">11</td><td class="confluenceTd">Version missing</td></tr><tr><td class="confluenceTd">12</td><td class="confluenceTd">Transaction Type missing on a new policy transaction</td></tr><tr><td class="confluenceTd">13</td><td class="confluenceTd">Transaction Subtype missing on a new policy transaction</td></tr><tr><td class="confluenceTd">14</td><td class="confluenceTd">Effective Date missing on a new policy transaction</td></tr><tr><td class="confluenceTd">16</td><td class="confluenceTd">Transaction Type is not allowed to be created on a new policy transaction</td></tr><tr><td class="confluenceTd">17</td><td class="confluenceTd">Transaction Type is not allowed because it is not valid for the Product Group</td></tr><tr><td class="confluenceTd">18</td><td class="confluenceTd">Transaction Subtype is not allowed to be created on a new policy transaction</td></tr><tr><td class="confluenceTd">19</td><td class="confluenceTd">Transaction Subtype is not allowed because it is not valid for the Product Group</td></tr><tr><td class="confluenceTd">28</td><td class="confluenceTd">Upload succeeded but View Item Errors were encountered.</td></tr><tr><td class="confluenceTd">29</td><td class="confluenceTd">Upload succeeded with Remedies applied but View Item Errors were encountered.</td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">Transaction was Rejected by application of a Remedy configured to reject.</td></tr><tr><td class="confluenceTd">31</td><td class="confluenceTd">Transaction Rejected because the Transaction Effective Date is prior to the Policy Effective Date.</td></tr><tr><td class="confluenceTd">32</td><td class="confluenceTd">The request is being rejected because the Policy node contains an ExtAction value of D (Delete). D is not a valid value for the Policy node.</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : issueOOSReplacements</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : issueOOSReplacements
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="issueOOSReplacements-IssueOOSReplacements">Issue OOS Replacements</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will issue the replacement transactions created by OOS processing for each issued transaction that is being replaced relative to the OOS transaction in context. The method will reset the removal_code and oos_completion_code for all of the impacted transactions to null. This method does not execute any configured behavior. It will simply find all replacement transactions that are replacing issued transactions as a result of the processing of the OOS transaction in context and mark them as issued in PolicyWriter resetting the removal_code and oos_completion_code as well and making any necessary updates to the search information cache.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd"><ul><li>Must be executed from within an OOS policy transaction context.</li><li>Not available for use by an OOS Cancel transaction.</li></ul></td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">This method is called during the issue of an out of sequence transaction and uses a Dependency which checks the return code from the <em>Process OOS Replacements</em> method or the <em>OOS Indicator</em> Policy Fact.</td></tr></tbody></table></div><p> </p><h4 id="issueOOSReplacements-XMLUsage">XML Usage</h4><p>None</p><h4 id="issueOOSReplacements-Attributes">Attributes</h4><p>None</p><h4 id="issueOOSReplacements-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Transaction in context is not OOS</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Transaction in context is a Cancel transaction</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">Failure - Incomplete OOS changes present - issuance not allowed</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="issueOOSReplacements-ImplementationExample">Implementation Example</h4><h5 id="issueOOSReplacements-Action">Action</h5><p>issueOOSTrx</p><h5 id="issueOOSReplacements-Actiontype">Action type</h5><p>Standard Action</p><h5 id="issueOOSReplacements-Dependency">Dependency</h5><p>None</p><h5 id="issueOOSReplacements-ActionStep">Action Step</h5><h5 id="issueOOSReplacements-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356502/3797553954.png?height=250" data-image-src="attachments/3797356502/3797553954.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553954" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="oosrepl.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356502" data-linked-resource-container-version="2" data-media-id="0a39ed4d-a885-4372-9f17-34e011d83f96" data-media-type="file"></span></h5><h5 id="issueOOSReplacements-Outcomes">Outcomes</h5><h6 id="issueOOSReplacements-Dependency:StepCode-OOS_ISSUE:Return_Code=1">Dependency: Step Code - OOS_ISSUE: Return_Code=1</h6><h6 id="issueOOSReplacements-.1"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" width="600" loading="lazy" src="attachments/3797356502/3797553959.png?width=600" data-image-src="attachments/3797356502/3797553959.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553959" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="oossuccess.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356502" data-linked-resource-container-version="2" data-media-id="73c51c35-50ef-4d9a-ad32-9df9e1b63d32" data-media-type="file"></span></h6><h6 id="issueOOSReplacements-Dependency:None">Dependency: None</h6><h5 id="issueOOSReplacements-.2"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" width="600" loading="lazy" src="attachments/3797356502/3797553964.png?width=600" data-image-src="attachments/3797356502/3797553964.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553964" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="oosfail.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356502" data-linked-resource-container-version="2" data-media-id="2529ce37-2159-4a8c-a9e9-c6b988e84d1b" data-media-type="file"></span></h5><h5 id="issueOOSReplacements-Attributes.1">Attributes</h5><p>None</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356502/3797553954.png">oosrepl.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356502/3797553959.png">oossuccess.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356502/3797553964.png">oosfail.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

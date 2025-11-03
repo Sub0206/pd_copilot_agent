@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Create Travelers Custom Auto Version</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Deprecated_3797356330.html">Deprecated</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Create Travelers Custom Auto Version
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="CreateTravelersCustomAutoVersion-Description">Description</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method is used to create a Travelers-specific customized version based upon the user's changes to the page from which the action is invoked. It will perform the following Steps:<ul><li>If there exists a Custom Quote version, then use this version to make the following updates:<ul><li>Use the contents from the top policy view (CPOL_FOR_COV_DT_2) as defined by the property file to update the equivalent questions on the Custom version.</li><li>Delete all of the existing vehicle coverages on the Custom Version.</li><li>Add the vehicle coverages as defined on the screen (coverage type = Primary).</li><li>Add the vehicle coverages based upon answers selected from top policy view (coverage type = secondary).</li><li>Call the Rating Action which will call the Gateway for the quote version (passed as second Product Step Attribute).</li><li>Display Your Quote page with this version in context.</li></ul></li><li>If there does not exist a Custom Quote Version then:<ul><li>Using the current version, create a new version.</li><li>Delete the Policy Answer for the Coverage Package (first Product Step attribute will supply Q-tag).</li><li>Update Q_30000_33 with &quot;Custom&quot;.</li><li>Use the contents from the top policy view (CPOL_FOR_COV_DT_2) as defined by the property file, update the equivalent questions on the Custom version.</li><li>Delete all of the existing vehicle coverages on the Custom Version.</li><li>Add the vehicle coverages as defined on the screen (coverage type = Primary).</li><li>Add the vehicle coverages based upon answers selected from top policy view (coverage type = secondary).</li><li>Call the Rating Action which will call the Gateway for the quote version (passed as second Product Step Attribute).</li><li>Display Your Quote page with the Custom version in context.</li></ul></li></ul></td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">None </td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">This method is specific to Travelers PL Auto.</td></tr></tbody></table></div><p> </p><h4 id="CreateTravelersCustomAutoVersion-XMLUsage">XML Usage</h4><p>None</p><h4 id="CreateTravelersCustomAutoVersion-Attributes">Attributes</h4><h6 id="CreateTravelersCustomAutoVersion-Attributesmustbeconfiguredintherelativeorderlistedbelow.">Attributes must be configured in the relative order listed below.</h6><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Type </div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">PACKAGE</td><td class="confluenceTd">Valid Q-Tag</td><td class="confluenceTd">String</td><td class="confluenceTd">Identifier for the question on Policy which is the link to the Product Coverage Package Entity (20105). Should be in format Q_XXXXX_YY where XXXXX is the entity identifier and YY is the question sequence number.</td></tr><tr><td class="confluenceTd">RATEMACRO</td><td class="confluenceTd">Code for the Macro to be used to Rate the Versions created</td><td class="confluenceTd">String</td><td class="confluenceTd">Identifies the Rate action Macro to be called for each version created.</td></tr></tbody></table></div><h4 id="CreateTravelersCustomAutoVersion-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

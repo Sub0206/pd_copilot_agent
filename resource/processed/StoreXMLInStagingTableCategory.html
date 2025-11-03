@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : StoreXMLInStagingTableCategory</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : StoreXMLInStagingTableCategory
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified by <span class='editor'> Jagadish Rotti</span> on May 10, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="StoreXMLInStagingTableCategory-StoreXML/JSONinPolicyReportStagingTablebyCategory">Store XML/JSON in Policy Report Staging Table by Category</h3><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col style="width: 116.0px;"/></colgroup><colgroup><col style="width: 1067.0px;"/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd"><p>This method takes the XML/JSON provided to the Step and after any Forward XSL processes it, stores it in the Staging table in the database using the specified Category.</p><p>All calls to this method will add a record to the table. There will be no matching of existing records to the new record being added. If an interpretation of the data between transaction snapshots is required it is incumbent on the downstream process that is processing the provided data to apply any associated aggregation or reconciliation rules.</p><p>This method is supported in both an online context and via the SOAP Gateway. When used in an online context the Step should generate the XML/JSON to be stored. When used via the SOAP Gateway the configuration could be set to Accept Input XML and then transform and store it.</p><p>See Enhancement 1293 for full treatment of the data model, table definitions, and xml schema.</p><p><br/></p></td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">The method simply puts whatever String (XML, JSON, String) is provided into the Staging table and populates the Category column with the specified Category (Step Attribute). The string provided can be validated against a Reporting Schema if one is specified in the Application Property and the system is in Test Mode. Since the load of the data from the Staging table to a downstream reporting table or process happens after the method returns to the calling Action, any condition in which the string cannot be loaded, in total or in part, into the Reporting Tables, no return code will alert the user that the transaction may remain solely in the Staging table or be missing elements.</td></tr></tbody></table></div><p><br/></p><h4 id="StoreXMLInStagingTableCategory-JSON/XMLUsage">JSON/XML Usage</h4><p>Generate from DB, Accept XML for Update, or Reuse XML from Prior Step are all supported options for the XML required for this method.</p><h4 id="StoreXMLInStagingTableCategory-Attributes">Attributes</h4><p>CATEGORY – the Category that should be set when adding a new row. </p><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><tbody><tr><th class="confluenceTh">Seq #</th><th class="confluenceTh">Code</th><th colspan="1" class="confluenceTh">Value</th><th colspan="1" class="confluenceTh">Type</th><th colspan="1" class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">CATEGORY</td><td colspan="1" class="confluenceTd">category code value</td><td colspan="1" class="confluenceTd">string</td><td colspan="1" class="confluenceTd">Indicates the text that will be stored in the CATEGORY column of the staging table.</td></tr></tbody></table></div><h4 id="StoreXMLInStagingTableCategory-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><th class="confluenceTh">Return Code</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">String successfully stored</td></tr><tr><td colspan="1" class="confluenceTd">2</td><td colspan="1" class="confluenceTd">Update failed, Category Attribute is missing or not properly specified.</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd"><p>Unspecified Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

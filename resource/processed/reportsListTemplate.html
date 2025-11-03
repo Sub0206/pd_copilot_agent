@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : reportsListTemplate</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Web-Page-Templates_28282816.html">Web Page Templates</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : reportsListTemplate
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Susan Wilson</span>, last modified on 20 Nov, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="reportsListTemplate-"> </h4><h5 id="reportsListTemplate-TheReportListTemplateconsistsoftwoListUnits">The Report List Template consists of two List Units</h5><h6 id="reportsListTemplate-ThefirstListUnitwillbeusedtodisplayallthereportswithinthesystemthatauserhasaccessto(accessisdeterminedthroughintegrationwiththereportingutilityandexposedintheuserAuthXMLbytheirRole)."><span>The first List Unit will be used to display all the reports within the system that a user has access to (access is determined through integration with the reporting utility and exposed in the user Auth XML by their Role). </span></h6><h6 id="reportsListTemplate-ThesecondlistpresentsalistofreportoutputfilesthathavebeenprocessedandsavedfortheselectedreportofthefirstList."><span>The second list presents a list of report output files that have been processed and saved for the selected report of the first List.</span></h6><h6 id="reportsListTemplate-(PLEASENOTE:thistemplatemaybeusedwithingthePolicycomponentBUTitmustbeusedincontextofaConfigurationVersionasitrequiresaconfiguredWebPage.)"><strong>(PLEASE NOTE: this template may be used withing the Policy component BUT it must be used in context of a Configuration Version as it requires a configured Web Page.)</strong></h6><p> </p><h4 id="reportsListTemplate-BelowaretheListpropertiessupportedfortheReportListTemplate:">Below are the List properties supported for the Report List Template:</h4><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Property Parameter</strong></p></th><th class="confluenceTh"><p><strong>Req</strong></p></th><th class="confluenceTh"><p><strong>Example Values</strong></p></th><th class="confluenceTh"><p><strong>Description</strong></p></th><th class="confluenceTh"><p><strong>Comments</strong></p></th></tr><tr><td class="confluenceTd"><p><strong>presentationType</strong></p></td><td class="confluenceTd"><p>R</p></td><td class="confluenceTd"><p>presentationType =ReportPresentation</p></td><td class="confluenceTd"><p>Provides the Presentation type that is being instantiated</p></td><td class="confluenceTd"><p> </p></td></tr><tr><td class="confluenceTd"><p><strong>ViewName</strong></p></td><td class="confluenceTd"><p>R</p></td><td class="confluenceTd"><p>ViewName =reportLT</p></td><td class="confluenceTd"><p><br/> Specifies the name of V-Tag for the List View that will be used to supply the presentation information for the presentation type</p><p> </p></td><td class="confluenceTd"><p> </p></td></tr><tr><td class="confluenceTd"><p><strong>enableFiltering</strong></p></td><td class="confluenceTd"><p>O</p></td><td class="confluenceTd"><p>enableFiltering=Y</p></td><td class="confluenceTd"><p>Indicates if the filter row should be enabled or disabled. When property is present and set to N, the filter row will be hidden from the user</p></td><td class="confluenceTd"><p>Default=N</p></td></tr><tr><td class="confluenceTd"><p><strong>beginPagingThreshold</strong></p></td><td class="confluenceTd"><p>O</p></td><td class="confluenceTd"><p>beginPagingThreshold=15</p></td><td class="confluenceTd"><p>Indicates the number of occurrences for the entity before paging is enabled (greater than or equal to) when scrollingEnabled=Y. Also indicates when filtering and sorting functionality is performed on the server vs on the client. If scrollingEnabled=N, then the paging section will not be displayed unless the number of entity occurrences surpasses this threshold OR the viewable area for the list cannot display the specified number of occurrences.  <strong>Note</strong> that the maximum number this property can contain is 300. An application exception is given to the user if a higher number is specified.</p></td><td class="confluenceTd"><p><strong>Default=200</strong>, if scrollingEnabled=Y<br/>   <br/> <strong>Default=5</strong> </p></td></tr><tr><td class="confluenceTd"><p><strong>xslFile</strong></p></td><td class="confluenceTd"><p>R</p></td><td class="confluenceTd"><p>xslFile=jrReportLists.xsl</p></td><td class="confluenceTd"><p>Indicates the XSL mapping file for the List View.</p></td><td class="confluenceTd"><p><strong>Valid Values; </strong></p><p>jrReportsHistory.xsl</p><p>jrReportsList.xsl</p><p><strong> </strong></p><div><strong><br/></strong></div></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                 
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 05 Dec, 2019 16:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : detailManyUpdateableListsTemplate</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Web-Page-Templates_28282816.html">Web Page Templates</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : detailManyUpdateableListsTemplate
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Susan Wilson</span>, last modified on 20 Nov, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h5 id="detailManyUpdateableListsTemplate-TheDetail+MultipleUpdateableListsTemplateprovidestheabilitytodisplayonasinglepageadetailandmultipleupdateablelists.">The <strong>Detail + Multiple Updateable Lists</strong> Template provides the ability to display on a single page a detail and multiple updateable lists.</h5><p>Supported features:</p><ol><li>The questions for each occurrence will be controlled by standard configuration techniques.</li><li>Each Updateable list will support client side sorting and filtering.</li><li>Rows representing column totals will be available for each Updateable List. (Configured by designating Yes for Summarize Column? On View Item)</li></ol><p>Unsupported features that are present in a single Detail + Updatable List template:</p><ol><li>There will be no support for the functionality known as “sum to Parent” that is designated in the Parent Detail property file.</li><li>There will be no support for the functionality known as “deleteParent” that is designated in the Parent Detail property file.</li><li>There will be no support for intervening Details between the Updateable Lists.</li><li>There will be no support for button/action support on any of the Updateable Lists.</li><li>There will be no support for paging on any of the Updateable Lists.</li></ol><p>Unsupported features:</p><ol><li>Answer Actions will not be supported on each row of the Updateable List.</li><li>Server sensitivity that supports features such as Reference or Product Link derivations will not be supported.  </li></ol><h6 id="detailManyUpdateableListsTemplate-"> </h6><h5 id="detailManyUpdateableListsTemplate-TheStandardDetailPropertiesaredefinedbelow:">The Standard Detail Properties are defined below:</h5><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><thead><tr><th style="text-align: center;" class="confluenceTh"><p><strong style="color: rgb(112,112,112);font-size: 12.0px;">Property Parameter</strong></p></th><th style="text-align: center;" class="confluenceTh"><p><strong style="color: rgb(112,112,112);font-size: 12.0px;">Usage</strong></p></th><th style="text-align: center;" class="confluenceTh"><p><strong style="color: rgb(112,112,112);font-size: 12.0px;">Example Values</strong></p></th><th style="text-align: center;" class="confluenceTh"><p><strong style="color: rgb(112,112,112);font-size: 12.0px;">Description</strong></p></th></tr></thead><tbody><tr><td class="confluenceTd"><strong>presentationType</strong></td><td class="confluenceTd"><strong>Required</strong></td><td class="confluenceTd">presentationType=DetailPresentation</td><td class="confluenceTd">Provides the Presentation type that is being instantiated </td></tr><tr><td class="confluenceTd"><strong>ViewName</strong></td><td class="confluenceTd"><strong>Required</strong></td><td class="confluenceTd">ViewName=basicInfoDT</td><td class="confluenceTd">Specifies the name of V-Tag for the Detail View that will be used to supply the presentation information for the presentation type</td></tr><tr><td class="confluenceTd"><strong>editableOnClosedTrx</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">editableOnClosedTrx=Y</td><td class="confluenceTd">Allows the detail to be editable on a Closed transaction. Typically used for items such as notes.</td></tr><tr><td class="confluenceTd"><strong>overrideDataChanged</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">overrideDataChanged=Y</td><td class="confluenceTd">Indicates that the page should ALWAYS be submitted for save regardless if the user changes any data or not.</td></tr></tbody></table></div><p> </p><h5 id="detailManyUpdateableListsTemplate-TheStandardUpdateableListPropertiesaredefinedbelow:">The Standard Updateable List Properties are defined below:</h5><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><thead><tr><th style="text-align: center;" class="confluenceTh"><p><strong>Property Parameter</strong></p></th><th style="text-align: center;" class="confluenceTh"><p><strong>Usage</strong></p></th><th style="text-align: center;" class="confluenceTh"><p><strong>Possible Values</strong></p></th><th style="text-align: center;" class="confluenceTh"><p><strong>Description</strong></p></th></tr></thead><tbody><tr><td class="confluenceTd"><strong>presentationType</strong></td><td class="confluenceTd"><strong>Required</strong></td><td class="confluenceTd"><p>ManyUpdateableLists<br/>Example: <br/>presentationType=ManyUpdateableLists</p></td><td class="confluenceTd">Provides the Presentation type that is being instantiated</td></tr><tr><td class="confluenceTd"><strong>ViewName</strong></td><td class="confluenceTd"><strong>Required</strong></td><td class="confluenceTd"><p>Valid Updateable List View V-Tags<br/>Example:<br/>ViewName=<br/>scheduleUPD1,<br/>scheduleUPD2,<br/>scheduleUPD3,<br/>scheduleUPD4,<br/>scheduleUPD5, …</p></td><td class="confluenceTd">Provides the Updateable List View that will be used to supply the presentation information for the presentation type.</td></tr><tr><td colspan="1" class="confluenceTd"><strong>wrapHeaderText</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Y, N (Default)</p><p>Example:</p><p>wrapHeaderText=Y</p></td><td colspan="1" class="confluenceTd"><p>When set to Y, the text within the Header row of a list should be wrapped.  When set to N, the &quot;...&quot; notation will be used to</p><p>denote that there is more text than can fit in the header cell and the mouse over will be provided to show the full text.</p></td></tr><tr><td colspan="1" class="confluenceTd"><strong>wrapRowText</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Y, N (Default)</p><p>Example:</p><p>wrapRowText=Y</p></td><td colspan="1" class="confluenceTd"><p>When set to Y, the text within the Header row of a list should be wrapped.  When set to N, the &quot;...&quot; notation will be used to</p><p>denote that there is more text than can fit in the header cell and the mouse over will be provided to show the full text.</p></td></tr><tr><td colspan="1" class="confluenceTd"><strong>enableFiltering</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Y, N (Default)</p><p>Example:</p><p>enableFiltering=Y</p></td><td colspan="1" class="confluenceTd"><p>Indicates if the filter row should be enabled or disabled. </p><p>When property is present and set to N, the filter row will be hidden from the user.</p></td></tr><tr><td colspan="1" class="confluenceTd"><strong>enableSorting</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Y, N (Default)</p><p>Example:</p><p>enableSorting=Y</p></td><td colspan="1" class="confluenceTd"><p>Indicates if the Updateable List will allow the user to sort the rows on the client. </p><p>When the property is not present or set to Y, then sorting will be disabled on the client</p></td></tr><tr><td colspan="1" class="confluenceTd"><strong>scrollingEnabled</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Y (Default), N</p><p>Example:<br/>scrollingEnabled=Y </p></td><td colspan="1" class="confluenceTd"><p>When set to Y and the number of occurrences for the entity is less than <em>beginPagingThreshold</em>, the updateable list should be in scrolling mode. </p><p>If set to N, then the list is always shown in paging mode. </p><p>Also indicates when filtering and sorting functionality is performed on the server (paging) vs. on the client (scrolling). </p></td></tr><tr><td colspan="1" class="confluenceTd"><strong>enableRowNumbering</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Y, N (Default)</p><p>Example:<br/>enableRowNumbering=Y </p></td><td colspan="1" class="confluenceTd"><p>Indicates if a row number should be displayed on each row of the updateable list.  </p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                 
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 05 Dec, 2019 16:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

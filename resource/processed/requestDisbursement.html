@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : requestDisbursement</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : requestDisbursement
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="requestDisbursement-RequestDisbursement">Request Disbursement</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will update the related Entity (identified using the targetMCID, targetVersion, and targetCID attributes) using the sourcePaidAmtQtag value.  The tarPendingAmtQTag and  srcParentAmtQTAG are increased using the sourcePaidAmtQtag and the createDateQTAG is updated with the current date.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">View Action</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed within an Allocation Template</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p><br/></p><h4 id="requestDisbursement-XMLUsage">XML Usage</h4><p>Generate from Detail View</p><h4 id="requestDisbursement-Attributes">Attributes</h4><p>There will be fifteen Attributes required for this method.  This first four Attributes will always be MC-ID, CT-ID, Version, and C-ID.  The next 8 Attributes will be pointing to the QTAGS used in updating the amounts on the Parent Source and Target entities. The last two Attributes will be the Interface that will have the Views with the Attribute Qtags, Receivable XML View to update the Receivable amounts and the Parent View Tag of the Allocation Entity.</p><p>Example:</p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Code</th><th class="confluenceTh">Literal</th><th class="confluenceTh">Value</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">targetMCID</td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Q_3####_## (i.e. Q_30010_5)</td><td class="confluenceTd">MCID of the target contract (which maybe yourself).  The Q-tag comes from the entity of the Updateable List that you are in context of.</td></tr><tr><td class="confluenceTd">targetCTID</td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Q_3####_## (i.e. Q_30010_6 )</td><td class="confluenceTd">CTID of the target contract (which maybe yourself). The Q-tag comes from the entity of the Updateable List that you are in context of.</td></tr><tr><td class="confluenceTd">targetVersion</td><td class="confluenceTd">Free form text </td><td class="confluenceTd">Q_3####_## (i.e. Q_30010_7)</td><td class="confluenceTd">Version of the target contract (which maybe yourself). The Q-tag comes from the entity of the Updateable List that you are in context of.</td></tr><tr><td class="confluenceTd">targetCID</td><td class="confluenceTd">Free form text </td><td class="confluenceTd">Q_3####_## (i.e. Q_30010_8)</td><td class="confluenceTd">CID of the target contract (which maybe yourself). The Q-tag comes from the entity of the Updateable List that you are in context of.</td></tr><tr><td class="confluenceTd">sourceAmtQTAG</td><td class="confluenceTd">Free form text </td><td class="confluenceTd">Q_3####_## (i.e. Q_30010_3)</td><td class="confluenceTd">The amount being set as the payment on the source allocation entity.</td></tr><tr><td colspan="1" class="confluenceTd">srcParentAmtQTAG</td><td colspan="1" class="confluenceTd">Free form text </td><td colspan="1" class="confluenceTd">Q_3####_## (i.e. Q_30009_1)</td><td colspan="1" class="confluenceTd">The amount being set as the payment on the source parent entity.</td></tr><tr><td colspan="1" class="confluenceTd">tarPendingAmtQTAG</td><td colspan="1" class="confluenceTd">Free form text</td><td colspan="1" class="confluenceTd">Q_3####_## (i.e. Q_30002_60)</td><td colspan="1" class="confluenceTd"><p>The QTAG of the target amount.</p></td></tr><tr><td colspan="1" class="confluenceTd">createDateQTAG</td><td colspan="1" class="confluenceTd">Free form text</td><td colspan="1" class="confluenceTd">Q_3####_## (i.e. Q_30009_25)</td><td colspan="1" class="confluenceTd">This is the QTAG of the date when the allocation(s) are created.</td></tr><tr><td colspan="1" class="confluenceTd">tarPendIndQTAG</td><td colspan="1" class="confluenceTd">Free form text</td><td colspan="1" class="confluenceTd">Q_3####_## (i.e. Q_30002_25)</td><td colspan="1" class="confluenceTd">is the QTAG of the pending indicator on the target.</td></tr><tr><td colspan="1" class="confluenceTd">tarPendIndValue</td><td colspan="1" class="confluenceTd">Free form text</td><td colspan="1" class="confluenceTd">N</td><td colspan="1" class="confluenceTd">This is the Value that will be set on the pending indicator on the target.</td></tr><tr><td colspan="1" class="confluenceTd">allocStatusCodeQTAG</td><td colspan="1" class="confluenceTd">Free form text</td><td colspan="1" class="confluenceTd">Q_3####_## (i.e. Q_30010_1)</td><td colspan="1" class="confluenceTd">This is the QTAG that holds the Allocation Status.</td></tr><tr><td colspan="1" class="confluenceTd">allocStatusCodeValue</td><td colspan="1" class="confluenceTd">Free form text</td><td colspan="1" class="confluenceTd">R</td><td colspan="1" class="confluenceTd">This is the Value that will be set in the Allocation Status when executed successful.</td></tr><tr><td colspan="1" class="confluenceTd">INTERFACE</td><td colspan="1" class="confluenceTd">Free form text </td><td colspan="1" class="confluenceTd">UPDallocation</td><td colspan="1" class="confluenceTd">Update Target Parent and create Target allocation</td></tr><tr><td colspan="1" class="confluenceTd">parentVTAG</td><td colspan="1" class="confluenceTd">Free form text</td><td colspan="1" class="confluenceTd">UPDallocationDT</td><td colspan="1" class="confluenceTd">Target Allocation parent view</td></tr></tbody></table></div><p><br/></p><p>Return Codes</p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th style="text-align: center;" class="confluenceTh">Return Code</th><th style="text-align: center;" class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

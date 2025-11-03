@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : runPayPlanChangeNew</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : runPayPlanChangeNew
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span> on Dec 24, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="runPayPlanChangeNew-Description">Description</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>This method will process an algorithm that will update the policy term in context receivables to a new installment schedule.</p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Standard</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>Must be executed from within the Sapiens BillingPro</p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None</p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>None</p></td></tr></tbody></table></div><p> </p><h3 id="runPayPlanChangeNew-XMLUsage">XML Usage</h3><p>None</p><h3 id="runPayPlanChangeNew-Attributes">Attributes</h3><p>Upon selection of this Internal Method, the following step attribute occurrences will be automatically created.</p><p>Below are the attributes used in this method.</p><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><thead><tr><td class="confluenceTd"><p><strong>Seq # </strong></p></td><td class="confluenceTd"><p><strong>Code </strong></p></td><td class="confluenceTd"><p><strong>Value </strong></p><p><strong>(if applicable)</strong></p></td><td class="confluenceTd"><p><strong>Value Type </strong></p><p><strong>(if applicable)</strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>NEW_PAY_PLAN_CODE</p></td><td class="confluenceTd"><p>Required Valid Q-Tag</p><p>Ex: Q_30004_XX</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the Question that holds the Pay Plan Code used for validation of the policy with the change request in pay plan</p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>POLICY_NUMBER</p></td><td class="confluenceTd"><p>Required</p><p>Valid Q-Tag</p><p>Ex:</p><p>Q_30004_XX</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the Question that holds the Policy Number used for validation of the policy with the change request in pay plan</p></td></tr><tr><td class="confluenceTd"><p> 30</p></td><td class="confluenceTd"><p>REM_UNALLOC_VW_NAME       </p></td><td class="confluenceTd"><p>Required</p><p>Valid View Tag</p><p>Ex:</p><p>remitUpdLT</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>View name to be considered for Remittance unallocations</p></td></tr><tr><td class="confluenceTd"><p> 40</p></td><td class="confluenceTd"><p>REM_UNALLOC_ACT_CODE        </p></td><td class="confluenceTd"><p>Required</p><p>Valid View Action Code</p><p>Ex:</p><p>unAllocateRemittance</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>View Action code required for remittance unallocation</p></td></tr><tr><td class="confluenceTd"><p> 50</p></td><td class="confluenceTd"><p>REM_ALLOC_ACT_CODE</p></td><td class="confluenceTd"><p>Required</p><p>Valid Standard Action Code</p><p>Ex:</p><p>allocRemitDB</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Standard Action for Remittance Allocation</p></td></tr><tr><td class="confluenceTd"><p> 60</p></td><td class="confluenceTd"><p>CRT_ADJ_ACTION_CODE</p></td><td class="confluenceTd"><p>Required</p><p>Valid Standard Action Code</p><p>Ex:</p><p>createAdjustmentPP</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Post adjustment action code for Pay Plan Code</p></td></tr><tr><td class="confluenceTd"><p>70 </p></td><td class="confluenceTd"><p>POST_ADJ_ACTION_CODE</p></td><td class="confluenceTd"><p>Required</p><p>Valid Standard Action Code</p><p>Ex:</p><p>allocateAdjustmentPP</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Post adjustment View for Pay Plan Change</p></td></tr><tr><td class="confluenceTd"><p> 80</p></td><td class="confluenceTd"><p>ADJ_UNALLOC_ACT_CODE</p></td><td class="confluenceTd"><p>Required</p><p>Valid View Action Code</p><p>Ex:</p><p>unAllocateAdjustPP</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Adjustment unallocation action code requirement</p></td></tr><tr><td class="confluenceTd"><p> 90</p></td><td class="confluenceTd"><p>ADJ_REALLOC_ITAG</p></td><td class="confluenceTd"><p>Required</p><p>Valid View Tag</p><p>Ex:</p><p>adjustmentAllocUPD</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Interface tag required for adjustment unallocation</p></td></tr><tr><td class="confluenceTd"><p> 100</p></td><td class="confluenceTd"><p>TRX_OFFSET_UNALLOC_ITAG</p></td><td class="confluenceTd"><p>Required</p><p>Valid View Tag</p><p>Ex:</p><p>recOffsetUPD</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Interface tag required for transaction offset Un allocation</p></td></tr><tr><td class="confluenceTd"><p> 110</p></td><td class="confluenceTd"><p>TRX_OFF_UPD_ACTION</p></td><td class="confluenceTd"><p>Required</p><p>Valid Standard Action Code</p><p>Ex:</p><p>updOffstAllocToRecUT</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Action code required for Transaction Offset Unallocation Action to update the Receivables</p></td></tr><tr><td class="confluenceTd"><p> 120</p></td><td class="confluenceTd"><p>INST_RECV_GEN_ACT_CODE</p></td><td class="confluenceTd"><p>Required</p><p>Valid Standard Action Code</p><p>Ex:</p><p>genRecInstallments</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Action code required for receivable generation</p></td></tr></tbody></table></div><p><strong> </strong></p><h3 id="runPayPlanChangeNew-ReturnCodes">Return Codes</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><p><strong>Return Code </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr><tr><td class="confluenceTd"><p>1</p></td><td class="confluenceTd"><p>Success</p></td></tr><tr><td class="confluenceTd"><p>3</p></td><td class="confluenceTd"><p>Missing Parameters</p></td></tr><tr><td class="confluenceTd"><p>4</p></td><td class="confluenceTd"><p>Missing Installment Schedule</p></td></tr><tr><td class="confluenceTd"><p>5</p></td><td class="confluenceTd"><p>Pay Plan codes are not modified</p></td></tr><tr><td class="confluenceTd"><p>-1</p></td><td class="confluenceTd"><p>Unknown Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

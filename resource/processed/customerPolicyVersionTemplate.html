@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : customerPolicyVersionTemplate</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Web-Page-Templates_28282816.html">Web Page Templates</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : customerPolicyVersionTemplate
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Susan Wilson</span>, last modified on 19 Nov, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="customerPolicyVersionTemplate-TheCustomer-PolicyQuoteVersionSelectionTemplatewilluseonepropertyfileinsupportofthetemplate:">The Customer-Policy Quote Version Selection Template will use one property file in support of the template: </h4><div align="center"><p> </p><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><thead><tr><td class="confluenceTd"><p><strong>Property</strong></p></td><td class="confluenceTd"><p><strong>Value</strong></p></td><td class="confluenceTd"><p><strong>Form Element / Behavior</strong></p></td><td class="confluenceTd"><p><strong>Applicability</strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>Presentation Type</p></td><td class="confluenceTd"><p>CustomerPolicyVersions</p></td><td class="confluenceTd"><p>Identifies the presentation type.</p></td><td class="confluenceTd"><p>Required</p></td></tr><tr><td class="confluenceTd"><p>policyDetailView</p></td><td class="confluenceTd"><p>Valid V-tag on 30000 within the Product Group</p></td><td class="confluenceTd"><p>Identifies the Detail View that will be used to capture the search criteria and the search button which references the specific SearchID for the installation for the Policy List.  Hidden on the page.</p></td><td class="confluenceTd"><p>Required</p></td></tr><tr><td class="confluenceTd"><p>versionDetailView</p></td><td class="confluenceTd"><p>Valid V-tag on 30000 within the Product Group</p></td><td class="confluenceTd"><p>Identifies the Detail View that will be used to capture the search criteria and the search button which references the specific SearchID for the installation for the Version List.  Hidden on the page.</p></td><td class="confluenceTd"><p>Required</p></td></tr><tr><td class="confluenceTd"><p>policyListView</p></td><td class="confluenceTd"><p>Valid V-tag on 30000 within the Product Group</p></td><td class="confluenceTd"><p>Identifies the List View that will be used to assemble the Policy List Results.</p></td><td class="confluenceTd"><p>Required</p></td></tr><tr><td class="confluenceTd"><p>versionListView</p></td><td class="confluenceTd"><p>Valid V-tag on 30000 within the Product Group</p></td><td class="confluenceTd"><p>Identifies the List View that will be used to assemble the Version List results (for each policy/quote).</p></td><td class="confluenceTd"><p>Required</p></td></tr><tr><td class="confluenceTd"><p>interfaceTag</p></td><td class="confluenceTd"><p>Valid Interface Tag</p></td><td class="confluenceTd"><p>Identifies the InterfaceTag that will be used to generate XML for each MC, CT, Version selected.  Note that this Interface must exist in all Product Groups.</p></td><td class="confluenceTd"><p>Required</p></td></tr><tr><td class="confluenceTd"><p>XMLTag</p></td><td class="confluenceTd"><p>alternate_reference_code (Default), standard_reference_code, action_tag</p></td><td class="confluenceTd"><p>Indicates the tag set that should be used to generate the xml.  alternate_reference_code maps to the “XML Tag” and standard_reference_code maps to Alternate XML Tag 1.  action_tag maps to Alternate XML Tag 2</p></td><td class="confluenceTd"><p>Optional</p></td></tr><tr><td class="confluenceTd"><p>needQtags</p></td><td class="confluenceTd"><p>Y, N (default)</p></td><td class="confluenceTd"><p>Indicates if the Q-tags should be included in the XML generation.</p></td><td class="confluenceTd"><p>Optional</p></td></tr><tr><td class="confluenceTd"><p>needIds</p></td><td class="confluenceTd"><p>Y, N (default)</p></td><td class="confluenceTd"><p>Indicates if the occurrence and answer id’s should be included in the XML generated</p></td><td class="confluenceTd"><p>Optional</p></td></tr><tr><td class="confluenceTd"><p>includeTransInfo</p></td><td class="confluenceTd"><p>Y, N (default)</p></td><td class="confluenceTd"><p>Indicates if the transaction information (Action tags) should be included. Occurrneces that have been deleted will be suppressed if set to N.</p></td><td class="confluenceTd"><p>Optional</p></td></tr><tr><td class="confluenceTd"><p>suppressEmptyTags</p></td><td class="confluenceTd"><p>Y, N (default)</p></td><td class="confluenceTd"><p>Indicates if empty tags (not answer</p></td><td class="confluenceTd"><p> </p></td></tr><tr><td class="confluenceTd"><p>Target</p></td><td class="confluenceTd"><p>action, XSL</p></td><td class="confluenceTd"><p>Indicates that the XML should be sent to an Action for further processing or sent to an XSL that will produce an HTML to display in the main body.</p></td><td class="confluenceTd"><p>Required</p></td></tr><tr><td class="confluenceTd"><p>actionCode</p></td><td class="confluenceTd"><p>Valid Action Code for the MC, CT, Version in context.</p></td><td class="confluenceTd"><p>Provides the Action Code that will be used to accept the XML produced by the template.</p></td><td class="confluenceTd"><p>Required when Target=action</p></td></tr><tr><td class="confluenceTd"><p>XSLReference</p></td><td class="confluenceTd"><p>XSL file name. </p></td><td class="confluenceTd"><p>File that will be used to transform the XML generated into an HTML that will be displayed in the main body.</p></td><td class="confluenceTd"><p>Required when Target=XSL</p></td></tr></tbody></table></div></div>
+                    </div>
+
+                    
+                 
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 05 Dec, 2019 16:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

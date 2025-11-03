@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : findPolicyTransaction</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : findPolicyTransaction
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="findPolicyTransaction-FindPolicyTransaction">Find Policy Transaction</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">Uses the parameter values specified in the Input XML to identify the policy transaction of interest on the policy to be set into context. <br/>If no criteria is provided in the input XML, or no matching transaction is identified, the method will put the latest active issued regular-category transaction on the policy into context. If no issued transaction exists on the policy, the open new-business-like transaction will be used.<br/>If in any case, multiple versions of an open transaction are identified by the criteria, the latest (by create date) will be selected.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a policy context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">Typically used to support Policy Inquiry using Policy Number or MC-ID only without a specific CT/Version.<br/>Can be used to identify if a particular type of transaction has been created on the policy.<br/>The Step will require an Interface when the XML Source is Accept for Update, but the Interface is not used by the method.</td></tr></tbody></table></div><p> </p><h4 id="findPolicyTransaction-XMLUsage">XML Usage</h4><p>This method expects update XML that contains the parameters to be used for transaction selection. If no XML is provided then the default transaction will be set into context.</p><h4 id="findPolicyTransaction-Attributes">Attributes</h4><p>None</p><h4 id="findPolicyTransaction-IdentifyingthePolicyTransactiontoSetintoContext">Identifying the Policy Transaction to Set into Context</h4><p>Only a select set of configured Questions will be available for use to identify the transaction of interest for this internal method. Transaction Effective Date (30000-143) was available as an input parameter in previous releases. Additional parameters are being added in this enhancement. The full list of available parameters and the corresponding matching rules are listed in the table below. If any other Questions are included in the input XML they will be ignored.</p><p>When multiple parameters are included in the input XML, the parameter values will be AND-ed to identify the transaction of interest. For example, if a Transaction Effective Date of 05/30/2015 and a Transaction Type of NONRENEW are both included, the method will look for a NONRENEW Type Transaction whose Transaction Effective Date is on or before 05/30/2015. A NONRENEW on that policy after that date would not be identified.</p><p>In the case where multiple transactions are identified by the provided criteria, the latest one, by Transaction Effective Date, CT-ID and Version (in that order), will be selected and set into context. If no transaction is identified by the provided criteria the latest active issued regular category transaction will be set into context and the Return Code will indicate that no transaction was identified and the default transaction is being used. If multiple versions of an open transaction are identified by the criteria, the latest (by create date) will be selected.</p><p>Because the Find process is working outside of a Configuration Version, the XML tags used to identify the search parameters in the input XML will be obtained from Base Definition rather than the Product Configuration.</p><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Parameter</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Behavior</div></th></tr></thead><tbody><tr><td class="confluenceTd">Transaction Type (30000-10)</td><td class="confluenceTd">The value provided should represent the code value for the Transaction Type. <br/>A transaction will be considered a match if its value in the CT_TYPE column in the Contract Transaction table exactly matches the value provided (case-insensitive).</td></tr><tr><td class="confluenceTd">Transaction Subtype (30000-11)</td><td class="confluenceTd">The value provided should represent the code value for the Transaction SubType. <br/>A transaction will be considered a match if its value in the CT_SUBTYPE column in the Contract Transaction table exactly matches the value provided (case-insensitive).</td></tr><tr><td class="confluenceTd">Transaction Effective Date (30000-143)</td><td class="confluenceTd">A transaction will be considered a match if its value in the EFF_DATE column in the Contract Transaction table is prior to or the same as the value provided (date comparison).</td></tr><tr><td class="confluenceTd">Process Date (30000-35)</td><td class="confluenceTd">A transaction will be considered a match if its value in the PROCESS_DATE column in the Contract Transaction table is prior to or the same as the value provided (date comparison).</td></tr><tr><td class="confluenceTd">Term Number (30000-37)</td><td class="confluenceTd">A transaction will be considered a match if its value in the TERM_NO column in the Contract Transaction table exactly matches the value provided (numeric comparison).</td></tr><tr><td class="confluenceTd">Transaction Stage (30000-39)</td><td class="confluenceTd">A transaction will be considered a match if its value in the STAGE column in the Contract Transaction table is less than or equal to the value provided.</td></tr><tr><td class="confluenceTd">Transaction Status (30000-40)</td><td class="confluenceTd">The value provided should represent the code value for the Transaction Status. <br/>A transaction will be considered a match if its value in the TR_STATUS column in the Contract Transaction table exactly matches the value provided (case-insensitive).<br/>If no value for this parameter is included, only transactions with an issued (Closed - C) value will be considered.</td></tr><tr><td class="confluenceTd">Agent Code (30000-41)</td><td class="confluenceTd">A transaction will be considered a match if its value in the AGENT_CODE column in the Contract Transaction table exactly matches the value provided (case-insensitive).</td></tr><tr><td class="confluenceTd">Underwriting Date Timestamp (30000-152)</td><td class="confluenceTd">A transaction will be considered a match if its value in the UNDERWRITING_DATE column in the Contract Transaction table is prior to or the same as the value provided (date comparison).</td></tr><tr><td class="confluenceTd">Rating Date Timestamp (30000-45)</td><td class="confluenceTd">A transaction will be considered a match if its value in the RATING_DATE column in the Contract Transaction table is prior to or the same as the value provided (date comparison).</td></tr><tr><td class="confluenceTd">Policy Term Effective Date (30000-34)</td><td class="confluenceTd">A transaction will be considered a match if its value in the POLICY_EFFECTIVE_DATE column in the Contract Transaction table is prior to or the same as the value provided (date comparison).</td></tr><tr><td class="confluenceTd">Policy Term Expiration (30000-142)</td><td class="confluenceTd">A transaction will be considered a match if its value in the POLICY_EXPIRATION_DATE column in the Contract Transaction table is prior to or the same as the value provided (date comparison).</td></tr><tr><td class="confluenceTd">Referral Status Code (30000-38)</td><td class="confluenceTd">The value provided should represent the code value for the Referral Status Code. <br/>A transaction will be considered a match if its value in the REFERRAL_STATUS column in the Contract Transaction table exactly matches the value provided (case-insensitive).</td></tr></tbody></table></div><h4 id="findPolicyTransaction-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success - Transaction identified using the criteria</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Transaction Not Found - default transaction used</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Failure - No MC in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

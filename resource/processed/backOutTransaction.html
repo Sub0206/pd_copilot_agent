@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : backOutTransaction</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : backOutTransaction
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="backOutTransaction-BackoutTransaction"><span>Backout Transaction</span></h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">Marks the transaction in context as backed out by setting the removal code value to R and initializing the removal timestamp to the current date and time. If there is no transaction in context, the Backout will use the input XML Transaction Type and Subtype fields to identify the type of transaction to be backed out on the policy in context, will search for the latest active issued transaction of that type, and will perform the backout of the identified transaction.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy context and requires XML if there is no specific transaction in context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">removal_code &lt;&gt; P (Pending Removal) or R (Removed)</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd"> </td></tr></tbody></table></div><p> </p><h4 id="backOutTransaction-XMLUsage">XML Usage</h4><p>Optionally accepts XML for update to be used to extract the target Transaction Type and Subtype when there is no specific transaction in context.</p><h4 id="backOutTransaction-Attributes">Attributes</h4><p>None</p><h4 id="backOutTransaction-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Appropriate identifiers missing or Transaction Not Found; Backout failed.</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">not allowed for specified Transaction; Backout Failed</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">Failure - No MC in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="backOutTransaction-ImplementationExample">Implementation Example</h4><h5 id="backOutTransaction-Action">Action</h5><p>Backout</p><h5 id="backOutTransaction-Actiontype">Action type</h5><p>Standard Action</p><h5 id="backOutTransaction-Dependency">Dependency</h5><p>Policy Facts:INCOMPLETE_ISSUE_TIMESTAMP is absent</p><h5 id="backOutTransaction-ActionStep">Action Step</h5><h5 id="backOutTransaction-ThisexampleusesXMLaswellasthetransactionincontextforBackout.">This example uses XML as well as the transaction in context for Backout.</h5><h5 id="backOutTransaction-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356438/3797553463.png?height=250" data-image-src="attachments/3797356438/3797553463.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553463" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture2.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356438" data-linked-resource-container-version="3" data-media-id="ffbdf4de-938d-41a9-8a65-f05c51af1705" data-media-type="file"></span></h5><h5 id="backOutTransaction-Outcomes">Outcomes</h5><h5 id="backOutTransaction-Dependency:StepCode-BACKOUT:Return_Code=1">Dependency: Step Code - BACKOUT : Return_Code=1</h5><h5 id="backOutTransaction-.1"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356438/3797553468.png?height=250" data-image-src="attachments/3797356438/3797553468.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553468" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture3.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356438" data-linked-resource-container-version="3" data-media-id="04eaff4e-b259-4fe1-90d4-8d75ff9cc4db" data-media-type="file"></span></h5><p><br/></p><h5 id="backOutTransaction-Dependency:StepCode-BACKOUT:Return_Code=3">Dependency: Step Code - BACKOUT : Return_Code=3</h5><h5 id="backOutTransaction-.2"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356438/3797553473.png?height=250" data-image-src="attachments/3797356438/3797553473.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553473" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture4.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356438" data-linked-resource-container-version="3" data-media-id="ab85ca93-2fd6-42ab-9655-b4185da14dd3" data-media-type="file"></span></h5><p><br/></p><h5 id="backOutTransaction-Dependency:N">Dependency: N</h5><h5 id="backOutTransaction-.3"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356438/3797553478.png?height=250" data-image-src="attachments/3797356438/3797553478.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553478" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture5.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356438" data-linked-resource-container-version="3" data-media-id="cb683b07-dfc4-41de-84a2-fa13a9c6c6a5" data-media-type="file"></span></h5><h5 id="backOutTransaction-Attributes.1">Attributes</h5><p>None</p><p> </p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356438/3797553463.png">Picture2.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356438/3797553468.png">Picture3.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356438/3797553473.png">Picture4.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356438/3797553478.png">Picture5.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

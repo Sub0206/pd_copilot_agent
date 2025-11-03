@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : allocateReceivable</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : allocateReceivable
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="allocateReceivable-AllocateReceivables">Allocate Receivables</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will update the related Receivable Entity (identified using the  targetMCID, targetCTID, targetVersion, and targetCID attributes)  using the sourceAmtQtag value.  A validation will be done by the method to confirm that the source amount (sourceAmtQTag) value is less than or equal to the target amount value (receivableBalanceAmtQTag).  Once the validation is successful the sourceAmtQtag will be used to update the receivablePaidAmtQTag.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">View Action</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed within an Allocation Template</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p> </p><h4 id="allocateReceivable-XMLUsage">XML Usage</h4><p>Generate from Detail View</p><h4 id="allocateReceivable-Attributes"><span>Attributes</span></h4><p><span>There will be twelve Attributes required for this method.  This first four Attributes will be always be MC-ID, CT-ID, Version, and C-ID which will identify the target receivable occurrence.  The next six Attributes will be Qtags that will identify the receivable amounts of what has already been paid and the balance of what’s left, the source Remittance Allocation amount that will be used to update the Receivable amount paid, the Remittance Applied amount and Remittance remaining amount and the Remittance Allocation Status.  The last two Attributes will be the Interface that will have the Views with the Attribute Qtags, Receivable XML View to update the Receivable amounts and the Parent View Tag of the Allocation Entity.</span></p><p><span>Example:</span></p><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Literal</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Literal</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">targetMCID</td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Q_3####_## (i.e. Q_30003_1)</td><td class="confluenceTd">MCID of the target Receivable.  The Q-tag comes from the Remittance Allocation.</td></tr><tr><td class="confluenceTd">targetCTID</td><td class="confluenceTd"><span>Free form text</span></td><td class="confluenceTd">Q_3####_## (i.e. Q_30003_2 )</td><td class="confluenceTd">CTID of the target Receivable. The Q-tag comes from the Remittance Allocation.</td></tr><tr><td class="confluenceTd">targetVersion</td><td class="confluenceTd">Free form text </td><td class="confluenceTd">Q_3####_## (i.e. Q_30003_3)</td><td class="confluenceTd">Version of the target Receivable.  The Q-tag comes from the Remittance Allocation.</td></tr><tr><td class="confluenceTd">targetCID</td><td class="confluenceTd">Free form text </td><td class="confluenceTd">Q_3####_## (i.e. Q_30003_4)</td><td class="confluenceTd">CID of the target Receivable.  The Q-tag comes from the Remittance Allocation.</td></tr><tr><td class="confluenceTd">recPaidAmtQTAG</td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Q_3####_## (i.e. Q_30003_16)</td><td class="confluenceTd">Qtag on Remittance Allocation that points to the Receivable Qtag that holds the amount already paid and will be updated with the amount of the allocation.</td></tr><tr><td class="confluenceTd">recBalanceAmtQTAG</td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Q_3####_## (i.e. Q_30003_17)</td><td class="confluenceTd">Qtag on Remittance Allocation that points to the Receivable Qtag that holds the amount left and is used to compare the source amount for Allocation.</td></tr><tr><td class="confluenceTd">sourceAmtQTAG</td><td class="confluenceTd">Free form text </td><td class="confluenceTd">Q_3####_## (i.e. Q_30004_17)</td><td class="confluenceTd">is the question which has the amount being paid (i.e. from Allocation UPD)</td></tr><tr><td colspan="1" class="confluenceTd">remitRemBalQTAG</td><td colspan="1" class="confluenceTd"><span>Free form text </span></td><td colspan="1" class="confluenceTd">Q_3####_## (i.e. Q_30002_10)</td><td colspan="1" class="confluenceTd">This is the question that is in the Remittance Parent Detail that shows the amount left on the Remittance.</td></tr><tr><td colspan="1" class="confluenceTd">remitAppliedAmtQTAG</td><td colspan="1" class="confluenceTd"><span>Free form text</span></td><td colspan="1" class="confluenceTd">Q_3####_## (i.e. Q_30002_19)</td><td colspan="1" class="confluenceTd">This is the question that is in the Remittance Parent Detail that shows the amount applied to the Remittance.</td></tr><tr><td colspan="1" class="confluenceTd">allocStatusCodeQTAG</td><td colspan="1" class="confluenceTd"><span>Free form text</span></td><td colspan="1" class="confluenceTd">Q_3####_## (i.e. Q_30003_1)</td><td colspan="1" class="confluenceTd">is the question that holds the status of the occurrence in the UPD.</td></tr><tr><td colspan="1" class="confluenceTd">INTERFACE</td><td colspan="1" class="confluenceTd">Free form text </td><td colspan="1" class="confluenceTd">UPDreceivable</td><td colspan="1" class="confluenceTd">This is the UPLOAD view which will be called with the input XML to update the receivables (i.e. 30007)</td></tr><tr><td colspan="1" class="confluenceTd">parentVTAG</td><td colspan="1" class="confluenceTd"><span>Free form text</span></td><td colspan="1" class="confluenceTd">RemitDT</td><td colspan="1" class="confluenceTd">This is the View of the parent to the allocation UPD.</td></tr><tr><td colspan="1" class="confluenceTd">uploadActionCode</td><td colspan="1" class="confluenceTd">Free form text</td><td colspan="1" class="confluenceTd">updRemitAllocToRec</td><td colspan="1" class="confluenceTd">Optional - if this Attribute is set the value will be a configured Action that will complete the upload to the target Allocation.  The XML will be generated by the code so the Action step to upload should Accept XML</td></tr></tbody></table></div><p> </p><h4 id="allocateReceivable-ReturnCodes"><span>Return Codes</span></h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - Target Amount Value is less than the source Amount Value</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

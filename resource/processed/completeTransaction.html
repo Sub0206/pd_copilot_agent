@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : completeTransaction</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : completeTransaction
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="completeTransaction-MarkTransactionasClosed">Mark Transaction as Closed</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">Marks the policy transaction identified by the current context as Closed. Specifically updates question 40 on entity 30,000, assumed to be Policy Status.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">Policy Status = Open<br/>removal_code &lt;&gt; P (Pending Removal) or R (Removed)</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">This method is not typically used by itself as an action, but as a step in a more complex Policy Action.<br/>This step is most often used as a step in the Issue Policy Action.</td></tr></tbody></table></div><p> </p><h4 id="completeTransaction-XMLUsage">XML Usage</h4><p>None</p><h4 id="completeTransaction-Attributes">Attributes</h4><p>None</p><h4 id="completeTransaction-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Reason Code</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success - Normal in sequence issue completed without error</td><td class="confluenceTd">1 - Success - Normal in sequence issue completed without error<br/>2 - Success - Reinstatement closed with subsequent transactions that were OOS with the Cancel were resurrected.</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Out Of Sequence (OOS) Success -transaction issued, but is OOS with an issued subsequent Renewal term (that was not cancelled on the same effective date) and requires further processing</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Unspecified Failure</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">OOS Success -transaction issued, but is OOS with an In-process subsequent Renewal term and requires further processing</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd">6</td><td class="confluenceTd">OOS - Success - transaction issued, but is OOS with other transactions on the same term.</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd">7</td><td class="confluenceTd">Success - Indicates that the Reinstatement did not resurrect transactions that were removed by the Cancellation.</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td><td class="confluenceTd"> </td></tr></tbody></table></div><p> </p><h4 id="completeTransaction-ImplementationExample">Implementation Example</h4><h5 id="completeTransaction-Action">Action</h5><p>Reinstate</p><h5 id="completeTransaction-Actiontype">Action type</h5><p>Standard Action</p><h5 id="completeTransaction-Dependency">Dependency</h5><p>None</p><h5 id="completeTransaction-ActionStep">Action Step</h5><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Name</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Dependency</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Applicable?</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">CREATE_TRANS</td><td class="confluenceTd">Create Transaction</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">RATE</td><td class="confluenceTd">Rating</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">UPDATE_RATE</td><td class="confluenceTd">Update Database with Returned Premiums</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">40</td><td class="confluenceTd">COMPUTE_TRANS_AMT</td><td class="confluenceTd">Compute Transaction Amount</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">50</td><td class="confluenceTd">UPDATE_TRANS_AMT</td><td class="confluenceTd">Update Transaction Amount</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr><tr><td class="confluenceTd">60</td><td class="confluenceTd">CLOSE_TRANS</td><td class="confluenceTd">Close Transaction</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr></tbody></table></div><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356440/3797553497.png?height=250" data-image-src="attachments/3797356440/3797553497.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553497" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="closetrans.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356440" data-linked-resource-container-version="2" data-media-id="cf2a6526-6587-45c2-83d1-26d3b8bd4711" data-media-type="file"></span></p><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Name</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Dependency</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Applicable?</div></th></tr></thead><tbody><tr><td class="confluenceTd">70</td><td class="confluenceTd">UPDATEREPORT</td><td class="confluenceTd">Update Reporting Table</td><td class="confluenceTd">N</td><td class="confluenceTd">Y</td></tr></tbody></table></div><p> </p><h5 id="completeTransaction-Outcomes">Outcomes</h5><p>None</p><h5 id="completeTransaction-Attributes.1">Attributes</h5><p>None</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356440/3797553497.png">closetrans.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

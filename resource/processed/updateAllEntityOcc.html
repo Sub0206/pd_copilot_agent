@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : updateAllEntityOcc</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : updateAllEntityOcc
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="updateAllEntityOcc-UpdateAllEntityOccurrences">Update All Entity Occurrences</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will update the answer value for the same question or questions on all occurrences of an entity within an action step. <br/> <br/>This method allows the configurator to specify a value for use in updating one or more questions across all occurrences of the target entity. For example, an indicator can be reset on all vehicles on a policy if the rating state changes forcing configured processing for each vehicle to be performed again based upon the updated state. <br/> <br/>When used, the method will update the specified questions with the corresponding configured values on all occurrences of the entity across the policy transaction. <br/> <br/>Updates made using this method will also perform standard View Item processing such as answer options, range checks, remedies, etc.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p><br/></p><h4 id="updateAllEntityOcc-XMLUsage">XML Usage</h4><p>None</p><h4 id="updateAllEntityOcc-Attributes">Attributes</h4><h6 id="updateAllEntityOcc-Thefollowingattributesarerequiredbythemethod:">The following attributes are required by the method:</h6><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>BTAG</strong></td><td class="confluenceTd">The Entity tag for the entity to be updated (ex: 30005)</td></tr><tr><td class="confluenceTd"><strong>VTAG</strong></td><td class="confluenceTd">The code for the View to be used to process the update. Must be a Detail or Updatable List View type. (ex: CPOL_ERR_UPD)</td></tr><tr><td class="confluenceTd"><strong>Question/Value pair(s)</strong> <br/>Repeated as necessary</td><td class="confluenceTd">In the Code, the question identifier in the format Q_30005_1 must be specified. <br/> <br/>The Value is the value to be used to update the specified question. Special answer values &quot;DEFAULT&quot;, &quot;CurrentDate()&quot;, or &quot;CurrentDateTime()&quot; are supported. DEFAULT will use the configured Defualt value form the Questions View Item in the View identified by the VTAG. If the Value is &quot;CurrentDate()&quot;, or &quot;CurrentDateTime()&quot; the current date or timestamp is used to create the answer value. Otherwise, the value specified is used as the value to set in the Question's answer. if the Question has Answer Options, the value specified should be the Code value for the correct Answer Option. <br/> <br/>This attribute can repeat to allow any number of questions to be updated in a single Step.</td></tr></tbody></table></div><h4 id="updateAllEntityOcc-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Return Code</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Update successful</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Update Successful, remedies applied</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">No occurrences found. No update performed.</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">Unspecified failure (cannot update DB, etc.)</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : createPayables</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : createPayables
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span>, last modified on Jul 26, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p> <strong>Create Payable</strong></p><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>This method uses the staging XML from a issued policy transaction to create payable occurrences if payable instructions are included in the XML.</p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Standard Action</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>Must be executed from within the Adaptik Billing System as part of the Post Action for new policy transactions</p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None</p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>None</p></td></tr></tbody></table></div><p><br/></p><p>XML Usage = Reuse from Prior Step (Post <span>Policy Transaction XML (during Post Action)</span></p><h3 id="createPayables-Attributes">Attributes</h3><p>These are the Attributes used in this method.</p><div class="table-wrap"><table class="wrapped confluenceTable"><thead><tr><td class="confluenceTd"><p><strong>Seq # </strong></p></td><td class="confluenceTd"><p><strong>Code </strong></p></td><td class="confluenceTd"><p><strong>Value </strong></p></td><td class="confluenceTd"><p><strong>Type </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p><span>PAYABLE_XSL_NAME</span></p></td><td class="confluenceTd"><p>XSL file name</p><p>XSL_NAME = createPayable.xsl</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the XSL file name</p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>PAYABLE_ITAG</p></td><td class="confluenceTd"><p>Interface for Payable</p><p>Ex. createPayable  </p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the Upload Interface that has the Views of the Payable</p></td></tr><tr><td class="confluenceTd"><p>30</p></td><td class="confluenceTd"><p><span>TRX_ACCT_ID</span></p></td><td class="confluenceTd"><p>Q_3####_##</p><p>Ex. Q_30017_17</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the QTAG that is used as a pointer to the original Account MC_ID</p></td></tr><tr><td class="confluenceTd"><p>40</p></td><td class="confluenceTd"><p><span>TRX_POLICY_ID</span></p></td><td class="confluenceTd"><p>Q_3####_##</p><p>Ex. Q_30017_18</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the QTAG that is used as a pointer to the original Policy Occurrence ID</p></td></tr><tr><td class="confluenceTd"><p>50</p></td><td class="confluenceTd"><p><span>TRX_OCC_ID</span></p></td><td class="confluenceTd"><p>Q_3####_##</p><p>Ex. Q_30017_2</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the QTAG that is used as a pointer to the original Transaction Occurrence ID</p></td></tr></tbody></table></div><p><br/></p><h3 id="createPayables-ReturnCodes">Return Codes </h3><div class="table-wrap"><table class="wrapped confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Return Code </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr><tr><td class="confluenceTd"><p>1</p></td><td class="confluenceTd"><p>Success</p></td></tr><tr><td class="confluenceTd"><p>-2</p></td><td class="confluenceTd"><p>Invalid MCID found in the set.  If one invalid MCID in the set the entire set is considered a failure</p></td></tr><tr><td class="confluenceTd"><p>-1</p></td><td class="confluenceTd"><p>Unknown Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

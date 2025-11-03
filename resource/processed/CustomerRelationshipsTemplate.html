@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : CustomerRelationshipsTemplate</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Web-Page-Templates_28282816.html">Web Page Templates</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : CustomerRelationshipsTemplate
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Susan Wilson</span> on 25 Oct, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div align="center"><h4 id="CustomerRelationshipsTemplate-CustomerRelationshipsProperties">Customer Relationships Properties</h4></div><h5 id="CustomerRelationshipsTemplate-TheStandardCustomerRelationshipsPropertiesaredefinedbelow:">The Standard Customer Relationships Properties are defined below:</h5><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh"><h6 id="CustomerRelationshipsTemplate-PropertyParameter"><strong>Property Parameter</strong></h6></th><th class="confluenceTh"><h6 id="CustomerRelationshipsTemplate-Usage"><strong>Usage</strong></h6></th><th class="confluenceTh"><h6 id="CustomerRelationshipsTemplate-ExampleValues"><strong>Example Values</strong></h6></th><th class="confluenceTh"><h6 id="CustomerRelationshipsTemplate-Description"><strong>Description</strong></h6></th><th class="confluenceTh"><h6 id="CustomerRelationshipsTemplate-Comments"><strong>Comments</strong></h6></th></tr><tr><td class="confluenceTd"><strong>presentationType</strong></td><td class="confluenceTd"><strong>Required</strong></td><td class="confluenceTd">presentationType=PrimaryCustomerRelationshps</td><td class="confluenceTd">Specifies that this is a customer type page</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>includeCustomerTypesPrimary</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">I, E, Both<br/>Example:<br/>includeCustomerTypesPrimary=I</td><td class="confluenceTd">Indicates which customer types should be included on the page. <br/><strong>Default=Both</strong></td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>includeCustomerTypesList</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">I, E, Both<br/>Example:<br/>includeCustomerTypesList=Both</td><td class="confluenceTd">Indicates which customer types should be included on the page. <br/><strong>Default=Both</strong></td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>requireRelationships</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">Y, N<br/>Example:<br/>requireRelationships =Y</td><td class="confluenceTd">Indicates if the Relationship Type field should be required in the list on the page, making the user establish a relationships for everyone presented.<br/><strong>Default value = N</strong></td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>includeResidentCustomersInd</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">Y, N<br/>Example:<br/>includeResidentCustomersInd=Y</td><td class="confluenceTd">Indicates if Customers that are not on the policy but share the same Address Unit as Question 30000_100 should be included in the list.<br/><strong>Default value = N</strong></td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>productGroupFilterCodes</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">Valid Product Group Code values (20000_1)<br/>Example:<br/>productGroupFilterCodes=AUTO:AUTO,HOME</td><td class="confluenceTd">HOME:HOME|UMBRELLA:AUTO, HOME, BOAT|BOAT:</td><td class="confluenceTd">Indicates which Policies should be included when finding other Policies that share the same Policy Location Address Unit (30000_100). A Product Group Code will be by a colon followed by the Product Group codes that should be included. If Product Group code is not accounted for OR is given, but the filter Product Group codes are not specified, then only the current policy will be used to retrieve customers. If Product Group Filter codes are given who's answer values match the value stored in question 30000_1 will be retrieved. Using the example to the left, for an AUTO policy, only other AUTO and HOME policies will be used to find other Customers. If there were UMBRELLA or BOAT policies that contained other customers, they would not be included in the list. For a BOAT policy, no other policies will be retrieved because there are not any Product Group filters listed.</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>primaryCustomerProtectionUserCodes</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">Valid User Codes from the Authorization XML.<br/>Example:<br/>primaryCustomerProtectionUserCodes=A1234,B22321</td><td class="confluenceTd">Indicates which user codes are allowed to change the Primary Customer field. If the User's Authorization XML does NOT contain one of the codes listed, then the field will be protected. If no codes are listed, then an online user will NOT be able to change the Primary Customer.</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>exitServiceErrorMessage</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">Error message to be displayed to the user if the exit service call fails during submit of the page.<br/>exitServiceErrorMessage=The Relationship changes could not be saved at this time. Please try these changes again later.</td><td class="confluenceTd">The defined message will be displayed to the user in a pop-up confirmation box to indicate that the submit of the page was not successful. The page is NOT redisplayed, and the user is navigated to the original navigation target. <br/><br/>If null, or not specified, no error message will be displayed.</td><td class="confluenceTd"> </td></tr></tbody></table></div>
+                    </div>
+
+                    
+                 
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 05 Dec, 2019 16:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

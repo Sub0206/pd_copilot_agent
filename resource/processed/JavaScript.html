@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : JavaScript</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : JavaScript
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="JavaScript-CallJavaScript(StandardActionOnly)">Call JavaScript (Standard Action Only)</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method allows the Account Manager client to invoke a JavaScript method or function that lies outside PolicyWriter such as in a portal or other enveloping context.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p> </p><h4 id="JavaScript-Attributes">Attributes</h4><p>The Call JavaScript method calls a JavaScript function and uses Attributes to pass parameters to that function.  The function being called will typically be project specific to perform a certain task within the page and should not typically be used to call internal Adaptik JavaScript functions. The Attributes required will vary based on the JavaScript being called.</p><p><br/>If the configurator wants to send the Policy XML to the JavaScript, then the user can configure the step that calls the method such that XML is generated. The XML-use attribute should be set to &quot;Generate from DB&quot; or &quot;Re-use from Prior Step&quot; and the other appropriate XML attributes should be set. This will cause an XML to be created and sent as the first argument to the JavaScript.</p><p>If the user needs to send additional arguments, then the Action Step Attributes can be used. For each attribute defined, one argument will be added. The order will be determined by the Sequence number of the Attribute. The Value will contain either a constant or a Policy entity Q-tag (denoted with a format of &quot;Q_30000_#&quot;) or a supported function such as CurrentDate(). For example, if the configurator needed to set up an Action Step that called the JavaScript JavaScriptName(XYZ) where XYZ is the value of Q_30000_34, an Attribute would be configured that sends the value of question 30000_34 as the first and only parameter.</p><p>Note that if the XML were to be generated that would then create an argument before XYZ that contains the XML.</p><h4 id="JavaScript-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="JavaScript-ImplementationExample">Implementation Example</h4><h5 id="JavaScript-Action">Action</h5><p>NAV_ACCTLIST (Navigate to Account List in Portal)</p><h5 id="JavaScript-Actiontype">Action type</h5><p>Standard Action</p><h5 id="JavaScript-Dependency">Dependency</h5><p>None</p><h5 id="JavaScript-ActionStep">Action Step</h5><p>NAV_TO_ACCT_LIST (Navigate to Account List)</p><h5 id="JavaScript-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356504/3797553971.png?height=250" data-image-src="attachments/3797356504/3797553971.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553971" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture8.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356504" data-linked-resource-container-version="2" data-media-id="cbba41f7-f735-4b6d-a746-d22b42e76494" data-media-type="file"></span></h5><h5 id="JavaScript-Outcomes">Outcomes</h5><p>None</p><h5 id="JavaScript-Attributes.1">Attributes</h5><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356504/3797553976.png?height=250" data-image-src="attachments/3797356504/3797553976.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553976" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture9.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356504" data-linked-resource-container-version="2" data-media-id="4173b2ec-456f-43e0-b83a-1a5541bce436" data-media-type="file"></span></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356504/3797553971.png">Picture8.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356504/3797553976.png">Picture9.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Travelers - Update Transaction Control Info</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Travelers-Specific_3797356334.html">Travelers Specific</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Travelers - Update Transaction Control Info
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>The following questions were added to the Policy and Member nodes to hold information used as control information for the transaction.<br/>These questions are not expected to appear in any online pages, but will be included in the Views used to generate XML for the entities listed.</p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th style="text-align: center;" class="confluenceTh">Entity</th><th style="text-align: center;" class="confluenceTh">Q_tag</th><th style="text-align: center;" class="confluenceTh">XML tag</th><th style="text-align: center;" class="confluenceTh">Definition</th></tr><tr><td class="confluenceTd">Policy</td><td class="confluenceTd">30000_1361</td><td class="confluenceTd">numberDrivers</td><td class="confluenceTd">Total number of drivers (policyMember nodes) that are applicable on this transaction. If a driver is deleted (Action Code &quot;D&quot;), it does not appear in this count.</td></tr><tr><td class="confluenceTd">Policy</td><td class="confluenceTd">30000_1362</td><td class="confluenceTd">numberVehicles</td><td class="confluenceTd">Total number of vehicles (vehicle nodes) that are applicable on this transaction. If a vehicle is deleted (Action Code &quot;D&quot;), it does not appear in this count.</td></tr><tr><td class="confluenceTd">Policy</td><td class="confluenceTd">30000_1363</td><td class="confluenceTd">totalWrittenPremiumQuote</td><td class="confluenceTd">At Rate, CARS will return, the total written premium and it will be stored in a conceptual policy question. This node may or may not have a value for Rate calls. At Issue, this node will have the latest value received from Rate.</td></tr><tr><td class="confluenceTd">Member</td><td class="confluenceTd">30011_260</td><td class="confluenceTd">numberACI</td><td class="confluenceTd">The total number of Accidents/Convictions/Incidents (incident nodes) that are applicable on this transaction for this member. If an incident is deleted (Action Code &quot;D&quot;), it does not appear in this count.</td></tr></tbody></table></div><h4 id="Travelers-UpdateTransactionControlInfo-Description">Description</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method updates the new questions described above according to the following requirements. <ul><li>Every time the method is run, all of the questions will be reset to the value that corresponds to the current state of the transaction.</li><li>The source of the values for each question is:<ul><li>numberDrivers (30000_1361) - Count the total number of drivers (policyMember nodes) of any type that are applicable on the current transaction. If a driver is deleted (Action Code &quot;D&quot;), it is not included in the count.</li><li>numberVehicles (30000_1362) - Count the total number of vehicles (vehicle nodes) of any type that are applicable on the current transaction. If a vehicle is deleted (Action Code &quot;D&quot;), it is not included in the count.</li><li>totalWrittenPremiumQuote (30000_1363) copy the value from Total Written Premium (30000_561).</li><li>numberACI (30011_260) - Initialize this question on each non-deleted policyMember node (of any type) by counting the total number of non-deleted Accidents/Convictions/Incidents (incident nodes) that refer to the specific policyMember via the Secondary Parent question Operator (30062-152).</li></ul></li><li>Deleted Member entities will retain the numberACI value that was last calculated prior to the occurrence being deleted. The value will not be removed for deleted Members.</li><li>The results of the method will be returned to the Action using specific return codes.</li></ul></td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">None </td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p> </p><h4 id="Travelers-UpdateTransactionControlInfo-XMLUsage">XML Usage</h4><p>None</p><h4 id="Travelers-UpdateTransactionControlInfo-Attributes">Attributes</h4><p>None</p><h4 id="Travelers-UpdateTransactionControlInfo-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th style="text-align: center;" class="confluenceTh">Return Code</th><th style="text-align: center;" class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1 </td><td class="confluenceTd">Success - All values appropriately set </td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Unspecified Failure</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="Travelers-UpdateTransactionControlInfo-ImplementationExample">Implementation Example</h4><h5 id="Travelers-UpdateTransactionControlInfo-Action">Action</h5><p>ISSUE (Issue Transaction)</p><h5 id="Travelers-UpdateTransactionControlInfo-Actiontype">Action type</h5><p>Standard</p><h5 id="Travelers-UpdateTransactionControlInfo-Dependency">Dependency</h5><p>(status=O) AND (Policy Facts:INCOMPLETE_ISSUE_TIMESTAMP is absent)</p><h5 id="Travelers-UpdateTransactionControlInfo-ActionStep">Action Step</h5><p><a href="attachments/3797356340/3797553021.png" data-linked-resource-id="3797553021" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="picture3.png" data-nice-type="PNG Image" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356340" data-linked-resource-container-version="1"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-external-resource" height="250" src="https://wiki.adaptik.net/download/attachments/3146009/picture3.png?version=1&amp;modificationDate=1445621196000&amp;api=v2" data-image-src="https://wiki.adaptik.net/download/attachments/3146009/picture3.png?version=1&amp;modificationDate=1445621196000&amp;api=v2" loading="lazy"></span></a> </p><h5 id="Travelers-UpdateTransactionControlInfo-Outcomes">Outcomes</h5><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th style="text-align: center;" class="confluenceTh">Seq #</th><th style="text-align: center;" class="confluenceTh">Code</th><th style="text-align: center;" class="confluenceTh">Name</th><th style="text-align: center;" class="confluenceTh">Dependency</th></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">SUCCESS</td><td class="confluenceTd">Success - all controls updated</td><td class="confluenceTd">(Step Code - TRANS_CONTROL : Return_Code=1 )</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">FAILURE</td><td class="confluenceTd">Failure to update transaction controls</td><td class="confluenceTd">(Step Code - TRANS_CONTROL : Return_Code&lt;&gt;1 )</td></tr></tbody></table></div><h5 id="Travelers-UpdateTransactionControlInfo-Attributes.1">Attributes</h5><p>None</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356340/3797553021.png">picture3.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

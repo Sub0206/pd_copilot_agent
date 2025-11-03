@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : removeCaReTransactions</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : removeCaReTransactions
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span> on Mar 17, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="removeCaReTransactions-RemoveCancel/ReinstateTransactionPair">Remove Cancel/Reinstate Transaction Pair</h2><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><p><strong><span>Description</span></strong></p></td><td class="confluenceTd"><p><span>Uses the current transaction in context to identify a pair of Cancel/Reinstate transactions and set the Removal Code value on them to “R”.  </span></p><p><span>The transactions must be part of a pair that have the same Transaction Effective Date where the Reinstate has a CT ID greater than the Cancel transaction.</span></p></td></tr><tr><td class="confluenceTd"><p><strong><span>Supported Action Type</span></strong></p></td><td class="confluenceTd"><p><span>Standard </span></p></td></tr><tr><td class="confluenceTd"><p><strong><span>Constraints</span></strong></p></td><td class="confluenceTd"><p><span>The transaction in context must be either a Reinstate or a reinstated Cancel.  If a Cancel is selected that has not been reinstated, the method will not remove the transaction and an error is returned.</span></p></td></tr><tr><td class="confluenceTd"><p><strong><span>Suggested Dependencies</span></strong></p></td><td class="confluenceTd"><p><span>None</span></p></td></tr><tr><td class="confluenceTd"><p><strong><span>Attributes</span></strong></p></td><td class="confluenceTd"><p><span>None</span></p></td></tr><tr><td class="confluenceTd"><p><strong><span>Notes</span></strong></p></td><td class="confluenceTd"><p><span>Can be used to remove the no longer active Cancel and Reinstate transaction pair.  Note that upon completion, it is recommended that the Transactions page is the target page as this will have the removed transaction in context.  The user may now choose a new transaction to place into context for further processing of the policy.</span></p></td></tr></tbody></table></div><h3 id="removeCaReTransactions-XMLUsage"><br/><span>XML Usage</span></h3><p><span>None</span></p><h3 id="removeCaReTransactions-ReturnCodes"><span>Return Codes</span></h3><div class="table-wrap"><table class="confluenceTable"><thead><tr><td class="confluenceTd"><p><strong>Return Code</strong></p></td><td class="confluenceTd"><p><strong>Description</strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p><span>1 </span></p></td><td class="confluenceTd"><p><span>Success – Transactions removed</span></p></td></tr><tr><td class="confluenceTd"><p><span>2 </span></p></td><td class="confluenceTd"><p><span>Failure - Transaction in context is neither a Reinstate nor a reinstated Cancel transaction </span></p></td></tr><tr><td class="confluenceTd"><p><span>-1 </span></p></td><td class="confluenceTd"><p><span>Unspecified Failure</span></p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

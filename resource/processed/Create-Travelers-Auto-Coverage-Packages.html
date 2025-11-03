@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Create Travelers Auto Coverage Packages</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Deprecated_3797356330.html">Deprecated</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Create Travelers Auto Coverage Packages
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="wiki-content"><h4 id="CreateTravelersAutoCoveragePackages-Description">Description</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This function is used to remove any remaining versions of the quote or application and create new versions that conform to a specific set of Coverage packages using the following steps:   It accepts three attributes. The first defines which question on Policy is the link to the Product Coverage Package entity (20105). The second defines which package (version) should be in context upon completion. The third is the Rate action macro to call for each version.<ol><li>Mark all versions for the current Policy for removal (note that this should not need to be done as the versions should be been removed before this action was called.</li><li>Retrieve the list of Product Coverage Package occurrences (20105) using the linked question passed as Attribute 1 of the Product Action Step. For each occurrence that is applicable, perform the following:<ul><li>Using the last version in context, create a new version (not copying vehicle covs OR Contract answers from CPOL_FOR_COV_DT_2.</li><li>Using the Code question for the occurrence, update the Coverage Package question (30000_1535 which was passed via the Product Action Step).</li><li>Populate the Description question (30000_33) with the Coverage Package literal.</li><li>Process the CPOL_FOR_COV_DT_2 view (re-populating the answers for the Coverage Package).</li><li>For each vehicle, auto-select the coverages that are marked for Selection default for the Coverage Package (coverage package is used to find appropriate exception factor for Product Coverages).</li><li>Call the Rating Action which will call the Gateway for the quote version (passed as third Product Step Attribute).</li></ul></li><li>When all versions have completed the rating step, display the Your Quote page putting the &quot;Regular&quot; version in context (second attribute passed for the Product Action Step.</li></ol></td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context. </td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None </td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">This method is specific to Travelers PL Auto. </td></tr></tbody></table></div><p> </p><h4 id="CreateTravelersAutoCoveragePackages-XMLUsage">XML Usage</h4><p>None</p><h4 id="CreateTravelersAutoCoveragePackages-Attributes">Attributes</h4><h6 id="CreateTravelersAutoCoveragePackages-Attributesmustbeconfiguredintherelativeorderlistedbelow.">Attributes must be configured in the relative order listed below.</h6><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Type </div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">PACKAGE</td><td class="confluenceTd">Valid Q-Tag</td><td class="confluenceTd">String</td><td class="confluenceTd">Identifier for the question on Policy which is the link to the Product Coverage Package Entity (20105). Should be in format Q_XXXXX_YY where XXXXX is the entity identifier and YY is the question sequence number.</td></tr><tr><td class="confluenceTd">VERSION</td><td class="confluenceTd">Code value from a Coverage Package occurrence </td><td class="confluenceTd">String</td><td class="confluenceTd">Defines which package (version) should be in context upon completion of the method.</td></tr><tr><td class="confluenceTd">RATEMACRO</td><td class="confluenceTd">Code for the Macro to be used to Rate the Versions created</td><td class="confluenceTd">String</td><td class="confluenceTd">Identifies the Rate action Macro to be called for each version created.</td></tr></tbody></table></div><h4 id="CreateTravelersAutoCoveragePackages-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Successful Add</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

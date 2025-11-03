@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Create New Policy via Import - (a.k.a. Gateway Import)</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Travelers-Specific_3797356334.html">Travelers Specific</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Create New Policy via Import - (a.k.a. Gateway Import)
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="CreateNewPolicyviaImport-(a.k.a.GatewayImport)-Description">Description</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method provides much the same functionality as Create New Policy but works primarily in memory as opposed to the database and as a result can create a policy faster than the other method, but with somewhat less flexibility. <br/> <br/>Updates to the new policy are queued in memory and not submitted to the database until a successful completion.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard </td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">None </td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">Updates are committed to the database only when the return code from this method is 1, 2, 28 or 29. For any other return code, the updates are lost and no MC or CT is created. In a non-success case, configuring an Outcome to commit the changes will have no effect. The changes will still be abandoned.</td></tr></tbody></table></div><p> </p><h4 id="CreateNewPolicyviaImport-(a.k.a.GatewayImport)-XMLUsage">XML Usage</h4><p>This method requires Update XML to provide information to the new policy. XML- Use should be Accept XML for Update.</p><h4 id="CreateNewPolicyviaImport-(a.k.a.GatewayImport)-Attributes">Attributes</h4><p>This method requires a single attribute allows the configurator to use differing sets of Views to process upload versus online requests while marking the online Views as &quot;visited&quot; for impact and Rule Reapplication processing. If no additional Views need to be marked the Attribute must still be included with an empty value.</p><h4 id="CreateNewPolicyviaImport-(a.k.a.GatewayImport)-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th style="text-align: center;" class="confluenceTh">Return Code</th><th style="text-align: center;" class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Update successful with no remedies applied.</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Update successful with remedies applied (remedies found in return XML).</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Update failed.</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">View Item Error Encountered</td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">ExtAction value invalid</td></tr><tr><td class="confluenceTd">6</td><td class="confluenceTd">ExtAction value missing on a node</td></tr><tr><td class="confluenceTd">7</td><td class="confluenceTd">ID missing on an update or delete node</td></tr><tr><td class="confluenceTd">8</td><td class="confluenceTd">ID specified on an update or delete node not found in database</td></tr><tr><td class="confluenceTd">9</td><td class="confluenceTd">MC_ID missing</td></tr><tr><td class="confluenceTd">12</td><td class="confluenceTd">Transaction Type missing on a new policy transaction</td></tr><tr><td class="confluenceTd">13</td><td class="confluenceTd">Transaction Subtype missing on a new policy transaction</td></tr><tr><td class="confluenceTd">14</td><td class="confluenceTd">Effective Date missing on a new policy transaction</td></tr><tr><td class="confluenceTd">16</td><td class="confluenceTd">Transaction Type is not allowed to be created on a new policy transaction</td></tr><tr><td class="confluenceTd">17</td><td class="confluenceTd">Transaction Type is not allowed because it is not valid for the Product Group</td></tr><tr><td class="confluenceTd">18</td><td class="confluenceTd">Transaction Subtype is not allowed to be created on a new policy transaction</td></tr><tr><td class="confluenceTd">19</td><td class="confluenceTd">Transaction Subtype is not allowed because it is not valid for the Product Group</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">The policy is Flat Cancelled, no further transactions are permitted.</td></tr><tr><td class="confluenceTd">21</td><td class="confluenceTd">Cannot Reinstate a Flat-Cancelled policy that has been Rewritten.</td></tr><tr><td class="confluenceTd">22</td><td class="confluenceTd">Customer Non-Renew already exists when trying to create a new Customer Non-Renew</td></tr><tr><td class="confluenceTd">23</td><td class="confluenceTd">Company Non-Renew already exists when trying to create a new Company Non-Renew</td></tr><tr><td class="confluenceTd">24</td><td class="confluenceTd">Success - Renew Not created</td></tr><tr><td class="confluenceTd">25</td><td class="confluenceTd">Success - Renew Not created - Remedy Applied</td></tr><tr><td class="confluenceTd">26</td><td class="confluenceTd">Transaction not created due to the XML Ancestry being invalid.</td></tr><tr><td class="confluenceTd">27</td><td class="confluenceTd">Transaction cannot be created due to Incomplete OOS condition.</td></tr><tr><td class="confluenceTd">28</td><td class="confluenceTd">Upload succeeded but View Item Errors were encountered.</td></tr><tr><td class="confluenceTd">29</td><td class="confluenceTd">Upload succeeded with Remedies applied but View Item Errors were encountered.</td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">Transaction was Rejected by application of a Remedy configured to reject.</td></tr><tr><td class="confluenceTd">31</td><td class="confluenceTd">Transaction Rejected because the Transaction Effective Date is prior to the Policy Effective Date.</td></tr><tr><td class="confluenceTd">32 </td><td class="confluenceTd">The request is being rejected because the Policy node contains an ExtAction value of D (Delete). D is not a valid value for the Policy node.</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="CreateNewPolicyviaImport-(a.k.a.GatewayImport)-ImplementationExample">Implementation Example</h4><h5 id="CreateNewPolicyviaImport-(a.k.a.GatewayImport)-Action">Action</h5><p>GATEWAY_IMPORT (Create Policy for Gateway Import)</p><h5 id="CreateNewPolicyviaImport-(a.k.a.GatewayImport)-Actiontype">Action type</h5><p>Standard Action</p><h5 id="CreateNewPolicyviaImport-(a.k.a.GatewayImport)-Dependency">Dependency</h5><p>None</p><h5 id="CreateNewPolicyviaImport-(a.k.a.GatewayImport)-ActionStep">Action Step</h5><h6 id="CreateNewPolicyviaImport-(a.k.a.GatewayImport)-UPWSTEP1(UpdateDatabase)">UPWSTEP1 (Update Database)</h6><p><a href="attachments/3797356336/3797553011.png" data-linked-resource-id="3797553011" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture1.png" data-nice-type="PNG Image" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356336" data-linked-resource-container-version="1"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image confluence-external-resource" height="250" src="https://wiki.adaptik.net/download/attachments/3145995/Picture1.png?version=1&amp;modificationDate=1445620080000&amp;api=v2" data-image-src="https://wiki.adaptik.net/download/attachments/3145995/Picture1.png?version=1&amp;modificationDate=1445620080000&amp;api=v2" loading="lazy"></span></a> </p><h5 id="CreateNewPolicyviaImport-(a.k.a.GatewayImport)-Outcomes">Outcomes</h5><p>See Create New Policy example</p><h5 id="CreateNewPolicyviaImport-(a.k.a.GatewayImport)-Attributes.1">Attributes</h5><p>See Create New Policy example</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356336/3797553011.png">Picture1.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : duplicateOccurrenceCheck</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : duplicateOccurrenceCheck
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="duplicateOccurrenceCheck-DuplicateOccurrenceCheck">Duplicate Occurrence Check</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will check to see if there are any duplicate occurrences using the Question Occurrence Identifiers. A duplicate occurrence is defined as an occurrence under the same parent that has matching answers for the Occurrence Identifiers specified on the Questions of that Entity. <br/>For example if the model has Policy, Vehicle, Additional Interest and the same Additional Interest was added to 2 different vehicles, then this would pass as there are no duplicates under the same parent. If the same Additional Interest was added under one vehicle, this would fail as this is a duplicate under the same parent.<br/>If duplicate occurrences are found, a set of occurrences will be stored in a similar manner as Completeness Check so that a Duplicate Error Page can be used to show the results. B-tags without occurrence identifiers will NOT be reported as errors even if specified within the Step Attributes. The Policy Entity (30000) will never be validated as there can only ever be one occurrence. <br/>Note that when multiple occurrence identifiers are strung together, the nulls will be considered as part of the check. In the chart below, all of the following occurrences should be considered unique and should not be considered duplicate:<div class="panelMacro"><p> </p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Occ</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Q1</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Q2</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Q3</div></th></tr></thead><tbody><tr><th class="confluenceTh">1</th><td class="confluenceTd">A</td><td class="confluenceTd">B</td><td class="confluenceTd">C</td></tr><tr><th class="confluenceTh">2</th><td class="confluenceTd">A</td><td class="confluenceTd">B</td><td class="confluenceTd">D</td></tr><tr><th class="confluenceTh">3</th><td class="confluenceTd">A</td><td class="confluenceTd">B</td></tr><tr><th class="confluenceTh">4</th><td class="confluenceTd">A</td><td class="confluenceTd"> </td><td class="confluenceTd">B</td></tr><tr><th class="confluenceTh">5</th><td class="confluenceTd">A</td><td class="confluenceTd">D</td></tr><tr><th class="confluenceTh">6</th><td class="confluenceTd"> </td><td class="confluenceTd">D</td><td class="confluenceTd"> </td></tr></tbody></table></div></td></tr></tbody></table></div></div></td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">The Navigation Target of the Product Outcome (if there are errors) should be a Web Page Code where the errors can be displayed.<br/>The same storage mechanism will be used for these errors as Completeness Check. Therefore, a Configurator should NOT execute this method and then Completeness Check or Wizard without first exiting to give the user the chance to correct the problems (the table will be cleared and then updated by each method).</td></tr></tbody></table></div><p> </p><h4 id="duplicateOccurrenceCheck-XMLUsage">XML Usage</h4><p>None</p><h4 id="duplicateOccurrenceCheck-Attributes">Attributes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">BTAGS</td><td class="confluenceTd">Valid B-Tag values comma delimited. For example 30010,30012</td><td class="confluenceTd">Text</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">TYPE</td><td class="confluenceTd">I - Indicates B-tags in first attribute should be the only entities validated.<br/>E - Indicates B-tags in first attribute should be excluded and all other B-tags, except Policy, in the Product Group should be validated.</td><td class="confluenceTd">Text</td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">INTERFACE</td><td class="confluenceTd">Valid I-tag. It is highly recommended that the Completeness Check Interface is used.</td><td class="confluenceTd">Text</td></tr></tbody></table></div><h4 id="duplicateOccurrenceCheck-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Successful completion with no duplicate occurrences.</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failed with duplicate occurrences.</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

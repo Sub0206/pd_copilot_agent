@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Database Update - Delete Entity - No Longer Supported</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Deprecated_3797356330.html">Deprecated</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Database Update - Delete Entity - No Longer Supported
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="DatabaseUpdate-DeleteEntity-NoLongerSupported-Description">Description</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This function is used to delete a single specified Occurrence (e.g. coverage or endorsement) from the current policy transaction in context using an occurrence identifier value to identify the occurrence. If the specified occurrence does not exist, then processing continues without any error.</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">There is hard-coded logic that restricts this method's use to a select set of entities.</td></tr></tbody></table></div><p> </p><h4 id="DatabaseUpdate-DeleteEntity-NoLongerSupported-Attributes">Attributes</h4><h6 id="DatabaseUpdate-DeleteEntity-NoLongerSupported-TheAttributesmustbeconfiguredintheorderlistedbelow.">The Attributes must be configured in the order listed below.</h6><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">BTAG</td><td class="confluenceTd">Valid numeric Entity Identifier</td><td class="confluenceTd">String</td><td class="confluenceTd">Provides the entity type identification for the occurrence to be deleted.</td></tr><tr><td class="confluenceTd">QTAG</td><td class="confluenceTd">Valid Question Sequence Number</td><td class="confluenceTd">String</td><td class="confluenceTd">Question Sequence Number for the question to be used to identify the occurrence to update. Only the Question Sequence Number should be supplied, so for example if the question was Coverage Attachment Level on Policy (30000-8) the value for this attribute would be simply 8.   Must correspond to the question identified as an occurrence identifier.</td></tr><tr><td class="confluenceTd">CODE</td><td class="confluenceTd"> </td><td class="confluenceTd">String</td><td class="confluenceTd">Provides the value for the specific question which will determine the correct occurrence to delete.</td></tr></tbody></table></div><h4 id="DatabaseUpdate-DeleteEntity-NoLongerSupported-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Successful Delete.</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Item was not found. No Delete.</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

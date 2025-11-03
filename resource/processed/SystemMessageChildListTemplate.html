@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : SystemMessageChildListTemplate</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Web-Page-Templates_28282816.html">Web Page Templates</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : SystemMessageChildListTemplate
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Susan Wilson</span>, last modified on 20 Nov, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="SystemMessageChildListTemplate-ThePolicy-SystemMessagesListTemplateusestheParentSelectorListPresenterpropertiesandtheSystemMessageChildListProperties."><span style="color: rgb(112,112,112);">The Policy - System Messages List Template uses the </span><a href="https://wiki2.adaptik.net/display/PI/SystemMessageChildListTemplate#SystemMessageChildListTemplate-parsellist" class="external-link" rel="nofollow">Parent Selector List Presenter</a><span style="color: rgb(112,112,112);"> properties and the </span><a href="https://wiki2.adaptik.net/display/PI/SystemMessageChildListTemplate#SystemMessageChildListTemplate-sysmsgchild" class="external-link" rel="nofollow">System Message Child List Properties</a><span style="color: rgb(112,112,112);">.</span></h4><p><br/></p><div align="center"><h4 id="SystemMessageChildListTemplate-ParentSelectorProperties">Parent Selector Properties</h4></div><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><tbody><tr><th class="confluenceTh"><h6 id="SystemMessageChildListTemplate-PropertyParameter"><strong>Property Parameter</strong></h6></th><th class="confluenceTh"><h6 id="SystemMessageChildListTemplate-Usage"><strong>Usage</strong></h6></th><th class="confluenceTh"><h6 id="SystemMessageChildListTemplate-ExampleValues"><strong>Example Values</strong></h6></th><th class="confluenceTh"><h6 id="SystemMessageChildListTemplate-Description"><strong>Description</strong></h6></th><th class="confluenceTh"><h6 id="SystemMessageChildListTemplate-Comments"><strong>Comments</strong></h6></th></tr><tr><td class="confluenceTd"><strong>presentationType</strong></td><td class="confluenceTd"><strong>Required</strong></td><td class="confluenceTd">Must be set to ListPresentation<br/>Example: <br/>presentationType=ListPresentation</td><td class="confluenceTd">Indicates that this properties file is for a ListPresentation presentation type.</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>viewName</strong></td><td class="confluenceTd"><strong>Required</strong></td><td class="confluenceTd">Valid policy list view tag<br/>Example:<br/>parentListView=locationSelectorLT</td><td class="confluenceTd">Indicates the V-tag that should be used to build the parent list selector. The View must be a list view of the entity that contains the Product Attachment Level question (same entity as the parent detail).</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>parentSelectorDelimiter</strong></td><td class="confluenceTd"><strong>Required</strong></td><td class="confluenceTd">Text<br/>Example:<br/>parentSelectorDelimiter=:</td><td class="confluenceTd">Delimiter used between items presented in the combo box.</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>lastItemButtonLiteral</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">Text<br/>Example:<br/>lastItemButtonLiteral=Last</td><td class="confluenceTd">Text associated with the button that will bring the user to the last item in the list.</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>firstItemButtonLiteral</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">Text<br/>Example:<br/>firstItemButtonLiteral=First</td><td class="confluenceTd">Text associated with the button that will bring the user to the first item in the list</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>nextButtonLiteral</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">Text<br/>Example:<br/>nextButtonLiteral=Next Building</td><td class="confluenceTd">Text associated with the button that will bring the user to the next item in the list</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>previousButtonLiteral</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">Text<br/>Example:<br/>previousButtonLiteral=Previous Building</td><td class="confluenceTd">Text associated with the button that will bring the user to the previous item in the list</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>selectionButtonLiteral</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">Text<br/>Example:<br/>selectionButtonLiteral=Go</td><td class="confluenceTd">Text associated with the button that will select the current item.</td><td class="confluenceTd"> </td></tr></tbody></table></div><p> </p><p><br/></p><div align="center"><h5 id="SystemMessageChildListTemplate-SystemMessageChildListProperties">System Message Child List Properties</h5></div><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh"><h6 id="SystemMessageChildListTemplate-PropertyParameter.1"><strong>Property Parameter</strong></h6></th><th class="confluenceTh"><h6 id="SystemMessageChildListTemplate-Usage.1"><strong>Usage</strong></h6></th><th class="confluenceTh"><h6 id="SystemMessageChildListTemplate-ExampleValues.1"><strong>Example Values</strong></h6></th><th class="confluenceTh"><h6 id="SystemMessageChildListTemplate-Description.1"><strong>Description</strong></h6></th><th class="confluenceTh"><h6 id="SystemMessageChildListTemplate-Comments.1"><strong>Comments</strong></h6></th></tr><tr><td class="confluenceTd"><strong>Presentation Type</strong></td><td class="confluenceTd"><strong>Required</strong></td><td class="confluenceTd">presentationType=SystemMessageChildList</td><td class="confluenceTd"> </td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>detailsButtonMinimumPrivilege</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">detailsButtonMinimumPrivilege=900</td><td class="confluenceTd">Indicates the minimum User Privilege needed to allow access to the Details button.</td><td class="confluenceTd"><strong>Valid Values: 0 - 999 Default=999</strong></td></tr><tr><td class="confluenceTd"><strong>enableFiltering</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">enableFiltering=Y</td><td class="confluenceTd">Indicates if the filter row should be enabled or disabled. When property is present and set to N, the filter row will be hidden from the user</td><td class="confluenceTd"><strong>Default=N </strong></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                 
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 05 Dec, 2019 16:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

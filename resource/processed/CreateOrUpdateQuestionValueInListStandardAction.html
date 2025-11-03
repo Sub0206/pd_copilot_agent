@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : CreateOrUpdateQuestionValueInListStandardAction</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : CreateOrUpdateQuestionValueInListStandardAction
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span>, last modified on Jul 25, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><strong>Add Update Questions in OOS Transaction List</strong></p><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>This method will update existing contract answers, or create new ones. If a Contract Answer does not exist already, then a new one will be created using the base Question properties for Enforce Stage. If the entity referred to is not policy, then every occurrence of the entity type that exists will be updated.</p><p><span>If the MC-ID in context is part of an OOS transaction, then all transactions that are part of the OOS transaction list will be updated.</span><br/>  <br/>A repeating group of attributes will be accepted for this method. Each attribute will specify a question and the value that should be applied to that question. <br/>  <br/>Enforce Stage on the answer is copied from the existing answer or base Question Properties if no Contract Answer exists and used with the updated value.</p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Standard</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>Must be executed from within a Policy Transaction context. </p><p><span>Note that the following Questions should not be used:</span></p><ul><li><span>Guest Questions are not supported with this method.  Only the host question should be updated via this method.  </span></li><li><span>Customer Link Questions.</span></li><li><span>Secondary Parent Questions.</span></li><li><span>Multi-Value Questions</span></li><li><span>Policy Facts</span></li><li><span>Derived Question (Answer Source = Derived)</span></li></ul></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None</p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>If this method is used to update a Linked Question or a Question that uses Answer Options, it is suggested it be followed by a Rule Reapplication or Upload Step that processes those same Questions within the context of a View.  This is suggested because the method sets the Contract Answer value and attempts to set the appropriate literal (note that if the literal is changed via exception or versioning, the detail view is not processed which means it is possible the incorrect literal is set).  Rule Reapplication or Upload will execute the view and set the correct literal for the question.</p><p>If the Step Attribute Value is &quot;CurrentDate()&quot;,  or &quot;CurrentDateTime()&quot; the current date or timestamp is used to create the answer value.</p><p>Also, policy level questions can be used as a source of the answer to be set.  If a value of <em>Q_30000_## </em>is specified, then the value of the specified question (and is related information such as literal) will be copied.</p></td></tr></tbody></table></div><p><span> </span></p><h4 id="CreateOrUpdateQuestionValueInListStandardAction-XMLUsage"><span>XML Usage</span></h4><p>None</p><h4 id="CreateOrUpdateQuestionValueInListStandardAction-Attributes"><span>Attributes</span></h4><p>Each Attribute specifies a question to be set by Q-Tag and the value to be applied.</p><div class="table-wrap"><table class="wrapped confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Seq # </strong></p></td><td class="confluenceTd"><p><strong>Code </strong></p></td><td class="confluenceTd"><p><strong>Value </strong></p></td><td class="confluenceTd"><p><strong>Type </strong></p></td></tr><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>QTag Value (format Q_#####_#)</p></td><td class="confluenceTd"><p>Specific answer value, &quot;CurrentDate()&quot;,  or &quot;CurrentDateTime()&quot; .  Also, policy level questions may also be used (Q_30000_##).  In this case, the answer value and its related information will be copied.</p></td><td class="confluenceTd"><p>Text</p></td></tr></tbody></table></div><h4 id="CreateOrUpdateQuestionValueInListStandardAction-ReturnCodes"><span>Return Codes</span></h4><div class="table-wrap"><table class="wrapped confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Return Code </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr><tr><td class="confluenceTd"><p>1</p></td><td class="confluenceTd"><p>Add - Update successful (Single Transaction found in List)</p></td></tr><tr><td class="confluenceTd"><p>2</p></td><td class="confluenceTd"><p>Add - Update successful (Multiple Transactions in List)</p></td></tr><tr><td class="confluenceTd"><p>3</p></td><td class="confluenceTd"><p>Failure - No MC, CT, Version in context</p></td></tr><tr><td class="confluenceTd"><p>-1</p></td><td class="confluenceTd"><p>Unspecified Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : runInvoiceApproval</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : runInvoiceApproval
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span> on Nov 26, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="runInvoiceApproval-RunInvoiceApproval"><span style="color: black;">Run Invoice Approval</span></h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>This method will process an algorithm that will search for all “Pending” invoices and approve the ones that have a Due Date that is either less than or equal the current date plus the invoice lead days parameter for the invoice’s policy.    </p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Standard</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>Must be executed from within the Adaptik Billing System</p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None</p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>None</p></td></tr></tbody></table></div><p> </p><h3 id="runInvoiceApproval-XMLUsage">XML Usage</h3><p>None</p><h3 id="runInvoiceApproval-Attributes">Attributes</h3><p>There are six Attributes used in this method.</p><div class="table-wrap"><table class="confluenceTable"><thead><tr><td class="confluenceTd"><p><strong>Seq # </strong></p></td><td class="confluenceTd"><p><strong>Code </strong></p></td><td class="confluenceTd"><p><strong>Value </strong></p></td><td class="confluenceTd"><p><strong>Type </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>INVOICE_LEAD_DAYS</p></td><td class="confluenceTd"><p>Q_3####_##</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the minimum number of days needed to generate a receivable/invoice as it pertains to the upcoming Receivable Due Date. This attribute is used for subsequent transactions. </p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>INVOICE_STATUS</p></td><td class="confluenceTd"><p>Q_3####_##</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the QTAG that contains the answer for the current Invoice Status (either “P” for Pending or “A” for Approved)</p></td></tr><tr><td class="confluenceTd"><p>30</p></td><td class="confluenceTd"><p>INVOICE_DUE_DATE</p></td><td class="confluenceTd"><p>Q_3####_##</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the QTAG that contains the answer for the current Invoice Due Date so the determination can be made if the invoice should be “approved”.</p></td></tr><tr><td class="confluenceTd"><p>40</p></td><td class="confluenceTd"><p>INVOICE_NUMBER</p></td><td class="confluenceTd"><p>Q_3####_##</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the QTAG that will be updated with a unique number that is created by using the Account MCID + the current Invoice in context CID.</p></td></tr><tr><td class="confluenceTd"><p>50</p></td><td class="confluenceTd"><p>INVOICE_DATE</p></td><td class="confluenceTd"><p>Q_3####_##</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the QTAG that will be updated with the current date when the invoice is “approved”</p></td></tr><tr><td class="confluenceTd"><p>60</p></td><td class="confluenceTd"><p>INVOICE_ITAG</p></td><td class="confluenceTd"><p>Interface for Invoice</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Identifies the Upload Interface that has the Views of the Invoice and Invoice Items</p></td></tr></tbody></table></div><p><strong> </strong></p><h3 id="runInvoiceApproval-ReturnCodes">Return Codes</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><p><strong>Return Code </strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr><tr><td class="confluenceTd"><p>1</p></td><td class="confluenceTd"><p>Success</p></td></tr><tr><td class="confluenceTd"><p>-1</p></td><td class="confluenceTd"><p>Unknown Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

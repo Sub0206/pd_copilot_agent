@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : findCarryForwardTransaction</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : findCarryForwardTransaction
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="findCarryForwardTransaction-FindCarryForwardTransaction">Find Carry Forward Transaction</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">The method looks for the latest active (open or closed) Carry Forward transaction (PC/GN effective on the same date as a Renew with originating ID specified) created as a result of issuing an OOS transaction, and sets it into context for the user and subsequent Steps in the Action.<br/>The Action which calls this method (used in the case of an OOS acknowledgement page) could then navigate to a specified page using the navigation capabilities of Actions and Outcomes.<br/>If there is no Carry-Forward transaction, or there is no policy transaction in context, an error indication is returned using the Return Codes from the method.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a policy transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p> </p><h4 id="findCarryForwardTransaction-XMLUsage">XML Usage</h4><p>None</p><h4 id="findCarryForwardTransaction-Attributes">Attributes</h4><p>None</p><h4 id="findCarryForwardTransaction-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - No Carry-Forward Transaction was found for the policy</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Failure - No MC in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="findCarryForwardTransaction-ImplementationExample">Implementation Example</h4><h5 id="findCarryForwardTransaction-Action">Action</h5><p>GO_TO_CARRY_FORWARD (Go to Carry Forward transaction)</p><h5 id="findCarryForwardTransaction-Actiontype">Action type</h5><p>Standard Action</p><h5 id="findCarryForwardTransaction-Dependency">Dependency</h5><p>None</p><h5 id="findCarryForwardTransaction-ActionStep">Action Step</h5><h6 id="findCarryForwardTransaction-FINDCF(FindCarryForward)">FINDCF (Find Carry Forward)</h6><h5 id="findCarryForwardTransaction-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="218" loading="lazy" src="attachments/3797356484/3797553791.png?height=218" data-image-src="attachments/3797356484/3797553791.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553791" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture53.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356484" data-linked-resource-container-version="2" data-media-id="040be9f8-30b6-4146-ad9e-bb1340af83ba" data-media-type="file"></span></h5><h5 id="findCarryForwardTransaction-Outcomes">Outcomes</h5><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" width="600" loading="lazy" src="attachments/3797356484/3797553796.png?width=600" data-image-src="attachments/3797356484/3797553796.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553796" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture54.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356484" data-linked-resource-container-version="2" data-media-id="90949454-c792-4442-9f5b-67ba22e002a9" data-media-type="file"></span><br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" width="600" loading="lazy" src="attachments/3797356484/3797553801.png?width=600" data-image-src="attachments/3797356484/3797553801.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553801" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture55.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356484" data-linked-resource-container-version="2" data-media-id="66d5a687-a1e9-44e1-85a6-49a4b0a07a20" data-media-type="file"></span><br/><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" width="600" loading="lazy" src="attachments/3797356484/3797553806.png?width=600" data-image-src="attachments/3797356484/3797553806.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553806" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture56.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356484" data-linked-resource-container-version="2" data-media-id="41133511-2afa-4ad1-8280-a04225d6b84d" data-media-type="file"></span></p><h5 id="findCarryForwardTransaction-Attributes.1">Attributes</h5><p>None</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356484/3797553791.png">Picture53.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356484/3797553796.png">Picture54.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356484/3797553801.png">Picture55.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356484/3797553806.png">Picture56.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

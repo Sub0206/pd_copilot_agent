@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : ContractTransactionListTemplate</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Web-Page-Templates_28282816.html">Web Page Templates</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : ContractTransactionListTemplate
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Susan Wilson</span> on 25 Oct, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="ContractTransactionListTemplate-"> </h4><h5 id="ContractTransactionListTemplate-WebPagePropertyfilesareusedtocontrolthesettingsrequiredforthevariousTemplatesconfiguredasWebPagesinPolicyWriter.">Web Page Property files are used to control the settings required for the various Templates configured as Web Pages in PolicyWriter.</h5><p> </p><h6 id="ContractTransactionListTemplate-ThePolicy-TransactionListTemplateusesCustomListPropertiesandCustomDetailPropertiesthatmustbenamedandconfiguredasfollows:">The Policy - Transaction List Template uses <a href="http://wiki.adaptik.net/display/docs/ContractTransactionListTemplate#ContractTransactionListTemplate-list" class="external-link" rel="nofollow">Custom List Properties</a> and <a href="http://wiki.adaptik.net/display/docs/ContractTransactionListTemplate#ContractTransactionListTemplate-detail" class="external-link" rel="nofollow">Custom Detail Properties</a> that must be named and configured as follows:</h6><p /><div align="center"><h5 id="ContractTransactionListTemplate-ContractTransactionList.properties">ContractTransactionList.properties</h5></div><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh"><h6 id="ContractTransactionListTemplate-PropertyParameter"><strong>Property Parameter</strong></h6></th><th class="confluenceTh"><h6 id="ContractTransactionListTemplate-Usage"><strong>Usage</strong></h6></th><th class="confluenceTh"><h6 id="ContractTransactionListTemplate-ExampleValues"><strong>Example Values</strong></h6></th><th class="confluenceTh"><h6 id="ContractTransactionListTemplate-Description"><strong>Description</strong></h6></th><th class="confluenceTh"><h6 id="ContractTransactionListTemplate-Comments"><strong>Comments</strong></h6></th></tr><tr><td class="confluenceTd"><strong>presentationType</strong></td><td class="confluenceTd"><strong>Required</strong></td><td class="confluenceTd">presentationType=ContractTransactionList</td><td class="confluenceTd"> </td><td class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"><strong>emptyListMessage</strong></td><td colspan="1" class="confluenceTd"><strong>Required</strong></td><td colspan="1" class="confluenceTd">emptyListMessage=There are currently no transactions</td><td colspan="1" class="confluenceTd">Provides the empty list message that is displayed to the user</td><td colspan="1" class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>doubleClickAction</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">doubleClickAction=continue</td><td class="confluenceTd">Indicates the button that should be clicked for the user if they double click a row</td><td class="confluenceTd">Default=edit</td></tr><tr><td class="confluenceTd"><strong>deleteContractTransactionAction</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">deleteContractTransactionAction=deleteTransaction</td><td class="confluenceTd">Action to be called when Purge button is clicked from the list.</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>backOutContractTransactionAction</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">backOutContractTransactionAction=backoutTransaction</td><td class="confluenceTd">Action to be called when Rescind button is clicked from the list.</td><td class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"><strong><span style="color: black;">backOutContractTransactionView</span></strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd">A valid configured Policy Entity (30000) Detail View</td><td colspan="1" class="confluenceTd"><p>If a non-null value is provided, the Contract Transaction List page will invoke the identified Policy Entity Detail View in an overlay and allow the user to perform any updates or activities the View supports.</p><p>The View will always be rendered in an overlay that will be editable even on an issued transaction.<br/> </p>If the View is not found or not affiliated with the Policy entity an error will be produced in a confirmation box and the user will be returned to the underlying page.</td><td colspan="1" class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>unloadTransactionAction</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">unloadTransactionAction=unloadTransaction</td><td class="confluenceTd">Action to be called when Edit button is clicked from the list when focus is moved from one transaction to another.</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>unloadVersionAction</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">unloadTransactionAction=unloadVersion</td><td class="confluenceTd">Action to be called when Edit button is clicked from the list when focus is moved from one version to another.</td><td class="confluenceTd"> </td></tr></tbody></table></div><p /><div align="center"><h5 id="ContractTransactionListTemplate-ContractTransactionDetail.properties">ContractTransactionDetail.properties</h5></div><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh"><h6 id="ContractTransactionListTemplate-PropertyParameter.1"><strong>Property Parameter</strong></h6></th><th class="confluenceTh"><h6 id="ContractTransactionListTemplate-Usage.1"><strong>Usage</strong></h6></th><th class="confluenceTh"><h6 id="ContractTransactionListTemplate-ExampleValues.1"><strong>Example Values</strong></h6></th><th class="confluenceTh"><h6 id="ContractTransactionListTemplate-Description.1"><strong>Description</strong></h6></th><th class="confluenceTh"><h6 id="ContractTransactionListTemplate-Comments.1"><strong>Comments</strong></h6></th></tr><tr><td class="confluenceTd"><strong>presentationType</strong></td><td class="confluenceTd"><strong>Required</strong></td><td class="confluenceTd">presentationType=ContractTransactionDetail</td><td class="confluenceTd"> </td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>UnloadTransaction</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">UnloadTransaction=removeTrxFromContext</td><td class="confluenceTd">When set, removes focus from the transaction in context by performing the identified action.</td><td class="confluenceTd"> </td></tr></tbody></table></div>
+                    </div>
+
+                    
+                 
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 05 Dec, 2019 16:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

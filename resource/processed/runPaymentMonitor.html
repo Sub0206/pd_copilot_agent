@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : runPaymentMonitor</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : runPaymentMonitor
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="runPaymentMonitor-RunPaymentMonitor">Run Payment Monitor</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will use the provided attributes to create tracking events for a given policy based on the current standing of the policy (overdue) and its previously (or lack of) tracking events.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard Action</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within Adaptik Billing</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p><br/></p><h4 id="runPaymentMonitor-XMLUsage">XML Usage</h4><p>Generate from Database</p><p><span>Attributes</span></p><p><span>There will be 15 attributes to either determine which payment monitor version to use (External Only or Internal Only) or to set the amount of days to trigger specific events.</span></p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Code</th><th class="confluenceTh">Literal</th><th class="confluenceTh">Value</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd"><strong>monitorVersion</strong></td><td class="confluenceTd">Free Form Text</td><td class="confluenceTd">A or B</td><td class="confluenceTd"><p><strong>Option A</strong> - Payment Monitor will not create External Warning events. </p><p><strong>Option B</strong> - Payment Monitor will only create External Warning events.</p></td></tr><tr><td class="confluenceTd"><strong>settlementAlertDays</strong></td><td class="confluenceTd">Free Form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Number of days from Settlement Agreement Request to alerting for Settlement Agreement Finalization</td></tr><tr><td class="confluenceTd"><strong>overdueBalTolAmtUSD</strong></td><td class="confluenceTd">Free Form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Minimum past due amount in USD that the system will recognize as a &quot;Payment Issue&quot;.</td></tr><tr><td class="confluenceTd"><strong>overdueBalTolAmtCAD</strong></td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Minimum past due amount in CAD that the system will recognize as a &quot;Payment Issue&quot;.</td></tr><tr><td class="confluenceTd"><strong>directCollectDays</strong></td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Number of days from Collection Attempt to alerting for Direct Collection</td></tr><tr><td class="confluenceTd"><strong>attemptCollectDays</strong></td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Number of days from Collection Letter to alerting for Collection Attempt</td></tr><tr><td class="confluenceTd"><strong>letterCollectDays</strong></td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Number of days from Collection Invoice to alerting for Collection Letter</td></tr><tr><td class="confluenceTd"><strong>cancel2CollectDays</strong></td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Number of days left between Cancel Notice &amp; Collection Invoice</td></tr><tr><td class="confluenceTd"><strong>collectInvDays</strong></td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Number of days overdue to trigger a Collection Invoice Event</td></tr><tr><td class="confluenceTd"><strong>extWarn2CancelDays</strong></td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Number of days left between External Warning &amp; Cancel Notice events</td></tr><tr><td class="confluenceTd"><strong>cancelNoticeDays</strong></td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Number of days overdue to trigger a Cancel Notice Event</td></tr><tr><td class="confluenceTd"><strong>intWarn2ExtWarnDays</strong></td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Number of days overdue to trigger a Cancel Notice Event</td></tr><tr><td class="confluenceTd"><strong>extWarnDays</strong></td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Number of days overdue  to trigger an External Warning Event</td></tr><tr><td class="confluenceTd"><strong>nearExpDays</strong></td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Maximum number of days from Current Date to Policy Expiration Date for policy to be considered &quot;Near  Expiration&quot;</td></tr><tr><td class="confluenceTd"><strong>intWarnDays</strong></td><td class="confluenceTd">Free form text</td><td class="confluenceTd">Number (1 – 999)</td><td class="confluenceTd">Number of days overdue to trigger an Internal Warning Event</td></tr><tr><td colspan="1" class="confluenceTd"><strong>eventDateQTAG</strong></td><td colspan="1" class="confluenceTd">Q_3####_##</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">QTAG that holds the event date</td></tr><tr><td colspan="1" class="confluenceTd"><strong>eventSourceQTAG</strong></td><td colspan="1" class="confluenceTd">Q_3####_##</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">QTAG that holds the event source</td></tr><tr><td colspan="1" class="confluenceTd"><strong>eventTypeQTAG</strong></td><td colspan="1" class="confluenceTd">Q_3####_##</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">QTAG that holds the event type</td></tr><tr><td colspan="1" class="confluenceTd"><strong>eventCurrBalQTAG</strong></td><td colspan="1" class="confluenceTd">Q_3####_##</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">QTAG that holds the event current balance</td></tr><tr><td colspan="1" class="confluenceTd"><strong>eventTotalBalQTAG</strong></td><td colspan="1" class="confluenceTd">Q_3####_##</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">QTAG that holds the event total balance</td></tr><tr><td colspan="1" class="confluenceTd"><strong>holdOffUntilDateQTAG</strong></td><td colspan="1" class="confluenceTd">Q_3####_##</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">QTAG that holds the hold off until date</td></tr><tr><td colspan="1" class="confluenceTd"><strong>plannedCancelQTAG</strong></td><td colspan="1" class="confluenceTd">Q_3####_##</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">QTAG that holds the planned cancel date</td></tr><tr><td colspan="1" class="confluenceTd"><strong>paymentStatusQTAG</strong></td><td colspan="1" class="confluenceTd">Q_3####_##</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">QTAG that holds the payment status</td></tr><tr><td colspan="1" class="confluenceTd"><strong>paymentStatusDateQTAG</strong></td><td colspan="1" class="confluenceTd">Q_3####_##</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">QTAG that holds the payment status date</td></tr><tr><td colspan="1" class="confluenceTd"><strong>priorPaymtStatusQTAG</strong></td><td colspan="1" class="confluenceTd">Q_3####_##</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">QTAG that holds the prior payment status</td></tr><tr><td colspan="1" class="confluenceTd"><strong>newPaymentStatusQTAG</strong></td><td colspan="1" class="confluenceTd">Q_3####_##</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">QTAG that holds the new payment status</td></tr><tr><td colspan="1" class="confluenceTd"><strong>trackingEvtVTag</strong></td><td colspan="1" class="confluenceTd">View Tag Code - i.e. trackingEventDT</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">VTag for Event Tracking Entity</td></tr><tr><td colspan="1" class="confluenceTd"><strong>policyVTag</strong></td><td colspan="1" class="confluenceTd">View Tag Code - i.e. polDT</td><td colspan="1" class="confluenceTd">Text</td><td colspan="1" class="confluenceTd">VTag for Policy Entity</td></tr></tbody></table></div><p><span><br/></span></p><p><span>Return Codes</span></p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th style="text-align: center;" class="confluenceTh">Return Code</th><th style="text-align: center;" class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - Target Amount Value is less than the source Amount Value</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

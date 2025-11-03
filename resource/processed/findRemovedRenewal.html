@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : findRemovedRenewal</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : findRemovedRenewal
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span>, last modified on Feb 18, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p class="auto-cursor-target"><strong>Find Removed In-Process Renewal</strong></p><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>Uses the current transaction in context to identify an associated removed in-process Renewal policy transaction to be set into context for subsequent processing by the Action.  The Renewal selected will be identified as one that was removed by the issuance of the transaction in context and is associated to the current transaction’s identifiers in the Contract Transaction table.</p><p>The transaction selected will have a Transaction Type of RENEW with a Transaction Status of Open (O), a non-null Removal Code, a REVERSING_TRANSACTION value that matches the CT ID of the current transaction in context, and a REVERSING_VERSION_NO that matches the current transaction’s value.</p><p>If multiple versions of a Renewal match the criteria above, the process will select the one with the lowest Version Number.</p><p>Once a transaction is identified, the CV selection will be executed to put the correct CV in context for the renewal term.  The definition of the currently executing Action will not be changed and will continue using the original image loaded when the Action began.  Any Views or Interfaces used once the CV has been updated will be taken from the new CV.  This behavior is consistent with how Renewal transaction creation and the <em>Establish New CV</em> Internal Method currently behave.</p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Standard</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><br/></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None</p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>Can be used to recreate the changes from a removed Renewal transaction on a new Renewal transaction.</p></td></tr></tbody></table></div><h3 id="findRemovedRenewal-XMLUsage"><br/> XML Usage</h3><p>None</p><h3 id="findRemovedRenewal-Attributes">Attributes</h3><p>None</p><h3 id="findRemovedRenewal-ReturnCodes">Return Codes</h3><div class="table-wrap"><table class="confluenceTable"><thead><tr><td class="confluenceTd"><p align="center"><strong>Return Code</strong></p></td><td class="confluenceTd"><p><strong>Description</strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p align="center">1</p></td><td class="confluenceTd"><p>Success – Transaction identified and put into context</p></td></tr><tr><td class="confluenceTd"><p align="center">2</p></td><td class="confluenceTd"><p>Success – Transaction identified and put into context with at least one other version present</p></td></tr><tr><td class="confluenceTd"><p align="center">3</p></td><td class="confluenceTd"><p>Success with no Transaction Found</p></td></tr><tr><td class="confluenceTd"><p align="center">-1</p></td><td class="confluenceTd"><p>Unspecified Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

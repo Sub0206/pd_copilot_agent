@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : Coverage Package Caching for QuickQuote Internal Method</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Deprecated_3797356330.html">Deprecated</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : Coverage Package Caching for QuickQuote Internal Method
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="wiki-content"><h3 id="CoveragePackageCachingforQuickQuoteInternalMethod-Description">Description</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd">Description </td><td class="confluenceTd">This method will begin by getting specific exception factor values from the policy (state and coverage package name), these will be used to generate a key.  The coverage package cache will then be interrogated to find a matching Coverage Package for the key. <ul><li>If the key is not found then coverage package creation continues as usual by performing Rule Reapplication, at the end of which the package data is stored in the cache with the previously generated key for later reuse. </li><li>If a matching coverage package is found using the key then the coverage package is created by copying the data to the policy for each of the Vehicle occurrences, this process is significantly faster than performing Rule Reapplication.  <br/>The method uses a set of Views defined in an Interface to apply the configured rules from the Views to the policy transaction, it is the outcome of this process that generates the data for the cache. </li></ul></td></tr><tr><td class="confluenceTd">Constraints </td><td class="confluenceTd">Must be executed from within a Policy Transaction context. <br/>The data stored in the cache cannot vary by anything other than the data used to create the key, specifically state and coverage package name, the set of data received must be exactly the same at all times for these specific factors. i.e, if a default value has to vary by Drivers Age and that value is for a default selected coverage on the Basic package then the cached data could be incorrect.  If additional data is needed for the key, dependency values or other exception factors for example, then a further enhancement would be required. <br/>The coverage package data is required to be consistent for all Vehicle (30006) occurrences. i.e, if Vehicle 1 is leased, and Vehicle 2 is owned, then both must still receive the same set of coverages with the same initial default values. If a dependency condition exists to modify the coverages applicability based on the lease versus owned scenario above, the data retrieved from the cache would be incorrect for one of the vehicles (depending on the Vehicle data that originally populated the cache). Only a single collection of Vehicle coverage values are stored and are reused on all Vehicles, if data needs to be cached to support Vehicle level variations then a further enhancement would be required. <br/>Computation routines on View Item Version Variations, Session Questions and Guest Questions are not supported and can lead to incorrect data being populated in the cache, or retrieved from the cache. </td></tr><tr><td class="confluenceTd">Suggested Dependencies </td><td class="confluenceTd">None </td></tr><tr><td class="confluenceTd">Notes </td><td class="confluenceTd">This method is not typically used by itself as an action, but as a step in a more complex Policy Action.  The cache will not be interrogated or populated if the application level property 'amIPrototyping' is set to Y, instead Rule Reapplication will be performed at all times. </td></tr></tbody></table></div><h4 id="CoveragePackageCachingforQuickQuoteInternalMethod-Attributes">Attributes</h4><p>Interface Tag - defines the scope of the information to have rules reapplied. Suppress Errors Indicator - Determines behavior when errors are discovered.</p><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Seq # </div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Code </div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Value </div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Type </div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description </div></th></tr></thead><tbody><tr><td class="confluenceTd">10 </td><td class="confluenceTd">INTERFACE </td><td class="confluenceTd">Defined Interface Tag </td><td class="confluenceTd">String </td><td class="confluenceTd">Defines the scope of the information to have rules reapplied by the Views contained in the Interface. </td></tr><tr><td class="confluenceTd">20 </td><td class="confluenceTd">SUPRESSERRORS </td><td class="confluenceTd">Y/N </td><td class="confluenceTd">String </td><td class="confluenceTd">When set to Y, the method will always return the return code for Successful Completion with no updates regardless of whether updates were made to the transaction or not. The effect of this is that the user would follow any configured navigation for success. <br/>When set to N, the method will return the correct return code that indicates whether or not changes were made to the transaction from the list of return codes below. This supports the configuration of an Outcome navigation to the errors page when errors are to be examined by the user.| </td></tr></tbody></table></div><p> </p><h5 id="CoveragePackageCachingforQuickQuoteInternalMethod-ReturnCodes">Return Codes</h5><div class="table-wrap"><table class="confluenceTable"><thead><tr><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Return Code </div></th><th style="text-align: center;" class="confluenceTh"><div class="tablesorter-header-inner">Description </div></th></tr></thead><tbody><tr><td class="confluenceTd">1 </td><td class="confluenceTd">Successful Completion with no updates. </td></tr><tr><td class="confluenceTd">2 </td><td class="confluenceTd">Successful completion with messages for Administrator only. </td></tr><tr><td class="confluenceTd">3 </td><td class="confluenceTd">Successful completion with messages for most users. </td></tr><tr><td class="confluenceTd">4 </td><td class="confluenceTd">Successful completion with information messages only. </td></tr><tr><td class="confluenceTd">5 </td><td class="confluenceTd">Failure - No MC, CT, Version in context. </td></tr><tr><td class="confluenceTd">-1 </td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

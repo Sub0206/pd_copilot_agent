@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : sendTextMessage</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : sendTextMessage
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="sendTextMessage-SendTextMessage">Send Text Message</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method allows the configurator to construct a text message from the contents of the policy transaction in context and queue it for delivery to the specified recipients.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">The input XML (after the forward XSL) must correspond to the XML Structure described below.<br/> <br/>File attachments and embedded images are not currently supported.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">This method will place a text message request on the corresponding queue, but cannot track the final disposition of the message. It will indicate whether the item was placed on the queue successfully or not, but will not provide details on whether it was sent successfully.</td></tr></tbody></table></div><p><br/></p><h4 id="sendTextMessage-XMLUsage">XML Usage</h4><p>This method requires the use of the following XML structure.</p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Name</th><th class="confluenceTh">Data Type</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">TextMessage</td><td class="confluenceTd">complexType</td><td class="confluenceTd">Root node of the request structure.</td></tr><tr><td class="confluenceTd">MessageHeader</td><td class="confluenceTd">complexType</td><td class="confluenceTd">Container element for the message header elements.</td></tr><tr><td class="confluenceTd">From</td><td class="confluenceTd">Text</td><td class="confluenceTd">Provides the Number that should be used in the &quot;from&quot; aspect of the text message being sent.<br/> <br/>The text messaging vendor being used to transmit the message may include restrictions on what numbers can be used as the &quot;From&quot; on text message requests, or override the value sent with something at the account level. No validation is done by the method however.</td></tr><tr><td class="confluenceTd">To</td><td class="confluenceTd">complexType</td><td class="confluenceTd">Container element for the message recipient numbers.</td></tr><tr><td class="confluenceTd">Number</td><td class="confluenceTd">Text</td><td class="confluenceTd">The possibly repeating Number to be used to address the text message.</td></tr><tr><td class="confluenceTd">Body</td><td class="confluenceTd">Text</td><td class="confluenceTd">The body of the text message.<br/> <br/>May contain only plain text.</td></tr></tbody></table></div><h6 id="sendTextMessage-Example:">Example:</h6><p>&lt;?xml version=&quot;1.0&quot;?&gt;<br/>&lt; TextMessage&gt;<br/>&lt;MessageHeader&gt;<br/>&lt;From&gt;6105551212&lt;/From&gt;<br/>&lt;To&gt;<br/>&lt;Number&gt;16256&lt;/Number&gt;<br/>&lt;Number&gt;6104441212&lt;/Number&gt;<br/>&lt;/To&gt;<br/>&lt;/MessageHeader&gt;<br/>&lt;Body&gt;This is a test. This is only a test. If this were a real text it would be more interesting.&lt;/Body&gt;<br/>&lt; /TextMessage&gt;</p><h4 id="sendTextMessage-Attributes">Attributes</h4><p>None</p><h4 id="sendTextMessage-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Return Code</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

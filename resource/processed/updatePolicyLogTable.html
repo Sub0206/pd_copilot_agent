@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : updatePolicyLogTable</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : updatePolicyLogTable
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="updatePolicyLogTable-UpdatePolicyLogTable">Update Policy Log Table</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will update existing columns in the Policy Log Table for the current policy in context using Attributes that specify the specific column(s) and the values that should be set in them on the policy's row in the table. If a value is not already present in the column, a new one will be created. If there is already an existing value present, it will be updated. <br/><br/>A repeating group of attributes will be accepted for this method. Each attribute will specify a column and the value that should be updated. Any number of columns can be updated in a single execution of the method</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context on an issued policy.<br/>Note that the following columns in the Policy Log Table may not be updated by this method:<ul><li>MC_ID</li><li>MP_ID</li><li>COUNTRY</li><li>STATE</li><li>POLICY_EXPIRATION_DATE</li><li>RENEW_INITIATE_DATE</li><li>NONRENEW_DATE</li><li>PL_CREATE_TIMESTAMP</li><li>PL_UPDATE_TIMESTAMP</li><li>IN_FORCE_IND</li><li>CANCEL_EFFECTIVE_DATE<br/> <br/>Any attempt to update one of these columns will cause all changes made by the method to be abandoned and an error return code to be returned</li></ul></td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">If the Step Attribute Value is &quot;CurrentDate()&quot;, or &quot;CurrentDateTime()&quot; the current date or timestamp is used to create the answer value.<br/><br/>Also, policy level questions can be used as a source of the answer to be set. <br/>If a value of Q_30000_## is specified, then the value of the specified question will be used.</td></tr></tbody></table></div><h4 id="updatePolicyLogTable-XMLUsage">XML Usage</h4><p>None</p><h4 id="updatePolicyLogTable-Attributes">Attributes</h4><p>Each Attribute specifies the column to be set and the value to be applied. <br/><br/>The data type of the column (from the table definition or column name) and of the configured Attribute will be evaluated to determine any value transformation required to make the update. For example, a date in PolicyWriter is typically MM/DD/YYYY while the DBMS may require or assume a different format. As a result, if a date is used to update a timestamp column, midnight will be the time used in the update.<br/><br/>Data Type Transformations will be managed for the new columns which are being defined as timestamps. If a Date is to be stored, it will be converted to a timestamp. If a String is to be stored, it will be assumed to be in the MM/DD/YYYY format with or without the accompanying time components. If the data type conversion cannot be accomplished, a specific return code will be returned.<br/><br/></p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Seq #</th><th class="confluenceTh">Code</th><th class="confluenceTh">Value</th><th class="confluenceTh">Type</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">10</td><td class="confluenceTd">Column Name - must be the actual column name from the database table definition<br/><br/>Example Value: <br/>EXT1_TS<br/><br/>Values supported as of this enhancement include:<ul><li>EXT1_TS</li><li>EXT2_TS</li></ul></td><td class="confluenceTd">Value to be set<br/><br/>Can support a Q-tag, literal, null, or the current date/time methods</td><td class="confluenceTd">Varies</td><td class="confluenceTd">Identifies the Policy Log table column to be updated and specifies the value to set it to. (repeat attribute for each column value to be set) <br/><br/>If the Value is &quot;CurrentDate()&quot;, or &quot;CurrentDateTime()&quot; the current date or timestamp is used to create the column value.<br/><br/> If the value confirms to the pattern Q_*, the value will be taken from the Contract Answer that corresponds to the listed Q-tag.<br/><br/>If the value is null, any existing value in the column will be wiped out.<br/><br/>Otherwise, the value specified is used directly as the value to set in the column.</td></tr></tbody></table></div><h4 id="updatePolicyLogTable-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Return Code</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Update successful</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - No MC, CT, Version in context - no updates applied</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Failure - Invalid Column Name Specified - no updates applied</td></tr><tr><td class="confluenceTd">4</td><td class="confluenceTd">Failure - Unsupported data type conversion required - no updates applied</td></tr><tr><td class="confluenceTd">5</td><td class="confluenceTd">Failure - Policy in context is not issued yet</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

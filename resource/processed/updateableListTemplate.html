@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : updateableListTemplate</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Web-Page-Templates_28282816.html">Web Page Templates</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : updateableListTemplate
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Susan Wilson</span>, last modified on 20 Nov, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p> </p><p> </p><p> </p><h5 id="updateableListTemplate-TheStandardUpdateableListPropertiesaredefinedbelow:">The Standard Updateable List Properties are defined below:</h5><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><tbody><tr><th style="text-align: center;" class="confluenceTh"><strong>Property Parameter</strong></th><th style="text-align: center;" class="confluenceTh"><strong>Usage</strong></th><th style="text-align: center;" class="confluenceTh"><strong>Possible Values</strong></th><th style="text-align: center;" class="confluenceTh"><strong>Description</strong></th><th style="text-align: center;" class="confluenceTh"><strong>Comments</strong></th></tr><tr><td class="confluenceTd"><strong>presentationType</strong></td><td class="confluenceTd"><strong>Required</strong></td><td class="confluenceTd">UpdateableList<br/>Example: <br/>presentationType=UpdateableList</td><td class="confluenceTd">Provides the Presentation type that is being instantiated</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>ViewName</strong></td><td class="confluenceTd"><strong>Required</strong></td><td class="confluenceTd">Valid Updateable List View V-Tag<br/>Example:<br/>ViewName=scheduleUPD</td><td class="confluenceTd">Provides the Updateable List View that will be used to supply the presentation information for the presentation type.</td><td class="confluenceTd"> </td></tr><tr><td class="confluenceTd"><strong>deleteOnRowInd</strong></td><td class="confluenceTd">Optional</td><td class="confluenceTd">Y, N (default)</td><td class="confluenceTd">Indicates if the Delete Row Action should be included as a column within the list rather than below the list.</td><td class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"><p><strong>displayEmptyRow</strong></p></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Y,N</p><p>Example:<br/>displayEmptyRow=N </p></td><td colspan="1" class="confluenceTd"><p>Indicates if the initial rendering of the list should show an empty row to the user or suppress the empty row and only show the header information of the list.</p>Default = Y</td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"><strong>synchronizeTarget</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>synchronizeTarget =synchronizeFormsProperties</p></td><td colspan="1" class="confluenceTd">Indicates the properties file to be used to instantiate the Synchronize overlay.</td><td colspan="1" class="confluenceTd"><p>Required = No (by default)</p><p>Required = Yes, if there is a <em>Synchronize Transaction Version </em>button</p></td></tr><tr><td colspan="1" class="confluenceTd"><strong>wrapHeaderText</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Y, N (Default)</p><p>Example:</p>wrapHeaderText=Y</td><td colspan="1" class="confluenceTd">When set to Y, the text within the Header row of a list should be wrapped.  When set to N, the &quot;...&quot; notation will be used to denote that there is more text than can fit in the header cell and the mouse over will be provided to show the full text.</td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"><strong>wrapRowText</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Y, N (Default)</p><p>Example:</p>wrapRowText=Y</td><td colspan="1" class="confluenceTd">When set to Y, the text within the row of a list should be wrapped.  When set to N, the &quot;...&quot; notation will be used to denote that there is more text than can fit in the row cell and the mouse over will be provided to show the full text.<br> NOTE: This will only occur if there is no control being shown for this field by setting the Protected Control Mode to be ‘No Control’.</td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"><strong>enableFiltering</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Y, N (Default)</p><p>Example:</p>enableFiltering=Y</td><td colspan="1" class="confluenceTd"><p>Indicates if the filter row should be enabled or disabled.  When property is present and set to N, the filter row will be hidden from the user.</p></td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"><strong>enableSorting</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Y, N (Default)</p><p>Example:</p>enableSorting=Y</td><td colspan="1" class="confluenceTd">Indicates if the Updateable List will allow the user to sort the rows on the client.  When the property is not present or set to Y, then sorting will be disabled on the client</td><td colspan="1" class="confluenceTd"> </td></tr><tr><td colspan="1" class="confluenceTd"><strong>scrollingEnabled</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Y (Default), N</p><p>Example:<br/>scrollingEnabled=Y </p></td><td colspan="1" class="confluenceTd"><p>When set to Y and the number of occurrences for the entity is less than <em>beginPagingThreshold</em>, then the updateable list should be in scrolling mode.  If set to N, then the list is always shown in paging mode.  Also indicates when filtering and sorting functionality is performed on the server (paging) vs. on the client (scrolling). </p></td><td colspan="1" class="confluenceTd">Default = Y</td></tr><tr><td colspan="1" class="confluenceTd"><strong>beginPagingThreshold</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Whole Number</p><p>Example:<br/>beginPagingThreshold=50</p></td><td colspan="1" class="confluenceTd"><p>Indicates the number of occurrences for the entity before paging is enabled (greater than or equal to) when scrollingEnabled=Y.  Note that the maximum number this property can contain is 100.  An application exception is given to the user if a higher number is specified.</p></td><td colspan="1" class="confluenceTd">Default = 25 if scrollingEnabled=Y</td></tr><tr><td colspan="1" class="confluenceTd"><strong>pageSize</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Whole Number</p><p>Example:<br/>pageSize=15 </p></td><td colspan="1" class="confluenceTd"><p>Indicates the number of occurrences that should be shown inside of each &quot;page&quot;.  If the number of rows is less than the page size and scrollingEnabled=N, then the paging controls will be suppressed from view as there are no additional &quot;pages&quot; of occurrences to navigate to.</p></td><td colspan="1" class="confluenceTd">Default = 10</td></tr><tr><td colspan="1" class="confluenceTd"><strong>enableRowNumbering</strong></td><td colspan="1" class="confluenceTd">Optional</td><td colspan="1" class="confluenceTd"><p>Y, N (Default)</p><p>Example:<br/>enableRowNumbering=Y </p></td><td colspan="1" class="confluenceTd"><p>Indicates if a row number should be displayed on each row of the updateable list.  </p></td><td colspan="1" class="confluenceTd">Default=N</td></tr></tbody></table></div>
+                    </div>
+
+                    
+                 
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on 05 Dec, 2019 16:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

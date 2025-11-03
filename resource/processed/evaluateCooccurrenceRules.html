@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : evaluateCooccurrenceRules</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Deprecated_3797356330.html">Deprecated</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : evaluateCooccurrenceRules
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="evaluateCooccurrenceRules-EvaluateCo-OccurrenceRules">Evaluate Co-Occurrence Rules</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">Evaluates the specified set of Co-Occurrence Rules against the policy transaction in context and creates policy errors if violations are found. <br/>Upon completion, the page to be navigated to will be provided by the Step Outcome.<br/>This method expects an Attribute which contains the XSLT file of &quot;EvaluateCoOccurrenceRules.xsl&quot;.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">removal_code &lt;&gt; P (Pending Removal) or R (Removed)</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">Any Step that uses this method should be immediately followed by an upload (Update Policy Transaction) Step that takes any errors returned by this method and adds them to the transaction.</td></tr></tbody></table></div><p> </p><h4 id="evaluateCooccurrenceRules-XMLUsage">XML Usage</h4><p>This method requires generated XML that contains the information necessary to validate the coverages. Traditionally the XML is generated using the RATING interface.</p><h4 id="evaluateCooccurrenceRules-Attributes">Attributes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">ATTR1</td><td class="confluenceTd">Co-Occurrence Rule Group Code</td><td class="confluenceTd">string</td><td class="confluenceTd">A valid code identifying a defined Co-Occurrence Rule Group</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">XSLT</td><td class="confluenceTd">XSLT File Name</td><td class="confluenceTd">string</td><td class="confluenceTd">Identifies the XSLT file to be run - generally EvaluateCoOccurrenceRules.xsl</td></tr></tbody></table></div><h4 id="evaluateCooccurrenceRules-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">No violations found</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Violations found error messages updated to DB.</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="evaluateCooccurrenceRules-ImplementationExample">Implementation Example</h4><h5 id="evaluateCooccurrenceRules-Action">Action</h5><p>RATEAPP (Rate)</p><h5 id="evaluateCooccurrenceRules-Actiontype">Action type</h5><p>Standard Action</p><h5 id="evaluateCooccurrenceRules-Dependency">Dependency</h5><p>(stage&lt;340 ) AND (status=O ) AND (type&lt;&gt;RENEW ) AND (subtype&lt;&gt;IDCARD, VIN, RULECHG, ADJUST ) AND (Policy Facts : INCOMPLETE_ISSUE_TIMESTAMP is absent )</p><h5 id="evaluateCooccurrenceRules-ActionStep">Action Step</h5><h6 id="evaluateCooccurrenceRules-EVALCOOCC-EvaluateCo-occurrenceRules">EVALCOOCC - Evaluate Co-occurrence Rules</h6><h5 id="evaluateCooccurrenceRules-"><span class="confluence-embedded-file-wrapper"><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" src="https://wiki.adaptik.net/download/attachments/3147867/Picture48.png?version=1&amp;modificationDate=1446210466000&amp;api=v2" data-image-src="https://wiki.adaptik.net/download/attachments/3147867/Picture48.png?version=1&amp;modificationDate=1446210466000&amp;api=v2" loading="lazy"></span></span></h5><h5 id="evaluateCooccurrenceRules-Outcomes">Outcomes</h5><h6 id="evaluateCooccurrenceRules-Dependency:(StepCode-EVALCOOCC:Return_Code&lt;&gt;1,2)">Dependency: (Step Code - EVALCOOCC : Return_Code&lt;&gt;1, 2 )</h6><h5 id="evaluateCooccurrenceRules-.1"><span class="confluence-embedded-file-wrapper"><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" src="https://wiki.adaptik.net/download/attachments/3147867/Picture49.png?version=1&amp;modificationDate=1446210466000&amp;api=v2" data-image-src="https://wiki.adaptik.net/download/attachments/3147867/Picture49.png?version=1&amp;modificationDate=1446210466000&amp;api=v2" loading="lazy"></span></span></h5><h5 id="evaluateCooccurrenceRules-Attributes.1">Attributes</h5><h6 id="evaluateCooccurrenceRules-2Attributesrequired:">2 Attributes required:</h6><p><span class="confluence-embedded-file-wrapper"><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" src="https://wiki.adaptik.net/download/attachments/3147867/Picture50.png?version=1&amp;modificationDate=1446210466000&amp;api=v2" data-image-src="https://wiki.adaptik.net/download/attachments/3147867/Picture50.png?version=1&amp;modificationDate=1446210466000&amp;api=v2" loading="lazy"></span></span><br/><span class="confluence-embedded-file-wrapper"><span class="confluence-embedded-file-wrapper"><img class="confluence-embedded-image confluence-external-resource" src="https://wiki.adaptik.net/download/attachments/3147867/Picture51.png?version=1&amp;modificationDate=1446210466000&amp;api=v2" data-image-src="https://wiki.adaptik.net/download/attachments/3147867/Picture51.png?version=1&amp;modificationDate=1446210466000&amp;api=v2" loading="lazy"></span></span></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

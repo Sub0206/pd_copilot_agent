@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : addContractTransactionLogEvent</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : addContractTransactionLogEvent
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="addContractTransactionLogEvent-AddContractTransactionLogEvent">Add Contract Transaction Log Event</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will allow for the creation of a new row in the Contract Transaction Log. The step will accept 1 required attribute and a set of optional attributes.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd"><ul><li>The step will accept one required attribute and a set of optional attributes. Note that if extra data is carried on the table through installation specific columns, this data is a point in time representation of that data. If the value changes on the policy, this table will NOT be updated automatically.</li><li>On the Product Step Attribute screen, the Append Last Occurrence Error Text? (20010_9) question will allow the user to append error information that is captured by a step outcome to be included in the Contract Transaction Log Event Info column. It's values are Yes(Y) and No(N) and it determines if the error text from the last Outcome should be appended to the EVENT_INFO Value when populating the Contract Transaction Log occurrence.</li></ul></td></tr></tbody></table></div><p> </p><h4 id="addContractTransactionLogEvent-XMLUsage">XML Usage</h4><p>None</p><h4 id="addContractTransactionLogEvent-Attributes">Attributes</h4><h5 id="addContractTransactionLogEvent-Attributesmustbeconfiguredintherelativeorderlistedbelow.">Attributes must be configured in the relative order listed below.</h5><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">EVENT_CODE</td><td class="confluenceTd">Value from reference table 10204_1</td><td class="confluenceTd">String</td><td class="confluenceTd">Required attribute that must be configured in support of the Add Contract Transaction Log Event (Reference Code). Note that the code will be validated only when application level property file is set to check for PD errors (shouldShowErrorsForPDProblems). During normal production execution, the code will not be validated. Note that this attribute must have an attribute code set to &quot;EVENT_CODE&quot;.</td></tr><tr><td class="confluenceTd">EVENT_INFO</td><td class="confluenceTd">Textual Constants, Q-tag with format Q_3####_##, CurrentDate(), or CurrentDateTime().</td><td class="confluenceTd">String</td><td class="confluenceTd">Attribute configured to update Event Info.</td></tr><tr><td class="confluenceTd">COLUMN NAME (IN CAPS)</td><td class="confluenceTd">Textual Constants, Q-tag with format Q_3####_##, CurrentDate(), or CurrentDateTime().</td><td class="confluenceTd">Various (must match domain of physical column). Note that String will map to VarChar, Integer will map to Number, Date to Date, and a new dropdown will be created for TimeStamp.</td><td class="confluenceTd">Attribute configured to update additional installation specific columns. Note that the Attribute Type should be set to be in sync with database column domain that is defined.</td></tr></tbody></table></div><p> </p><h4 id="addContractTransactionLogEvent-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Appropriate identifiers missing or Transaction Not Found; Add Event failed.</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Event Code does not exist on Reference table. Note that this check will only be done when the shouldShowErrorsForPDProblems = Y.</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p> </p><h4 id="addContractTransactionLogEvent-ImplementationExample">Implementation Example</h4><h5 id="addContractTransactionLogEvent-Action">Action</h5><p>LOG_EVENT</p><h5 id="addContractTransactionLogEvent-Actiontype">Action type</h5><p>Standard Action</p><h5 id="addContractTransactionLogEvent-Dependency">Dependency</h5><p>None</p><h5 id="addContractTransactionLogEvent-ActionStep">Action Step</h5><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356434/3797553422.png?height=250" data-image-src="attachments/3797356434/3797553422.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553422" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture1.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356434" data-linked-resource-container-version="2" data-media-id="cd026c93-be51-46e3-bb79-9cfce83f4b20" data-media-type="file"></span></p><h5 id="addContractTransactionLogEvent-Outcomes">Outcomes</h5><p>None</p><h5 id="addContractTransactionLogEvent-Attributes.1">Attributes</h5><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Name</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Value</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">EVENT_CODE</td><td class="confluenceTd">Event Code</td><td class="confluenceTd">LOGEVENT_TEST</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">EVENT_INFO</td><td class="confluenceTd">Event Info</td><td class="confluenceTd">Test is Good</td></tr></tbody></table></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356434/3797553422.png">Picture1.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

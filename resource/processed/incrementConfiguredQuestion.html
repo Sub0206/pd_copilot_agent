@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : incrementConfiguredQuestion</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : incrementConfiguredQuestion
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Dec 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="incrementConfiguredQuestion-IncrementConfiguredQuestion">Increment Configured Question</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">The method will allow a specified question, identified by the Q-tag in the first Step Attribute, to be updated by applying an increment, specified by the second Step Attribute, to the largest value found for the question across all of transactions within the transactional scope identified by the third and fourth Step Attributes. <br/>If the question does not have an answer on the transaction, a new answer will be created for the question.<br/>If no existing answers are found within the specified transactional scope, the question's value will be set equal to the increment since it will consider the largest previous value to be zero.<br/>No consideration is given for marking any Views as visited for the purposes of Rule Reapplication or Sideways Impact processing when using this method, and it will not cause the execution of Rule Reapplication or Sideways Impact processing as a result of changing the question's value.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p> </p><h4 id="incrementConfiguredQuestion-XMLUsage">XML Usage</h4><p>None</p><h4 id="incrementConfiguredQuestion-Attributes">Attributes</h4><h6 id="incrementConfiguredQuestion-ThisinternalmethodrequirestheuseoffourStepAttributesthataredetailedinthetablethatfollows.">This internal method requires the use of four Step Attributes that are detailed in the table that follows.</h6><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Seq #</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Values</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Type</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">10</td><td class="confluenceTd">QTAG</td><td class="confluenceTd">Valid Question Identifier</td><td class="confluenceTd">String</td><td class="confluenceTd">Provides the identifier for the specific question whose value will be incremented by the method. Format is Q_XXXXX_YY where XXXXX is the entity identifier and YY is the question sequence number.<br/>Only supported for questions that have a Native Answer Source and whose data type is Integer, Real or Year.</td></tr><tr><td class="confluenceTd">20</td><td class="confluenceTd">INCREMENT</td><td class="confluenceTd">Valid Integer</td><td class="confluenceTd">Integer</td><td class="confluenceTd">Provides the increment value to be applied to the largest answer value for the specified question within the transactional scope.</td></tr><tr><td class="confluenceTd">30</td><td class="confluenceTd">TERM</td><td class="confluenceTd">Current All</td><td class="confluenceTd">String</td><td class="confluenceTd">Identifies the term scope to be considered when looking for the largest answer value to be incremented.<br/>If the value is Current, the largest value for the question will be extracted only from within those transactions that have the same Term Number (term_no in contract_transaction) as the current transaction in context, excluding the current transaction.<br/>If the value is All, the largest value for the question will be extracted from within all transactions on the policy, excluding the current transaction.</td></tr><tr><td class="confluenceTd">40</td><td class="confluenceTd">TRX</td><td class="confluenceTd">Active<br/>All</td><td class="confluenceTd">String</td><td class="confluenceTd">Identifies the transactional status scope to be considered when looking for the largest answer value to be incremented. All transaction categories will be included when looking for the largest value to increment.<br/>If the value is Active, the largest value for the question will be extracted only from within active (removal_code is null) transactions (issued or in-process) on the policy that fall within the term scope described above.<br/>If the value is All, the largest value for the question will be extracted from within all transactions (both active and discarded, issued or in-process) on the policy that fall within the term scope described above.</td></tr></tbody></table></div><h4 id="incrementConfiguredQuestion-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><thead><tr><th class="confluenceTh"><div class="tablesorter-header-inner">Return Code</div></th><th class="confluenceTh"><div class="tablesorter-header-inner">Description</div></th></tr></thead><tbody><tr><td class="confluenceTd">1</td><td class="confluenceTd">Successful Update.</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Question was not found in the Product Group. No update performed.</td></tr><tr><td class="confluenceTd">3</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><h4 id="incrementConfiguredQuestion-Errors/Warnings">Errors/Warnings</h4><ul><li>This internal method will only work on questions whose Answer Source is Native and Data Type is Integer, Real, or Year. The method will not be doing any data type conversion for Text, Dates or other data types. If a question of some other data type is configured for use, the results will be uncertain.</li><li>This method does not use a View to process the answer, so it will not make use of capabilities such as View Item versions, Rule Reapplication sensitivity, Variations, or Exceptions to alter any configuration of the question. If any such mechanisms are configured for the question, they will be ignored in favor of the base version of the question (None Exception; Variation 1).</li><li>Updates using this method will not trigger sideways impact processing, nor will they mark any View/Page as visited for Rule Reapplication processing.</li><li>Updates using this method will impact Contract Answers only. There is no support for using this method to update dual fields (those that also appear in the contract_transaction table).</li><li>It is recommended that any question used with this method for the purposes of identifying a transaction be configured as a Q-Group 0 question to support correct processing on Flag and Event-type transactions.</li></ul><h4 id="incrementConfiguredQuestion-ImplementationExample">Implementation Example</h4><h5 id="incrementConfiguredQuestion-Action">Action</h5><p>Rate</p><h5 id="incrementConfiguredQuestion-Actiontype">Action type</h5><p>Standard Action</p><h5 id="incrementConfiguredQuestion-Dependency">Dependency</h5><p>None</p><h5 id="incrementConfiguredQuestion-ActionStep">Action Step</h5><h5 id="incrementConfiguredQuestion-"><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="230" loading="lazy" src="attachments/3797356496/3797553893.png?height=230" data-image-src="attachments/3797356496/3797553893.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553893" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="increment_step.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356496" data-linked-resource-container-version="2" data-media-id="bc6fed0a-0241-4825-88e4-4c650634c0b3" data-media-type="file"></span></h5><h5 id="incrementConfiguredQuestion-Outcomes">Outcomes</h5><p>None</p><h5 id="incrementConfiguredQuestion-Attributes.1">Attributes</h5><p> <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356496/3797553898.png?height=250" data-image-src="attachments/3797356496/3797553898.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553898" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="qtag.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356496" data-linked-resource-container-version="2" data-media-id="daf5af33-b200-40c4-bfff-c777ea7e3435" data-media-type="file"></span></p><p><br/></p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356496/3797553903.png?height=250" data-image-src="attachments/3797356496/3797553903.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553903" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="increment.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356496" data-linked-resource-container-version="2" data-media-id="0dcdd878-719a-4790-9a81-6d3ba5353c64" data-media-type="file"></span></p><p><br/></p><p><span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356496/3797553908.png?height=250" data-image-src="attachments/3797356496/3797553908.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553908" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="term.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356496" data-linked-resource-container-version="2" data-media-id="d2388ff1-db68-428d-9907-077bceeb7d61" data-media-type="file"></span></p><p><br/></p><p>  <span class="confluence-embedded-file-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image" height="250" loading="lazy" src="attachments/3797356496/3797553913.png?height=250" data-image-src="attachments/3797356496/3797553913.png" data-unresolved-comment-count="0" data-linked-resource-id="3797553913" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="trx.png" data-base-url="https://sapiens-digital.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="3797356496" data-linked-resource-container-version="2" data-media-id="0c15bc6c-8435-4706-86ab-8222e0005bd8" data-media-type="file"></span></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356496/3797553893.png">increment_step.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356496/3797553898.png">qtag.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356496/3797553903.png">increment.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356496/3797553908.png">term.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/3797356496/3797553913.png">trx.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:25</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

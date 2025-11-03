@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : syncPendingCustomerChanges</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : syncPendingCustomerChanges
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified by <span class='editor'> Jagadish Rotti</span> on Feb 17, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="syncPendingCustomerChanges-SyncPendingCustomerChanges">Sync Pending Customer Changes</h3><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd"><p>Causes any pending customer changes in the current policy transaction to be synced and committed out to the Adaptik Customer tables making them available to all other processes.</p><p>If the transaction in context is an OOS transaction, has an OOS Completion Code of O indicating that an OOS issuance has been started, and has pending replacement or carry-forward transactions associated with  it, any of those that replace previously issued transactions or represent a later-term carry-forward transaction will also be synched out to the Customer tables in the same fashion by the method.  Replacements for unissued transactions will not be synched, and their changes will remain pending.  Any identified replacement and carry-forward transactions will be processed in date order to ensure that the changes get applied in the correct date context.</p><p><br/></p>Invoking this method will update the Adaptik Customer tables, and remove the pending status of the customer changes from the impacted transaction(s).  Any pending change records will be applied to the base Adaptik Customer tables using the correct time dimensioning and will be deleted from the pending tables.</td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a policy transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd"><p>The changes made by this method will not automatically commit to the database.  They will be subject to the commit/rollback settings of an Outcome like any other Action Step changes.</p><p><br/></p><p>This method must be included in the Action that issues any OOS replacement transactions to ensure that any pending changes are committed as part of the issuance process.</p></td></tr></tbody></table></div><p><br/></p><h4 id="syncPendingCustomerChanges-XMLUsage">XML Usage</h4><p>None</p><p><span>Attributes</span></p><p><span>None</span></p><p><span>Return Codes</span></p><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><th style="text-align: center;" class="confluenceTh">Return Code</th><th style="text-align: center;" class="confluenceTh">Description</th></tr><tr><td class="confluenceTd"><p align="center">1</p></td><td class="confluenceTd"><p>Success – Customer Sync occurred</p></td></tr><tr><td style="text-align: center;" class="confluenceTd" colspan="1">2</td><td colspan="1" class="confluenceTd">Success – No Customer Changes to Sync</td></tr><tr><td class="confluenceTd"><p align="center">3</p></td><td class="confluenceTd"><p>Failure - No MC in context</p></td></tr><tr><td class="confluenceTd"><p align="center">-1</p></td><td class="confluenceTd"><p>Unspecified Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

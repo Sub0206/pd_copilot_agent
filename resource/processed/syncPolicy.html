@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : syncPolicy</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : syncPolicy
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="syncPolicy-Syncto/fromCustomer">Sync to/from Customer</h3><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method will take any unsaved changes on the policy transaction and push them out to the database as Contract Answers without committing them. (Commits will remain controlled by the Action configuration itself and will occur on completion of the Action or as specified in an applicable Outcome on the Action.) Any of the policy data changes that create updates on a Customer will be performed as per the Question configuration rules, and then the Customer information on the policy transaction will be refreshed from the associated Customer(s).<br/> <br/>At the end of the method, the policy transaction in context should reflect the latest committed image of any associated Customers' information.</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">It is strongly recommended that this method be used in a Step that<ol><li>follows one or more Steps in which changes may have been made to the policy data and precedes a Step where the configurator expects that Customer changes may be made (example, after a policy Upload Step and before calling a rating service that updates one or more Customers), or</li><li>follows a Step in which changes may have been made to associated Customer information where those changes should be reflected in the policy before further Steps are processed (Example: after calling a rating service that updates one or more Customers and before an upload of any rating results).<br/> <br/>It is possible that the method may need to be called more than once in the same Action depending on the other Steps in that Action.<br/> <br/>Careful consideration should be made related to rollbacks of policy updates if one of the Steps has already called a coordinating service that has already updated related Customer information. If Customer updates have been committed, and policy updates are rolled back, data could be inconsistent between the Customers and related policies.</li></ol></td></tr></tbody></table></div><h4 id="syncPolicy-XMLUsage">XML Usage</h4><p>None</p><h4 id="syncPolicy-Attributes">Attributes</h4><p>None</p><h4 id="syncPolicy-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Return Code</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Successful Sync</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

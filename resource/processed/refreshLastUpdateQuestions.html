@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : refreshLastUpdateQuestions</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : refreshLastUpdateQuestions
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span> on Oct 25, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 id="refreshLastUpdateQuestions-RefreshLastUpdateQuestions">Refresh Last Update Questions</h3><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd">This method forces an update of the question answers associated with Questions configured as Last Update questions. If the answers for those questions have not been changed in the current transaction, the answers are refreshed from the latest, by process date, active issued transaction of any category. <br/> <br/>This method performs the following steps:<ol><li>The latest (by Process Date) active issued transaction (of any category) is selected. If that transaction is the same as the transaction identified by the prev_ct on the current transaction, no further processing is necessary because the answers will already contain the latest values so the method will not process any further steps.</li><li>If a different transaction is identified as the latest transaction, then the contract answers from the current transaction will be joined against the CQU table using the CV from the new transaction to identify any relevant Last Update category questions in the transaction.</li><li>For each question identified as a Last Update type question in the step above, the before and after IDs will be checked against the corresponding before and after IDs from the same question in the identified latest transaction, if they match, no further action is required and the method will perform no further steps.</li><li>If the before and after IDs do not match, then the before and after IDs on the current transaction must be adjusted (which may require creating a new cts_id and copying all the relevant CTE records) based upon the following logic:<br/> <br/><strong>a.</strong> If the before and after IDs on the current transaction are equal (no changes made to the information in this transaction) they both will be set to contain the after ID from the latest transaction.<br/> <br/><strong>b.</strong> If the before and after IDs are not equal (meaning the field was changed in the current transaction) the before ID will be set to contain the after ID from the latest transaction for the same question.</li></ol></td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd">Must be executed from within a Policy Transaction context.</td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p><br/></p><h4 id="refreshLastUpdateQuestions-XMLUsage">XML Usage</h4><p>None</p><h4 id="refreshLastUpdateQuestions-Attributes">Attributes</h4><p>None</p><h4 id="refreshLastUpdateQuestions-ReturnCodes">Return Codes</h4><div class="table-wrap"><table class="confluenceTable"><tbody><tr><th class="confluenceTh">Return Code</th><th class="confluenceTh">Description</th></tr><tr><td class="confluenceTd">1</td><td class="confluenceTd">Success</td></tr><tr><td class="confluenceTd">2</td><td class="confluenceTd">Failure - No MC, CT, Version in context</td></tr><tr><td class="confluenceTd">-1</td><td class="confluenceTd">Unspecified Failure</td></tr></tbody></table></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

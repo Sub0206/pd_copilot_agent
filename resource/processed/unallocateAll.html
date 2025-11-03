@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : unAllocateAll</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : unAllocateAll
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Former user</span>, last modified on Aug 05, 2020
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="table-wrap"><table class="wrapped confluenceTable" style="font-size: 14.0px;"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><strong>Description</strong></td><td class="confluenceTd"><p>This method will process an algorithm that will use the current occurrence in context to update itself and reverse or “unallocated” all of its specific children occurrences.  The children occurrences are specified as Step Attribute to the method, along with a configured Action to process the Upload of changes</p></td></tr><tr><td class="confluenceTd"><strong>Supported Action Type</strong></td><td class="confluenceTd">Standard</td></tr><tr><td class="confluenceTd"><strong>Constraints</strong></td><td class="confluenceTd"><p>Must be executed from within the Adaptik Billing System</p></td></tr><tr><td class="confluenceTd"><strong>Suggested Dependencies</strong></td><td class="confluenceTd">None</td></tr><tr><td class="confluenceTd"><strong>Notes</strong></td><td class="confluenceTd">None</td></tr></tbody></table></div><p><br/></p><h4 id="unAllocateAll-XMLUsage">XML Usage</h4><p><span style="color: black;">Accept XML for Update</span></p><p><strong>Attributes</strong></p><p><span> </span></p><div class="table-wrap"><table class="wrapped confluenceTable"><colgroup><col/><col/><col/><col/><col/><col/></colgroup><thead><tr><td class="confluenceTd"><p><strong>Seq # </strong></p></td><td class="confluenceTd"><p><strong>Code </strong></p></td><td class="confluenceTd"><p><strong>Value </strong></p></td><td class="confluenceTd"><p><strong>Type </strong></p></td><td class="confluenceTd"><p><strong>Required?</strong></p></td><td class="confluenceTd"><p><strong>Description </strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>sourceAmtQTag</p></td><td class="confluenceTd"><p>Q_3####_##</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Optional</p></td><td class="confluenceTd"><p>Identifies the QTAG that contains the occurrence source amount for update</p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>targetAmtQTag</p></td><td class="confluenceTd"><p>Q_3####_##</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Optional</p></td><td class="confluenceTd"><p>Identifies the QTAG that is used as the target for the occurrence for update</p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>unAllocAllBTagAction</p></td><td class="confluenceTd"><p>BTAG,{ActionCode}</p><p>Ex. 30003,unAllocateRec</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Identifies the combination of the B-TAG of the related occurrences to be unallocated and the configured Action that will be ivoked to complete the upload as part of the update.</p></td></tr><tr><td class="confluenceTd"><p>60</p></td><td class="confluenceTd"><p>INTERFACE</p></td><td class="confluenceTd"><p>Interface for Updating Remittance</p></td><td class="confluenceTd"><p>Text</p></td><td class="confluenceTd"><p>Required</p></td><td class="confluenceTd"><p>Identifies the Upload Interface that has the Views of the Remittance</p></td></tr></tbody></table></div><p><span><br/></span></p><p><strong>Return Codes</strong></p><div class="table-wrap"><table class="wrapped confluenceTable"><tbody><tr><th style="text-align: center;" class="confluenceTh">Return Code</th><th style="text-align: center;" class="confluenceTh">Description</th></tr><tr><td class="confluenceTd"><p>1</p></td><td class="confluenceTd"><p>Success</p></td></tr><tr><td class="confluenceTd"><p>-1</p></td><td class="confluenceTd"><p>Unknown Failure</p></td></tr></tbody></table></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoreSuite NAPC : computeBoundingCoordinates</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC_3797356321.html">CoreSuite NAPC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="CoreSuite-NAPC-Documentation-Home_3797352459.html">CoreSuite NAPC Documentation Home</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Internal-Methods_3797356328.html">Internal Methods</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            CoreSuite NAPC : computeBoundingCoordinates
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jagadish Rotti</span>, last modified by <span class='editor'> Former user</span> on Nov 05, 2019
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="computeBoundingCoordinates-ComputeBoundingCoordinates(DetailViewOnly)">Compute Bounding Coordinates (Detail View Only)</h2><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/></colgroup><tbody><tr><td class="confluenceTd"><p><strong>Description</strong></p></td><td class="confluenceTd"><p>This method accepts four questions via Attributes to be used as input to a computation that computes values for five output questions, also specified in Attributes, that represent a set of bounding coordinates for the provided input Latitude, Longitude, and Radius value.</p><p>The values for those questions can then be used from within a Search Detail Adaptik Unit to drive a search that returns information related to items related to addresses within the circle defined by the central point and radius.</p><p>Latitude and Longitude must be specified in radians, while the Radius of interest should be in whatever Unit is relevant to the project.  The unit of interest is also passed to the method as a configured Attribute.</p></td></tr><tr><td class="confluenceTd"><p><strong>Supported Action Type</strong></p></td><td class="confluenceTd"><p>Detail View</p></td></tr><tr><td class="confluenceTd"><p><strong>Constraints</strong></p></td><td class="confluenceTd"><p>Can only be used to update questions present in the active Detail View, from questions present in the active Detail View.</p></td></tr><tr><td class="confluenceTd"><p><strong>Suggested Dependencies</strong></p></td><td class="confluenceTd"><p>None</p></td></tr><tr><td class="confluenceTd"><p><strong>Notes</strong></p></td><td class="confluenceTd"><p>Used specifically to support geocoordinate queries that identify geolocations within a specified radius of a given set of geocoordinates.</p></td></tr></tbody></table></div><h3 id="computeBoundingCoordinates-XMLUsage"><br/> XML Usage</h3><p>None</p><h3 id="computeBoundingCoordinates-Attributes">Attributes</h3><p>Attribute order and Code value will define the semantics and role of each of the identified Questions for this method.</p><div class="table-wrap"><table class="confluenceTable"><colgroup><col/><col/><col/><col/><col/></colgroup><thead><tr><td class="confluenceTd"><p><strong>Seq #</strong></p></td><td class="confluenceTd"><p><strong>Code</strong></p></td><td class="confluenceTd"><p><strong>Value</strong></p></td><td class="confluenceTd"><p><strong>Type </strong></p></td><td class="confluenceTd"><p><strong>Description</strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p>10</p></td><td class="confluenceTd"><p>INLATITUDE</p></td><td class="confluenceTd"><p>Valid Question identifier in the format Q_XXXXX_xx</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Q-tag that identifies which question in the active Detail View contains the Latitude of the Central point of interest for the query.</p></td></tr><tr><td class="confluenceTd"><p>20</p></td><td class="confluenceTd"><p>INLONGITUDE</p></td><td class="confluenceTd"><p>Q_XXXXX_xx</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Q-tag that identifies which question in the active Detail View contains the Longitude of the Central point of interest for the query.</p></td></tr><tr><td class="confluenceTd"><p>30</p></td><td class="confluenceTd"><p>INRADIUS</p></td><td class="confluenceTd"><p>Q_XXXXX_xx</p><p>Or constant value</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Q-tag that identifies which question in the active Detail View contains the Radius of the search.  If not a Q-tag format, the value will be assumed to be the radius value as a constant.</p></td></tr><tr><td class="confluenceTd"><p>40</p></td><td class="confluenceTd"><p>UNIT</p></td><td class="confluenceTd"><p>KM - kilometers</p><p>MI - miles</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Defines the unit of measure to be used for the computation.  The unit determines what value will be used for the radius of the Earth in the computation.</p></td></tr><tr><td class="confluenceTd"><p>50</p></td><td class="confluenceTd"><p>OUTLATMIN</p></td><td class="confluenceTd"><p>Valid Question identifier in the format Q_XXXXX_xx</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Identifies the Question to receive the minimum Latitude value for the bounding coordinates</p></td></tr><tr><td class="confluenceTd"><p>60</p></td><td class="confluenceTd"><p>OUTLONMIN</p></td><td class="confluenceTd"><p>Q_XXXXX_xx</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Identifies the Question to receive the minimum Longitude value for the bounding coordinates</p></td></tr><tr><td class="confluenceTd"><p>70</p></td><td class="confluenceTd"><p>OUTLATMAX</p></td><td class="confluenceTd"><p>Q_XXXXX_xx</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Identifies the Question to receive the maximum Latitude value for the bounding coordinates</p></td></tr><tr><td class="confluenceTd"><p>80</p></td><td class="confluenceTd"><p>OUTLONMAX</p></td><td class="confluenceTd"><p>Q_XXXXX_xx</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Identifies the Question to receive the maximum Longitude value for the bounding coordinates</p></td></tr><tr><td class="confluenceTd"><p>90</p></td><td class="confluenceTd"><p>OUTANGRADIUS</p></td><td class="confluenceTd"><p>Q_XXXXX_xx</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Identifies the Question to receive the angular radius value used for the bounding coordinates</p></td></tr></tbody></table></div><p> </p><h3 id="computeBoundingCoordinates-TheComputation">The Computation</h3><p>The goal of the computation is to provide an ability to identify a set of bounding coordinates that can be used to draw a box around the circle of interest defined by the input coordinates and radius.  This allows more efficient usage of the computing and database resources by eliminating a large percentage of the candidate matches by finding them to be outside the set of bounding coordinates.</p><p><br/></p><p>In order to determine the bounding coordinates, one must first find the <strong>angular radius</strong> of the query circle.  This formula relies on the fact that the Earth is a sphere with a radius of 6371 km or 3963 mi as defined by the provided UNIT Attribute.</p><p align="center"><em>r</em><em> = [Radius value in km]/(6371 km)</em> or</p><p align="center"><em>r = [Radius value in mi]/(3963 mi)</em></p><p align="center"><br/></p><p><br/></p><p>Minimum and maximum latitude define the farthest points north and south of the central point.</p><p><br/></p><p align="center"><br/></p><p>Computing the minimum and maximum latitude is accomplished by subtracting and adding, respectively, the angular radius, from the latitude of the center of the circle.  Any points not within these latitude values are automatically outside the circle and can be discounted without further processing.</p><p><br/></p><p>Computing the minimum and maximum longitude is not as straight forward due to the way the longitude lines converge as they move away from the equator.  The latitude for the min and max longitude values will not match the latitude of the central point.  It will be slightly closer to the pole due to the curvature of the Earth.  That factors into the formula below to compute the offset for the min and max longitude that defines the bounding borders around the circle of interest.</p><p align="center"><em>Δlon = arcsin(sin([angular radius])/cos([central latitude]))</em></p><p><br/></p><p>Once the offset has been computed, the minimum and maximum longitudes can be calculated.</p><p align="center"><em>lonmin = [central/input longitude] - Δlon</em></p><p align="center"><em>lonmax = [central/input longitude] + Δlon</em></p><p>In reality, the Longitude lines would be curved, but this illustration is included only to illustrate the notion of bounding coordinates.  Using these min and max values you can eliminate most addresses without having to do any more complicated WHERE clause analysis in the SQL query related to the circle being a circle.</p><p align="center"><br/></p><p> </p><p><br/></p><p>Once the computation has derived the min and max coordinate values, those values will be used to update the specified Questions in the Active Detail View.</p><h3 id="computeBoundingCoordinates-ReturnCodes">Return Codes</h3><div class="table-wrap"><table class="confluenceTable"><thead><tr><td class="confluenceTd"><p align="center"><strong>Return Code</strong></p></td><td class="confluenceTd"><p><strong>Description</strong></p></td></tr></thead><tbody><tr><td class="confluenceTd"><p align="center">1</p></td><td class="confluenceTd"><p>Success – Values updated</p></td></tr><tr><td class="confluenceTd"><p align="center">2</p></td><td class="confluenceTd"><p>Failure Unit invalid or not given</p></td></tr><tr><td class="confluenceTd"><p align="center">-1</p></td><td class="confluenceTd"><p>Unspecified Failure</p></td></tr></tbody></table></div><p> </p><p> </p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on May 27, 2024 06:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

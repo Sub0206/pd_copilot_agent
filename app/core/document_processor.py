@@ -68,6 +68,26 @@ class DocumentProcessor:
             return "feature"
         return "general"
     
+    def _generate_doc_id(self, file_path: Path) -> str:
+        """Generate doc_id with folder-based prefix"""
+        relative_path = file_path.relative_to(self.docs_path)
+        
+        # Check if file is in a subdirectory
+        if len(relative_path.parts) > 1:
+            folder_name = relative_path.parts[0].lower()
+            
+            # Apply prefixes based on folder name
+            if folder_name == "internal_methods":
+                return f"InteralMethod_{file_path.stem}"
+            elif folder_name == "template":
+                return f"Template_{file_path.stem}"
+            else:
+                # For other folders, use folder name as prefix
+                return f"{folder_name}_{file_path.stem}"
+        
+        # For files in root directory, no prefix
+        return file_path.stem
+    
     def _move_to_processed(self, file_path: Path):
         dest = self.processed_path / file_path.name
         counter = 1
@@ -80,7 +100,7 @@ class DocumentProcessor:
         """Check if there are new documents to process"""
         return any(
             f.is_file() and f.suffix in ['.html', '.htm', '.md', '.txt', '.docx', '.pdf']
-            for f in self.docs_path.glob("*")
+            for f in self.docs_path.rglob("*")  # Use rglob for recursive search
         )
     
     def process_new_documents(self) -> Dict:
@@ -88,7 +108,7 @@ class DocumentProcessor:
         processed = []
         errors = []
         
-        for file_path in self.docs_path.glob("*"):
+        for file_path in self.docs_path.rglob("*"):  # Use rglob for recursive search
             if file_path.is_file() and file_path.suffix in ['.html', '.htm', '.md', '.txt', '.docx', '.pdf']:
                 try:
                     content = self._read_file(file_path)
@@ -96,13 +116,19 @@ class DocumentProcessor:
                         continue
                     
                     doc_type = self._detect_doc_type(file_path.name, content)
+                    doc_id = self._generate_doc_id(file_path)  # Use new method for doc_id
+                    
+                    # Get relative path for metadata
+                    relative_path = file_path.relative_to(self.docs_path)
                     
                     processed.append({
-                        "doc_id": file_path.stem,
+                        "doc_id": doc_id,
                         "content": content,
                         "metadata": {
                             "filename": file_path.name,
-                            "original_path": str(file_path)
+                            "original_path": str(file_path),
+                            "relative_path": str(relative_path),
+                            "source_folder": relative_path.parts[0] if len(relative_path.parts) > 1 else "root"
                         },
                         "doc_type": doc_type
                     })

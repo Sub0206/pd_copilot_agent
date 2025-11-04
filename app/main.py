@@ -7,6 +7,7 @@ from .api import (
     agent_status,
     clear_session_endpoint,
     get_session_context,
+    get_all_sessions,
     submit_feedback
 )
 
@@ -48,20 +49,65 @@ def clear_session(session_id: str):
 def get_session(session_id: str):
     return get_session_context(session_id)
 
+@app.get("/sessions")
+def list_sessions():
+    """Get all active sessions summary"""
+    return get_all_sessions()
+
+@app.get("/debug/vector-store")
+def debug_vector_store():
+    """Debug endpoint to check vector store status"""
+    from .core.vector_store import vector_store
+    from .core.document_processor import doc_processor
+    
+    try:
+        return {
+            "status": "ok",
+            "vector_store_connected": vector_store.is_connected(),
+            "total_documents": vector_store.count(),
+            "feature_docs": vector_store.count(doc_type="feature"),
+            "config_docs": vector_store.count(doc_type="config"),
+            "general_docs": vector_store.count(doc_type="general"),
+            "has_new_docs_to_process": doc_processor.has_new_documents(),
+            "docs_path": doc_processor.docs_path.as_posix()
+        }
+    except Exception as e:
+        return {
+            "status": "error",
+            "error": str(e)
+        }
+
 @app.on_event("startup")
 async def startup():
     print("\n" + "=" * 60)
     print("🚀 PD COPILOT AGENT API (Agentic SDK + RAG)")
     print("=" * 60)
     
-    # Initialize vector store and process documents
     try:
         from .core.vector_store import vector_store
         from .core.document_processor import doc_processor
         
-        print("📂 Checking for new documents...")
+        print("📂 Checking vector store connection...")
+        if not vector_store.is_connected():
+            print("⚠️  Vector store not connected! Connecting now...")
+            vector_store._ensure_connection()
+        
+        print("✓ Vector store connected")
+        
+        print("\n📊 Current Vector Store Status:")
+        print(f"   Total documents: {vector_store.count()}")
+        print(f"   Feature docs: {vector_store.count(doc_type='feature')}")
+        print(f"   Config docs: {vector_store.count(doc_type='config')}")
+        print(f"   General docs: {vector_store.count(doc_type='general')}")
+        
+        if vector_store.count() == 0:
+            print("\n⚠️  WARNING: No documents in vector store!")
+            print("   Action needed: Add documents to ./resource/pd_docs/")
+            print("   Then restart the server to index them.")
+        
+        print("\n📄 Checking for new documents...")
         if doc_processor.has_new_documents():
-            print("📄 Processing new documents...")
+            print("✓ Found new documents to process")
             result = doc_processor.process_new_documents()
             
             if result["processed"]:
@@ -76,28 +122,23 @@ async def startup():
                 print(f"✓ Successfully indexed {len(result['processed'])} documents")
             
             if result["errors"]:
-                print(f"⚠️  Errors processing {len(result['errors'])} documents:")
+                print(f"⚠️  Errors: {len(result['errors'])}")
                 for error in result["errors"]:
                     print(f"   - {error}")
         else:
             print("✓ No new documents to process")
-            
-        # Show current document count
-        total_docs = vector_store.count()
-        feature_docs = vector_store.count(doc_type="feature")
-        config_docs = vector_store.count(doc_type="config")
-        print(f"📊 Vector store contains {total_docs} documents")
-        print(f"   - Feature docs: {feature_docs}")
-        print(f"   - Config docs: {config_docs}")
+        
+        print("\n✓ OrderSense validation ready")
+        print("✓ Feature & Config agents initialized")
+        print("✓ Documentation at /docs")
+        print("✓ Debug endpoint at /debug/vector-store")
+        print("=" * 60 + "\n")
         
     except Exception as e:
-        print(f"⚠️  Error during startup indexing: {e}")
-        print("   Vector store features will be limited")
-    
-    print("✓ OrderSense validation ready")
-    print("✓ Feature & Config agents initialized")
-    print("✓ Documentation at /docs")
-    print("=" * 60 + "\n")
+        print(f"\n⚠️  STARTUP ERROR: {e}")
+        print("   Some features may not work correctly")
+        import traceback
+        traceback.print_exc()
 
 if __name__ == "__main__":
     import uvicorn

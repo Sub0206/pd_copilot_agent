@@ -1,3 +1,4 @@
+# app/models.py
 from pydantic import BaseModel, Field
 from typing import Optional, Dict, List
 
@@ -16,12 +17,14 @@ class HealthCheck(BaseModel):
     status: str = Field(..., description="Service health status")
     service: str = Field(..., description="Service name")
     version: str = Field(..., description="Service version")
+    metadata: Optional[Dict] = Field(default={}, description="Additional health info")
 
 class AgentStatus(BaseModel):
     agent_status: str = Field(..., description="Agent operational status")
     agent_name: str = Field(..., description="Agent name")
     capabilities: List[str] = Field(..., description="Agent capabilities")
     tools: List[str] = Field(..., description="Available tools")
+    metadata: Optional[Dict] = Field(default={}, description="Additional agent metadata")
 
 class FeedbackRequest(BaseModel):
     session_id: str = Field(..., description="Session identifier")

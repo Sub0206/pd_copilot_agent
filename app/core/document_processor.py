@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Dict
+from typing import Dict, List
 from bs4 import BeautifulSoup
 import shutil
 import os
@@ -27,6 +27,7 @@ class DocumentProcessor:
                         page_text = page.extract_text()
                         if page_text:
                             text.append(page_text)
+                
                 return '\n\n'.join(text)
             except Exception as e:
                 raise Exception(f"Error reading .pdf file: {e}")
@@ -37,6 +38,7 @@ class DocumentProcessor:
                 doc = Document(file_path)
                 # Extract text from all paragraphs
                 text = '\n'.join([paragraph.text for paragraph in doc.paragraphs if paragraph.text.strip()])
+                
                 return text
             except Exception as e:
                 raise Exception(f"Error reading .docx file: {e}")
@@ -51,6 +53,8 @@ class DocumentProcessor:
         # Handle text-based files
         with open(file_path, 'r', encoding='utf-8') as f:
             return f.read()
+    
+
     
     def _detect_doc_type(self, filename: str, content: str) -> str:
         filename_lower = filename.lower()
@@ -115,6 +119,7 @@ class DocumentProcessor:
                     if not content.strip():
                         continue
                     
+                    # Detect document type
                     doc_type = self._detect_doc_type(file_path.name, content)
                     doc_id = self._generate_doc_id(file_path)  # Use new method for doc_id
                     

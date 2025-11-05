@@ -1,4 +1,7 @@
-from fastapi import FastAPI
+from dotenv import load_dotenv
+load_dotenv()
+
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from .models import ChatRequest, ChatResponse, AgentStatus, HealthCheck, FeedbackRequest
 from .api import (
@@ -7,7 +10,8 @@ from .api import (
     agent_status,
     clear_session_endpoint,
     get_session_context,
-    submit_feedback
+    submit_feedback,
+    create_session
 )
 
 app = FastAPI(
@@ -33,8 +37,97 @@ async def chat(request: ChatRequest):
     return await chat_endpoint(request)
 
 @app.post("/api/feedback")
-def feedback(request: FeedbackRequest):
-    return submit_feedback(request)
+async def feedback(request: Request):
+    """Enhanced feedback endpoint that handles both strict and flexible formats"""
+    try:
+        data = await request.json()
+        print(f"Raw feedback data received: {data}")
+        
+        # Try to parse as FeedbackRequest first
+        try:
+            feedback_req = FeedbackRequest(**data)
+            print(f"Successfully parsed as FeedbackRequest: {feedback_req}")
+            return submit_feedback(feedback_req)
+        except Exception as validation_error:
+            print(f"Validation failed, using flexible parsing: {validation_error}")
+            
+            # Fall back to flexible parsing - handle various field names
+            session_id = data.get("session_id", data.get("sessionId", "unknown"))
+            message_id = data.get("message_id", data.get("messageId", data.get("conversation_id", "unknown")))
+            
+            # Handle feedback_type - check multiple possible fields
+            feedback_type = data.get("feedback_type", "unknown")
+            if feedback_type == "unknown" and "liked" in data:
+                feedback_type = "like" if data["liked"] else "dislike"
+                
+            user_query = data.get("user_query", data.get("query", ""))
+            assistant_response = data.get("assistant_response", data.get("response_text", data.get("response", "")))
+            
+            from .core.vector_store import vector_store
+            
+            feedback_id = vector_store.store_conversation_feedback(
+                session_id=session_id,
+                message_id=message_id,
+                user_query=user_query,
+                assistant_response=assistant_response,
+                feedback_type=feedback_type
+            )
+            
+            message = "helpful" if feedback_type == "like" else "not helpful"
+            
+            return {
+                "status": "success",
+                "message": f"Conversation marked as {message}",
+                "feedback_id": feedback_id
+            }
+        
+    except Exception as e:
+        print(f"Feedback endpoint error: {e}")
+        return {
+            "status": "error",
+            "message": f"Failed to process feedback: {str(e)}"
+        }
+
+@app.post("/feedback")
+async def feedback_alt(request: Request):
+    """Flexible feedback endpoint that accepts any JSON"""
+    try:
+        data = await request.json()
+        print(f"Received feedback data: {data}")
+        
+        # Extract required fields with defaults - handle all field variations
+        session_id = data.get("session_id", "unknown")
+        message_id = data.get("message_id", "unknown") 
+        feedback_type = data.get("feedback_type", data.get("type", "unknown"))
+        user_query = data.get("user_query", data.get("query", ""))
+        assistant_response = data.get("assistant_response", 
+                                     data.get("response_text", 
+                                             data.get("response", "")))
+        
+        from .core.vector_store import vector_store
+        
+        feedback_id = vector_store.store_conversation_feedback(
+            session_id=session_id,
+            message_id=message_id,
+            user_query=user_query,
+            assistant_response=assistant_response,
+            feedback_type=feedback_type
+        )
+        
+        message = "helpful" if feedback_type == "like" else "not helpful"
+        
+        return {
+            "status": "success",
+            "message": f"Conversation marked as {message}",
+            "feedback_id": feedback_id
+        }
+        
+    except Exception as e:
+        print(f"Feedback error: {e}")
+        return {
+            "status": "error", 
+            "message": f"Failed to store feedback: {str(e)}"
+        }
 
 @app.get("/agent/status", response_model=AgentStatus)
 def status():
@@ -47,6 +140,45 @@ def clear_session(session_id: str):
 @app.get("/session/{session_id}")
 def get_session(session_id: str):
     return get_session_context(session_id)
+
+@app.post("/session/create")
+def new_session():
+    return create_session()
+
+@app.post("/admin/reprocess-documents")
+def reprocess_documents():
+    """Manually trigger document reprocessing (including image extraction)"""
+    try:
+        from .core.vector_store import vector_store
+        from .core.document_processor import doc_processor
+        
+        # Check for new documents
+        if not doc_processor.has_new_documents():
+            return {"status": "info", "message": "No new documents to process"}
+        
+        # Process documents
+        result = doc_processor.process_new_documents()
+        
+        if result['processed']:
+            # Store in vector database
+            for doc in result['processed']:
+                vector_store.add_document(
+                    doc_id=doc['doc_id'],
+                    content=doc['content'],
+                    metadata=doc['metadata'],
+                    doc_type=doc['doc_type']
+                )
+        
+        return {
+            "status": "success",
+            "message": f"Processed {result['count']} documents",
+            "processed_files": [doc['metadata']['filename'] for doc in result['processed']],
+            "errors": result['errors'],
+            "images_extracted": sum(len(doc['metadata'].get('images', [])) for doc in result['processed'])
+        }
+        
+    except Exception as e:
+        return {"status": "error", "message": f"Failed to reprocess documents: {str(e)}"}
 
 @app.on_event("startup")
 async def startup():

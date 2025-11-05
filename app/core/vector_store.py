@@ -2,9 +2,20 @@ from typing import List, Dict, Optional
 import psycopg2
 from psycopg2.extras import RealDictCursor, Json
 import os
+from dotenv import load_dotenv
 from openai import OpenAI
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Ensure environment variables are loaded
+load_dotenv()
+
+# Initialize OpenAI client with error handling
+def get_openai_client():
+    """Get OpenAI client with proper error handling"""
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("OPENAI_API_KEY environment variable is not set")
+    return OpenAI(api_key=api_key)
+
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/pd_copilot")
 
 class VectorStore:
@@ -48,9 +59,24 @@ class VectorStore:
             """)
             cur.execute("CREATE INDEX IF NOT EXISTS idx_doc_type ON documents(doc_type)")
             cur.execute("CREATE INDEX IF NOT EXISTS idx_embedding ON documents USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100)")
+            
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS feedback (
+                    id SERIAL PRIMARY KEY,
+                    session_id VARCHAR(255) NOT NULL,
+                    message_id VARCHAR(255) NOT NULL,
+                    user_query TEXT NOT NULL,
+                    assistant_response TEXT NOT NULL,
+                    feedback_type VARCHAR(20) NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            cur.execute("CREATE INDEX IF NOT EXISTS idx_feedback_session ON feedback(session_id)")
+            cur.execute("CREATE INDEX IF NOT EXISTS idx_feedback_type ON feedback(feedback_type)")
         self.conn.commit()
     
     def _get_embedding(self, text: str) -> List[float]:
+        client = get_openai_client()
         response = client.embeddings.create(
             model="text-embedding-3-small",
             input=text[:8000]
@@ -101,6 +127,8 @@ class VectorStore:
             
             return [dict(row) for row in cur.fetchall()]
     
+
+    
     def count(self, doc_type: Optional[str] = None) -> int:
         self._ensure_connection()
         
@@ -111,6 +139,41 @@ class VectorStore:
                 cur.execute("SELECT COUNT(*) FROM documents")
             return cur.fetchone()[0]
     
+    def store_conversation_feedback(self, session_id: str, message_id: str, user_query: str, 
+                                   assistant_response: str, feedback_type: str):
+        """Store conversation feedback (helpful/not helpful)"""
+        self._ensure_connection()
+        
+        with self.conn.cursor() as cur:
+            cur.execute("""
+                INSERT INTO feedback (session_id, message_id, user_query, assistant_response, feedback_type)
+                VALUES (%s, %s, %s, %s, %s)
+                RETURNING id
+            """, (session_id, message_id, user_query, assistant_response, feedback_type))
+            
+            feedback_id = cur.fetchone()[0]
+            
+        self.conn.commit()
+        return feedback_id
+
+    def get_feedback_stats(self) -> Dict:
+        """Get conversation feedback statistics"""
+        self._ensure_connection()
+        
+        with self.conn.cursor(cursor_factory=RealDictCursor) as cur:
+            cur.execute("""
+                SELECT feedback_type, COUNT(*) as count
+                FROM feedback 
+                GROUP BY feedback_type
+            """)
+            
+            stats = {row['feedback_type']: row['count'] for row in cur.fetchall()}
+            return {
+                "helpful": stats.get("like", 0),
+                "not_helpful": stats.get("dislike", 0),
+                "total_feedback": sum(stats.values())
+            }
+
     def is_connected(self) -> bool:
         """Check if database is connected"""
         return self.conn is not None
